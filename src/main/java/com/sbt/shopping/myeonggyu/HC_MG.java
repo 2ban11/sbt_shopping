@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HC_MG {
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/6", method = RequestMethod.GET)
 	public String home() {
 		
 		return "index";
