@@ -25,13 +25,6 @@
 
 	<context:component-scan base-package="com.sbt.shopping" />
 
-	<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<beans:property name="url"
-			value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<beans:property name="username" value="c##[id]" />
-		<beans:property name="password" value="[password]" />
-	</beans:bean>
 
 	<beans:bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
@@ -43,7 +36,7 @@
 		<beans:property name="typeAliasesPackage" value="com.sbt.shopping" />
 		<beans:property name="mapperLocations">
 			<beans:list>
-				<beans:value>classpath:[mapper.xml파일명]</beans:value>
+				<beans:value>classpath:jaehwan.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -57,4 +50,11 @@
       <beans:property name="maxUploadSize" value="10485760" />
       <beans:property name="defaultEncoding" value="utf-8" />
    </beans:bean>
+   <beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+        <beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+        <beans:property name="url"
+            value="jdbc:oracle:thin:@f0e8tcdui31dsn2e_high?TNS_ADMIN=D:\JJH\egov\eGovFrameDev-3.10.0-64bit\eclipse\wallet\Wallet_F0E8TCDUI31DSN2E" />
+        <beans:property name="username" value="ADMIN" />
+        <beans:property name="password" value="Soldesk802!!" />
+    </beans:bean>
 </beans:beans>
