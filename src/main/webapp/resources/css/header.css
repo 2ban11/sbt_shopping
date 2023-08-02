@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+.site-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper-without-footer {
+  height: auto;
+  flex: 1;
+  padding-bottom: 100px;
+}
+
+.row {
+  padding: 0 20% 0 20%;
+}
+
+.header {
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: none;
+}
+
+.header__wrapper {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  margin: 15px 0 12px 0;
+}
+
+.header__logo {
+  width: 160px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header__logo--img {
+  width: 160px;
+  height: 45px;
+  object-fit: contain;
+}
+
+.header__form {
+  display: flex;
+  width: 59.2%;
+}
+
+.header__input--text {
+  width: calc(100% - 60px); /* calc 쓸 때 사칙연산 기호 양 옆으로 띄어쓰기*/
+  height: 45px;
+  padding: 10px;
+  margin-left: 40px;
+  font-size: 1.2rem;
+  line-height: 1.33;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  background-color: #ffffff08;
+  color: white;
+}
+
+.header__input--button {
+  width: 50.72px;
+  height: 45px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  color: white;
+}
+
+.fa-magnifying-glass {
+  font-size: 1.1rem;
+}
+
+.header__login {
+  display: flex;
+}
+
+.header__login,
+.header__signup,
+.header__cart {
+  margin-right: 5px;
+  background-color: white;
+  font-size: 1rem;
+  word-break: keep-all;
+}
+
+.nav-header {
+  display: flex;
+  height: 64px;
+  background-color: #131c27;
+  color: white;
+  padding: 0 20% 0 20.5%;
+  overflow-x: scroll;
+}
+
+.nav-header::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-header div {
+  height: 100%;
+  cursor: pointer;
+  background: linear-gradient(rgb(24, 35, 49), rgb(15, 23, 32));
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 22px 20px;
+  font-size: 100%;
+  text-align: center;
+  word-break: keep-all;
+}
+
+.nav-header div:hover {
+  background: #0f1720;
+}
+
+@media screen and (max-width: 480px) {
+  /* 화면크기가 480px이하일 경우 */
+}
