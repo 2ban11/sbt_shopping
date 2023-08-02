@@ -19,7 +19,7 @@ public class HC_IH {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		
-		return "inhoo/inhoo";
+		return "index";
 	}
 	
 }

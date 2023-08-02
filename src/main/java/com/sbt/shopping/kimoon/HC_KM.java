@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HC_KM {
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/199", method = RequestMethod.GET)
 	public String mainPage(Locale locale, Model model) {
 		
 		return "index";
