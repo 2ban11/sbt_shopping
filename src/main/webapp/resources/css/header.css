@@ -179,7 +179,7 @@
   height: 64px;
   background-color: #131c27;
   color: white;
-  padding: 0 20% 0 20.5%;
+  padding: 0 20% 0 20%;
   justify-content: space-between;
   font-size: 10pt;
 }
@@ -225,13 +225,12 @@
   top: 100%;
   left: 0;
   width: 100%;
-  height: 18%;
   background-color: #1b2838;
   color: white;
   opacity: 0.95;
-  z-index: 1;
+  z-index: 99;
   border-top: 3px solid #67c1f5;
-  padding: 22px 20% 20% 10%;
+  padding: 22px 20% 0 10%;
 }
 
 .nav-item-sub li {
@@ -272,11 +271,12 @@ body.sidebar-open {
   width: 59.6%;
   height: 100%;
   background: #3e3e3e;
-  opacity: 0.95;
+  opacity: 0.98;
   position: absolute;
   top: 0;
   left: -50%;
   overflow-y: scroll;
+  z-index: 50;
 }
 
 .sidebar__menu::-webkit-scrollbar {
@@ -425,6 +425,7 @@ body.sidebar-open {
     height: 65px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: 0;
+    margin-bottom: 0;
   }
 
   .header__input--text {
