@@ -29,44 +29,102 @@
 			<img src="resources/img/MainPageBanner.png" />
 		</div>
 	</div>
-	<nav class="main-page__tab">
-		<div>기타</div>
-		<div>앰프</div>
-		<div>이펙터</div>
-		<div>주변용품</div>
-	</nav>
-	<div class="main-page-contents__wrapper">
-		<div class="main-page-content">
-		<div class="main-page-content__thumbnail-wrapper">
-			<img class="main-page-content__thumbnail"
-				src="resources/img/RedGuitar.jpg" />
-				</div>
-			<div class="main-page-content__info">
-				<div class="main-page-content__desc-wrapper">
-					<div class="main-page-content__title">Fender Japan Made in
-						Japan Hybrid II Stratocaster</div>
-					<div style="display: flex;">
-						<div class="main-page-content__type">기타 타입</div>
-						<div class="main-page-content__company">회사 이름</div>
-					</div>
-				</div>
-				<div class="main-page-content__price">
-					<div>
-						<p class="main-page-content__original-price">
-							정상가: <span style="opacity: 0.5; text-decoration: line-through;">₩56,000</span>
-						</p>
-						<p class="main-page-content__sale-price">판매가: <span style="font-weight: bold">₩51,000</span></p>
-					</div>
-					<div class="main-page-content__sale-percent">10%</div>
-				</div>
-				<div class="main-page-content__addtocart-bar">
-					<img class="addtocart__company-logo" src="resources/img/Fender_Logo_White.png">
-					<button class="fa-solid fa-cart-shopping addtocart__company--btn">&nbsp;장바구니</button>
-				</div>
-			</div>
-		</div>
-		
-		
-	</div>
+	<div class="main-page__tab-wrapper">
+            <ul class="main-page__tab">
+              <li><a href="#tab1">기타</a></li>
+              <li><a href="#tab2">앰프</a></li>
+              <li><a href="#tab3">이펙터</a></li>
+              <li><a href="#tab4">주변용품</a></li>
+            </ul>
+          </div>
+          <div class="main-page-contents__wrapper">
+            <div class="main-page-content" id="tab1">
+              <div class="main-page-content__thumbnail-wrapper">
+                <img
+                  class="main-page-content__thumbnail"
+                  src="resources/img/RedGuitar.jpg"
+                />
+              </div>
+              <div class="main-page-content__info">
+                <div class="main-page-content__desc-wrapper">
+                  <div class="main-page-content__title">
+                    Fender Japan Made in Japan Hybrid II Stratocaster
+                  </div>
+                  <div style="display: flex">
+                    <div class="main-page-content__type">기타 타입</div>
+                    <div class="main-page-content__company">회사 이름</div>
+                  </div>
+                </div>
+                <div class="main-page-content__price">
+                  <div>
+                    <p class="main-page-content__original-price">
+                      정상가:
+                      <span style="opacity: 0.5; text-decoration: line-through"
+                        >₩56,000</span
+                      >
+                    </p>
+                    <p class="main-page-content__sale-price">
+                      판매가: <span style="font-weight: bold">₩51,000</span>
+                    </p>
+                  </div>
+                  <div class="main-page-content__sale-percent">10%</div>
+                </div>
+                <div class="main-page-content__addtocart-bar">
+                  <img
+                    class="addtocart__company-logo"
+                    src="resources/img/Fender_Logo_White.png"
+                  />
+                  <button
+                    class="fa-solid fa-cart-shopping addtocart__company--btn"
+                  >
+                    &nbsp;장바구니
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div class="main-page-content" id="tab2">
+              <div class="main-page-content__thumbnail-wrapper">
+                <img
+                  class="main-page-content__thumbnail"
+                  src="resources/img/RedGuitar.jpg"
+                />
+              </div>
+              <div class="main-page-content__info">
+                <div class="main-page-content__desc-wrapper">
+                  <div class="main-page-content__title">2번째 탭!!</div>
+                  <div style="display: flex">
+                    <div class="main-page-content__type">기타 타입</div>
+                    <div class="main-page-content__company">회사 이름</div>
+                  </div>
+                </div>
+                <div class="main-page-content__price">
+                  <div>
+                    <p class="main-page-content__original-price">
+                      정상가:
+                      <span style="opacity: 0.5; text-decoration: line-through"
+                        >₩56,000</span
+                      >
+                    </p>
+                    <p class="main-page-content__sale-price">
+                      판매가: <span style="font-weight: bold">₩51,000</span>
+                    </p>
+                  </div>
+                  <div class="main-page-content__sale-percent">10%</div>
+                </div>
+                <div class="main-page-content__addtocart-bar">
+                  <img
+                    class="addtocart__company-logo"
+                    src="resources/img/Fender_Logo_White.png"
+                  />
+                  <button
+                    class="fa-solid fa-cart-shopping addtocart__company--btn"
+                  >
+                    &nbsp;장바구니
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
 </body>
 </html>
