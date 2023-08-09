@@ -23,7 +23,7 @@ private MainPageDAO mpDAO;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainPage(HttpServletRequest request) {
-		// mpDAO.get48Products(request);
+		mpDAO.get48Products(request);
 		request.setAttribute("contentPage", "kimoon/kimoonMainPage.jsp");
 		return "index";
 	}

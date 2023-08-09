@@ -15,6 +15,6 @@ public class MainPageDAO {
 	private SqlSession ss;
 	
 	public void get48Products(HttpServletRequest request) {
-		//request.setAttribute("shoes", ss.getMapper(MainPageProductMapper.class).get48Products(request));
+		request.setAttribute("mainProducts", ss.getMapper(MainPageProductMapper.class).get48Products(request));
 	}
 }

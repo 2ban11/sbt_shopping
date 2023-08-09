@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,15 +32,99 @@
 		</div>
 	</div>
 	<div class="main-page__tab-wrapper">
-            <ul class="main-page__tab">
-              <li><a href="#tab1">기타</a></li>
-              <li><a href="#tab2">앰프</a></li>
-              <li><a href="#tab3">이펙터</a></li>
-              <li><a href="#tab4">주변용품</a></li>
-            </ul>
-          </div>
-          <div class="main-page-contents__wrapper">
-            <div class="main-page-content" id="tab1">
+		<ul class="main-page__tab">
+			<li><a href="#main-tab-guitar">기타</a></li>
+			<li><a href="#main-tab-amp">앰프</a></li>
+			<li><a href="#main-tab-effector">이펙터</a></li>
+			<li><a href="#main-tab-accessory">주변용품</a></li>
+		</ul>
+	</div>
+	<div class="main-page-contents__wrapper">
+		<c:forEach var="mainProducts" items="${mainProducts }">
+			<c:choose>
+				<c:when test="${mainProducts.p_big_category eq '기타'}">
+					<div class="main-page-content" id="main-tab-guitar">
+				</c:when>
+				<c:when test="${mainProducts.p_big_category eq '앰프'}">
+					<div class="main-page-content" id="main-tab-amp">
+				</c:when>
+				<c:when test="${mainProducts.p_big_category eq '이펙터'}">
+					<div class="main-page-content" id="main-tab-effector">
+				</c:when>
+				<c:when test="${mainProducts.p_big_category eq '주변용품'}">
+					<div class="main-page-content" id="main-tab-accessory">
+				</c:when>
+			</c:choose>
+			<div class="main-page-content__thumbnail-wrapper">
+				<c:choose>
+					<c:when test="${mainProducts.p_big_category eq '기타'}">
+						<img class="main-page-content__thumbnail"
+							src="resources/img/Guitar/${mainProducts.p_img1 }" />
+					</c:when>
+
+					<c:when test="${mainProducts.p_big_category eq '앰프'}">
+						<img class="main-page-content__thumbnail"
+							src="resources/img/Amp/${mainProducts.p_img1 }" />
+					</c:when>
+					<c:when test="${mainProducts.p_big_category eq '이펙터'}">
+						<img class="main-page-content__thumbnail"
+							src="resources/img/Effector/${mainProducts.p_img1 }" />
+					</c:when>
+					<c:when test="${mainProducts.p_big_category eq '주변용품'}">
+						<img class="main-page-content__thumbnail"
+							src="resources/img/Accessory/${mainProducts.p_img1 }" />
+					</c:when>
+				</c:choose>
+			</div>
+			<div class="main-page-content__info">
+				<div class="main-page-content__desc-wrapper">
+					<div class="main-page-content__title">${mainProducts.p_name}
+					</div>
+					<div style="display: flex">
+
+						<c:if test="${not empty mainProducts.p_small_category}">
+							<div class="main-page-content__type">${mainProducts.p_small_category}</div>
+						</c:if>
+						<c:if test="${not empty mainProducts.p_maker}">
+							<div class="main-page-content__company">${mainProducts.p_maker}</div>
+						</c:if>
+					</div>
+				</div>
+				<div class="main-page-content__price">
+					<div>
+						<p class="main-page-content__original-price">
+							정상가: <span style="opacity: 0.5; text-decoration: line-through">
+
+								<fmt:formatNumber value="${mainProducts.p_price }"
+									type="currency" />
+							</span>
+						</p>
+						<p class="main-page-content__sale-price">
+							판매가: <span style="font-weight: bold"> <fmt:formatNumber
+									value="${mainProducts.p_sale }" type="currency" />
+							</span>
+						</p>
+					</div>
+					<c:if test="${mainProducts.p_price ne mainProducts.p_sale }">
+						<div class="main-page-content__sale-percent">
+							<fmt:formatNumber
+								value="${((mainProducts.p_price - mainProducts.p_sale) / mainProducts.p_price) * 100}"
+								type="number" pattern="#0'%'" />
+						</div>
+					</c:if>
+				</div>
+				<div class="main-page-content__addtocart-bar">
+				<c:if test="${not empty mainProducts.p_maker }">
+					<img class="addtocart__company-logo"
+						src="resources/img/MakerLogo/${mainProducts.p_maker }_Logo_White.png" />
+				</c:if>
+					<button class="fa-solid fa-cart-shopping addtocart__company--btn">
+						&nbsp;장바구니</button>
+				</div>
+			</div>
+	</div>
+	</c:forEach>
+	<!-- <div class="main-page-content" id="main-tab-guitar">
               <div class="main-page-content__thumbnail-wrapper">
                 <img
                   class="main-page-content__thumbnail"
@@ -72,7 +158,7 @@
                 <div class="main-page-content__addtocart-bar">
                   <img
                     class="addtocart__company-logo"
-                    src="resources/img/Fender_Logo_White.png"
+                    src="resources/img/MakerLogo/Fender_Logo_White.png"
                   />
                   <button
                     class="fa-solid fa-cart-shopping addtocart__company--btn"
@@ -81,50 +167,8 @@
                   </button>
                 </div>
               </div>
-            </div>
+            </div> -->
+	</div>
 
-            <div class="main-page-content" id="tab2">
-              <div class="main-page-content__thumbnail-wrapper">
-                <img
-                  class="main-page-content__thumbnail"
-                  src="resources/img/RedGuitar.jpg"
-                />
-              </div>
-              <div class="main-page-content__info">
-                <div class="main-page-content__desc-wrapper">
-                  <div class="main-page-content__title">2번째 탭!!</div>
-                  <div style="display: flex">
-                    <div class="main-page-content__type">기타 타입</div>
-                    <div class="main-page-content__company">회사 이름</div>
-                  </div>
-                </div>
-                <div class="main-page-content__price">
-                  <div>
-                    <p class="main-page-content__original-price">
-                      정상가:
-                      <span style="opacity: 0.5; text-decoration: line-through"
-                        >₩56,000</span
-                      >
-                    </p>
-                    <p class="main-page-content__sale-price">
-                      판매가: <span style="font-weight: bold">₩51,000</span>
-                    </p>
-                  </div>
-                  <div class="main-page-content__sale-percent">10%</div>
-                </div>
-                <div class="main-page-content__addtocart-bar">
-                  <img
-                    class="addtocart__company-logo"
-                    src="resources/img/Fender_Logo_White.png"
-                  />
-                  <button
-                    class="fa-solid fa-cart-shopping addtocart__company--btn"
-                  >
-                    &nbsp;장바구니
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
 </body>
 </html>
