@@ -1,0 +1,126 @@
+.cb1{
+  height: 30px;
+  width: 30px;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-block;
+  transition: border-color ease 0.2s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.cb1::before, .cb1::after {
+  position: absolute;
+  height: 0;
+  width: 4px;
+  background-color: #34b93d;
+  box-sizing: border-box;
+  display: inline-block;
+  transform-origin: left top;
+  border-radius: 5px;
+  content: ' ';
+  transition: opacity ease 0.5;
+}
+
+.cb1::before {
+  top: 14.4px;
+  left: 8.2px;
+  box-shadow: 0 0 0 1px transparent;
+  transform: rotate(-135deg);
+}
+.cb1::after{
+  top: 7.4px;
+  left: 1px;
+  transform: rotate(-45deg);
+}
+input[id="cbtest1"]:checked + .cb1 {
+  border: 3px solid #34b93d;
+}
+input[id="cbtest2"]:checked + .cb1 {
+ border: 3px solid #34b93d;
+}
+input[id="cbtest3"]:checked + .cb1 {
+ border: 3px solid #34b93d;
+}
+input[id="cbtest4"]:checked + .cb1 {
+ border: 3px solid #34b93d;
+}
+input[id="cbtest5"]:checked + .cb1 {
+ border: 3px solid #34b93d;
+}
+input[id="cbtest6"]:checked + .cb1 {
+  border: 3px solid #34b93d;
+}
+input[id="cbtest7"]:checked + .cb1 {
+   border: 3px solid #34b93d;
+}
+input[id="cbtest8"]:checked + .cb1 {
+   border: 3px solid #34b93d;
+}
+input[id="cbtest9"]:checked + .cb1 {
+  border: 3px solid #34b93d;
+}
+input[id="cbtest10"]:checked + .cb1 {
+ border: 3px solid #34b93d;
+}
+
+
+input[id="cbtest1"]:checked + .cb1::after {
+  
+   forwards;
+}
+
+input {
+	display: none;
+}
+@keyframes bottomcheck {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 10px;
+  }
+}
+@keyframes topcheck {
+  0% {
+    height: 0;
+  }
+  50% {
+    height: 0;
+  }
+  100% {
+    height: 24px;
+  }
+}
+#cb1{
+	background-color: red;
+}
+#cb2{
+	background-color: orange;
+}
+#cb3{
+	background-color: yellow;
+}
+#cb4{
+	background-color: green;
+}
+#cb5{
+	background-color: pink;
+}
+#cb6{
+	background-color: blue;
+}
+#cb7{
+	background-color: purple;
+}
+#cb8{
+	background-color: #dec55f;
+}
+#cb9{
+	background-color: white;
+}
+#cb10{
+	background-color: black;
+}

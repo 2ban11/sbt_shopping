@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sbt.shopping.jaehwan.Jh_productMapper">
+
+    <select id="getAllProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
+        SELECT * FROM Product_List_test
+    </select>
+
+<select id="getSearchProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
+    SELECT * FROM Product_List_test
+    WHERE (
+        (pl_CompanyName LIKE #{pl_companyName} AND pl_type LIKE #{pl_type})
+        OR pl_color IN
+        <foreach collection="colors" item="color" open="(" separator="," close=")">#{color}</foreach>
+    )
+    <if test="sortOrder == 'sort1'">
+        ORDER BY pl_price DESC
+    </if>
+    <if test="sortOrder == 'sort2'">
+        ORDER BY pl_price
+    </if>
+</select>
+
+
+</mapper>

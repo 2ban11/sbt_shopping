@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="resources/css/header.css" />
     <link rel="stylesheet" href="resources/css/footer.css" />
     <link rel="stylesheet" href="resources/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="resources/css/jh/listPage.css">
+	<link rel="stylesheet" type="text/css" href="resources/css/jh/chkColors.css">
     <script
       src="https://kit.fontawesome.com/f0a74bdf41.js"
       crossorigin="anonymous"
@@ -17,7 +19,8 @@
       integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src="headerFooter.js"></script>
+    <script type="text/javascript" src="resources/js/headerFooter.js"></script>
+    <script type="text/javascript" src="resources/js/jh/filtering.js"></script>
   </head>
   <body>
     <div class="site-container">
@@ -59,8 +62,8 @@
           <div>문의하기</div>
           <div>회사소개</div>
         </nav>
-        <section class="row">
-          <%-- <jsp:include page="${contentPage }"></jsp:include> --%>
+        <section class="row" id="content-page">
+          <jsp:include page="${contentPage }" ></jsp:include>
         </section>
       </div>
       <footer class="footer">
