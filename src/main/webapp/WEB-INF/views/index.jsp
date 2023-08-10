@@ -24,7 +24,7 @@
     <div class="site-container">
       <div class="wrapper-without-footer">
         <!-- HEADER -->
-        <header class="row header">
+        <header class="row-km header">
           <div class="header__wrapper">
             <div class="menu-hamberger"><i class="fa-solid fa-bars"></i></div>
             <div class="header__logo">
@@ -254,9 +254,9 @@
         <!-- //MAIN NAVIGATION -->
 
         <!-- CONTENTS -->
-        <section class="row">
-          ㅇㅇ <br />
-          <%-- <jsp:include page="${contentPage }"></jsp:include> --%>
+        <section class="row-km">
+        
+           <jsp:include page="${contentPage }"></jsp:include>
         </section>
       </div>
       <!-- //CONTENTS -->

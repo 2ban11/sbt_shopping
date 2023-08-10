@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sbt.shopping.detailmapper">
+<mapper namespace="com.sbt.shopping.inhoo.DetailMapper">
 
 
     
+<insert id="regReview">
+		insert into review values(review_seq.nextval, 1, #{r_id}, #{r_title}, #{r_content}, #{r_rate}, #{r_img}, sysdate)
+</insert>
     
-    
-    
+<select id="getAllReview" resultType="com.sbt.shopping.inhoo.DetailDTO">
+	select * from review
+</select>
+
+<select id="searchReview" resultType="com.sbt.shopping.inhoo.DetailDTO">
+	select * from review where r_product between #{start} and #{end}
+</select>
+
 
 </mapper>

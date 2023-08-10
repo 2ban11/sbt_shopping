@@ -24,15 +24,13 @@
 	</beans:bean>
 
 	<context:component-scan base-package="com.sbt.shopping" />
-
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
-		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
-		<beans:property name="url"
-			value="jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=/Users/inhookwon/eclipse-workspace/Wallet_DB202204301707" />
-	<!-- <property name="url" value="jdbc:oracle:thin:@DB202204301707_high?TNS_ADMIN=D:/lmj(night 802)/Wallet_DB202204301707"/>-->
-		<beans:property name="username" value="MACUSER" />
-		<beans:property name="password" value="Soldesk802!!!" />
-	</beans:bean>
+        <beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+        <beans:property name="url"
+            value="jdbc:oracle:thin:@f0e8tcdui31dsn2e_high?TNS_ADMIN=/Users/inhookwon/eclipse-workspace/Wallet_F0E8TCDUI31DSN2E" />
+        <beans:property name="username" value="ADMIN" />
+        <beans:property name="password" value="Soldesk802!!" />
+    </beans:bean>
 
 	<beans:bean id="transactionManager"
 		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
