@@ -8,5 +8,5 @@ import com.sbt.shopping.product.Product;
 
 public interface MainPageProductMapper {
 
-	List<Product>get48Products(HttpServletRequest request);
+	List<Product>getMainPageProducts(HttpServletRequest request);
 }

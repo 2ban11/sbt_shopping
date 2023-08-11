@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sbt.shopping.kimoon.MainPageProductMapper">
 
-<select id="get48Products" resultType="com.sbt.shopping.product.Product">
-SELECT *
+<select id="getMainPageProducts" resultType="com.sbt.shopping.product.Product">
+SELECT *	
 FROM (
     SELECT
         p_no,
@@ -24,7 +24,7 @@ FROM (
     FROM product
 ) ranked_products
 WHERE
-    (p_big_category = '기타' AND row_num &lt;= 3) OR
+    (p_big_category = '기타' AND p_middle_category != '우쿠렐레기타' AND row_num &lt;= 3) OR
     (p_big_category = '앰프' AND row_num &lt;= 4) OR
     (p_big_category = '이펙터' AND row_num &lt;= 3) OR
     (p_big_category = '주변용품' AND row_num &lt;= 3)

@@ -90,7 +90,7 @@
 	background: transparent;
 	border: 1px solid rgba(0, 0, 0, 0.25);
 	box-shadow: 0 0 1px rgba(255, 255, 255, 0.25) inset;
-	margin: 20px 20px 60px 0;
+	margin: 20px 0 60px 0;
 	background-color: #ffffff08;
 }
 
@@ -102,6 +102,25 @@
 	display: flex;
 	justify-content: center;
 	height: 119px;
+	position: relative;
+}
+
+.main-page-content__thumbnail-wrapper.out-of-stock::before { /* 품절일 경우 배경을 어둡게 */
+  content: "";
+  background-color: black;
+  opacity: 0.5;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.main-page-content__thumbnail-wrapper h1 {
+  position: absolute;
+  top: 56px;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .main-page-content__thumbnail {
@@ -118,8 +137,12 @@
 	margin: 0 0 6px;
 }
 
-.main-page-content__title {
-	
+.main-page-content__title { /* 2줄 넘어가는 텍스트는 ...으로 표시 */
+	overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .main-page-content__type {

@@ -9,7 +9,7 @@
 <title>MainPage</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
-<link rel="stylesheet" href="resources/css/kimoon/MainPage.css" />
+<link rel="stylesheet" href="resources/css/kimoon/main-page.css" />
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script
@@ -55,7 +55,10 @@
 					<div class="main-page-content" id="main-tab-accessory">
 				</c:when>
 			</c:choose>
-			<div class="main-page-content__thumbnail-wrapper">
+			<div class="main-page-content__thumbnail-wrapper ${mainProducts.p_cnt eq 0 ? 'out-of-stock' : ''}">
+			<c:if test="${mainProducts.p_cnt eq 0}">
+			<h1>-일시품절-</h1>
+			</c:if>
 				<c:choose>
 					<c:when test="${mainProducts.p_big_category eq '기타'}">
 						<img class="main-page-content__thumbnail"
@@ -92,6 +95,7 @@
 				</div>
 				<div class="main-page-content__price">
 					<div>
+					<c:if test="${mainProducts.p_price ne mainProducts.p_sale }">
 						<p class="main-page-content__original-price">
 							정상가: <span style="opacity: 0.5; text-decoration: line-through">
 
@@ -99,6 +103,10 @@
 									type="currency" />
 							</span>
 						</p>
+					</c:if>
+					<c:if test="${mainProducts.p_price eq mainProducts.p_sale }">
+						<p class="main-page-content__original-price">&nbsp;</p>
+					</c:if>
 						<p class="main-page-content__sale-price">
 							판매가: <span style="font-weight: bold"> <fmt:formatNumber
 									value="${mainProducts.p_sale }" type="currency" />
@@ -124,50 +132,6 @@
 			</div>
 	</div>
 	</c:forEach>
-	<!-- <div class="main-page-content" id="main-tab-guitar">
-              <div class="main-page-content__thumbnail-wrapper">
-                <img
-                  class="main-page-content__thumbnail"
-                  src="resources/img/RedGuitar.jpg"
-                />
-              </div>
-              <div class="main-page-content__info">
-                <div class="main-page-content__desc-wrapper">
-                  <div class="main-page-content__title">
-                    Fender Japan Made in Japan Hybrid II Stratocaster
-                  </div>
-                  <div style="display: flex">
-                    <div class="main-page-content__type">기타 타입</div>
-                    <div class="main-page-content__company">회사 이름</div>
-                  </div>
-                </div>
-                <div class="main-page-content__price">
-                  <div>
-                    <p class="main-page-content__original-price">
-                      정상가:
-                      <span style="opacity: 0.5; text-decoration: line-through"
-                        >₩56,000</span
-                      >
-                    </p>
-                    <p class="main-page-content__sale-price">
-                      판매가: <span style="font-weight: bold">₩51,000</span>
-                    </p>
-                  </div>
-                  <div class="main-page-content__sale-percent">10%</div>
-                </div>
-                <div class="main-page-content__addtocart-bar">
-                  <img
-                    class="addtocart__company-logo"
-                    src="resources/img/MakerLogo/Fender_Logo_White.png"
-                  />
-                  <button
-                    class="fa-solid fa-cart-shopping addtocart__company--btn"
-                  >
-                    &nbsp;장바구니
-                  </button>
-                </div>
-              </div>
-            </div> -->
 	</div>
 
 </body>

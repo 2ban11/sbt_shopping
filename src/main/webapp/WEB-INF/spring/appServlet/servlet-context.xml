@@ -44,6 +44,7 @@
 		<beans:property name="mapperLocations">
 			<beans:list>
 				<beans:value>classpath:mainPageProductMapper.xml</beans:value>
+				<beans:value>classpath:noticeMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -52,9 +53,13 @@
 		<beans:constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory" />
 	</beans:bean>
+	
+	<beans:bean id="np" class="com.sbt.shopping.kimoon.notice.NoticePaging">
+		<beans:property name="noticeCountPerPage" value="5"/>
+	</beans:bean>
 
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
       <beans:property name="maxUploadSize" value="10485760" />
-      <beans:property name="defaultEncoding" value="utf-8" />
+      <beans:property name="defaultEncoding" value="utf-8" 	/>
    </beans:bean>
 </beans:beans>

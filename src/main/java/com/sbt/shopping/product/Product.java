@@ -1,5 +1,6 @@
 package com.sbt.shopping.product;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class Product {
@@ -17,6 +18,7 @@ public class Product {
 	private int p_sale;
 	private int p_cnt;
 	private Date p_date;
+	private String[] p_colors;	
 	
 	public Product() {
 		// TODO Auto-generated constructor stub
@@ -24,7 +26,7 @@ public class Product {
 
 	public Product(int p_no, String p_big_category, String p_middle_category, String p_small_category, String p_maker,
 			String p_name, String p_img1, String p_img2, String p_content, String p_color, int p_price, int p_sale,
-			int p_cnt, Date p_date) {
+			int p_cnt, Date p_date, String[] p_colors) {
 		super();
 		this.p_no = p_no;
 		this.p_big_category = p_big_category;
@@ -40,6 +42,7 @@ public class Product {
 		this.p_sale = p_sale;
 		this.p_cnt = p_cnt;
 		this.p_date = p_date;
+		this.p_colors = p_colors;
 	}
 
 	public int getP_no() {
@@ -154,14 +157,24 @@ public class Product {
 		this.p_date = p_date;
 	}
 
+	public String[] getP_colors() {
+		return p_colors;
+	}
+
+	public void setP_colors(String[] p_colors) {
+		this.p_colors = p_colors;
+	}
+
 	@Override
 	public String toString() {
 		return "Product [p_no=" + p_no + ", p_big_category=" + p_big_category + ", p_middle_category="
 				+ p_middle_category + ", p_small_category=" + p_small_category + ", p_maker=" + p_maker + ", p_name="
 				+ p_name + ", p_img1=" + p_img1 + ", p_img2=" + p_img2 + ", p_content=" + p_content + ", p_color="
 				+ p_color + ", p_price=" + p_price + ", p_sale=" + p_sale + ", p_cnt=" + p_cnt + ", p_date=" + p_date
-				+ "]";
+				+ ", p_colors=" + Arrays.toString(p_colors) + "]";
 	}
+	
+	
 	
 	
 }
