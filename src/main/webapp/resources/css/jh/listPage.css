@@ -21,8 +21,6 @@ article, aside, details, figcaption, figure, footer, header, hgroup,
 }
 
 body {
-	line-height: 1;
-	background-color: #1b2838;
 }
 
 ol, ul {
@@ -44,7 +42,6 @@ table {
 }
 
 .ul-div {
-	margin-right: 25px;
 	line-height: 100px;
 	font-size: 18px;
 	font-weight: bold;
@@ -118,7 +115,6 @@ table {
 
 .productTitle {
 	color: white;
-	text-align: center;
 }
 
 .productCategory {
@@ -148,10 +144,6 @@ table {
 	justify-content: space-between;
 }
 
-width : 100 %;
-	height : 80px ;
-	border: 1px solid #C4C4C4 ;
-	padding: 20px ;
 .detail_Search_Window {
 	width: 100%;
 	margin-bottom: 30px;
@@ -160,8 +152,9 @@ width : 100 %;
 }
 
 .detail_Search_Window select {
+	margin-top : 10px;
 	padding-top: 20px;
-	width: 230px;
+	width: 20vw
 	border: 1px solid #C4C4C4;
 	box-sizing: border-box;
 	padding: 12px 13px;
@@ -181,6 +174,7 @@ width : 100 %;
 	border: 1px solid #9B51E0;
 	box-sizing: border-box;
 	outline: 2px solid #F8E4FF;
+	background-color: #1b2838;
 }
 
 .detail_Search_Window h3 {
@@ -191,10 +185,6 @@ width : 100 %;
 .paginationjs {
 	padding-left: 40%;
 	padding-top: 3%;
-}
-
-.sortOrder {
-	margin: 10px;
 }
 
 .companyBy {
@@ -222,4 +212,85 @@ width : 100 %;
 .chkbox2 {
 	display: flex;
 	background-color: #131c27;
+}
+@media screen and (max-width: 500px) {
+	/* 화면크기가 500px 이하일 경우 */
+	.detail_Search_Window {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	.listPage_item1 {
+	justify-content : space-around;
+	display : inline-flex;
+	width: 200px;
+	height: 400px;
+	background-color: #1b2838;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	margin-left: 20px
+}
+	.productImg {
+	width: 40vw;
+	margin-top: 20px;
+}
+.detail_Search_Window select {
+	padding-top: 20px;
+	width: 27vw;
+	height: 5vh;
+	border: 1px solid #C4C4C4;
+	box-sizing: border-box;
+	padding: 12px 13px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: transparent;
+	color: white;
+}
+	.companyLogo {
+	display : none;
+	
+}
+	.productColor{
+	margin-bottom: 
+	}
+	.companyName {
+	
+}
+	.productTitle{
+	width: 20%;
+	}
+	.productPrice{
+	}
+.ul-div{
+    font-size: 14px;
+    font-weight: bold;
+    display: contents;
+}
+.ul-div:nth-child(1) {
+	width: 0%;
+}
+
+.ul-div:nth-child(2) {
+	width: 0%;
+}
+
+.ul-div:nth-child(3) {
+	width: 0%;
+}
+
+.ul-div:nth-child(4) {
+	width:0%;
+}
+
+.ul-div:nth-child(5) {
+	width: 0%;
+}
+
+.ul-div:nth-child(6) {
+	width: 0%;
+}
+
+.ul-div:nth-child(7) {
+	width: 0%;
+}
 }

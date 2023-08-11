@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="resources/css/header.css" />
     <link rel="stylesheet" href="resources/css/footer.css" />
     <link rel="stylesheet" href="resources/css/reset.css" />
+    <link rel="stylesheet" href="resources/css/jh/listPage.css" />
+    <link rel="stylesheet" href="resources/css/jh/chkColors.css" />
     <script
       src="https://kit.fontawesome.com/f0a74bdf41.js"
       crossorigin="anonymous"
@@ -19,6 +21,7 @@
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript" src="resources/js/headerFooter.js"></script>
+    <script type="text/javascript" src="resources/js/kimoon/mainPage.js"></script>
   </head>
   <body>
     <div class="site-container">
@@ -28,11 +31,9 @@
           <div class="header__wrapper">
             <div class="menu-hamberger"><i class="fa-solid fa-bars"></i></div>
             <div class="header__logo">
-              <img
-                class="header__logo--img"
-                alt="RIFF몰"
-                src="resources/img/logoWhite.png"
-              />
+              <a href="http://localhost/shopping/">
+              <img class="header__logo--img" alt="RIFF몰" src="resources/img/logoWhite.png"/>
+              </a>
             </div>
             <form class="header__form" onsubmit="return false;">
               <input class="header__input--text" autocomplete="off" />
@@ -152,7 +153,7 @@
             <div class="nav-item-sub">
               <ul>
                 <li>
-                  <a href="#">일렉기타</a>
+                  <a href="elecPage">일렉기타</a>
                 </li>
                 <li>
                   <a href="#">어쿠스틱</a>
@@ -190,7 +191,7 @@
             <div class="nav-item-sub">
               <ul>
                 <li>
-                  <a href="#">일렉기타</a>
+                  <a>일렉기타</a>
                 </li>
                 <li>
                   <a href="#">어쿠스틱</a>

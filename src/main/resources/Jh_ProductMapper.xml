@@ -3,21 +3,28 @@
 <mapper namespace="com.sbt.shopping.jaehwan.Jh_productMapper">
 
     <select id="getAllProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
-        SELECT * FROM Product_List_test
+        SELECT * FROM Product_List_test order by pl_no desc
     </select>
 
 <select id="getSearchProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
     SELECT * FROM Product_List_test
     WHERE (
-        (pl_CompanyName LIKE #{pl_companyName} AND pl_type LIKE #{pl_type})
-        OR pl_color IN
-        <foreach collection="colors" item="color" open="(" separator="," close=")">#{color}</foreach>
+    
+        pl_companyName like '%'||#{pl_companyName}||'%'
+        and pl_category like  '%'||#{pl_category}||'%'
+           <if test="colors != '' and pl_color.length > 0">
+            and pl_color IN
+            <foreach collection="colors" item="color" open="(" separator="," close=")">#{color}</foreach>
+           </if>
     )
     <if test="sortOrder == 'sort1'">
         ORDER BY pl_price DESC
     </if>
     <if test="sortOrder == 'sort2'">
         ORDER BY pl_price
+    </if>
+    <if test="sortOrder == ''">
+        ORDER BY pl_no desc
     </if>
 </select>
 

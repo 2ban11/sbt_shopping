@@ -18,10 +18,10 @@ public class HC_JH {
     @Autowired
     private ProductDAO productDAO;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = "/elecPage", method = RequestMethod.GET)
     public String home(HttpServletRequest req, Model model) {
         productDAO.getAllProduct(req, model);
-        req.setAttribute("contentPage", "jaehwan/listPage.jsp");
+        req.setAttribute("contentPage", "jaehwan/elecPage.jsp");
         return "index";
     }
 
@@ -31,9 +31,10 @@ public class HC_JH {
     	method = RequestMethod.POST
     )
     public List<ProductDTO> searchDetail(ProductDTO pDTO) {
-    	System.out.println(pDTO.getPl_color());
-    	System.out.println(pDTO.getPl_type());
+    	System.out.println(pDTO.getPl_category());
     	System.out.println(pDTO.getPl_companyName());
+    	System.out.println(pDTO.getSortOrder());
+    	System.out.println(pDTO.getPl_color());
     	return productDAO.getSearchProduct(pDTO);
     }
 }

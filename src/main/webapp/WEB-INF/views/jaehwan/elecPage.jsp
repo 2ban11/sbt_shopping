@@ -15,32 +15,30 @@
 <body>
   <div class="listPage_contents" id="listPage_contents">
     <div class="detail_Search_Window">
-      <form id="searchDetail" action="searchDetail" method="get">
+      <form id="searchDetail" action="searchDetail" method="post">
         <select class="pl_companyBy" id="companySelect" name="pl_companyName">
           <option value="">회사 선택</option>
           <option value="Fender">Fender</option>
           <option value="Gibson">Gibson</option>
-          <option value="Gretsch">Gretsch</option>
           <option value="Ibanez">Ibanez</option>
-          <option value="Colt">Colt</option>
-          <option value="Dame">Dame</option>
-          <option value="Swing">Swing</option>
+          <option value="Epiphone">Epiphone</option>
+          <option value="Yamaha">Yamaha</option>
         </select>
         
-        <select class="pl_typeBy" id="typeSelect" name="pl_type">
+        <select class="pl_category" id="categorySelect" name="pl_category">
           <option  value="">종류 선택</option>
-          <option  value="Strat">Strat</option>
+          <option  value="Stratocaster">Stratocaster</option>
           <option  value="Telecaster">Telecaster</option>
           <option  value="LesPaul">LesPaul</option>
+          <option  value="Hollow">Hollow</option>
           <option  value="Superstrat">Superstrat</option>
-          <option  value="Hollow&Chamber">Hollow&Chamber</option>
         </select>
         <select class="sortOrder" id="sortSelect" name="pl_price">
           <option  value="">가격순</option>
           <option  value="sort1">높은 가격순</option>
           <option  value="sort2">낮은 가격순</option>
         </select>
-        <div>
+        <div class="chkboxAll">
           <div class="chkbox1">
             <input type="checkbox" id="cbtest1" name="pl_color" value="red">
             <label for="cbtest1" class="cb1" id="cb1"></label>
@@ -124,16 +122,22 @@ $(function () {
 });
 
 function updateResults() {
+	console.log('call updateResult~')
     const companyName = $("#companySelect").val();
-    const typeBy = $("#typeSelect").val();
+    const category = $("#categorySelect").val();
     const colors = $("input[name='pl_color']:checked").map(function () {
         return $(this).val();
     }).get().join("!");
     const sortOrder = $("#sortSelect").val();
 
+    console.log(companyName);
+    console.log(category);
+    console.log(sortOrder);
+    
+    
     const requestData = {
         "pl_companyName": companyName,
-        "pl_type": typeBy,
+        "pl_category": category,
         "pl_color": colors,
         "sortOrder": sortOrder
     };
