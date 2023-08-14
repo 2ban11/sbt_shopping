@@ -1,0 +1,250 @@
+body{
+  background-color:  #1b2838;
+  color: white;
+}
+h1 {
+  display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+#ktab{
+  margin: 0 20px 0 0;
+  top: 0
+}
+
+.menu{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: inline-block
+}
+
+.menu li {
+  display: inline;
+  float: left;
+  margin: 2px 2px 0 0 !important;
+  padding: 0;
+  border: 0
+}
+
+#ktab div.moduletable {
+  background: 0;
+  margin-bottom: 0
+}
+
+#ktab div.moduletable ul.menu,#ktab div.moduletable ul.menu li a,#ktab div.moduletable ul.menu li a span {
+  background-image: none !important;
+  font-size: 1em;
+  line-height: 2em
+}
+
+#Kunena #ktab a {
+  margin: 0;
+  padding: 0 10px;
+  text-decoration: none;
+  border: 0;
+  display: block;
+  float: left;
+  border-radius: 5px 5px 0 0;
+  -moz-border-radius: 5px 5px 0 0;
+  -webkit-border-radius: 5px 5px 0 0;
+  font-size: 1em;
+  line-height: 2.3em;
+  text-indent: 0
+}
+
+#ktab a span {
+  display: block;
+  font-size: 1em;
+  line-height: 2.3em;
+  text-indent: 0;
+  padding: 0
+}
+
+#Kunena #ktab a:hover,#Kunena #ktab li.Kunena-item-active a {
+  background-position: right bottom
+}
+
+#ktab .joomla-nav {
+  background-color: transparent;
+  border: 0 none
+}
+#Kunena #ktab ul.menu {
+  width: 100%
+}
+
+
+
+#Kunena #ktab ul.menu li {
+  margin: 0 !important;
+  display: block;
+  border-top: 1px solid rgba(255,255,255,0.1)
+}
+
+#Kunena #ktab ul.menu li a {
+  display: block;
+  border-radius: 0;
+  color: #555 !important;
+  background-color: transparent !important
+}
+
+#Kunena #ktab ul.menu li:nth-child(odd) a {
+  background-color: #f9f9f9 !important
+}
+
+#Kunena #ktab ul.menu li a span {
+  line-height: 150%
+}
+
+#Kunena #ktab ul.menu li a:hover,#Kunena #ktab ul.menu li a:hover span {
+  background-color: #5388b4 !important;
+  color: #fff !important
+}
+#ktab div.moduletable ul.menu,#ktab div.moduletable ul.menu li a,#ktab div.moduletable ul.menu li a span {
+  background-image: none !important
+}
+
+#Kunena #ktab a {
+  color: #fff !important;
+  background-color: #737373
+}
+
+#Kunena #ktab a span {
+  font-family: Arial,Helvetica,sans-serif;
+  color: #fff
+}
+
+#Kunena #ktab a:hover span,#Kunena #ktab li.Kunena-item-active a span {
+  color: #fff
+}
+#Kunena div#ktop #ktab {
+  margin-right: 0
+}
+
+#Kunena div#ktop #ktab ul li {
+  border-right: 1px solid rgba(255,255,255,0.1);
+  margin: 0 !important;
+  position: relative
+}
+
+#Kunena div#ktop #ktab ul li::before {
+  background: #67c1f5;
+  box-shadow: 0 0 4px rgba(255,255,255,0.5);
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -1px;
+  height: 1px;
+  width: 100%;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  -webkit-transition: all 400ms;
+  -o-transition: all 400ms;
+  transition: all 400ms
+}
+
+#Kunena div#ktop #ktab ul li::after {
+  background: #1b2838;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 1px;
+  width: 100%;
+  opacity: 0;
+  filter: alpha(opacity=0)
+}
+
+#Kunena div#ktop #ktab ul li a {
+  background-color: transparent !important;
+  border-radius: 0;
+  color: #ffffff;
+  padding: 20px 32px
+}
+
+#Kunena div#ktop #ktab ul li a span {
+  font-family: "Montserrat",sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  text-transform: uppercase
+}
+
+#Kunena div#ktop #ktab ul li a:hover,#Kunena div#ktop #ktab ul li a:focus,#Kunena div#ktop #ktab ul li a:active {
+  background-color: transparent !important;
+  color: #ffffff
+}
+
+#Kunena div#ktop #ktab ul li a:hover span,#Kunena div#ktop #ktab ul li a:focus span,#Kunena div#ktop #ktab ul li a:active span {
+  background-color: transparent !important
+}
+
+#Kunena div#ktop #ktab ul li:hover::before,#Kunena div#ktop #ktab ul li:focus::before,#Kunena div#ktop #ktab ul li:active::before {
+  background: #ffffff;
+  opacity: 1;
+  filter: alpha(opacity=100)
+}
+
+#Kunena div#ktop #ktab ul li.active::before,#Kunena div#ktop #ktab ul li.active::after {
+  opacity: 1;
+  filter: alpha(opacity=100)
+}
+
+#Kunena div#ktop #ktab ul li.active a {
+  color: #ffffff
+}
+
+
+#Kunena div#ktop #ktab ul li.active a span {
+  color: #ffffff !important
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* MOBILE MEDIA QUERY */
+@media screen and (max-width: 1600px) {
+  /* 화면크기가 1600px 이하일 경우 */
+  #Kunena div#ktop #ktab ul li {
+      background:rgba(255,255,255,0.1);
+      border-bottom: 1px solid rgba(255,255,255,0.1)
+  }
+  #Kunena div#ktop #ktab ul li::after {
+    display:none
+  }
+  #Kunena div#ktop #ktab ul li::before {
+    display:none
+  }
+  #Kunena div#ktop #ktab ul li.active a {
+    background:#67c1f5 !important
+  }
+  #Kunena #ktab ul.menu li,#Kunena #ktab ul.menu li a {
+    float: none
+  }
+}
+@media screen and (max-width: 500px) {
+  /* 화면크기가 500px 이하일 경우 */
+  #Kunena div#ktop #ktab ul li {
+      border-right:0
+  }
+  #Kunena #ktab ul.menu li,#Kunena #ktab ul.menu li a {
+    float: none
+  }
+  #Kunena div#ktop #ktab ul li a {
+    padding-left:20px;
+    padding-right: 20px
+  }
+}

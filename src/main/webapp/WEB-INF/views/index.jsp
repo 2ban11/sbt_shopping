@@ -255,8 +255,8 @@
 
         <!-- CONTENTS -->
         <section class="row">
-          ㅇㅇ <br />
-          <%-- <jsp:include page="${contentPage }"></jsp:include> --%>
+       <br />
+          <jsp:include page="${contentPage }"></jsp:include>
         </section>
       </div>
       <!-- //CONTENTS -->
