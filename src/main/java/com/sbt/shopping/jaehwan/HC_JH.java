@@ -19,10 +19,24 @@ public class HC_JH {
     private ProductDAO productDAO;
 
     @RequestMapping(value = "/elecPage", method = RequestMethod.GET)
-    public String home(HttpServletRequest req, Model model) {
-        productDAO.getAllProduct(req, model);
-        req.setAttribute("contentPage", "jaehwan/elecPage.jsp");
+    public String elecPage(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    	
+    	pDTO.setP_big_category(req.getParameter("BC"));
+    	System.out.println(req.getParameter("BC"));
+    	pDTO.setP_middle_category(req.getParameter("MC"));
+    	
+    	productDAO.getAllProduct(req, model, pDTO);
+    	req.setAttribute("contentPage", "jaehwan/elecPage.jsp");
         return "index";
+    }
+    @RequestMapping(value = "/ampForElec", method = RequestMethod.GET)
+    public String ampForElec(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    	pDTO.setP_big_category(req.getParameter("BC"));
+    	pDTO.setP_middle_category(req.getParameter("MC"));
+    	
+    	productDAO.getAllProduct(req, model, pDTO);
+    	req.setAttribute("contentPage", "jaehwan/ampForElec.jsp");
+    	return "index";
     }
 
     @ResponseBody
@@ -31,10 +45,10 @@ public class HC_JH {
     	method = RequestMethod.POST
     )
     public List<ProductDTO> searchDetail(ProductDTO pDTO) {
-    	System.out.println(pDTO.getPl_category());
-    	System.out.println(pDTO.getPl_companyName());
+    	System.out.println(pDTO.getP_maker());
+    	System.out.println(pDTO.getP_small_category());
+    	System.out.println(pDTO.getP_color());
     	System.out.println(pDTO.getSortOrder());
-    	System.out.println(pDTO.getPl_color());
     	return productDAO.getSearchProduct(pDTO);
     }
 }

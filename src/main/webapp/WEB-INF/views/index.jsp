@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="resources/css/reset.css" />
     <link rel="stylesheet" href="resources/css/jh/listPage.css" />
     <link rel="stylesheet" href="resources/css/jh/chkColors.css" />
+    <link rel="stylesheet" href="resources/css/kimoon/MainPage.css" />
     <script
       src="https://kit.fontawesome.com/f0a74bdf41.js"
       crossorigin="anonymous"
@@ -22,6 +23,7 @@
     ></script>
     <script type="text/javascript" src="resources/js/headerFooter.js"></script>
     <script type="text/javascript" src="resources/js/kimoon/mainPage.js"></script>
+    <script type="text/javascript" src="resources/js/jh/isNotElec.js"></script>
   </head>
   <body>
     <div class="site-container">
@@ -153,10 +155,10 @@
             <div class="nav-item-sub">
               <ul>
                 <li>
-                  <a href="elecPage">일렉기타</a>
+                  <a href="elecPage?BC=Guitar&MC=Elec">일렉기타</a>
                 </li>
                 <li>
-                  <a href="#">어쿠스틱</a>
+                  <a href="elecPage?BC=Guitar&MC=Acoustic">어쿠스틱</a>
                 </li>
                 <li>
                   <a href="#">클래식</a>
@@ -175,7 +177,7 @@
             <div class="nav-item-sub">
               <ul>
                 <li>
-                  <a href="#">일렉기타</a>
+                  <a href="ampForElec?BC=Amp&MC=Elec">일렉기타</a>
                 </li>
                 <li>
                   <a href="#">어쿠스틱</a>
