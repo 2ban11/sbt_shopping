@@ -15,18 +15,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.sbt.shopping.kimoon.notice.NoticeDAO;
-import com.sbt.shopping.kimoon.notice.NoticePaging;
-
+import com.sbt.shopping.kimoon.board.BoardDAO;
+import com.sbt.shopping.kimoon.board.BoardPaging;
 
 @Controller
 public class HC_KM {
-	
-@Autowired
-private MainPageDAO mpDAO;
 
-@Autowired
-private NoticeDAO nDAO;
+	@Autowired
+	private MainPageDAO mpDAO;
+
+	@Autowired
+	private BoardDAO bDAO;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainPage(HttpServletRequest request) {
@@ -34,7 +33,7 @@ private NoticeDAO nDAO;
 		request.setAttribute("contentPage", "kimoon/kimoonMainPage.jsp");
 		return "index";
 	}
-	
+
 //	@RequestMapping(value = "go.notice", method = RequestMethod.GET)
 //	public String goNotice(HttpServletRequest request, @RequestParam int p) {
 //		NoticePaging.clearSearch(request);
@@ -42,7 +41,5 @@ private NoticeDAO nDAO;
 //        request.setAttribute("contentPage", "kimoon/notice.jsp");
 //        return "index";
 //	}
-	
-	
-	
+
 }

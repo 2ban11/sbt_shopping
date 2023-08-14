@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sbt.shopping.kimoon.board.BoardMapper">
+	<select id="getNoticeCount" resultType="java.lang.Integer">
+		select count(*)
+		from
+		notice,
+		account
+		where n_id = a_id
+		<!-- and n_txt like '%'||#{search}||'%' -->
+	</select>
+	
+	<select id="getFreeCount" resultType="java.lang.Integer">
+		select count(*)
+		from
+		free,
+		account
+		where f_id = a_id
+		<!-- and n_txt like '%'||#{search}||'%' -->
+	</select>
+	
+	<select id="getLessonCount" resultType="java.lang.Integer">
+		select count(*)
+		from
+		lesson,
+		account
+		where l_id = a_id
+		<!-- and n_txt like '%'||#{search}||'%' -->
+	</select>
+	
+	<select id="getJobCount" resultType="java.lang.Integer">
+		select count(*)
+		from
+		job,
+		account
+		where j_id = a_id
+		<!-- and n_txt like '%'||#{search}||'%' -->
+	</select>
+	
+	<select id="getNotice" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
+		select *
+		from (
+		select rownum as rn, n_no, n_title, a_nickname, n_date, n_view, n_txt, n_img
+		from (
+		select * from notice, account
+		where n_id = a_id
+		order by n_date desc
+		)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	<select id="getFree" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
+		select *
+		from (
+		select rownum as rn, f_no, f_title, a_nickname, f_date, f_view, f_txt, f_img
+		from (
+		select * from free, account
+		where f_id = a_id
+		order by f_date desc
+		)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	<select id="getLesson" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
+		select *
+		from (
+		select rownum as rn, l_no, l_title, a_nickname, l_date, l_view, l_txt, l_img, l_addr, l_pay, l_phone
+		from (
+		select * from lesson, account
+		where l_id = a_id
+		order by l_date desc
+		)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	<select id="getJob" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
+		select *
+		from (
+		select rownum as rn, j_no, j_title, a_nickname, j_date, j_view, j_txt, j_img, j_addr, j_pay, j_phone, j_category
+		from (
+		select * from job, account
+		where j_id = a_id
+		order by j_date desc
+		)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	<!-- select *
+		from (
+		select rownum as rn, n_no, n_id, n_txt, n_date
+		from (
+		select * from notice, account
+		where n_id = a_id and n_txt like '%'||#{search}||'%'
+		order by n_date desc
+		)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end} -->
+</mapper>

@@ -232,16 +232,16 @@
             <div class="nav-item-sub">
               <ul>
                 <li>
-                  <a href="go.notice">공지</a>
+                  <a href="go.board?type=1">공지</a>
                 </li>
                 <li>
-                  <a href="#">자유</a>
+                  <a href="go.board?type=2">자유</a>
                 </li>
                 <li>
-                  <a href="#">개인레슨</a>
+                  <a href="go.board?type=3">개인레슨</a>
                 </li>
                 <li>
-                  <a href="#">구인</a>
+                  <a href="go.board?type=4">구인</a>
                 </li>
               </ul>
             </div>

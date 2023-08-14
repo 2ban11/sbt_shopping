@@ -44,7 +44,7 @@
 		<beans:property name="mapperLocations">
 			<beans:list>
 				<beans:value>classpath:mainPageProductMapper.xml</beans:value>
-				<beans:value>classpath:noticeMapper.xml</beans:value>
+				<beans:value>classpath:boardMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>
@@ -54,8 +54,8 @@
 			ref="sqlSessionFactory" />
 	</beans:bean>
 	
-	<beans:bean id="np" class="com.sbt.shopping.kimoon.notice.NoticePaging">
-		<beans:property name="noticeCountPerPage" value="5"/>
+	<beans:bean id="bp" class="com.sbt.shopping.kimoon.board.BoardPaging">
+		<beans:property name="boardCountPerPage" value="5"/>
 	</beans:bean>
 
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

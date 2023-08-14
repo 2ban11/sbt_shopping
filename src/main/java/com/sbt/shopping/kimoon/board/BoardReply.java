@@ -1,19 +1,19 @@
-package com.sbt.shopping.kimoon.notice;
+package com.sbt.shopping.kimoon.board;
 
 import java.util.Date;
 
-public class NoticeReply {
+public class BoardReply {
 	private int nr_no;
 	private int nr_notice;
 	private String nr_text;
 	private String nr_id;
 	private Date nr_date;
 	
-	public NoticeReply() {
+	public BoardReply() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public NoticeReply(int nr_no, int nr_notice, String nr_text, String nr_id, Date nr_date) {
+	public BoardReply(int nr_no, int nr_notice, String nr_text, String nr_id, Date nr_date) {
 		super();
 		this.nr_no = nr_no;
 		this.nr_notice = nr_notice;

@@ -58,3 +58,89 @@
 .notice-view-count {
   width: 70px;
 }
+
+.board-paging {
+	display: flex;
+    justify-content: center;
+    height: 30px;
+}
+.board-paging a {
+	text-decoration: none;
+	color: white;
+}
+
+.board-paging__arrow,
+.board-paging__num {
+	font-size: 1.2rem;
+    width: 30px;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.1);
+    text-align: center;
+    margin: 0 3px;
+    line-height: normal;
+}
+
+.board-paging__arrow:hover,
+.board-paging__num:hover {
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.board-paging__num.active {
+    background-color: #67c1f5;
+}
+
+.board-write {
+	display: flex;
+	justify-content: end;
+}
+
+.board-search__wrapper {
+	margin: 25px 0 25px;
+}
+
+.board-search--form {
+	display: flex;
+	justify-content: center;
+}
+
+.board-search--input {
+	width: calc(50% - 60px);
+    min-height: 30%;
+    height: 45px;
+    padding: 10px;
+    margin-left: 2%;
+    font-size: 1rem;
+    line-height: 1.33;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-right: none;
+    border-radius: 8px 0 0 8px;
+    background-color: #ffffff08;
+    color: white;
+}
+
+.board-search--btn {
+	width: 50.72px;
+    height: 45px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: none;
+    border-radius: 0 8px 8px 0;
+    color: white;
+    background-color: #1b2838;
+}
+
+.board-write--btn {
+	background-color: #67c1f5;
+    font-size: 1rem;
+    padding: 0.5em 0.9em 0.5em;
+    color: white;
+    width: 81px;
+    border-radius: 0.25em;
+    font-weight: bold;
+    border: none;
+}
+
+@media screen and (max-width: 500px) {
+	.board-search--input {
+	width: calc(100% - 60px);
+	}
+}

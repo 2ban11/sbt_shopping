@@ -17,40 +17,91 @@
 		<table class="notice-table">
 			<tr>
 				<th class="notice-no">번호</th>
+				<c:if test="${type eq 4}">
+				<th class="notice-job">타입</th>
+				</c:if>
 				<th class="notice-title">제목</th>
 				<th class="notice-writer">작성자</th>
 				<th class="notice-date">작성일</th>
 				<th class="notice-view-count">조회</th>
 			</tr>
-			<c:forEach var="n" items="${nPost}">
+			<c:forEach var="p" items="${posts}">
+			<c:if test="${type eq 1}">
 				<tr>
-					<td style="text-align: center">${n.rn}</td>
-					<td><a href="#">${n.n_title }</a></td>
-					<td>${n.a_nickname }</td>
+					<td style="text-align: center">${p.rn}</td>
+					<td><a href="#">${p.n_title }</a></td>
+					<td>${p.a_nickname }</td>
 					<td style="text-align: center"><fmt:formatDate
-							value="${n.n_date}" pattern="yyyy-MM-dd" /></td>
-					<td style="text-align: center">${n.n_view }</td>
+							value="${p.n_date}" pattern="yyyy-MM-dd" /></td>
+					<td style="text-align: center">${p.n_view }</td>
 				</tr>
+				</c:if>
+			<c:if test="${type eq 2}">
+				<tr>
+					<td style="text-align: center">${p.rn}</td>
+					<td><a href="#">${p.f_title }</a></td>
+					<td>${p.a_nickname }</td>
+					<td style="text-align: center"><fmt:formatDate
+							value="${p.f_date}" pattern="yyyy-MM-dd" /></td>
+					<td style="text-align: center">${p.f_view }</td>
+				</tr>
+				</c:if>
+			<c:if test="${type eq 3}">
+				<tr>
+					<td style="text-align: center">${p.rn}</td>
+					<td><a href="#">${p.l_title }</a></td>
+					<td>${p.a_nickname }</td>
+					<td style="text-align: center"><fmt:formatDate
+							value="${p.l_date}" pattern="yyyy-MM-dd" /></td>
+					<td style="text-align: center">${p.l_view }</td>
+				</tr>
+				</c:if>
+			<c:if test="${type eq 4}">
+				<tr>
+					<td style="text-align: center">${p.rn}</td>
+					<td style="text-align: center">${p.j_category}</td>
+					<td><a href="#">${p.j_title }</a></td>
+					<td>${p.a_nickname }</td>
+					<td style="text-align: center"><fmt:formatDate
+							value="${p.j_date}" pattern="yyyy-MM-dd" /></td>
+					<td style="text-align: center">${p.j_view }</td>
+				</tr>
+				</c:if>
 			</c:forEach>
 		</table>
 	</div>
 
 
-	<div style="background-color: orange; color: white;">
+	<div class="board-paging">
 		<c:if test="${curPage != 1 }">
-			<a href="notice.page.change?p=${curPage - 1 }">&lt;</a>
+			<div class="board-paging__arrow">
+				<a href="board.page.change?type=${type }&p=${curPage - 1 }">&lt;</a>
+			</div>
 		</c:if>
 		<c:forEach var="i" begin="1" end="${pageCount }">
-			<a href="notice.page.change?p=${i }">${i }</a>
+			<div class="board-paging__num ${i == curPage ? 'active' : ''}">
+				<a href="board.page.change?type=${type }&p=${i }">${i }</a>
+			</div>
 		</c:forEach>
 		<c:if test="${curPage != pageCount }">
-			<a href="notice.page.change?p=${curPage + 1 }">&gt;</a>
+			<div class="board-paging__arrow">
+				<a href="board.page.change?type=${type }&p=${curPage + 1 }">&gt;</a>
+			</div>
 		</c:if>
 	</div>
 
+	<div class="board-search__wrapper">
+		<form action="" class="board-search--form">
+			<input class="board-search--input" placeholder="제목/내용 검색어 입력">
+			<button class="board-search--btn">
+				<i class="fa-solid fa-magnifying-glass"></i>
+			</button>
+		</form>
+	</div>
+
 	<div>
-		<form action="">
-			<button>글쓰기</button>
+		<form action="go.notice.write" class="board-write">
+			<button class="board-write--btn">글쓰기</button>
 		</form>
 	</div>
 </body>

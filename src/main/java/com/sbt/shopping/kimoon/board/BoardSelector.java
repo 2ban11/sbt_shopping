@@ -1,17 +1,17 @@
-package com.sbt.shopping.kimoon.notice;
+package com.sbt.shopping.kimoon.board;
 
 import java.math.BigDecimal;
 
-public class NoticeSelector {
+public class BoardSelector {
 	private String search;
 	private BigDecimal start;
 	private BigDecimal end;
 	
-	public NoticeSelector() {
+	public BoardSelector() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public NoticeSelector(String search, BigDecimal start, BigDecimal end) {
+	public BoardSelector(String search, BigDecimal start, BigDecimal end) {
 		super();
 		this.search = search;
 		this.start = start;
