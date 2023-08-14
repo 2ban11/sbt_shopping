@@ -85,7 +85,7 @@
                 <span class="sidebar__login">
                   <a href="#">로그인</a>
                 </span>
-                <span class="sidebar__signup"> <a href="#"> 회원가입</a></span>
+                <span class="sidebar__signup"><a href="#">회원가입</a></span>
               </div>
             </div>
             <li>
@@ -255,8 +255,7 @@
 
         <!-- CONTENTS -->
         <section class="row">
-       <br />
-          <jsp:include page="${contentPage }"></jsp:include>
+       		<jsp:include page="${contentPage }"></jsp:include>
         </section>
       </div>
       <!-- //CONTENTS -->
