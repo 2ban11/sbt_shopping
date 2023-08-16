@@ -139,14 +139,64 @@ public class BoardDAO {
 		return a;
 	}
 
-	public void summernoteInsert(BoardDTO bDTO, String testTitle, String editorarea) {
-		bDTO.setN_title(testTitle);
+	public void summernoteNoticeInsert(BoardDTO bDTO, String boardTitle, String editorarea) {
+		bDTO.setN_title(boardTitle);
 		bDTO.setN_txt(editorarea);
 		System.out.println(bDTO);
-		if(ss.getMapper(BoardMapper.class).summernoteInsert(bDTO)==1) {
+		if(ss.getMapper(BoardMapper.class).summernoteNoticeInsert(bDTO)==1) {
 			System.out.println("등록 성공");
 		}
 		
+		
+	}
+
+	public void summernoteFreeInsert(BoardDTO bDTO, String boardTitle, String editorarea) {
+		bDTO.setF_title(boardTitle);
+		bDTO.setF_txt(editorarea);
+		System.out.println(bDTO);
+		if(ss.getMapper(BoardMapper.class).summernoteFreeInsert(bDTO)==1) {
+			System.out.println("등록 성공");
+		}
+	}
+
+	public void summernoteLessonInsert(BoardDTO bDTO, String boardTitle, String editorarea, String boardAdress, String boardPhone, String boardLessonFee) {
+		bDTO.setL_title(boardTitle);
+		bDTO.setL_txt(editorarea);
+		bDTO.setL_addr(boardAdress);
+		bDTO.setL_phone(boardPhone);
+		bDTO.setL_pay(boardLessonFee);
+		System.out.println(bDTO);
+		if(ss.getMapper(BoardMapper.class).summernoteLessonInsert(bDTO)==1) {
+			System.out.println("등록 성공");
+		}
+	}
+
+	public void summernoteJobInsert(BoardDTO bDTO, String boardTitle, String editorarea, String boardAdress, String boardPhone, String boardJob) {
+		bDTO.setJ_title(boardTitle);
+		bDTO.setJ_txt(editorarea);
+		bDTO.setJ_addr(boardAdress);
+		bDTO.setJ_phone(boardPhone);
+		bDTO.setJ_category(boardJob);
+		System.out.println(bDTO);
+		if(ss.getMapper(BoardMapper.class).summernoteJobInsert(bDTO)==1) {
+			System.out.println("등록 성공");
+		}
+	}
+
+	public void getNoticeDetail(HttpServletRequest req, BoardDTO bDTO) {
+		req.setAttribute("board", ss.getMapper(BoardMapper.class).getNoticeDetail(bDTO));
+	}
+
+	public void getFreeDetail(HttpServletRequest req, BoardDTO bDTO) {
+		req.setAttribute("board", ss.getMapper(BoardMapper.class).getFreeDetail(bDTO));
+	}
+
+	public void getLessonDetail(HttpServletRequest req, BoardDTO bDTO) {
+		req.setAttribute("board", ss.getMapper(BoardMapper.class).getLessonDetail(bDTO));
+	}
+
+	public void getJobDetail(HttpServletRequest req, BoardDTO bDTO) {
+		req.setAttribute("board", ss.getMapper(BoardMapper.class).getJobDetail(bDTO));
 		
 	}
 

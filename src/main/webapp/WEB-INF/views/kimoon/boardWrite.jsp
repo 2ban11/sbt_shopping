@@ -26,12 +26,24 @@
 <script type="text/javascript" src="resources/js/kimoon/boardWrite.js"></script>
 </head>
 <body>
+	<c:if test="${type eq 1}">
+		<form action="do.notice.write">
+	</c:if>
+	<c:if test="${type eq 2}">
+		<form action="do.free.write">
+	</c:if>
+	<c:if test="${type eq 3}">
+		<form action="do.lesson.write">
+	</c:if>
+	<c:if test="${type eq 4}">
+		<form action="do.job.write">
+	</c:if>
 	<div class="board-write__wrapper">
 		<div class="board-write__header">
 			<div class="board-write__header-title">글 작성하기</div>
 			<div class="board-write__header-where">
 				Home > 게시판 >
-			<c:if test="${type eq 1}">
+				<c:if test="${type eq 1}">
 			공지
 			</c:if>
 				<c:if test="${type eq 2}">
@@ -46,67 +58,76 @@
 			</div>
 		</div>
 		<c:if test="${type eq 3 || type eq 4}">
-		<div class="board-write__input-group">
-			<div class="board-write__input-title">주소</div>
-			<div class="board-write__input-div">
-				<input class="board-write__input--input">
+			<div class="board-write__input-group">
+				<div class="board-write__input-title">주소</div>
+				<div class="board-write__input-div">
+					<input class="board-write__input--input" name="boardAdress">
+				</div>
 			</div>
-		</div>
-		<div class="board-write__input-group">
-			<div class="board-write__input-title">전화번호</div>
-			<div class="board-write__input-div">
-				<input class="board-write__input--input"
-					placeholder="예) 01012345678">
+			<div class="board-write__input-group">
+				<div class="board-write__input-title">전화번호</div>
+				<div class="board-write__input-div">
+					<input class="board-write__input--input" name="boardPhone"
+						placeholder="예) 01012345678">
+				</div>
 			</div>
-		</div>
 		</c:if>
 		<c:if test="${type eq 3}">
-		<div class="board-write__input-group">
-			<div class="board-write__input-title">수강료</div>
-			<div class="board-write__input-div">
-				<input class="board-write__input--input"
-					placeholder="원 단위로 쉼표없이 적어주세요. 예) 10만원->100000">
+			<div class="board-write__input-group">
+				<div class="board-write__input-title">수강료</div>
+				<div class="board-write__input-div">
+					<input class="board-write__input--input" name="boardLessonFee"
+						placeholder="원 단위로 쉼표없이 적어주세요. 예) 10만원->100000">
+				</div>
 			</div>
-		</div>
 		</c:if>
-		<c:if test="${type eq 3}">
-		<div class="board-write__input-group">
-			<div class="board-write__input-title">구인/구직</div>
-			<div class="board-write__input-div">
-				<select class="board-write__job-select">
-					<option>구인</option>
-					<option>구직</option>
-				</select>
+		<c:if test="${type eq 4}">
+			<div class="board-write__input-group">
+				<div class="board-write__input-title">구인/구직</div>
+				<div class="board-write__input-div">
+					<select class="board-write__job-select" name="boardJob">
+						<option value="구인">구인</option>
+						<option value="구직">구직</option>
+					</select>
+				</div>
 			</div>
-		</div>
 		</c:if>
 
 		<hr>
 
-		<form action="testInsert">
-
-			<div class="board-write__textarea">
-				<div class="board-write__input-group">
-					<div class="board-write__input-title">제목</div>
-					<div class="board-write__input-div">
-						<input class="board-write__input--input" name="testTitle">
-						<input type="hidden" name="n_id" value="asdtest">
-					</div>
-				</div>
-
-				<div class="summernote__wrapper">
-					<textarea class="summernote" name="editorarea"></textarea>
-				</div>
-				<div style="display: flex; justify-content: space-between;">
-					<div>
-						<button class="board-write__go-back" onclick="history.back()">취소</button>
-					</div>
-					<div>
-						<button class="board-write__do-write">등록</button>
-					</div>
+		<div class="board-write__textarea">
+			<div class="board-write__input-group">
+				<div class="board-write__input-title">제목</div>
+				<div class="board-write__input-div">
+					<input class="board-write__input--input" name="boardTitle">
+					<c:if test="${type eq 1}">
+					<input type="hidden" name="n_id" value="ddd@naver.com">
+					</c:if>
+					<c:if test="${type eq 2}">
+					<input type="hidden" name="f_id" value="ddd@naver.com">
+					</c:if>
+					<c:if test="${type eq 3}">
+					<input type="hidden" name="l_id" value="ddd@naver.com">
+					</c:if>
+					<c:if test="${type eq 4}">
+					<input type="hidden" name="j_id" value="ddd@naver.com">
+					</c:if>
 				</div>
 			</div>
-		</form>
+
+			<div class="summernote__wrapper">
+				<textarea class="summernote" name="editorarea"></textarea>
+			</div>
+			<div style="display: flex; justify-content: space-between;">
+				<div>
+					<button class="board-write__go-back" onclick="history.back()">취소</button>
+				</div>
+				<div>
+					<button class="board-write__do-write">등록</button>
+				</div>
+			</div>
+		</div>
 	</div>
+	</form>
 </body>
 </html>

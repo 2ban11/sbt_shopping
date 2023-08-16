@@ -15,5 +15,13 @@ public interface BoardMapper {
     List<BoardDTO> getJob(BoardSelector search);
     
     List<BoardReply> getReply(BoardDTO nPost);
-	int summernoteInsert(BoardDTO bDTO);
+	int summernoteNoticeInsert(BoardDTO bDTO);
+	int summernoteFreeInsert(BoardDTO bDTO);
+	int summernoteLessonInsert(BoardDTO bDTO);
+	int summernoteJobInsert(BoardDTO bDTO);
+	
+	BoardDTO getNoticeDetail(BoardDTO bDTO);
+	BoardDTO getFreeDetail(BoardDTO bDTO);
+	BoardDTO getLessonDetail(BoardDTO bDTO);
+	BoardDTO getJobDetail(BoardDTO bDTO);
 }

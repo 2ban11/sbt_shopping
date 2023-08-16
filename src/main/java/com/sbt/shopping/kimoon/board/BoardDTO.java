@@ -29,8 +29,7 @@ public class BoardDTO {
 	private Date n_date;
 	private int n_view;
 	private String n_txt;
-	
-	private String n_img;
+
 	public int getN_no() {
 		return n_no;
 	}
@@ -67,12 +66,7 @@ public class BoardDTO {
 	public void setN_txt(String n_txt) {
 		this.n_txt = n_txt;
 	}
-	public String getN_img() {
-		return n_img;
-	}
-	public void setN_img(String n_img) {
-		this.n_img = n_img;
-	}
+
 	
 	
 // free
@@ -82,7 +76,7 @@ public class BoardDTO {
 	private Date f_date;
 	private int f_view;
 	private String f_txt;
-	private String f_img;
+
 	public int getF_no() {
 		return f_no;
 	}
@@ -119,26 +113,20 @@ public class BoardDTO {
 	public void setF_txt(String f_txt) {
 		this.f_txt = f_txt;
 	}
-	public String getF_img() {
-		return f_img;
-	}
-	public void setF_img(String f_img) {
-		this.f_img = f_img;
-	}
 	
 	
-// lesson
 	
+//// lesson
 	private int l_no;
 	private String l_title;
 	private String l_id;
 	private Date l_date;
 	private int l_view;
 	private String l_txt;
-	private String l_img;
 	private String l_addr;
 	private String l_pay;
 	private String l_phone;
+
 	public int getL_no() {
 		return l_no;
 	}
@@ -175,12 +163,6 @@ public class BoardDTO {
 	public void setL_txt(String l_txt) {
 		this.l_txt = l_txt;
 	}
-	public String getL_img() {
-		return l_img;
-	}
-	public void setL_img(String l_img) {
-		this.l_img = l_img;
-	}
 	public String getL_addr() {
 		return l_addr;
 	}
@@ -199,19 +181,19 @@ public class BoardDTO {
 	public void setL_phone(String l_phone) {
 		this.l_phone = l_phone;
 	}
-
-// job
+	
+	
+//// job
 	private int j_no;
 	private String j_title;
 	private String j_id;
 	private Date j_date;
 	private int j_view;
 	private String j_txt;
-	private String j_img;
 	private String j_addr;
-	private String j_pay;
 	private String j_phone;
 	private String j_category;
+
 	public int getJ_no() {
 		return j_no;
 	}
@@ -248,23 +230,11 @@ public class BoardDTO {
 	public void setJ_txt(String j_txt) {
 		this.j_txt = j_txt;
 	}
-	public String getJ_img() {
-		return j_img;
-	}
-	public void setJ_img(String j_img) {
-		this.j_img = j_img;
-	}
 	public String getJ_addr() {
 		return j_addr;
 	}
 	public void setJ_addr(String j_addr) {
 		this.j_addr = j_addr;
-	}
-	public String getJ_pay() {
-		return j_pay;
-	}
-	public void setJ_pay(String j_pay) {
-		this.j_pay = j_pay;
 	}
 	public String getJ_phone() {
 		return j_phone;
@@ -281,16 +251,17 @@ public class BoardDTO {
 	@Override
 	public String toString() {
 		return "BoardDTO [rn=" + rn + ", a_nickname=" + a_nickname + ", n_no=" + n_no + ", n_title=" + n_title
-				+ ", n_id=" + n_id + ", n_date=" + n_date + ", n_view=" + n_view + ", n_txt=" + n_txt + ", n_img="
-				+ n_img + ", f_no=" + f_no + ", f_title=" + f_title + ", f_id=" + f_id + ", f_date=" + f_date
-				+ ", f_view=" + f_view + ", f_txt=" + f_txt + ", f_img=" + f_img + ", l_no=" + l_no + ", l_title="
-				+ l_title + ", l_id=" + l_id + ", l_date=" + l_date + ", l_view=" + l_view + ", l_txt=" + l_txt
-				+ ", l_img=" + l_img + ", l_addr=" + l_addr + ", l_pay=" + l_pay + ", l_phone=" + l_phone + ", j_no="
-				+ j_no + ", j_title=" + j_title + ", j_id=" + j_id + ", j_date=" + j_date + ", j_view=" + j_view
-				+ ", j_txt=" + j_txt + ", j_img=" + j_img + ", j_addr=" + j_addr + ", j_pay=" + j_pay + ", j_phone="
-				+ j_phone + ", j_category=" + j_category + "]";
+				+ ", n_id=" + n_id + ", n_date=" + n_date + ", n_view=" + n_view + ", n_txt=" + n_txt + ", f_no=" + f_no
+				+ ", f_title=" + f_title + ", f_id=" + f_id + ", f_date=" + f_date + ", f_view=" + f_view + ", f_txt="
+				+ f_txt + ", l_no=" + l_no + ", l_title=" + l_title + ", l_id=" + l_id + ", l_date=" + l_date
+				+ ", l_view=" + l_view + ", l_txt=" + l_txt + ", l_addr=" + l_addr + ", l_pay=" + l_pay + ", l_phone="
+				+ l_phone + ", j_no=" + j_no + ", j_title=" + j_title + ", j_id=" + j_id + ", j_date=" + j_date
+				+ ", j_view=" + j_view + ", j_txt=" + j_txt + ", j_addr=" + j_addr + ", j_phone=" + j_phone
+				+ ", j_category=" + j_category + "]";
 	}
 	
+	
+
 	
 	
 	
