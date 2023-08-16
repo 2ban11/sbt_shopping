@@ -417,7 +417,7 @@ body.sidebar-open {
 
 @media screen and (max-width: 500px) {
   /* 화면크기가 500px 이하일 경우 */
-  .row {
+  .row-km {
     padding: 0;
   }
 

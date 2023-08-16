@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sbt.shopping.inhoo.DetailMapper">
 
 
@@ -12,9 +14,61 @@
 	select * from review
 </select>
 
-<select id="searchReview" resultType="com.sbt.shopping.inhoo.DetailDTO">
+<!-- <select id="searchReview" resultType="com.sbt.shopping.inhoo.DetailDTO">
 	select * from review where r_product between #{start} and #{end}
+</select> -->
+
+
+
+<select id="getProduct" resultType="com.sbt.shopping.inhoo.ProductDTO">
+    SELECT * FROM product WHERE p_no = 1 <!-- #{p_no} -->
 </select>
+
+
+
+
+
+
+<!-- 페이징 -->
+<!-- <select id="getReviewsInRange" resultType="com.sbt.shopping.inhoo.DetailDTO">
+    SELECT *
+    FROM (
+        SELECT ROWNUM AS rnum, review.*
+        FROM (
+            SELECT *
+            FROM review
+            ORDER BY r_no DESC
+        ) review
+    )
+    WHERE rnum BETWEEN #{startIndex} AND #{endIndex}
+</select> -->
+
+<select id="getReviews" resultType="com.sbt.shopping.inhoo.DetailDTO">
+	  select *
+        from (
+        	select rownum as rn, r_product, r_id,r_title,r_content,r_rate,r_img,r_date
+        	from (
+        		select * from review
+        		where r_product = #{no}
+        		order by r_date desc
+        	)
+        )
+        where rn &gt;= #{start} and rn &lt;= #{end}
+</select>
+<select id="getReviewCount" resultType="int"
+>
+	select count(*) from review where r_product = #{p_no}
+</select>
+
+
+
+
+
+
+
+
+
+
 
 
 </mapper>

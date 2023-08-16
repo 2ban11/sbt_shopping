@@ -6,9 +6,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>INDEX</title>
-    <link rel="stylesheet" href="resources/css/header.css" />
-    <link rel="stylesheet" href="resources/css/footer.css" />
-    <link rel="stylesheet" href="resources/css/reset.css" />
+  <link rel="stylesheet" href="resources/css/header.css" />
+  <link rel="stylesheet" href="resources/css/footer.css" />
+  <link rel="stylesheet" href="resources/css/reset.css" />
     <script
       src="https://kit.fontawesome.com/f0a74bdf41.js"
       crossorigin="anonymous"
@@ -256,7 +256,7 @@
         <!-- CONTENTS -->
         <section class="row-km">
         
-           <jsp:include page="${contentPage }"></jsp:include>
+            <jsp:include page="${contentPage }"></jsp:include> 
         </section>
       </div>
       <!-- //CONTENTS -->
