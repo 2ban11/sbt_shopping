@@ -21,7 +21,7 @@ public class HC_KM {
 @Autowired
 private MainPageDAO mpDAO;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/199", method = RequestMethod.GET)
 	public String mainPage(HttpServletRequest request) {
 		// mpDAO.get48Products(request);
 		request.setAttribute("contentPage", "kimoon/kimoonMainPage.jsp");
