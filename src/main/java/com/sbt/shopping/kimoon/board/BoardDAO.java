@@ -1,18 +1,30 @@
 package com.sbt.shopping.kimoon.board;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.UUID;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import com.google.gson.JsonObject;
 
 @Service
 public class BoardDAO {
 
-
+	@Autowired
+	private ServletContext servletContext;
+	
 	@Autowired
 	private SqlSession ss;
 
@@ -26,7 +38,7 @@ public class BoardDAO {
 
 	public void getBoard(int pageNo, HttpServletRequest req) {
 		int type = Integer.parseInt(req.getParameter("type"));
-		
+
 		int count = bp.getBoardCountPerPage();
 
 		int start = (pageNo - 1) * count + 1;
@@ -44,6 +56,7 @@ public class BoardDAO {
 				break;
 			case 2:
 				postCount = allPostCount2;
+				System.out.println("type2 = " + postCount);
 				posts = ss.getMapper(BoardMapper.class).getFree(search);
 				break;
 			case 3:
@@ -91,4 +104,50 @@ public class BoardDAO {
 		allPostCount3 = ss.getMapper(BoardMapper.class).getLessonCount(bSelec);
 		allPostCount4 = ss.getMapper(BoardMapper.class).getJobCount(bSelec);
 	}
+
+	public String summernoteMultipart(MultipartFile multipartFile, HttpServletRequest request) {
+		/*
+		 * String fileRoot = "C:\\summernote_image\\"; // 외부경로로 저장을 희망할때.
+		 */
+		JsonObject jsonObject = new JsonObject();
+		// 내부경로로 저장
+		String fileRoot = servletContext.getRealPath("resources/fileupload/");
+		System.out.println(fileRoot);
+									// a.jpg
+		
+		String originalFileName = multipartFile.getOriginalFilename(); // 오리지날 파일명
+		String extension = originalFileName.substring(originalFileName.lastIndexOf(".")); // 파일 확장자
+		String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
+												// jpg
+		File targetFile = new File(fileRoot + savedFileName);
+		System.out.println(targetFile);
+		
+		try {							// UUID.jpg
+			//InputStream fileStream = multipartFile.getInputStream();
+			//FileUtils.copyInputStreamToFile(fileStream, targetFile); // 파일 저장
+			multipartFile.transferTo(targetFile);
+			
+			jsonObject.addProperty("url", "resources/fileupload/" + savedFileName); // contextroot +// resources + 저장할 내부
+			jsonObject.addProperty("responseCode", "success");
+
+		} catch (Exception e) {
+			FileUtils.deleteQuietly(targetFile); // 저장된 파일 삭제
+			jsonObject.addProperty("responseCode", "error");
+			e.printStackTrace();
+		}
+		String a = jsonObject.toString();
+		return a;
+	}
+
+	public void summernoteInsert(BoardDTO bDTO, String testTitle, String editorarea) {
+		bDTO.setN_title(testTitle);
+		bDTO.setN_txt(editorarea);
+		System.out.println(bDTO);
+		if(ss.getMapper(BoardMapper.class).summernoteInsert(bDTO)==1) {
+			System.out.println("등록 성공");
+		}
+		
+		
+	}
+
 }

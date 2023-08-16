@@ -8,6 +8,7 @@ public class BoardDTO {
 	
 	private int rn; // 글 번호
 	private String a_nickname; // 작성자
+	
 	public int getRn() {
 		return rn;
 	}
@@ -28,6 +29,7 @@ public class BoardDTO {
 	private Date n_date;
 	private int n_view;
 	private String n_txt;
+	
 	private String n_img;
 	public int getN_no() {
 		return n_no;
@@ -275,6 +277,18 @@ public class BoardDTO {
 	}
 	public void setJ_category(String j_category) {
 		this.j_category = j_category;
+	}
+	@Override
+	public String toString() {
+		return "BoardDTO [rn=" + rn + ", a_nickname=" + a_nickname + ", n_no=" + n_no + ", n_title=" + n_title
+				+ ", n_id=" + n_id + ", n_date=" + n_date + ", n_view=" + n_view + ", n_txt=" + n_txt + ", n_img="
+				+ n_img + ", f_no=" + f_no + ", f_title=" + f_title + ", f_id=" + f_id + ", f_date=" + f_date
+				+ ", f_view=" + f_view + ", f_txt=" + f_txt + ", f_img=" + f_img + ", l_no=" + l_no + ", l_title="
+				+ l_title + ", l_id=" + l_id + ", l_date=" + l_date + ", l_view=" + l_view + ", l_txt=" + l_txt
+				+ ", l_img=" + l_img + ", l_addr=" + l_addr + ", l_pay=" + l_pay + ", l_phone=" + l_phone + ", j_no="
+				+ j_no + ", j_title=" + j_title + ", j_id=" + j_id + ", j_date=" + j_date + ", j_view=" + j_view
+				+ ", j_txt=" + j_txt + ", j_img=" + j_img + ", j_addr=" + j_addr + ", j_pay=" + j_pay + ", j_phone="
+				+ j_phone + ", j_category=" + j_category + "]";
 	}
 	
 	

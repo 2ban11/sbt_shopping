@@ -7,6 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+
+
 
 
 @Controller
@@ -28,7 +32,7 @@ public class BoardController {
 			firstReq = false;
 		}
 		bDAO.getBoard(1, request);
-        request.setAttribute("contentPage", "kimoon/notice.jsp");
+        request.setAttribute("contentPage", "kimoon/board.jsp");
         return "index";
 	}
 	
@@ -37,13 +41,30 @@ public class BoardController {
     public String paging(HttpServletRequest req, @RequestParam int p) {
 		BoardPaging.clearSearch(req);
 		bDAO.getBoard(p, req);
-        req.setAttribute("contentPage", "kimoon/notice.jsp");
+        req.setAttribute("contentPage", "kimoon/board.jsp");
         return "index";
     }
 	
-	@RequestMapping(value = "/go.notice.write", method = RequestMethod.GET)
+	@RequestMapping(value = "/go.board.write", method = RequestMethod.GET)
 	public String goNoticeWrite(HttpServletRequest req) {
-		req.setAttribute("contentPage", "kimoon/noticeWrite.jsp");
+		int type = Integer.parseInt(req.getParameter("type"));
+		req.setAttribute("type", type);
+		req.setAttribute("contentPage", "kimoon/boardWrite.jsp");
 		return "index";
+	}
+
+	@RequestMapping(value = "/testInsert", method = RequestMethod.GET)
+	public String testInsert(HttpServletRequest req,BoardDTO bDTO, @RequestParam String testTitle,@RequestParam String editorarea) {
+		System.out.println(testTitle);
+		System.out.println(editorarea);
+		bDAO.summernoteInsert(bDTO, testTitle,editorarea);
+		req.setAttribute("contentPage", "kimoon/boardWrite.jsp");
+		return "index";
+	}
+	
+	@ResponseBody
+	@RequestMapping(value="/uploadSummernoteImageFile", produces = "application/json; charset=utf8")
+	public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request )  {
+		return bDAO.summernoteMultipart(multipartFile, request);
 	}
 }

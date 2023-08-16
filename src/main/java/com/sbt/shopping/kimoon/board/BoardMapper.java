@@ -15,4 +15,5 @@ public interface BoardMapper {
     List<BoardDTO> getJob(BoardSelector search);
     
     List<BoardReply> getReply(BoardDTO nPost);
+	int summernoteInsert(BoardDTO bDTO);
 }

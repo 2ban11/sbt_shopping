@@ -1,5 +1,83 @@
 @charset "UTF-8";
 
+.row {
+	display: block;
+	margin: 0;
+}
+
 .board-write__wrapper {
+	padding: 9px;
+    margin: 20px;
 	background-color: #ffffff08;
+}
+
+.board-write__header {
+	border-bottom: 1px solid #67c1f5;
+}
+
+.board-write__header-title {
+	color: white;
+	font-size: 1.3rem;
+	font-weight: bold;
+	margin-bottom: 7px;
+}
+
+.board-write__header-where {
+	color: white;
+	margin-bottom: 7px;
+}
+
+.board-write__input-group {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	padding: 8px 0;
+	border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.board-write__input-title {
+	color: white;
+	width: 120px;
+}
+
+.board-write__input-div {
+	width: 100%;
+	flex: 1;
+}
+
+.board-write__input--input {
+	width: 100%;
+	padding: 5px 15px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 8px;
+	background-color: #ffffff08;
+	color: white;
+}
+
+.board-write__job-select {
+	padding: 4px 10px;
+}
+
+.board-write__textarea {
+	border-top: 1px solid #67c1f5;
+}
+
+.summernote__wrapper {
+	margin-bottom: 20px;
+}
+
+.board-write__go-back {
+	padding: 5px 10px;
+    border: 1px solid white;
+    border-radius: 3px;
+    background-color: #ffffff08;
+    color: white;
+}
+
+.board-write__do-write {
+	padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+	background-color: #67c1f5;
+	color: white;
 }
