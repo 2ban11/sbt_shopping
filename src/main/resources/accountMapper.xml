@@ -1,11 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sbt.shopping.myeinggyu.AccountMapper">
+<mapper namespace="com.sbt.shopping.myeonggyu.AccountMapper">
 
-	<select id="getAccountByID">  
+	<select id="getAccountByID" resultType="com.sbt.shopping.myeonggyu.AccountDTO">  
 		select * from account where a_id = #{a_id}
 	</select>
 
-	
+	 <delete id="bye">
+        delete account where a_id = #{a_id}
+    </delete>
 
+   <insert id="join" parameterType="com.sbt.shopping.myeonggyu.AccountDTO">
+    insert into account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+        <if test="a_id != null">a_id,</if>
+        <if test="a_email != null">a_email,</if>
+        <if test="a_name != null">a_name,</if>
+        <if test="a_nickname != null">a_nickname,</if>
+        <if test="a_password != null">a_password,</if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+        <if test="a_id != null">#{a_id},</if>
+        <if test="a_email != null">#{a_email},</if>
+        <if test="a_name != null">#{a_name},</if>
+        <if test="a_nickname != null">#{a_nickname},</if>
+        <if test="a_password != null">#{a_password},</if>
+    </trim>
+</insert>
+    <update id="update" parameterType="com.sbt.shopping.myeonggyu.AccountDTO">
+        update account
+        set a_pw =
+        #{a_pw}, a_name = #{a_name}, a_nickname=#{a_nickname}
+        where a_id = #{a_id}
+    </update>
+
+	<select id="getAccountNum" resultType="int">
+        select count(*) from account where a_id = #{a_id}
+    </select>
+<select id="getNicknameNum" resultType="int">
+        select count(*) from account where a_nickname = #{a_nickname}
+    </select>
+  <update id="saveNaverNickname" parameterType="com.sbt.shopping.myeonggyu.AccountDTO">
+    update account
+    set a_nickname = #{a_nickname}
+    where a_id = #{a_id}
+</update>
+<update id="saveKakaoUserInfo" parameterType="com.sbt.shopping.myeonggyu.AccountDTO">
+    update account
+    set a_nickname = #{a_nickname}, a_name = #{a_name}, a_password = #{a_password}
+    where a_id = #{a_id}
+</update>
+<update id="updatePw" parameterType="com.sbt.shopping.myeonggyu.AccountDTO">
+    update account
+    set a_pw = #{a_pw}
+    where a_id = #{a_id}
+</update>
 </mapper>
+

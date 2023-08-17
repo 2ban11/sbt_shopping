@@ -1,36 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="java.net.URLEncoder" %>
+<%@ page import="java.security.SecureRandom" %>
+<%@ page import="java.math.BigInteger" %>
+<%
+    // 세션에 저장된 액세스 토큰을 가져옵니다.
+    String accessToken = (String) session.getAttribute("accessToken");
+%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>환영합니다!!</title>
+      <script
+      src="https://code.jquery.com/jquery-3.7.0.js"
+      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
+      crossorigin="anonymous"
+    ></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+      <script type="text/javascript" src="resources/js/kakaoLogIn.js"></script>
 </head>
 <body>
     <h1>환영합니다!!</h1>
-    <a href="http://developers.kakao.com/logout">카카오 로그아웃</a>
+    
+    	<a href="/shopping/account.logout"><button>로그아웃</button></a>
+        
+    
+    <c:if test='${param.type eq "kakao"}'>
+     <a href="#" id="kakao-logout-btn" onclick="logoutKakao()">카카오 로그아웃</a>
+    </c:if>
+    <c:if test='${param.type eq "naver"}'>
     <a href="#" onclick="logoutNaver()">네이버 로그아웃</a> 
+    </c:if>
 
-    <script>
-        function logoutNaver() {
-            var accessToken = '${accessToken}'; // JSP에서 세션에 저장한 액세스 토큰을 가져옵니다.
-            var url = 'https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=UaEIf33g3s0PC0nCawKU&client_secret=XJPThm8DJ2&access_token=' + accessToken;
-
-            // AJAX 요청으로 네이버 로그아웃 API 호출
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', url, true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        // 로그아웃 처리가 성공하면 네이버 로그인 페이지로 리다이렉트합니다.
-                        window.location.href = 'http://localhost/shopping/naver_login.go';
-                    } else {
-                        // 로그아웃 처리가 실패한 경우에 대한 처리
-                        alert('네이버 로그아웃에 실패하였습니다.');
-                    }
-                }
-            };
-            xhr.send();
-        }
-    </script>
+    
 </body>
+<script type="text/javascript">
+
+
+</script>
 </html>

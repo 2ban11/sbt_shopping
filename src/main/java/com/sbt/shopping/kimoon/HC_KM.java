@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class HC_KM {
 	
 	
-	@RequestMapping(value = "/4", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
+	@RequestMapping(value = "/555", method = RequestMethod.GET)
+	public String mainPage() {
 		
-		return "home";
+		return "index";
 	}
 	
 }
