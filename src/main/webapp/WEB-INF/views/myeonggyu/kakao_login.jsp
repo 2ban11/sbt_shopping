@@ -11,6 +11,7 @@
     <a id="kakao-login-btn" style="cursor: pointer;">
       <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="10%" height="50px" />
     </a>
+    <script type="text/javascript"src="resources/js/kakaoLogIn.js"></script>
   </div>
 
   <input type="hidden" id="user-email" name="user-email" value="" />

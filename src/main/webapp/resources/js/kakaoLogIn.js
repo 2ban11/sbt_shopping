@@ -36,7 +36,7 @@
 			}
 			})*/
 			
-           // window.location.href = 'http://localhost/shopping/loginSuccess.go?type=kakao';
+           window.location.href = 'http://localhost/shopping/loginSuccess.go?type=kakao';
             },
             fail: function (error) {
               // 실패 처리

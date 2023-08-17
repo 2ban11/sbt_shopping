@@ -19,6 +19,7 @@
     ></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
       <script type="text/javascript" src="resources/js/kakaoLogIn.js"></script>
+      <script type="text/javascript"src="resources/js/s_logout.js"></script>
 </head>
 <body>
     <h1>환영합니다!!</h1>
