@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sbt.shopping.kimoon.board.BoardMapper">
+	
+	<!-- 게시판 글 작성 -->
+	
+	<insert id="summernoteNoticeInsert">
+		insert into notice values (notice_seq.nextval,#{n_title},#{n_id}, sysdate,0,#{n_txt})
+	</insert>
+	
+	<insert id="summernoteFreeInsert">
+		insert into free values (free_seq.nextval,#{f_title},#{f_id},sysdate,0,#{f_txt})
+	</insert>
+	
+	<insert id="summernoteLessonInsert">
+		insert into lesson values (lesson_seq.nextval,#{l_title},#{l_id},sysdate,0,#{l_txt},#{l_addr},#{l_pay},#{l_phone})
+	</insert>
+	
+	<insert id="summernoteJobInsert">
+		insert into job values (job_seq.nextval,#{j_title},#{j_id},sysdate,0,#{j_txt},#{j_addr},#{j_phone},#{j_category})
+	</insert>
+	
+	
+	
+	<!-- 게시판 전체 갯수 페이징 -->
+	
+	<select id="getNoticeCount" resultType="java.lang.Integer">
+		select count(*)
+		from
+		notice,
+		account
+		where n_id = a_id
+		<!-- and n_txt like '%'||#{search}||'%' -->
+	</select>
+	
+	<select id="getFreeCount" resultType="java.lang.Integer">
+		select count(*)
+		from
+		free,
+		account
+		where f_id = a_id
+		<!-- and n_txt like '%'||#{search}||'%' -->
+	</select>
+	
+	<select id="getLessonCount" resultType="java.lang.Integer">
+		select count(*)
+		from
+		lesson,
+		account
+		where l_id = a_id
+		<!-- and n_txt like '%'||#{search}||'%' -->
+	</select>
+	
+	<select id="getJobCount" resultType="java.lang.Integer">
+		select count(*)
+		from
+		job,
+		account
+		where j_id = a_id
+		<!-- and n_txt like '%'||#{search}||'%' -->
+	</select>
+	
+	
+	<!-- 게시판 리스트 -->
+	
+	<select id="getNotice" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
+		select *
+		from (
+		select rownum as rn, n_no, n_title, a_nickname, n_date, n_view, n_txt
+		from (
+		select * from notice, account
+		where n_id = a_id
+		order by n_date desc
+		)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	<select id="getFree" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
+		select *
+		from (
+		select rownum as rn, f_no, f_title, a_nickname, f_date, f_view, f_txt
+		from (
+		select * from free, account
+		where f_id = a_id
+		order by f_date desc
+		)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	<select id="getLesson" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
+		select *
+		from (
+		select rownum as rn, l_no, l_title, a_nickname, l_date, l_view, l_txt, l_addr, l_pay, l_phone
+		from (
+		select * from lesson, account
+		where l_id = a_id
+		order by l_date desc
+		)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	<select id="getJob" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
+		select *
+		from (
+		select rownum as rn, j_no, j_title, a_nickname, j_date, j_view, j_txt, j_addr, j_phone, j_category
+		from (
+		select * from job, account
+		where j_id = a_id
+		order by j_date desc
+		)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
+	<!-- select *
+		from (
+		select rownum as rn, n_no, n_id, n_txt, n_date
+		from (
+		select * from notice, account
+		where n_id = a_id and n_txt like '%'||#{search}||'%'
+		order by n_date desc
+		)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end} -->
+		
+	<!-- 게시판 글 상세 -->
+	<select id="getNoticeDetail" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
+		<!-- select * from notice where n_no=#{n_no} -->
+		SELECT notice.*, account.a_nickname
+		FROM notice
+		JOIN account ON notice.n_id = account.a_id
+		WHERE notice.n_no = #{n_no}
+	</select>
+	
+	<select id="getFreeDetail" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
+		SELECT free.*, account.a_nickname
+		FROM free
+		JOIN account ON free.f_id = account.a_id
+		WHERE free.f_no = #{f_no}
+	</select>
+	
+	<select id="getLessonDetail" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
+		SELECT lesson.*, account.a_nickname
+		FROM lesson
+		JOIN account ON lesson.l_id = account.a_id
+		WHERE lesson.l_no = #{l_no}
+	</select>
+	
+	<select id="getJobDetail" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
+		SELECT job.*, account.a_nickname
+		FROM job
+		JOIN account ON job.j_id = account.a_id
+		WHERE job.j_no = #{j_no}
+	</select>
+		
+		
+	<!-- 게시글 제목 클릭시 조회수 +1 증가 -->
+	<update id="addNoticeView">
+		UPDATE notice SET n_view = n_view + 1 WHERE n_no = #{n_no}
+	</update>
+	
+	<update id="addFreeView">
+		UPDATE free SET f_view = f_view + 1 WHERE f_no = #{f_no}
+	</update>
+	
+	<update id="addLessonView">
+		UPDATE lesson SET l_view = l_view + 1 WHERE l_no = #{l_no}
+	</update>
+	
+	<update id="addJobView">
+		UPDATE job SET j_view = j_view + 1 WHERE j_no = #{j_no}
+	</update>
+		
+	
+	<!-- 게시글 삭제 -->	
+	<delete id="deleteNotice">
+		DELETE notice WHERE n_no = #{n_no}
+	</delete>
+		
+</mapper>

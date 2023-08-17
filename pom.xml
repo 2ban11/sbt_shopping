@@ -15,7 +15,7 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
-			      <!-- 서블릿 3.0이상 사용 가능한 파일 업로드 api-->
+	<!-- 서블릿 3.0이상 사용 가능한 파일 업로드 api-->
 		<dependency>
 		    <groupId>commons-fileupload</groupId>
 		    <artifactId>commons-fileupload</artifactId>
@@ -28,6 +28,14 @@
 		    <artifactId>commons-io</artifactId>
 		    <version>2.4</version>
 		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <!-- json 변환 -->
+		<dependency>
+              <groupId>com.google.code.gson</groupId>
+              <artifactId>gson</artifactId>
+              <version>2.8.6</version>
+          </dependency>
 		<!-- Spring -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -177,24 +185,6 @@
 			<artifactId>ojdbc8</artifactId>
 			<version>19.3.0.0</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.oracle.database.security/osdt_cert -->
-<dependency>
-        <groupId>com.oracle.database.security</groupId>
-        <artifactId>osdt_cert</artifactId>
-        <version>21.10.0.0</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/com.oracle.database.security/oraclepki -->
-<dependency>
-        <groupId>com.oracle.database.security</groupId>
-        <artifactId>oraclepki</artifactId>
-        <version>21.10.0.0</version>
-</dependency>
-    <!-- https://mvnrepository.com/artifact/com.oracle.database.security/osdt_core -->
-<dependency>
-        <groupId>com.oracle.database.security</groupId>
-        <artifactId>osdt_core</artifactId>
-        <version>21.10.0.0</version>
-</dependency>
 		<dependency>
 			<groupId>com.jfinal</groupId>
 			<artifactId>cos</artifactId>
@@ -230,47 +220,24 @@
 			<version>1.9.13</version>
 		</dependency>
 		
-		<!-- 이후 추가 시킨 거 -->
-    <dependency>
-    <groupId>com.sun.mail</groupId>
-    <artifactId>javax.mail</artifactId>
-    <version>1.6.2</version>
-</dependency>
-
+		<!-- https://mvnrepository.com/artifact/com.oracle.database.security/osdt_cert -->
 <dependency>
-    <groupId>com.sun.activation</groupId>
-    <artifactId>jakarta.activation</artifactId>
-    <version>2.0.1</version>
+        <groupId>com.oracle.database.security</groupId>
+        <artifactId>osdt_cert</artifactId>
+        <version>21.10.0.0</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/com.oracle.database.security/oraclepki -->
+<dependency>
+        <groupId>com.oracle.database.security</groupId>
+        <artifactId>oraclepki</artifactId>
+        <version>21.10.0.0</version>
 </dependency>
-		
-		
-		<dependency>
-	<groupId>org.apache.commons</groupId>
-	<artifactId>commons-email</artifactId>
-	<version>1.2</version>
+    <!-- https://mvnrepository.com/artifact/com.oracle.database.security/osdt_core -->
+<dependency>
+        <groupId>com.oracle.database.security</groupId>
+        <artifactId>osdt_core</artifactId>
+        <version>21.10.0.0</version>
 </dependency>
-		
-		<!-- JSON 라이브러리 -->
-    <dependency>
-        <groupId>org.json</groupId>
-        <artifactId>json</artifactId>
-        <version>20210307</version>
-    </dependency>
-		
-	  <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-core</artifactId>
-        <version>5.5.1</version>
-    </dependency>
-
-    <!-- Spring Security Cryptography -->
-    <dependency>
-        <groupId>org.springframework.security</groupId>
-        <artifactId>spring-security-crypto</artifactId>
-        <version>5.5.1</version>
-    </dependency>
-		
-		
 	</dependencies>
 	<build>
 		<plugins>

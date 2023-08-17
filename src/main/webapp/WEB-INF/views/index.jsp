@@ -4,6 +4,7 @@
 <html>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>INDEX</title>
     <link rel="stylesheet" href="resources/css/header.css" />
     <link rel="stylesheet" href="resources/css/footer.css" />
@@ -17,19 +18,23 @@
       integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript" src="headerFooter.js"></script>
+    <script type="text/javascript" src="resources/js/headerFooter.js"></script>
   </head>
   <body>
     <div class="site-container">
       <div class="wrapper-without-footer">
+        <!-- HEADER -->
         <header class="row header">
           <div class="header__wrapper">
+            <div class="menu-hamberger"><i class="fa-solid fa-bars"></i></div>
             <div class="header__logo">
-              <img
-                class="header__logo--img"
-                alt="RIFF몰"
-                src="resources/img/logoWhite.png"
-              />
+            	<a href="/shopping">
+              		<img
+               		 class="header__logo--img"
+               		 alt="RIFF몰"
+               		 src="resources/img/logoWhite.png"
+             		 />
+              </a>
             </div>
             <form class="header__form" onsubmit="return false;">
               <input class="header__input--text" autocomplete="off" />
@@ -37,32 +42,223 @@
                 <i class="fa-solid fa-magnifying-glass"></i>
               </button>
             </form>
-
-            <div>
-              <button class="header__login"> 로그인 </button>
+            <button class="mobile-search--button">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <!-- 모바일 팝업 검색창 -->
+            <div class="header-search-popup">
+              <form>
+                <input
+                  class="header-popup__delete--input"
+                  type="search"
+                  placeholder="검색어를 입력해주세요"
+                />
+                <button class="header-popup__delete--btn"></button>
+                <button class="header-popup__search--btn">검색</button>
+                <button class="header-popup__close--btn">닫기</button>
+              </form>
             </div>
-            <div>
-              <button class="header__signup" onclick= > 회원가입 </button>
-            </div>
-            <div>
-              <button class="header__cart">장바구니</button>
+            <div class="header__button">
+              <div>
+                <button class="header__login">
+                  <span class="haader__login--text">로그인</span
+                  ><i class="fa-regular fa-user"></i>
+                </button>
+              </div>
+              <div>
+                <button class="header__signup">회원가입</button>
+              </div>
+              <div>
+                <button class="header__cart">
+                  <i class="fa-solid fa-cart-shopping"></i>
+                </button>
+              </div>
             </div>
           </div>
         </header>
+        <!-- //HEADER -->
 
+        <!-- SIDEBAR -->
+        <div class="sidebar__bg"></div>
+        <div class="sidebar__menu">
+          <ul class="sidebar__contents__wrap">
+            <div class="sidebar__login-signup-wrapper">
+              <div class="sidebar__login-signup--btn">
+                <span class="sidebar__login">
+                  <a href="#">로그인</a>
+                </span>
+                <span class="sidebar__signup"><a href="#">회원가입</a></span>
+              </div>
+            </div>
+            <li>
+              <a class="sidebar__item" href="#">기타</a>
+              <ul class="sidebar__item-detail">
+                <li>일렉기타</li>
+                <li>어쿠스틱</li>
+                <li>클래식</li>
+                <li>베이스</li>
+                <li>우쿠렐레</li>
+              </ul>
+            </li>
+            <li>
+              <a class="sidebar__item" href="#">앰프</a>
+              <ul class="sidebar__item-detail">
+                <li>일렉기타</li>
+                <li>어쿠스틱</li>
+                <li>베이스</li>
+              </ul>
+            </li>
+            <li>
+              <a class="sidebar__item" href="#">이펙터</a>
+              <ul class="sidebar__item-detail">
+                <li>일렉기타</li>
+                <li>어쿠스틱</li>
+                <li>클래식</li>
+                <li>베이스</li>
+                <li>멀티</li>
+              </ul>
+            </li>
+            <li>
+              <a class="sidebar__item" href="#">주변용품</a>
+              <ul class="sidebar__item-detail">
+                <li>기타줄</li>
+                <li>피크</li>
+                <li>케이블</li>
+                <li>카포</li>
+              </ul>
+            </li>
+            <li>
+              <a class="sidebar__item" href="#">게시판</a>
+              <ul class="sidebar__item-detail">
+                <li><a href="go.board?type=1">공지</a></li>
+                <li><a href="go.board?type=2">자유</a></li>
+                <li><a href="go.board?type=3">개인레슨</a></li>
+                <li><a href="go.board?type=4">구인</a></li>
+              </ul>
+            </li>
+            <ul>
+              <li><a class="sidebar__item" href="#">문의하기</a></li>
+            </ul>
+            <ul>
+              <li><a class="sidebar__item" href="#">회사소개</a></li>
+            </ul>
+          </ul>
+        </div>
+        <!-- //SIDEBAR -->
+
+        <!-- MAIN NAVIGATION -->
         <nav class="nav-header">
-          <div>기타</div>
-          <div>앰프</div>
-          <div>이펙터</div>
-          <div>주변용품</div>
-          <div>게시판</div>
-          <div>문의하기</div>
-          <div>회사소개</div>
+          <div class="nav-item">
+            기타<em class="caret"></em>
+            <div class="nav-item-sub">
+              <ul>
+                <li>
+                  <a href="#">일렉기타</a>
+                </li>
+                <li>
+                  <a href="#">어쿠스틱</a>
+                </li>
+                <li>
+                  <a href="#">클래식</a>
+                </li>
+                <li>
+                  <a href="#">베이스</a>
+                </li>
+                <li>
+                  <a href="#">우쿠렐레</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="nav-item">
+            앰프<em class="caret"></em>
+            <div class="nav-item-sub">
+              <ul>
+                <li>
+                  <a href="#">일렉기타</a>
+                </li>
+                <li>
+                  <a href="#">어쿠스틱</a>
+                </li>
+                <li>
+                  <a href="#">베이스</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="nav-item">
+            이펙터<em class="caret"></em>
+            <div class="nav-item-sub">
+              <ul>
+                <li>
+                  <a href="#">일렉기타</a>
+                </li>
+                <li>
+                  <a href="#">어쿠스틱</a>
+                </li>
+                <li>
+                  <a href="#">클래식</a>
+                </li>
+                <li>
+                  <a href="#">베이스</a>
+                </li>
+                <li>
+                  <a href="#">멀티</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="nav-item">
+            주변용품<em class="caret"></em>
+            <div class="nav-item-sub">
+              <ul>
+                <li>
+                  <a href="#">기타줄</a>
+                </li>
+                <li>
+                  <a href="#">피크</a>
+                </li>
+                <li>
+                  <a href="#">케이블</a>
+                </li>
+                <li>
+                  <a href="#">카포</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="nav-item">
+            게시판<em class="caret"></em>
+            <div class="nav-item-sub">
+              <ul>
+                <li>
+                  <a href="go.board?type=1">공지</a>
+                </li>
+                <li>
+                  <a href="go.board?type=2">자유</a>
+                </li>
+                <li>
+                  <a href="go.board?type=3">개인레슨</a>
+                </li>
+                <li>
+                  <a href="go.board?type=4">구인</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="nav-item">문의하기</div>
+          <div class="nav-item">회사소개</div>
         </nav>
+        <!-- //MAIN NAVIGATION -->
+
+        <!-- CONTENTS -->
         <section class="row">
-          <jsp:include page="${contentPage }"></jsp:include>
+       		<jsp:include page="${contentPage }"></jsp:include>
         </section>
       </div>
+      <!-- //CONTENTS -->
+
+      <!-- FOOTER -->
       <footer class="footer">
         <div class="footer__go-top">↑TOP</div>
         <div class="footer__info">
@@ -73,7 +269,7 @@
             </tr>
             <tr>
               <td>대표</td>
-              <td>정재환</td>
+              <td>홍길동</td>
             </tr>
             <tr>
               <td>주소</td>
@@ -103,6 +299,7 @@
           </table>
         </div>
       </footer>
+      <!-- //FOOTER -->
     </div>
   </body>
 </html>
