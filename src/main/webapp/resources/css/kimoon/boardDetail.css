@@ -47,3 +47,9 @@
 .board-detail__text {
 	margin-top: 50px;	
 }
+
+.board-del-upd__wrapper {
+	display: flex;
+	justify-content: end;
+	margin-top: 20px;
+}

@@ -33,7 +33,7 @@
 		<form action="do.free.write">
 	</c:if>
 	<c:if test="${type eq 3}">
-		<form action="do.lesson.write">
+		<form action="do.lesson.write" onsubmit="validLessonFee()">
 	</c:if>
 	<c:if test="${type eq 4}">
 		<form action="do.job.write">
@@ -61,14 +61,15 @@
 			<div class="board-write__input-group">
 				<div class="board-write__input-title">주소</div>
 				<div class="board-write__input-div">
-					<input class="board-write__input--input" name="boardAdress">
+					<input class="board-write__input--input" name="boardAdress"
+					placeholder="100자 제한" maxlength="100">
 				</div>
 			</div>
 			<div class="board-write__input-group">
 				<div class="board-write__input-title">전화번호</div>
 				<div class="board-write__input-div">
 					<input class="board-write__input--input" name="boardPhone"
-						placeholder="예) 01012345678">
+						placeholder="예) 01012345678" maxlength="11">
 				</div>
 			</div>
 		</c:if>
@@ -77,7 +78,7 @@
 				<div class="board-write__input-title">수강료</div>
 				<div class="board-write__input-div">
 					<input class="board-write__input--input" name="boardLessonFee"
-						placeholder="원 단위로 쉼표없이 적어주세요. 예) 10만원->100000">
+						placeholder="원 단위로 쉼표없이 적어주세요. 예) 10만원->100000" maxlength="10">
 				</div>
 			</div>
 		</c:if>
@@ -99,7 +100,7 @@
 			<div class="board-write__input-group">
 				<div class="board-write__input-title">제목</div>
 				<div class="board-write__input-div">
-					<input class="board-write__input--input" name="boardTitle" placeholder="100자 제한">
+					<input class="board-write__input--input" name="boardTitle" placeholder="100자 제한" maxlength="100">
 					<c:if test="${type eq 1}">
 					<input type="hidden" name="n_id" value="ddd@naver.com">
 					</c:if>
@@ -120,14 +121,26 @@
 			</div>
 			<div style="display: flex; justify-content: space-between;">
 				<div>
-					<button class="board-write__go-back" onclick="history.back()">취소</button>
+					<button class="board-write__go-back" type="button" onclick="history.back()">취소</button>
 				</div>
 				<div>
-					<button class="board-write__do-write">등록</button>
+					<button class="board-write__do-write" name="type" value="${type}">등록</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	</form>
+	<script type="text/javascript">
+	function validLessonFee() {
+		var boardLessonFee = document.querySelector("input[name='boardLessonFee']");
+		var boardLessonFeeValue = boardLessonFee.value;
+		
+		if (isNaN(boardLessonFeeValue)) {
+            alert("수강료는 숫자로 입력해주세요.");
+            boardLessonFee.focus();
+            return false;
+        }
+	}
+	</script>
 </body>
 </html>

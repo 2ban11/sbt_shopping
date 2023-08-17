@@ -27,7 +27,7 @@
 	</div>
 	<div class="notice-wrapper">
 		<table class="notice-table">
-			<tr>
+			<tr class="board-table__category">
 				<th class="notice-no">번호</th>
 				<c:if test="${type eq 4}">
 					<th class="notice-job">타입</th>
@@ -40,43 +40,80 @@
 			<c:forEach var="p" items="${posts}">
 				<c:if test="${type eq 1}">
 					<tr>
-						<td style="text-align: center">${p.rn}</td>
-						<td><a href="go.notice.detail?n_no=${p.n_no }&type=${type}">${p.n_title }</a></td>
-						<td>${p.a_nickname }</td>
-						<td style="text-align: center"><fmt:formatDate
+						<td class="board-list__rn" style="text-align: center">${p.rn}</td>
+						<td><a class="board-list__title"
+							href="go.notice.detail?n_no=${p.n_no }&type=${type}">
+								${p.n_title }</a>
+							<div class="board-list__mobile">
+								<div>${p.a_nickname }</div>
+								<div>
+									<fmt:formatDate value="${p.n_date}" pattern="yyyy-MM-dd" />
+								</div>
+								<div>${p.n_view }</div>
+							</div></td>
+						<td class="board-list__nickname">${p.a_nickname }</td>
+						<td class="board-list__date" style="text-align: center"><fmt:formatDate
 								value="${p.n_date}" pattern="yyyy-MM-dd" /></td>
-						<td style="text-align: center">${p.n_view }</td>
+						<td class="board-list__view" style="text-align: center">${p.n_view }</td>
 					</tr>
 				</c:if>
 				<c:if test="${type eq 2}">
 					<tr>
-						<td style="text-align: center">${p.rn}</td>
-						<td><a href="go.free.detail?f_no=${p.f_no }&type=${type}">${p.f_title }</a></td>
-						<td>${p.a_nickname }</td>
-						<td style="text-align: center"><fmt:formatDate
+						<td class="board-list__rn" style="text-align: center">${p.rn}</td>
+						<td><a class="board-list__title"
+							href="go.free.detail?f_no=${p.f_no }&type=${type}">${p.f_title }</a>
+							<div class="board-list__mobile">
+								<div>${p.a_nickname }</div>
+								<div>
+									<fmt:formatDate value="${p.f_date}" pattern="yyyy-MM-dd" />
+								</div>
+								<div>${p.f_view }</div>
+							</div>
+							</td>
+						<td class="board-list__nickname">${p.a_nickname }</td>
+						<td class="board-list__date" style="text-align: center"><fmt:formatDate
 								value="${p.f_date}" pattern="yyyy-MM-dd" /></td>
-						<td style="text-align: center">${p.f_view }</td>
+						<td class="board-list__view" style="text-align: center">${p.f_view }</td>
 					</tr>
 				</c:if>
 				<c:if test="${type eq 3}">
 					<tr>
-						<td style="text-align: center">${p.rn}</td>
-						<td><a href="go.lesson.detail?l_no=${p.l_no }&type=${type}">${p.l_title }</a></td>
-						<td>${p.a_nickname }</td>
-						<td style="text-align: center"><fmt:formatDate
+						<td class="board-list__rn" style="text-align: center">${p.rn}</td>
+						<td><a class="board-list__title" href="go.lesson.detail?l_no=${p.l_no }&type=${type}"
+							>${p.l_title }</a>
+							<div class="board-list__mobile">
+								<div>${p.a_nickname }</div>
+								<div>
+									<fmt:formatDate value="${p.l_date}" pattern="yyyy-MM-dd" />
+								</div>
+								<div>${p.l_view }</div>
+							</div>
+							</td>
+						<td class="board-list__nickname">${p.a_nickname }</td>
+						<td class="board-list__date" style="text-align: center"><fmt:formatDate
 								value="${p.l_date}" pattern="yyyy-MM-dd" /></td>
-						<td style="text-align: center">${p.l_view }</td>
+						<td class="board-list__view" style="text-align: center">${p.l_view }</td>
 					</tr>
 				</c:if>
 				<c:if test="${type eq 4}">
 					<tr>
-						<td style="text-align: center">${p.rn}</td>
-						<td style="text-align: center">${p.j_category}</td>
-						<td><a href="go.job.detail?j_no=${p.j_no }&type=${type}">${p.j_title }</a></td>
-						<td>${p.a_nickname }</td>
-						<td style="text-align: center"><fmt:formatDate
+						<td class="board-list__rn" style="text-align: center">${p.rn}</td>
+						<td class="board-list__job-category" style="text-align: center">${p.j_category}</td>
+						<td><a href="go.job.detail?j_no=${p.j_no }&type=${type}"
+							class="board-list__title">${p.j_title }</a>
+							<div class="board-list__mobile">
+								<div>${p.a_nickname }</div>
+								<div>${p.j_category }</div>
+								<div>
+									<fmt:formatDate value="${p.j_date}" pattern="yyyy-MM-dd" />
+								</div>
+								<div>${p.j_view }</div>
+							</div>
+							</td>
+						<td class="board-list__nickname">${p.a_nickname }</td>
+						<td class="board-list__date" style="text-align: center"><fmt:formatDate
 								value="${p.j_date}" pattern="yyyy-MM-dd" /></td>
-						<td style="text-align: center">${p.j_view }</td>
+						<td class="board-list__view" style="text-align: center">${p.j_view }</td>
 					</tr>
 				</c:if>
 			</c:forEach>
@@ -114,16 +151,20 @@
 	<div>
 		<form action="go.board.write" class="board-write">
 			<c:if test="${type eq 1}">
-				<button class="board-write--btn" name="type" value="1">공지 글쓰기</button>
+				<button class="board-write--btn" name="type" value="1">공지
+					글쓰기</button>
 			</c:if>
 			<c:if test="${type eq 2}">
-				<button class="board-write--btn" name="type" value="2">자유 글쓰기</button>
+				<button class="board-write--btn" name="type" value="2">자유
+					글쓰기</button>
 			</c:if>
 			<c:if test="${type eq 3}">
-				<button class="board-write--btn" name="type" value="3">레슨 글쓰기</button>
+				<button class="board-write--btn" name="type" value="3">레슨
+					글쓰기</button>
 			</c:if>
 			<c:if test="${type eq 4}">
-				<button class="board-write--btn" name="type" value="4">구인 글쓰기</button>
+				<button class="board-write--btn" name="type" value="4">구인
+					글쓰기</button>
 			</c:if>
 		</form>
 	</div>

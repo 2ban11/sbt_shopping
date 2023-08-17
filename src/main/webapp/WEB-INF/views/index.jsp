@@ -130,10 +130,10 @@
             <li>
               <a class="sidebar__item" href="#">게시판</a>
               <ul class="sidebar__item-detail">
-                <li><a href="go.notice">공지</a></li>
-                <li>자유</li>
-                <li>개인레슨</li>
-                <li>구인</li>
+                <li><a href="go.board?type=1">공지</a></li>
+                <li><a href="go.board?type=2">자유</a></li>
+                <li><a href="go.board?type=3">개인레슨</a></li>
+                <li><a href="go.board?type=4">구인</a></li>
               </ul>
             </li>
             <ul>

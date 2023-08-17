@@ -56,7 +56,6 @@ public class BoardDAO {
 				break;
 			case 2:
 				postCount = allPostCount2;
-				System.out.println("type2 = " + postCount);
 				posts = ss.getMapper(BoardMapper.class).getFree(search);
 				break;
 			case 3:
@@ -120,7 +119,6 @@ public class BoardDAO {
 		String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
 												// jpg
 		File targetFile = new File(fileRoot + savedFileName);
-		System.out.println(targetFile);
 		
 		try {							// UUID.jpg
 			//InputStream fileStream = multipartFile.getInputStream();
@@ -144,6 +142,7 @@ public class BoardDAO {
 		bDTO.setN_txt(editorarea);
 		System.out.println(bDTO);
 		if(ss.getMapper(BoardMapper.class).summernoteNoticeInsert(bDTO)==1) {
+			allPostCount1++; // 글 하나 추가해서 전체 게시글 갯수 +1 증가
 			System.out.println("등록 성공");
 		}
 		
@@ -155,6 +154,7 @@ public class BoardDAO {
 		bDTO.setF_txt(editorarea);
 		System.out.println(bDTO);
 		if(ss.getMapper(BoardMapper.class).summernoteFreeInsert(bDTO)==1) {
+			allPostCount2++;
 			System.out.println("등록 성공");
 		}
 	}
@@ -166,8 +166,8 @@ public class BoardDAO {
 		bDTO.setL_addr(boardAdress);
 		bDTO.setL_phone(boardPhone);
 		bDTO.setL_pay(boardLessonFee);
-		System.out.println(bDTO);
 		if(ss.getMapper(BoardMapper.class).summernoteLessonInsert(bDTO)==1) {
+			allPostCount3++;
 			System.out.println("등록 성공");
 		}
 	}
@@ -179,8 +179,8 @@ public class BoardDAO {
 		bDTO.setJ_addr(boardAdress);
 		bDTO.setJ_phone(boardPhone);
 		bDTO.setJ_category(boardJob);
-		System.out.println(bDTO);
 		if(ss.getMapper(BoardMapper.class).summernoteJobInsert(bDTO)==1) {
+			allPostCount4++;
 			System.out.println("등록 성공");
 		}
 	}
@@ -190,6 +190,7 @@ public class BoardDAO {
 		int type = Integer.parseInt(req.getParameter("type"));
 		req.setAttribute("type", type);
 		req.setAttribute("board", ss.getMapper(BoardMapper.class).getNoticeDetail(bDTO));
+		ss.getMapper(BoardMapper.class).addNoticeView(bDTO);
 	}
 
 	public void getFreeDetail(HttpServletRequest req, BoardDTO bDTO) {
@@ -197,6 +198,7 @@ public class BoardDAO {
 		int type = Integer.parseInt(req.getParameter("type"));
 		req.setAttribute("type", type);
 		req.setAttribute("board", ss.getMapper(BoardMapper.class).getFreeDetail(bDTO));
+		ss.getMapper(BoardMapper.class).addFreeView(bDTO);
 	}
 
 	public void getLessonDetail(HttpServletRequest req, BoardDTO bDTO) {
@@ -204,6 +206,7 @@ public class BoardDAO {
 		int type = Integer.parseInt(req.getParameter("type"));
 		req.setAttribute("type", type);
 		req.setAttribute("board", ss.getMapper(BoardMapper.class).getLessonDetail(bDTO));
+		ss.getMapper(BoardMapper.class).addLessonView(bDTO);
 	}
 
 	public void getJobDetail(HttpServletRequest req, BoardDTO bDTO) {
@@ -211,7 +214,12 @@ public class BoardDAO {
 		int type = Integer.parseInt(req.getParameter("type"));
 		req.setAttribute("type", type);
 		req.setAttribute("board", ss.getMapper(BoardMapper.class).getJobDetail(bDTO));
+		ss.getMapper(BoardMapper.class).addJobView(bDTO);
 		
+	}
+
+	public void deleteNotice(BoardDTO bDTO) {
+		ss.getMapper(BoardMapper.class).deleteNotice(bDTO);
 	}
 
 }

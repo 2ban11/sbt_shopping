@@ -21,7 +21,7 @@
 				작성일
 				<fmt:formatDate value="${board.l_date }" pattern="yyyy-MM-dd HH:mm" />
 			</div>
-			<div>작성자 ${board.l_id }</div>
+			<div>작성자 ${board.a_nickname }(${board.l_id })</div>
 		</div>
 
 		<div class="board-detail__header-extra">

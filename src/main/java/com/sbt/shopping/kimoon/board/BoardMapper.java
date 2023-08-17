@@ -24,4 +24,10 @@ public interface BoardMapper {
 	BoardDTO getFreeDetail(BoardDTO bDTO);
 	BoardDTO getLessonDetail(BoardDTO bDTO);
 	BoardDTO getJobDetail(BoardDTO bDTO);
+	
+	int addNoticeView(BoardDTO bDTO);
+	int addFreeView(BoardDTO bDTO);
+	int addLessonView(BoardDTO bDTO);
+	int addJobView(BoardDTO bDTO);
+	int deleteNotice(BoardDTO bDTO);
 }

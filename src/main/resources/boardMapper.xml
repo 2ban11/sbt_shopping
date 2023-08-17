@@ -152,4 +152,28 @@
 		WHERE job.j_no = #{j_no}
 	</select>
 		
+		
+	<!-- 게시글 제목 클릭시 조회수 +1 증가 -->
+	<update id="addNoticeView">
+		UPDATE notice SET n_view = n_view + 1 WHERE n_no = #{n_no}
+	</update>
+	
+	<update id="addFreeView">
+		UPDATE free SET f_view = f_view + 1 WHERE f_no = #{f_no}
+	</update>
+	
+	<update id="addLessonView">
+		UPDATE lesson SET l_view = l_view + 1 WHERE l_no = #{l_no}
+	</update>
+	
+	<update id="addJobView">
+		UPDATE job SET j_view = j_view + 1 WHERE j_no = #{j_no}
+	</update>
+		
+	
+	<!-- 게시글 삭제 -->	
+	<delete id="deleteNotice">
+		DELETE notice WHERE n_no = #{n_no}
+	</delete>
+		
 </mapper>
