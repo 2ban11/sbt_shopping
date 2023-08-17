@@ -36,7 +36,11 @@
 			}
 			})*/
 			
+<<<<<<< HEAD
            window.location.href = 'http://localhost/shopping/loginSuccess.go?type=kakao';
+=======
+           // window.location.href = 'http://localhost/shopping/loginSuccess.go?type=kakao';
+>>>>>>> 12fecef (8/17 myeonggyu 커밋)
             },
             fail: function (error) {
               // 실패 처리
