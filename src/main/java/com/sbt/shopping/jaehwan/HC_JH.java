@@ -16,39 +16,75 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HC_JH {
 
     @Autowired
-    private ProductDAO productDAO;
+    private ProductDAO pDAO;
 
-    @RequestMapping(value = "/elecPage", method = RequestMethod.GET)
-    public String elecPage(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    @RequestMapping(value = "/guitarPage", method = RequestMethod.GET)
+    public String guitar(HttpServletRequest req, Model model, ProductDTO pDTO) {
     	
     	pDTO.setP_big_category(req.getParameter("BC"));
-    	System.out.println(req.getParameter("BC"));
     	pDTO.setP_middle_category(req.getParameter("MC"));
-    	
-    	productDAO.getAllProduct(req, model, pDTO);
-    	req.setAttribute("contentPage", "jaehwan/elecPage.jsp");
+    	pDAO.getAllProduct(req, model, pDTO);
+    	req.setAttribute("contentPage", "jaehwan/guitarPage.jsp");
         return "index";
     }
-    @RequestMapping(value = "/ampForElec", method = RequestMethod.GET)
-    public String ampForElec(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    @RequestMapping(value = "/ampPage", method = RequestMethod.GET)
+    public String amp(HttpServletRequest req, Model model, ProductDTO pDTO) {
     	pDTO.setP_big_category(req.getParameter("BC"));
     	pDTO.setP_middle_category(req.getParameter("MC"));
-    	
-    	productDAO.getAllProduct(req, model, pDTO);
-    	req.setAttribute("contentPage", "jaehwan/ampForElec.jsp");
+    	pDAO.getAllProduct(req, model, pDTO);
+    	req.setAttribute("contentPage", "jaehwan/ampPage.jsp");
+    	return "index";
+    }
+    @RequestMapping(value = "/effectorPage", method = RequestMethod.GET)
+    public String effector(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    	pDTO.setP_big_category(req.getParameter("BC"));
+    	pDTO.setP_middle_category(req.getParameter("MC"));
+    	pDAO.getAllProduct(req, model, pDTO);
+    	req.setAttribute("contentPage", "jaehwan/effectorPage.jsp");
+    	return "index";
+    }
+    @RequestMapping(value = "/accessoryPage", method = RequestMethod.GET)
+    public String accessory(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    	pDTO.setP_big_category(req.getParameter("BC"));
+    	pDTO.setP_middle_category(req.getParameter("MC"));
+    	pDAO.getAllProduct(req, model, pDTO);
+    	req.setAttribute("contentPage", "jaehwan/accessoryPage.jsp");
+    	return "index";
+    }
+    @ResponseBody
+    @RequestMapping(value = "/searchDetail", method = RequestMethod.POST)
+    public List<ProductDTO> searchDetail(ProductDTO pDTO) {
+    	return pDAO.getSearchProduct(pDTO);
+    }
+    
+    
+    // 관리자페이지 
+    @RequestMapping(value = "/adminPage", method = RequestMethod.POST)
+    public String admin(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    	pDAO.getAdminProduct(req, model, pDTO);
+    	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
+    	return "index";
+    }
+    @RequestMapping(value = "/deleteProduct", method = RequestMethod.GET)
+    public String deleteProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    	pDAO.deleteProduct(req, model, pDTO);
+    	pDAO.getAdminProduct(req, model, pDTO);
+    	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
+    	return "index";
+    }
+    @RequestMapping(value = "/regProduct", method = RequestMethod.POST)
+    public String regProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    	pDAO.regProduct(req,model,pDTO);
+    	pDAO.getAdminProduct(req, model, pDTO);
+    	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
+    	return "index";
+    }
+    @RequestMapping(value = "/updateProduct", method = RequestMethod.POST)
+    public String updateProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    	pDAO.updateProduct(req,model,pDTO);
+    	pDAO.getAdminProduct(req, model, pDTO);
+    	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
     	return "index";
     }
 
-    @ResponseBody
-    @RequestMapping(
-    	value = "/searchDetail",
-    	method = RequestMethod.POST
-    )
-    public List<ProductDTO> searchDetail(ProductDTO pDTO) {
-    	System.out.println(pDTO.getP_maker());
-    	System.out.println(pDTO.getP_small_category());
-    	System.out.println(pDTO.getP_color());
-    	System.out.println(pDTO.getSortOrder());
-    	return productDAO.getSearchProduct(pDTO);
-    }
 }

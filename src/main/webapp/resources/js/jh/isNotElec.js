@@ -1,11 +1,10 @@
 $(document).ready(function(){
-	isNotElec();
+	 $(".jh li a").click(function(e){
+		isNotElec();
+	});
 });
 
 function isNotElec() {
-    
-        // 현재 URL 가져오기
-
         // URL에 포함된 매개변수 값 가져오기
         const urlParams = new URLSearchParams(window.location.search);
         const middleCategory = urlParams.get("MC");

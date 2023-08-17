@@ -1,6 +1,9 @@
 package com.sbt.shopping.jaehwan;
 
+import java.util.Arrays;
 import java.util.Date;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class ProductDTO {
 
@@ -19,10 +22,19 @@ public class ProductDTO {
 	private int p_cnt;
 	private Date p_date;
 	
+	private MultipartFile img; 
 	private String[] colors;
 	private String sortOrder;
 public ProductDTO() {
 	// TODO Auto-generated constructor stub
+}
+@Override
+public String toString() {
+	return "ProductDTO [p_no=" + p_no + ", p_big_category=" + p_big_category + ", p_middle_category="
+			+ p_middle_category + ", p_small_category=" + p_small_category + ", p_maker=" + p_maker + ", p_name="
+			+ p_name + ", p_img1=" + p_img1 + ", p_img2=" + p_img2 + ", p_content=" + p_content + ", p_color=" + p_color
+			+ ", p_price=" + p_price + ", p_sale=" + p_sale + ", p_cnt=" + p_cnt + ", p_date=" + p_date + ", img=" + img
+			+ ", colors=" + Arrays.toString(colors) + ", sortOrder=" + sortOrder + "]";
 }
 public int getP_no() {
 	return p_no;
@@ -108,6 +120,12 @@ public Date getP_date() {
 public void setP_date(Date p_date) {
 	this.p_date = p_date;
 }
+public MultipartFile getImg() {
+	return img;
+}
+public void setImg(MultipartFile img) {
+	this.img = img;
+}
 public String[] getColors() {
 	return colors;
 }
@@ -122,7 +140,7 @@ public void setSortOrder(String sortOrder) {
 }
 public ProductDTO(int p_no, String p_big_category, String p_middle_category, String p_small_category, String p_maker,
 		String p_name, String p_img1, String p_img2, String p_content, String p_color, int p_price, int p_sale,
-		int p_cnt, Date p_date, String[] colors, String sortOrder) {
+		int p_cnt, Date p_date, MultipartFile img, String[] colors, String sortOrder) {
 	super();
 	this.p_no = p_no;
 	this.p_big_category = p_big_category;
@@ -138,6 +156,8 @@ public ProductDTO(int p_no, String p_big_category, String p_middle_category, Str
 	this.p_sale = p_sale;
 	this.p_cnt = p_cnt;
 	this.p_date = p_date;
+	
+	this.img = img;
 	this.colors = colors;
 	this.sortOrder = sortOrder;
 }

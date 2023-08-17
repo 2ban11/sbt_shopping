@@ -16,7 +16,7 @@
   <div class="listPage_contents" id="listPage_contents">
     <div class="detail_Search_Window">
       <form id="searchDetail" action="searchDetail" method="post" style="justify-content:end;">
-        <select class="companyBy" id="companySelect" name="p_maker"  style="margin-top:10px">
+        <select class="companyBy" id="companySelect" name="p_maker"  style="margin:20px;">
           <option value="">회사 선택</option>
           <option value="Orange">Orange</option>
           <option value="Marshall">Marshall</option>
@@ -31,7 +31,7 @@
           <option  value="Hollow">Hollow</option>
           <option  value="Superstrat">Superstrat</option>
         </select>
-        <select class="sortOrder" id="sortSelect" name="p_price" style="margin-right:10px;">
+        <select class="sortOrder" id="sortSelect" name="p_price" style="margin:20px;">
           <option  value="">최신순</option>
           <option  value="sort1">높은 가격순</option>
           <option  value="sort2">낮은 가격순</option>

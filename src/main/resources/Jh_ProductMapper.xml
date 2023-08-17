@@ -9,8 +9,17 @@
      	and p_middle_category = #{p_middle_category}
         order by p_no desc
     </select>
-
-<select id="getSearchProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
+    
+    <select id="getAdminProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
+        SELECT * FROM Product
+        order by p_no desc
+    </select>
+    
+    <delete id="deleteProduct">
+    	delete product where p_no = #{p_no}
+    </delete>
+    
+	<select id="getSearchProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
     SELECT * FROM Product
     WHERE (
         p_maker like '%'||#{p_maker}||'%'
@@ -31,5 +40,9 @@
     </if>
 </select>
 
+
+<insert id="regProduct">
+	insert into product values(product_seq.nextval,#{p_big_category},#{p_middle_category},#{p_small_category},#{p_maker},#{p_name},#{p_img1},'',#{p_content},#{p_color},#{p_price},#{p_sale},#{p_cnt},sysdate)
+</insert>
 
 </mapper>

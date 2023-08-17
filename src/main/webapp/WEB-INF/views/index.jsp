@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="resources/css/reset.css" />
     <link rel="stylesheet" href="resources/css/jh/listPage.css" />
     <link rel="stylesheet" href="resources/css/jh/chkColors.css" />
+    <link rel="stylesheet" href="resources/css/jh/regProduct.css" />
     <link rel="stylesheet" href="resources/css/kimoon/MainPage.css" />
     <script
       src="https://kit.fontawesome.com/f0a74bdf41.js"
@@ -24,6 +25,7 @@
     <script type="text/javascript" src="resources/js/headerFooter.js"></script>
     <script type="text/javascript" src="resources/js/kimoon/mainPage.js"></script>
     <script type="text/javascript" src="resources/js/jh/isNotElec.js"></script>
+    <script type="text/javascript" src="resources/js/jh/popup.js"></script>
   </head>
   <body>
     <div class="site-container">
@@ -68,6 +70,11 @@
               </div>
               <div>
                 <button class="header__signup">회원가입</button>
+              </div>
+              <div>
+              <form action="adminPage" method="POST">
+                <button class="header__signup" type="submit">관리자</button>
+                </form>
               </div>
               <div>
                 <button class="header__cart">
@@ -152,82 +159,82 @@
         <nav class="nav-header">
           <div class="nav-item">
             기타<em class="caret"></em>
-            <div class="nav-item-sub">
+            <div class="nav-item-sub jh">
               <ul>
                 <li>
-                  <a href="elecPage?BC=Guitar&MC=Elec">일렉기타</a>
+                  <a href="guitarPage?BC=Guitar&MC=Elec">일렉기타</a>
                 </li>
                 <li>
-                  <a href="elecPage?BC=Guitar&MC=Acoustic">어쿠스틱</a>
+                  <a href="guitarPage?BC=Guitar&MC=Acoustic">어쿠스틱</a>
                 </li>
                 <li>
-                  <a href="#">클래식</a>
+                  <a href="guitarPage?BC=Guitar&MC=Classic">클래식</a>
                 </li>
                 <li>
-                  <a href="#">베이스</a>
+                  <a href="guitarPage?BC=Guitar&MC=Bass">베이스</a>
                 </li>
                 <li>
-                  <a href="#">우쿠렐레</a>
+                  <a href="guitarPage?BC=Guitar&MC=Ukulele">우쿠렐레</a>
                 </li>
               </ul>
             </div>
           </div>
           <div class="nav-item">
             앰프<em class="caret"></em>
-            <div class="nav-item-sub">
+            <div class="nav-item-sub jh">
               <ul>
                 <li>
-                  <a href="ampForElec?BC=Amp&MC=Elec">일렉기타</a>
+                  <a href="ampPage?BC=Amp&MC=Elec">일렉기타</a>
                 </li>
                 <li>
-                  <a href="#">어쿠스틱</a>
+                  <a href="ampPage?BC=Amp&MC=Acoustic">어쿠스틱</a>
                 </li>
                 <li>
-                  <a href="#">베이스</a>
+                  <a href="ampPage?BC=Amp&MC=Bass">베이스</a>
                 </li>
               </ul>
             </div>
           </div>
           <div class="nav-item">
             이펙터<em class="caret"></em>
-            <div class="nav-item-sub">
+            <div class="nav-item-sub jh">
               <ul>
                 <li>
-                  <a>일렉기타</a>
+                  <a href="effectorPage?BC=Effector&MC=Elec">일렉기타</a>
                 </li>
                 <li>
-                  <a href="#">어쿠스틱</a>
+                  <a href="effectorPage?BC=Effector&MC=Acoustic">어쿠스틱</a>
                 </li>
                 <li>
-                  <a href="#">클래식</a>
+                  <a href="effectorPage?BC=Effector&MC=Classic">클래식</a>
                 </li>
                 <li>
-                  <a href="#">베이스</a>
+                  <a href="effectorPage?BC=Effector&MC=Bass">베이스</a>
                 </li>
                 <li>
-                  <a href="#">멀티</a>
+                  <a href="effectorPage?BC=Effector&MC=Multi">멀티</a>
                 </li>
               </ul>
             </div>
           </div>
           <div class="nav-item">
             주변용품<em class="caret"></em>
-            <div class="nav-item-sub">
+            <div class="nav-item-sub jh">
               <ul>
                 <li>
-                  <a href="#">기타줄</a>
+                  <a href="accessoryPage?BC=Accessory&MC=String">기타줄</a>
                 </li>
                 <li>
-                  <a href="#">피크</a>
+                  <a href="accessoryPage?BC=Accessory&MC=Pick">피크</a>
                 </li>
                 <li>
-                  <a href="#">케이블</a>
+                  <a href="accessoryPage?BC=Accessory&MC=Cable">케이블</a>
                 </li>
                 <li>
-                  <a href="#">카포</a>
+                  <a href="accessoryPage?BC=Accessory&MC=Capo">카포</a>
                 </li>
                 <li>
-                  <a href="#">우쿠렐레</a>
+                  <a href="accessoryPage?BC=Accessory&MC=Ukulele">우쿠렐레</a>
                 </li>
               </ul>
             </div>
