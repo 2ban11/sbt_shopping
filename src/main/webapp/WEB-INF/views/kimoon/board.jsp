@@ -41,7 +41,7 @@
 				<c:if test="${type eq 1}">
 					<tr>
 						<td style="text-align: center">${p.rn}</td>
-						<td><a href="go.notice.detail?n_no=${p.n_no }">${p.n_title }</a></td>
+						<td><a href="go.notice.detail?n_no=${p.n_no }&type=${type}">${p.n_title }</a></td>
 						<td>${p.a_nickname }</td>
 						<td style="text-align: center"><fmt:formatDate
 								value="${p.n_date}" pattern="yyyy-MM-dd" /></td>
@@ -51,7 +51,7 @@
 				<c:if test="${type eq 2}">
 					<tr>
 						<td style="text-align: center">${p.rn}</td>
-						<td><a href="go.free.detail?f_no=${p.f_no }">${p.f_title }</a></td>
+						<td><a href="go.free.detail?f_no=${p.f_no }&type=${type}">${p.f_title }</a></td>
 						<td>${p.a_nickname }</td>
 						<td style="text-align: center"><fmt:formatDate
 								value="${p.f_date}" pattern="yyyy-MM-dd" /></td>
@@ -61,7 +61,7 @@
 				<c:if test="${type eq 3}">
 					<tr>
 						<td style="text-align: center">${p.rn}</td>
-						<td><a href="go.lesson.detail?l_no=${p.l_no }">${p.l_title }</a></td>
+						<td><a href="go.lesson.detail?l_no=${p.l_no }&type=${type}">${p.l_title }</a></td>
 						<td>${p.a_nickname }</td>
 						<td style="text-align: center"><fmt:formatDate
 								value="${p.l_date}" pattern="yyyy-MM-dd" /></td>
@@ -72,7 +72,7 @@
 					<tr>
 						<td style="text-align: center">${p.rn}</td>
 						<td style="text-align: center">${p.j_category}</td>
-						<td><a href="go.job.detail?j_no=${p.j_no }">${p.j_title }</a></td>
+						<td><a href="go.job.detail?j_no=${p.j_no }&type=${type}">${p.j_title }</a></td>
 						<td>${p.a_nickname }</td>
 						<td style="text-align: center"><fmt:formatDate
 								value="${p.j_date}" pattern="yyyy-MM-dd" /></td>

@@ -94,25 +94,25 @@ public class BoardController {
 	@RequestMapping(value = "/go.notice.detail", method = RequestMethod.GET)
 	public String goNoticeDetail(HttpServletRequest req, BoardDTO bDTO) {
 		bDAO.getNoticeDetail(req, bDTO);
-		req.setAttribute("contentPage", "kimoon/boardDetail.jsp");
+		req.setAttribute("contentPage", "kimoon/noticeDetail.jsp");
 		return "index";
 	}
 	@RequestMapping(value = "/go.free.detail", method = RequestMethod.GET)
 	public String goFreeDetail(HttpServletRequest req, BoardDTO bDTO) {
 		bDAO.getFreeDetail(req, bDTO);
-		req.setAttribute("contentPage", "kimoon/boardDetail.jsp");
+		req.setAttribute("contentPage", "kimoon/freeDetail.jsp");
 		return "index";
 	}
 	@RequestMapping(value = "/go.lesson.detail", method = RequestMethod.GET)
 	public String goLessonDetail(HttpServletRequest req, BoardDTO bDTO) {
 		bDAO.getLessonDetail(req, bDTO);
-		req.setAttribute("contentPage", "kimoon/boardDetail.jsp");
+		req.setAttribute("contentPage", "kimoon/lessonDetail.jsp");
 		return "index";
 	}
 	@RequestMapping(value = "/go.job.detail", method = RequestMethod.GET)
 	public String goJobDetail(HttpServletRequest req, BoardDTO bDTO) {
 		bDAO.getJobDetail(req, bDTO);
-		req.setAttribute("contentPage", "kimoon/boardDetail.jsp");
+		req.setAttribute("contentPage", "kimoon/jobDetail.jsp");
 		return "index";
 	}
 	

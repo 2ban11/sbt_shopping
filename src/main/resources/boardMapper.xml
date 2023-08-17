@@ -124,21 +124,32 @@
 		
 	<!-- 게시판 글 상세 -->
 	<select id="getNoticeDetail" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
-		select * from notice where n_no=#{n_no}
+		<!-- select * from notice where n_no=#{n_no} -->
+		SELECT notice.*, account.a_nickname
+		FROM notice
+		JOIN account ON notice.n_id = account.a_id
+		WHERE notice.n_no = #{n_no}
 	</select>
 	
 	<select id="getFreeDetail" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
-		select * from free where f_no=#{f_no}
+		SELECT free.*, account.a_nickname
+		FROM free
+		JOIN account ON free.f_id = account.a_id
+		WHERE free.f_no = #{f_no}
 	</select>
 	
 	<select id="getLessonDetail" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
-		select * from lesson where l_no=#{l_no}
-	
+		SELECT lesson.*, account.a_nickname
+		FROM lesson
+		JOIN account ON lesson.l_id = account.a_id
+		WHERE lesson.l_no = #{l_no}
 	</select>
 	
 	<select id="getJobDetail" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
-		select * from job where j_no=#{j_no}
-	
+		SELECT job.*, account.a_nickname
+		FROM job
+		JOIN account ON job.j_id = account.a_id
+		WHERE job.j_no = #{j_no}
 	</select>
 		
 </mapper>

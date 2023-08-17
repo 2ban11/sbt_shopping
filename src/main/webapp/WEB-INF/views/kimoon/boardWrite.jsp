@@ -99,7 +99,7 @@
 			<div class="board-write__input-group">
 				<div class="board-write__input-title">제목</div>
 				<div class="board-write__input-div">
-					<input class="board-write__input--input" name="boardTitle">
+					<input class="board-write__input--input" name="boardTitle" placeholder="100자 제한">
 					<c:if test="${type eq 1}">
 					<input type="hidden" name="n_id" value="ddd@naver.com">
 					</c:if>
