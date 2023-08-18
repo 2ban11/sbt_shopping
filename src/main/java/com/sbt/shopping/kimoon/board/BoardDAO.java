@@ -257,6 +257,14 @@ public class BoardDAO {
 	public void writeNoticeReply(HttpServletRequest req, BoardReplyDTO brDTO) {
 		ss.getMapper(BoardMapper.class).writeNoticeReply(brDTO);
 	}
+
+	
+	
+	
+	// 댓글 가져오기
+	public void getNoticeReply(HttpServletRequest req, BoardReplyDTO brDTO) {
+		req.setAttribute("reply", ss.getMapper(BoardMapper.class).getNoticeReply(brDTO));
+	}
 	
 	
 	

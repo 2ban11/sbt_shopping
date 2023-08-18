@@ -98,8 +98,9 @@ public class BoardController {
 	
 	// 게시글 상세보기
 	@RequestMapping(value = "/go.notice.detail", method = RequestMethod.GET)
-	public String goNoticeDetail(HttpServletRequest req, BoardDTO bDTO) {
+	public String goNoticeDetail(HttpServletRequest req, BoardDTO bDTO, BoardReplyDTO brDTO) {
 		bDAO.getNoticeDetail(req, bDTO);
+		bDAO.getNoticeReply(req, brDTO);
 		req.setAttribute("contentPage", "kimoon/noticeDetail.jsp");
 		return "index";
 	}
@@ -245,12 +246,12 @@ public class BoardController {
 	
 	// 댓글 등록하기
 	@RequestMapping(value = "/notice.reply.write", method = RequestMethod.GET)
-	public String noticeReplyWrite(HttpServletRequest req, BoardReplyDTO brDTO) {
+	public String noticeReplyWrite(HttpServletRequest req, BoardDTO bDTO, BoardReplyDTO brDTO, @RequestParam int nr_notice) {
 		bDAO.writeNoticeReply(req, brDTO);
+		bDAO.getNoticeDetail(req, bDTO);
+		
 		req.setAttribute("contentPage", "kimoon/noticeDetail.jsp");
-		return "index";
+		return "redirect:go.notice.detail?n_no=" + nr_notice + "&type=1";
 	}
 	
-	
-	// 댓글 가져오기
 }

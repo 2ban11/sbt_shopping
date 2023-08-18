@@ -181,8 +181,35 @@
 		insert into notice_reply
         values(notice_reply_seq.nextval,
         #{nr_notice}, #{nr_text},
-        #{r_id},
+        #{nr_id},
         sysdate)
 	</insert>
+	<insert id="writeFreeReply">
+		insert into free_reply
+        values(free_reply_seq.nextval,
+        #{fr_free}, #{fr_text},
+        #{fr_id},
+        sysdate)
+	</insert>
+	<insert id="writeLessonReply">
+		insert into lesson_reply
+        values(lesson_reply_seq.nextval,
+        #{lr_lesson}, #{lr_text},
+        #{lr_id},
+        sysdate)
+	</insert>
+	<insert id="writeJobReply">
+		insert into job_reply
+        values(job_reply_seq.nextval,
+        #{jr_notice}, #{jr_text},
+        #{jr_id},
+        sysdate)
+	</insert>
+	
+	<!-- 댓글 가져오기 -->
+	<select id="getNoticeReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
+		select * from notice_reply
+        where nr_notice = #{n_no}
+	</select>
 		
 </mapper>

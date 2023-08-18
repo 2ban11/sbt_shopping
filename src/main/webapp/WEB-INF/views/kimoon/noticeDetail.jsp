@@ -46,34 +46,28 @@
 	<div class="board-reply__wrapper">
 		<div class="board-reply__header">댓글 (??건)</div>
 		
+		<c:forEach var="reply" items="${reply }">
 		<div class="board-reply__content">
 			<div class="board-reply__nick-date-wrapper">
-				<div class="board-reply__nick">as</div>
-				<div class="board-reply__date">2023-8-18 12:33</div>
+				<div class="board-reply__nick">${reply.nr_id}</div>
+				<div class="board-reply__date">${reply.nr_date}</div>
 			</div>
 			<div class="board-reply__txt-delete-wrapper">
-				<div class="board-reply__txt">글 내용</div>
+				<div class="board-reply__txt">${reply.nr_text}</div>
 				<div class="board-reply__delete">
 				<button>삭제</button>
 				</div>
 			</div>
 		</div>
-		<div class="board-reply__content">
-			<div class="board-reply__nick-date-wrapper">
-				<div class="board-reply__nick">as</div>
-				<div class="board-reply__date">2023-8-18 12:33</div>
-			</div>
-				<div class="board-reply__txt">글 내용</div>
-				<!-- <div class="board-reply__delete">
-				<button>삭제</button>
-				</div> -->
-		</div>
+		</c:forEach>
+		
 		
 		<form action="notice.reply.write">
 			<div class="board-reply__write-header">댓글 작성</div>
 			<div class="board-reply__write-wrapper">
 				<input type="hidden" name="nr_notice" value="${board.n_no }">
 				<input type="hidden" name="nr_id" value="jp@gmail.com">
+				<input type="hidden" name="type" value="1">
 				<div class="board-reply__write"> <textarea name="nr_text"></textarea> </div>
 				<div class="board-reply__write--btn"><button>등록</button></div>
 			</div>

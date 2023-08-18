@@ -4,6 +4,44 @@ import java.util.Date;
 
 public class BoardReplyDTO {
 	
+	private String a_nickname;
+	private int n_no;
+	private int f_no;
+	private int l_no;
+	private int j_no;
+	public String getA_nickname() {
+		return a_nickname;
+	}
+	public void setA_nickname(String a_nickname) {
+		this.a_nickname = a_nickname;
+	}
+	public int getN_no() {
+		return n_no;
+	}
+	public void setN_no(int n_no) {
+		this.n_no = n_no;
+	}
+	public int getF_no() {
+		return f_no;
+	}
+	public void setF_no(int f_no) {
+		this.f_no = f_no;
+	}
+	public int getL_no() {
+		return l_no;
+	}
+	public void setL_no(int l_no) {
+		this.l_no = l_no;
+	}
+	public int getJ_no() {
+		return j_no;
+	}
+	public void setJ_no(int j_no) {
+		this.j_no = j_no;
+	}
+	
+	
+	
 	// 공지
 	private int nr_no;
 	private int nr_notice;

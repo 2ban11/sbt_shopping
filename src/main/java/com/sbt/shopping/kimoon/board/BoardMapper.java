@@ -18,10 +18,10 @@ public interface BoardMapper {
     List<BoardDTO> getJob(BoardSelector search);
     
     // 게시글 댓글 가져오기
-    List<BoardReplyDTO> getNoticeReply(BoardDTO nPost);
-    List<BoardReplyDTO> getFreeReply(BoardDTO nPost);
-    List<BoardReplyDTO> getLessonReply(BoardDTO nPost);
-    List<BoardReplyDTO> getJobReply(BoardDTO nPost);
+    List<BoardReplyDTO> getNoticeReply(BoardReplyDTO brDTO);
+    List<BoardReplyDTO> getFreeReply(BoardReplyDTO brDTO);
+    List<BoardReplyDTO> getLessonReply(BoardReplyDTO brDTO);
+    List<BoardReplyDTO> getJobReply(BoardReplyDTO brDTO);
     
     // 게시글 댓글 작성
     int writeNoticeReply(BoardReplyDTO brDTO);
