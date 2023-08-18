@@ -15,13 +15,13 @@
 		<div class="board-detail__header">${board.n_title }</div>
 
 		<div class="board-detail__header-detail">
-			<div>조회 ${board.n_view }</div>
+			<div>조회 : ${board.n_view }</div>
 			<div>댓글</div>
 			<div>
-				작성일
+				작성일 : 
 				<fmt:formatDate value="${board.n_date }" pattern="yyyy-MM-dd HH:mm" />
 			</div>
-			<div>작성자 ${board.a_nickname } (${board.n_id })</div>
+			<div>작성자 : ${board.a_nickname } (${board.n_id })</div>
 		</div>
 
 		<div class="board-detail__text">${board.n_txt }</div>
@@ -42,6 +42,39 @@
 		</div>
 	</div>
 
-	<div></div>
+
+	<div class="board-reply__wrapper">
+		<div class="board-reply__header">댓글 (??건)</div>
+		
+		<div class="board-reply__content">
+			<div class="board-reply__nick-date-wrapper">
+				<div class="board-reply__nick">as</div>
+				<div class="board-reply__date">2023-8-18 12:33</div>
+			</div>
+			<div class="board-reply__txt-delete-wrapper">
+				<div class="board-reply__txt">글 내용</div>
+				<div class="board-reply__delete">
+				<button>삭제</button>
+				</div>
+			</div>
+		</div>
+		<div class="board-reply__content">
+			<div class="board-reply__nick-date-wrapper">
+				<div class="board-reply__nick">as</div>
+				<div class="board-reply__date">2023-8-18 12:33</div>
+			</div>
+				<div class="board-reply__txt">글 내용</div>
+				<!-- <div class="board-reply__delete">
+				<button>삭제</button>
+				</div> -->
+		</div>
+		
+		<div class="board-reply__write-header">댓글 작성</div>
+		<div class="board-reply__write-wrapper">
+			<div class="board-reply__write"> <textarea></textarea> </div>
+			<div class="board-reply__write--btn"><button>등록</button></div>
+		</div>
+		
+	</div>
 </body>
 </html>

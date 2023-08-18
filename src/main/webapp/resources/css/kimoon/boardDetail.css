@@ -53,3 +53,74 @@
 	justify-content: end;
 	margin-top: 20px;
 }
+
+.board-reply__wrapper {
+	background-color: #ffffff08;
+	margin: 20px 0 20px 0;
+    padding: 20px;
+    color: white;
+}
+
+.board-reply__header {
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+.board-reply__content {
+	width: 100%;
+	padding: 10px 15px 8px 20px;
+	border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.board-reply__nick-date-wrapper {
+	display: flex;
+	justify-content: space-between;
+	font-weight: bold;
+	font-size: .9rem;
+}
+
+.board-reply__txt {
+	width: 100%;
+	padding: 10px 0 10px;
+}
+
+.board-reply__delete {
+	
+}
+
+.board-reply__write-header {
+	padding: 30px 0 20px;
+	font-weight: bold;
+}
+
+.board-reply__write-wrapper {
+	display: flex;
+	width: 100%;
+	height: 100px;
+}
+
+.board-reply__write {
+	width: 100%;
+}
+
+.board-reply__write textarea {
+	width: 100%;
+	height: 100%;
+	border-radius: 8px 0 0 8px;
+	padding: 15px 40px 15px 15px;
+}
+
+.board-reply__write--btn {
+	width: 70px;
+}
+
+.board-reply__write--btn button {
+	width: 100%;
+	height: 100%;
+	background-color: #67c1f5;
+	color: white;
+	border: none;
+	border-radius: 0 8px 8px 0;
+	font-size: 1rem;
+	cursor: pointer;
+}

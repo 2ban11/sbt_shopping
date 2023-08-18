@@ -33,7 +33,7 @@
 		<form action="do.free.write">
 	</c:if>
 	<c:if test="${type eq 3}">
-		<form action="do.lesson.write" onsubmit="validLessonFee()">
+		<form action="do.lesson.write" onsubmit="return validLessonFee()">
 	</c:if>
 	<c:if test="${type eq 4}">
 		<form action="do.job.write">
@@ -62,14 +62,14 @@
 				<div class="board-write__input-title">주소</div>
 				<div class="board-write__input-div">
 					<input class="board-write__input--input" name="boardAdress"
-					placeholder="100자 제한" maxlength="100">
+					placeholder="100자 제한" maxlength="100" required>
 				</div>
 			</div>
 			<div class="board-write__input-group">
 				<div class="board-write__input-title">전화번호</div>
 				<div class="board-write__input-div">
 					<input class="board-write__input--input" name="boardPhone"
-						placeholder="예) 01012345678" maxlength="11">
+						placeholder="예) 01012345678" maxlength="11" required>
 				</div>
 			</div>
 		</c:if>
@@ -78,7 +78,7 @@
 				<div class="board-write__input-title">수강료</div>
 				<div class="board-write__input-div">
 					<input class="board-write__input--input" name="boardLessonFee"
-						placeholder="원 단위로 쉼표없이 적어주세요. 예) 10만원->100000" maxlength="10">
+						placeholder="원 단위로 쉼표없이 적어주세요. 예) 10만원->100000" maxlength="10" required>
 				</div>
 			</div>
 		</c:if>
@@ -100,7 +100,7 @@
 			<div class="board-write__input-group">
 				<div class="board-write__input-title">제목</div>
 				<div class="board-write__input-div">
-					<input class="board-write__input--input" name="boardTitle" placeholder="100자 제한" maxlength="100">
+					<input class="board-write__input--input" name="boardTitle" placeholder="100자 제한" maxlength="100" required>
 					<c:if test="${type eq 1}">
 					<input type="hidden" name="n_id" value="ddd@naver.com">
 					</c:if>
@@ -117,7 +117,7 @@
 			</div>
 
 			<div class="summernote__wrapper">
-				<textarea class="summernote" name="editorarea"></textarea>
+				<textarea class="summernote" name="editorarea" required></textarea>
 			</div>
 			<div style="display: flex; justify-content: space-between;">
 				<div>

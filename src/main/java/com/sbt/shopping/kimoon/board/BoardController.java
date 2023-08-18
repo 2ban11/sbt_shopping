@@ -42,7 +42,8 @@ public class BoardController {
 		req.setAttribute("contentPage", "kimoon/board.jsp");
 		return "index";
 	}
-
+	
+	// 게시글 작성 페이지로
 	@RequestMapping(value = "/go.board.write", method = RequestMethod.GET)
 	public String goNoticeWrite(HttpServletRequest req) {
 		int type = Integer.parseInt(req.getParameter("type"));
@@ -50,25 +51,24 @@ public class BoardController {
 		req.setAttribute("contentPage", "kimoon/boardWrite.jsp");
 		return "index";
 	}
-
+	
+	// 게시글 작성
 	@RequestMapping(value = "/do.notice.write", method = RequestMethod.GET)
 	public String noticeInsert(HttpServletRequest req, BoardDTO bDTO, @RequestParam String boardTitle,
 			@RequestParam String editorarea) {
 		bDAO.summernoteNoticeInsert(bDTO, boardTitle, editorarea);
 		bDAO.getBoard(1, req);
 		req.setAttribute("contentPage", "kimoon/board.jsp");
-		return "index"/* "redirect:go.board" */;
+		return "redirect:go.board?type=1";
 	}
-
 	@RequestMapping(value = "/do.free.write", method = RequestMethod.GET)
 	public String freeInsert(HttpServletRequest req, BoardDTO bDTO, @RequestParam String boardTitle,
 			@RequestParam String editorarea) {
 		bDAO.summernoteFreeInsert(bDTO, boardTitle, editorarea);
 		bDAO.getBoard(1, req);
 		req.setAttribute("contentPage", "kimoon/board.jsp");
-		return "index";
+		return "redirect:go.board?type=2";
 	}
-
 	@RequestMapping(value = "/do.lesson.write", method = RequestMethod.GET)
 	public String lessonInsert(HttpServletRequest req, BoardDTO bDTO, @RequestParam String boardTitle,
 			@RequestParam String editorarea, @RequestParam String boardAdress, @RequestParam String boardPhone,
@@ -76,9 +76,8 @@ public class BoardController {
 		bDAO.summernoteLessonInsert(bDTO, boardTitle, editorarea, boardAdress, boardPhone, boardLessonFee);
 		bDAO.getBoard(1, req);
 		req.setAttribute("contentPage", "kimoon/board.jsp");
-		return "index";
+		return "redirect:go.board?type=3";
 	}
-
 	@RequestMapping(value = "/do.job.write", method = RequestMethod.GET)
 	public String jobInsert(HttpServletRequest req, BoardDTO bDTO, @RequestParam String boardTitle,
 			@RequestParam String editorarea, @RequestParam String boardAdress, @RequestParam String boardPhone,
@@ -86,7 +85,7 @@ public class BoardController {
 		bDAO.summernoteJobInsert(bDTO, boardTitle, editorarea, boardAdress, boardPhone, boardJob);
 		bDAO.getBoard(1, req);
 		req.setAttribute("contentPage", "kimoon/board.jsp");
-		return "index";
+		return "redirect:go.board?type=4";
 	}
 
 	@ResponseBody
@@ -96,6 +95,7 @@ public class BoardController {
 		return bDAO.summernoteMultipart(multipartFile, request);
 	}
 	
+	// 게시글 상세보기
 	@RequestMapping(value = "/go.notice.detail", method = RequestMethod.GET)
 	public String goNoticeDetail(HttpServletRequest req, BoardDTO bDTO) {
 		bDAO.getNoticeDetail(req, bDTO);
@@ -121,12 +121,63 @@ public class BoardController {
 		return "index";
 	}
 	
+	
+	// 게시글 수정페이지 이동
 	@RequestMapping(value = "/go.notice.update", method = RequestMethod.GET)
-	public String doNoticeUpdate(HttpServletRequest req, BoardDTO bDTO) {
+	public String goNoticeUpdate(HttpServletRequest req, BoardDTO bDTO) {
 		bDAO.getNoticeDetail(req, bDTO);
 		req.setAttribute("contentPage", "kimoon/noticeUpdate.jsp");
 		return "index";
 	}
+	@RequestMapping(value = "/go.free.update", method = RequestMethod.GET)
+	public String goFreeUpdate(HttpServletRequest req, BoardDTO bDTO) {
+		bDAO.getFreeDetail(req, bDTO);
+		req.setAttribute("contentPage", "kimoon/freeUpdate.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/go.lesson.update", method = RequestMethod.GET)
+	public String goLesssonUpdate(HttpServletRequest req, BoardDTO bDTO) {
+		bDAO.getLessonDetail(req, bDTO);
+		req.setAttribute("contentPage", "kimoon/lessonUpdate.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/go.job.update", method = RequestMethod.GET)
+	public String goJobUpdate(HttpServletRequest req, BoardDTO bDTO) {
+		bDAO.getJobDetail(req, bDTO);
+		req.setAttribute("contentPage", "kimoon/jobUpdate.jsp");
+		return "index";
+	}
+	
+	// 게시글 수정하기
+	@RequestMapping(value = "/do.notice.update", method = RequestMethod.GET)
+	public String doNoticeUpdate(HttpServletRequest req, BoardDTO bDTO) {
+		bDAO.updateNotice(req, bDTO);
+		bDAO.getBoard(1, req);
+		req.setAttribute("contentPage", "kimoon/board.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/do.free.update", method = RequestMethod.GET)
+	public String doFreeUpdate(HttpServletRequest req, BoardDTO bDTO) {
+		bDAO.updateFree(req, bDTO);
+		bDAO.getBoard(1, req);
+		req.setAttribute("contentPage", "kimoon/board.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/do.lesson.update", method = RequestMethod.GET)
+	public String doLessonUpdate(HttpServletRequest req, BoardDTO bDTO) {
+		bDAO.updateLesson(req, bDTO);
+		bDAO.getBoard(1, req);
+		req.setAttribute("contentPage", "kimoon/board.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/do.job.update", method = RequestMethod.GET)
+	public String doJobUpdate(HttpServletRequest req, BoardDTO bDTO) {
+		bDAO.updateJob(req, bDTO);
+		bDAO.getBoard(1, req);
+		req.setAttribute("contentPage", "kimoon/board.jsp");
+		return "index";
+	}
+	
 	
 	// 게시글 삭제
 	@RequestMapping(value = "/do.notice.delete", method = RequestMethod.GET)
@@ -136,5 +187,56 @@ public class BoardController {
 		req.setAttribute("contentPage", "kimoon/board.jsp");
 		return "index";
 	}
+	@RequestMapping(value = "/do.free.delete", method = RequestMethod.GET)
+	public String doFreeDetail(HttpServletRequest req, BoardDTO bDTO) { 
+		bDAO.deleteFree(bDTO);
+		bDAO.getBoard(1, req);
+		req.setAttribute("contentPage", "kimoon/board.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/do.lesson.delete", method = RequestMethod.GET)
+	public String doLessonDetail(HttpServletRequest req, BoardDTO bDTO) { 
+		bDAO.deleteLesson(bDTO);
+		bDAO.getBoard(1, req);
+		req.setAttribute("contentPage", "kimoon/board.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/do.job.delete", method = RequestMethod.GET)
+	public String doJobDetail(HttpServletRequest req, BoardDTO bDTO) { 
+		bDAO.deleteJob(bDTO);
+		bDAO.getBoard(1, req);
+		req.setAttribute("contentPage", "kimoon/board.jsp");
+		return "index";
+	}
 	
+	
+	// 게시글 검색
+	@RequestMapping(value = "/notice.search", method = RequestMethod.GET)
+	public String noticeSearch(HttpServletRequest req, BoardSelector bSel) {
+		bDAO.searchBoard(req, bSel);
+		bDAO.getBoard(1, req);
+		req.setAttribute("contentPage", "kimoon/board.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/free.search", method = RequestMethod.GET)
+	public String freeSearch(HttpServletRequest req, BoardSelector bSel) {
+		bDAO.searchBoard(req, bSel);
+		bDAO.getBoard(1, req);
+		req.setAttribute("contentPage", "kimoon/board.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/lesson.search", method = RequestMethod.GET)
+	public String lessonSearch(HttpServletRequest req, BoardSelector bSel) {
+		bDAO.searchBoard(req, bSel);
+		bDAO.getBoard(1, req);
+		req.setAttribute("contentPage", "kimoon/board.jsp");
+		return "index";
+	}
+	@RequestMapping(value = "/job.search", method = RequestMethod.GET)
+	public String jobSearch(HttpServletRequest req, BoardSelector bSel) {
+		bDAO.searchBoard(req, bSel);
+		bDAO.getBoard(1, req);
+		req.setAttribute("contentPage", "kimoon/board.jsp");
+		return "index";
+	}
 }

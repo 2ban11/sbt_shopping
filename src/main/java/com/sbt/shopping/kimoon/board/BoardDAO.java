@@ -36,7 +36,8 @@ public class BoardDAO {
 	private int allPostCount3; // 레슨
 	private int allPostCount4; // 구인구직
 
-	public void getBoard(int pageNo, HttpServletRequest req) { // 게시글 목록 불러오기, 페이징
+	// 게시글 목록 불러오기, 페이징
+	public void getBoard(int pageNo, HttpServletRequest req) { 
 		int type = Integer.parseInt(req.getParameter("type"));
 
 		int count = bp.getBoardCountPerPage();
@@ -45,6 +46,7 @@ public class BoardDAO {
 		int end = start + (count - 1);
 
 		BoardSelector search = (BoardSelector) req.getSession().getAttribute("search");
+		
 		int postCount = 0;
 		List<BoardDTO> posts = null;
 		if (search == null) {
@@ -74,8 +76,10 @@ public class BoardDAO {
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
+			System.out.println("search : " + search);
 			if (type == 1) {
 				postCount = ss.getMapper(BoardMapper.class).getNoticeCount(search);
+				System.out.println("noticeSearchPostCount : " + postCount);
 				posts = ss.getMapper(BoardMapper.class).getNotice(search);
 			} else if (type == 2) {
 				postCount = ss.getMapper(BoardMapper.class).getFreeCount(search);
@@ -96,7 +100,8 @@ public class BoardDAO {
 		req.setAttribute("curPage", pageNo);
 	}
 
-	public void calcAllPostCount() { // 모든 게시글의 갯수 계산
+	// 모든 게시글의 갯수 계산
+	public void calcAllPostCount() {
 		BoardSelector bSelec = new BoardSelector("", null, null);
 		allPostCount1 = ss.getMapper(BoardMapper.class).getNoticeCount(bSelec);
 		allPostCount2 = ss.getMapper(BoardMapper.class).getFreeCount(bSelec);
@@ -137,6 +142,7 @@ public class BoardDAO {
 		return a;
 	}
 
+	// 게시판 글 작성
 	public void summernoteNoticeInsert(BoardDTO bDTO, String boardTitle, String editorarea) { // 공지 글 쓰기
 		bDTO.setN_title(boardTitle);
 		bDTO.setN_txt(editorarea);
@@ -145,10 +151,7 @@ public class BoardDAO {
 			allPostCount1++; // 글 하나 추가해서 전체 게시글 갯수 +1 증가
 			System.out.println("등록 성공");
 		}
-		
-		
 	}
-
 	public void summernoteFreeInsert(BoardDTO bDTO, String boardTitle, String editorarea) { // 자유 글 쓰기
 		bDTO.setF_title(boardTitle);
 		bDTO.setF_txt(editorarea);
@@ -158,9 +161,7 @@ public class BoardDAO {
 			System.out.println("등록 성공");
 		}
 	}
-
 	public void summernoteLessonInsert(BoardDTO bDTO, String boardTitle, String editorarea, String boardAdress, String boardPhone, String boardLessonFee) {
-		// 개인레슨 글 쓰기
 		bDTO.setL_title(boardTitle);
 		bDTO.setL_txt(editorarea);
 		bDTO.setL_addr(boardAdress);
@@ -171,9 +172,7 @@ public class BoardDAO {
 			System.out.println("등록 성공");
 		}
 	}
-
 	public void summernoteJobInsert(BoardDTO bDTO, String boardTitle, String editorarea, String boardAdress, String boardPhone, String boardJob) {
-		// 구인/구직 글 쓰기
 		bDTO.setJ_title(boardTitle);
 		bDTO.setJ_txt(editorarea);
 		bDTO.setJ_addr(boardAdress);
@@ -185,41 +184,75 @@ public class BoardDAO {
 		}
 	}
 
+	// 글 자세히 보기
 	public void getNoticeDetail(HttpServletRequest req, BoardDTO bDTO) {
-		// 공지 글 자세히 보기
 		int type = Integer.parseInt(req.getParameter("type"));
 		req.setAttribute("type", type);
 		req.setAttribute("board", ss.getMapper(BoardMapper.class).getNoticeDetail(bDTO));
 		ss.getMapper(BoardMapper.class).addNoticeView(bDTO);
 	}
-
 	public void getFreeDetail(HttpServletRequest req, BoardDTO bDTO) {
-		// 자유 글 자세히 보기
 		int type = Integer.parseInt(req.getParameter("type"));
 		req.setAttribute("type", type);
 		req.setAttribute("board", ss.getMapper(BoardMapper.class).getFreeDetail(bDTO));
 		ss.getMapper(BoardMapper.class).addFreeView(bDTO);
 	}
-
 	public void getLessonDetail(HttpServletRequest req, BoardDTO bDTO) {
-		// 개인레슨 글 자세히 보기
 		int type = Integer.parseInt(req.getParameter("type"));
 		req.setAttribute("type", type);
 		req.setAttribute("board", ss.getMapper(BoardMapper.class).getLessonDetail(bDTO));
 		ss.getMapper(BoardMapper.class).addLessonView(bDTO);
 	}
-
 	public void getJobDetail(HttpServletRequest req, BoardDTO bDTO) {
-		// 구인/구직 글 자세히 보기
 		int type = Integer.parseInt(req.getParameter("type"));
 		req.setAttribute("type", type);
 		req.setAttribute("board", ss.getMapper(BoardMapper.class).getJobDetail(bDTO));
 		ss.getMapper(BoardMapper.class).addJobView(bDTO);
-		
 	}
 
+	// 게시글 수정
+	public void updateNotice(HttpServletRequest req, BoardDTO bDTO) {
+		ss.getMapper(BoardMapper.class).updateNotice(bDTO);
+	}
+
+	public void updateFree(HttpServletRequest req, BoardDTO bDTO) {
+		ss.getMapper(BoardMapper.class).updateFree(bDTO);
+	}
+
+	public void updateLesson(HttpServletRequest req, BoardDTO bDTO) {
+		ss.getMapper(BoardMapper.class).updateLesson(bDTO);
+	}
+
+	public void updateJob(HttpServletRequest req, BoardDTO bDTO) {
+		ss.getMapper(BoardMapper.class).updateJob(bDTO);
+	}
+
+	
+	// 게시글 삭제
 	public void deleteNotice(BoardDTO bDTO) {
-		ss.getMapper(BoardMapper.class).deleteNotice(bDTO);
+		if (ss.getMapper(BoardMapper.class).deleteNotice(bDTO)==1) {
+			allPostCount1--;
+		}
+	}
+	public void deleteFree(BoardDTO bDTO) {
+		if (ss.getMapper(BoardMapper.class).deleteFree(bDTO)==1) {
+			allPostCount2--;
+		}
+	}
+	public void deleteLesson(BoardDTO bDTO) {
+		if (ss.getMapper(BoardMapper.class).deleteLesson(bDTO)==1) {
+			allPostCount3--;
+		}
+	}
+	public void deleteJob(BoardDTO bDTO) {
+		if (ss.getMapper(BoardMapper.class).deleteJob(bDTO)==1) {
+			allPostCount4--;
+		}
 	}
 
+	
+	public void searchBoard(HttpServletRequest req, BoardSelector bSel) {
+		req.getSession().setAttribute("search", bSel);
+	}
+	
 }

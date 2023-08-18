@@ -15,13 +15,13 @@
 		<div class="board-detail__header">${board.l_title }</div>
 
 		<div class="board-detail__header-detail">
-			<div>조회 ${board.l_view }</div>
+			<div>조회 : ${board.l_view }</div>
 			<div>댓글</div>
 			<div>
-				작성일
+				작성일 : 
 				<fmt:formatDate value="${board.l_date }" pattern="yyyy-MM-dd HH:mm" />
 			</div>
-			<div>작성자 ${board.a_nickname }(${board.l_id })</div>
+			<div>작성자 : ${board.a_nickname } (${board.l_id })</div>
 		</div>
 
 		<div class="board-detail__header-extra">
@@ -40,6 +40,21 @@
 		</div>
 
 		<div class="board-detail__text">${board.l_txt }</div>
+		
+		<div class="board-del-upd__wrapper">
+			<div>
+				<form action="go.lesson.update">
+					<button name="l_no" value="${board.l_no }">수정</button>
+					<input type="hidden" name="type" value="3">
+				</form>
+			</div>
+			<div>
+				<form action="do.lesson.delete">
+					<button name="l_no" value="${board.l_no }">삭제</button>
+					<input type="hidden" name="type" value="3">
+				</form>
+			</div>
+		</div>
 	</div>
 
 
