@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 public class BoardDTO {
-	// 댓글도 받아와야하는 거 같은데???
 	
 	private int rn; // 글 번호
 	private String a_nickname; // 작성자
@@ -116,7 +115,7 @@ public class BoardDTO {
 	
 	
 	
-//// lesson
+// lesson
 	private int l_no;
 	private String l_title;
 	private String l_id;
@@ -183,7 +182,7 @@ public class BoardDTO {
 	}
 	
 	
-//// job
+// job
 	private int j_no;
 	private String j_title;
 	private String j_id;

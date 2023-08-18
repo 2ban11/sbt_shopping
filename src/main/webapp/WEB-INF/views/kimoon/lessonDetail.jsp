@@ -49,7 +49,7 @@
 				</form>
 			</div>
 			<div>
-				<form action="do.lesson.delete">
+				<form action="do.lesson.delete" onsubmit="return deleteAlert()">
 					<button name="l_no" value="${board.l_no }">삭제</button>
 					<input type="hidden" name="type" value="3">
 				</form>
@@ -57,6 +57,17 @@
 		</div>
 	</div>
 
+	<script type="text/javascript">
+	function deleteAlert() {
+		 var confirmDelete = confirm("정말 삭제하시겠습니까?");
+		    
+		    if (confirmDelete) {
+		        return true; // '네'를 클릭하면 폼 제출 실행
+		    } else {
+		        return false; // '아니오'를 클릭하면 폼 제출 취소
+		    }
+	}
+	</script>
 
 </body>
 </html>

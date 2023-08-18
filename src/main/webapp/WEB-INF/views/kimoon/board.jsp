@@ -141,22 +141,22 @@
 
 	<div class="board-search__wrapper">
 		<c:if test="${type eq 1}">
-			<form action="notice.search" class="board-search--form" name="boardSearchForm" onsubmit="return searchEmptyCheck()">
+			<form action="notice.search" class="board-search--form" name="boardSearchForm">
 			<input type="hidden" name="type" value="1">
 		</c:if>
 		<c:if test="${type eq 2}">
-			<form action="free.search" class="board-search--form" name="boardSearchForm" onsubmit="return searchEmptyCheck()">
+			<form action="free.search" class="board-search--form" name="boardSearchForm">
 			<input type="hidden" name="type" value="2">
 		</c:if>
 		<c:if test="${type eq 3}">
-			<form action="lesson.search" class="board-search--form" name="boardSearchForm" onsubmit="return searchEmptyCheck()">
+			<form action="lesson.search" class="board-search--form" name="boardSearchForm">
 			<input type="hidden" name="type" value="3">
 		</c:if>
 		<c:if test="${type eq 4}">
-			<form action="job.search" class="board-search--form" name="boardSearchForm" onsubmit="return searchEmptyCheck()">
+			<form action="job.search" class="board-search--form" name="boardSearchForm">
 			<input type="hidden" name="type" value="4">
 		</c:if>
-			<input class="board-search--input" placeholder="제목/내용 검색어 입력" name="search">
+			<input class="board-search--input" placeholder="제목/내용 검색어 입력" name="search" required>
 			<button class="board-search--btn">
 				<i class="fa-solid fa-magnifying-glass"></i>
 			</button>
@@ -183,18 +183,6 @@
 			</c:if>
 		</form>
 	</div>
-	<script type="text/javascript">
-	function searchEmptyCheck() {
-		var searchInput = document.boardSearchForm.boardSearch;
-		console.log(searchInput);
-		if (isEmpty(searchInput)) {
-			alert("검색어를 입력해주세요");
-			searchInput.focus();
-			return false;
-		}
-
-		return true;
-	}
-	</script>
+	
 </body>
 </html>

@@ -18,9 +18,15 @@ public interface BoardMapper {
     List<BoardDTO> getJob(BoardSelector search);
     
     // 게시글 댓글 가져오기
-    List<BoardReply> getReply(BoardDTO nPost);
+    List<BoardReplyDTO> getNoticeReply(BoardDTO nPost);
+    List<BoardReplyDTO> getFreeReply(BoardDTO nPost);
+    List<BoardReplyDTO> getLessonReply(BoardDTO nPost);
+    List<BoardReplyDTO> getJobReply(BoardDTO nPost);
     
+    // 게시글 댓글 작성
+    int writeNoticeReply(BoardReplyDTO brDTO);
     
+    // 게시글 작성
 	int summernoteNoticeInsert(BoardDTO bDTO);
 	int summernoteFreeInsert(BoardDTO bDTO);
 	int summernoteLessonInsert(BoardDTO bDTO);
@@ -32,7 +38,7 @@ public interface BoardMapper {
 	BoardDTO getLessonDetail(BoardDTO bDTO);
 	BoardDTO getJobDetail(BoardDTO bDTO);
 	
-	// 게시글 작성
+	// 조회수 증가
 	int addNoticeView(BoardDTO bDTO);
 	int addFreeView(BoardDTO bDTO);
 	int addLessonView(BoardDTO bDTO);

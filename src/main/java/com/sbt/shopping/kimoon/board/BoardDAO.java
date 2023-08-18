@@ -68,11 +68,9 @@ public class BoardDAO {
 				postCount = allPostCount4;
 				posts = ss.getMapper(BoardMapper.class).getJob(search);
 				break;
-
 			default:
 				break;
 			}
-
 		} else {
 			search.setStart(new BigDecimal(start));
 			search.setEnd(new BigDecimal(end));
@@ -92,7 +90,6 @@ public class BoardDAO {
 				posts = ss.getMapper(BoardMapper.class).getJob(search);
 			}
 		}
-
 		int pageCount = (int) Math.ceil(postCount / (double) count);
 		req.setAttribute("type", type);
 		req.setAttribute("pageCount", pageCount);
@@ -109,7 +106,8 @@ public class BoardDAO {
 		allPostCount4 = ss.getMapper(BoardMapper.class).getJobCount(bSelec);
 	}
 
-	public String summernoteMultipart(MultipartFile multipartFile, HttpServletRequest request) { // 게시글에 이미지 첨부
+	// 게시글에 이미지 첨부
+	public String summernoteMultipart(MultipartFile multipartFile, HttpServletRequest request) { 
 		/*
 		 * String fileRoot = "C:\\summernote_image\\"; // 외부경로로 저장을 희망할때.
 		 */
@@ -214,15 +212,12 @@ public class BoardDAO {
 	public void updateNotice(HttpServletRequest req, BoardDTO bDTO) {
 		ss.getMapper(BoardMapper.class).updateNotice(bDTO);
 	}
-
 	public void updateFree(HttpServletRequest req, BoardDTO bDTO) {
 		ss.getMapper(BoardMapper.class).updateFree(bDTO);
 	}
-
 	public void updateLesson(HttpServletRequest req, BoardDTO bDTO) {
 		ss.getMapper(BoardMapper.class).updateLesson(bDTO);
 	}
-
 	public void updateJob(HttpServletRequest req, BoardDTO bDTO) {
 		ss.getMapper(BoardMapper.class).updateJob(bDTO);
 	}
@@ -254,5 +249,16 @@ public class BoardDAO {
 	public void searchBoard(HttpServletRequest req, BoardSelector bSel) {
 		req.getSession().setAttribute("search", bSel);
 	}
+
+	
+	
+	
+	// 댓글 작성
+	public void writeNoticeReply(HttpServletRequest req, BoardReplyDTO brDTO) {
+		ss.getMapper(BoardMapper.class).writeNoticeReply(brDTO);
+	}
+	
+	
+	
 	
 }

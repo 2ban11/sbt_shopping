@@ -3,19 +3,15 @@
 <mapper namespace="com.sbt.shopping.kimoon.board.BoardMapper">
 	
 	<!-- 게시판 글 작성 -->
-	
 	<insert id="summernoteNoticeInsert">
 		insert into notice values (notice_seq.nextval,#{n_title},#{n_id}, sysdate,0,#{n_txt})
 	</insert>
-	
 	<insert id="summernoteFreeInsert">
 		insert into free values (free_seq.nextval,#{f_title},#{f_id},sysdate,0,#{f_txt})
 	</insert>
-	
 	<insert id="summernoteLessonInsert">
 		insert into lesson values (lesson_seq.nextval,#{l_title},#{l_id},sysdate,0,#{l_txt},#{l_addr},#{l_pay},#{l_phone})
 	</insert>
-	
 	<insert id="summernoteJobInsert">
 		insert into job values (job_seq.nextval,#{j_title},#{j_id},sysdate,0,#{j_txt},#{j_addr},#{j_phone},#{j_category})
 	</insert>
@@ -47,6 +43,7 @@
 		WHERE j_id = a_id
 		AND (j_txt LIKE '%'||#{search}||'%' OR j_title LIKE '%'||#{search}||'%')
 	</select>
+	
 	
 	
 	<!-- 게시판 리스트 -->
@@ -98,16 +95,7 @@
 		)
 		where rn &gt;= #{start} and rn &lt;= #{end}
 	</select>
-	<!-- select *
-		from (
-		select rownum as rn, n_no, n_id, n_txt, n_date
-		from (
-		select * from notice, account
-		where n_id = a_id and n_txt like '%'||#{search}||'%'
-		order by n_date desc
-		)
-		)
-		where rn &gt;= #{start} and rn &lt;= #{end} -->
+		
 		
 		
 	<!-- 게시판 글 상세 -->
@@ -138,6 +126,7 @@
 	</select>
 		
 		
+		
 	<!-- 게시글 제목 클릭시 조회수 +1 증가 -->
 	<update id="addNoticeView">
 		UPDATE notice SET n_view = n_view + 1 WHERE n_no = #{n_no}
@@ -156,6 +145,7 @@
 	</update>
 		
 		
+		
 	<!-- 게시글 수정 -->	
 	<update id="updateNotice">
 		update notice set n_title=#{n_title}, n_id=#{n_id}, n_date=sysdate, n_txt=#{n_txt} where n_no=#{n_no}
@@ -170,6 +160,8 @@
 		update job set j_title=#{j_title}, j_id=#{j_id}, j_date=sysdate, j_txt=#{j_txt}, j_addr=#{j_addr}, j_phone=#{j_phone}, j_category=#{j_category} where j_no=#{j_no}
 	</update>
 	
+	
+	
 	<!-- 게시글 삭제 -->	
 	<delete id="deleteNotice">
 		DELETE notice WHERE n_no = #{n_no}
@@ -183,5 +175,14 @@
 	<delete id="deleteJob">
 		DELETE job WHERE j_no = #{j_no}
 	</delete>
+		
+	<!-- 댓글 작성 -->
+	<insert id="writeNoticeReply">
+		insert into notice_reply
+        values(notice_reply_seq.nextval,
+        #{nr_notice}, #{nr_text},
+        #{r_id},
+        sysdate)
+	</insert>
 		
 </mapper>

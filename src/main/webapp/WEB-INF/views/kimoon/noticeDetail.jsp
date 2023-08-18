@@ -34,7 +34,7 @@
 				</form>
 			</div>
 			<div>
-				<form action="do.notice.delete">
+				<form action="do.notice.delete" onsubmit="return deleteAlert()">
 					<button name="n_no" value="${board.n_no }">삭제</button>
 					<input type="hidden" name="type" value="1">
 				</form>
@@ -69,12 +69,31 @@
 				</div> -->
 		</div>
 		
-		<div class="board-reply__write-header">댓글 작성</div>
-		<div class="board-reply__write-wrapper">
-			<div class="board-reply__write"> <textarea></textarea> </div>
-			<div class="board-reply__write--btn"><button>등록</button></div>
-		</div>
+		<form action="notice.reply.write">
+			<div class="board-reply__write-header">댓글 작성</div>
+			<div class="board-reply__write-wrapper">
+				<input type="hidden" name="nr_notice" value="${board.n_no }">
+				<input type="hidden" name="nr_id" value="jp@gmail.com">
+				<div class="board-reply__write"> <textarea name="nr_text"></textarea> </div>
+				<div class="board-reply__write--btn"><button>등록</button></div>
+			</div>
+		</form>
 		
 	</div>
+	
+	<script type="text/javascript">
+	function deleteAlert() {
+		 var confirmDelete = confirm("정말 삭제하시겠습니까?");
+		    
+		    if (confirmDelete) {
+		        return true; // '네'를 클릭하면 폼 제출 실행
+		    } else {
+		        return false; // '아니오'를 클릭하면 폼 제출 취소
+		    }
+	}
+	
+	$('.board-detail__text').find('img').css('max-width', '100%');
+	</script>
+	
 </body>
 </html>

@@ -95,6 +95,7 @@ public class BoardController {
 		return bDAO.summernoteMultipart(multipartFile, request);
 	}
 	
+	
 	// 게시글 상세보기
 	@RequestMapping(value = "/go.notice.detail", method = RequestMethod.GET)
 	public String goNoticeDetail(HttpServletRequest req, BoardDTO bDTO) {
@@ -147,6 +148,7 @@ public class BoardController {
 		req.setAttribute("contentPage", "kimoon/jobUpdate.jsp");
 		return "index";
 	}
+	
 	
 	// 게시글 수정하기
 	@RequestMapping(value = "/do.notice.update", method = RequestMethod.GET)
@@ -239,4 +241,16 @@ public class BoardController {
 		req.setAttribute("contentPage", "kimoon/board.jsp");
 		return "index";
 	}
+	
+	
+	// 댓글 등록하기
+	@RequestMapping(value = "/notice.reply.write", method = RequestMethod.GET)
+	public String noticeReplyWrite(HttpServletRequest req, BoardReplyDTO brDTO) {
+		bDAO.writeNoticeReply(req, brDTO);
+		req.setAttribute("contentPage", "kimoon/noticeDetail.jsp");
+		return "index";
+	}
+	
+	
+	// 댓글 가져오기
 }

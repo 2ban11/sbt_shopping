@@ -57,7 +57,9 @@ function createSummernote() {
 				processData : false,
 				success : function(data) {
 					console.log(data);
-					$(el).summernote('editor.insertImage', data.url);
+					$(el).summernote('editor.insertImage', data.url, function(image){
+	//						 $(image).css("width", "30%"); // 이미지 요소에 스타일 추가
+					});
 				}, error : function(status){
 					console.log(status)
 					
