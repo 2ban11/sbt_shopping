@@ -4,11 +4,25 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sbt.shopping.inhoo.DetailMapper">
 
-
-    
 <insert id="regReview">
-		insert into review values(review_seq.nextval, 1, #{r_id}, #{r_title}, #{r_content}, #{r_rate}, #{r_img}, sysdate)
+		 insert into review values(review_seq.nextval, 1, #{r_id}, #{r_title}, #{r_content}, #{r_rate}, #{r_img, jdbcType=VARCHAR}, sysdate)
 </insert>
+    
+<!-- <insert id="regReview">
+		insert into review values(review_seq.nextval, 1, #{r_id}, #{r_title}, #{r_content}, #{r_rate}, #{r_img}, sysdate)
+</insert> -->
+
+
+
+
+
+
+
+<insert id="regQna">
+		insert into qna values(qna_seq.nextval, 'mk', 1, #{q_title }, #{q_content }, sysdate)
+</insert>
+    
+    
     
 <select id="getAllReview" resultType="com.sbt.shopping.inhoo.DetailDTO">
 	select * from review
@@ -55,12 +69,33 @@
         )
         where rn &gt;= #{start} and rn &lt;= #{end}
 </select>
-<select id="getReviewCount" resultType="int"
->
+
+<select id="getReviewCount" resultType="int">
 	select count(*) from review where r_product = #{p_no}
 </select>
 
 
+
+
+<!-- QnA 페이징 -->
+<select id="getQnAs" resultType="com.sbt.shopping.inhoo.QnaDTO">
+    SELECT *
+    FROM (
+        SELECT ROWNUM AS rn, q_product, q_id, q_title, q_content, q_date
+        FROM (
+            SELECT *
+            FROM qna
+            WHERE q_product = #{no}
+            ORDER BY q_date DESC
+        )
+    )
+    WHERE rn &gt;= #{start} AND rn &lt;= #{end}
+</select>
+
+
+<select id="getQnACount" resultType="int">
+    SELECT COUNT(*) FROM qna WHERE q_product = #{p_no}
+</select>
 
 
 

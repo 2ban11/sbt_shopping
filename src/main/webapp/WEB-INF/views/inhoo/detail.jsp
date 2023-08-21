@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>파이널</title>
-
-
 
 <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
     <link
@@ -15,7 +14,31 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"/>
-<script src="resources/js/modal.js"></script>
+<script src="resources/js/IH_modal.js"></script>
+<script src="resources/js/IH_DetailDo.js"></script>
+<script src="resources/js/IH_ReviewT.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const toggleFormBtn = document.getElementById("toggleFormBtn");
+        const qnaForm = document.getElementById("qnaForm");
+        const submitQuestionBtn = document.getElementById("submitQuestion");
+        const cancelQuestionBtn = document.getElementById("cancelQuestion");
+
+        toggleFormBtn.addEventListener("click", function() {
+            qnaForm.style.display = "block";
+        });
+
+        submitQuestionBtn.addEventListener("click", function() {
+            // 여기에 폼 데이터를 처리하는 코드 추가
+            // 예: AJAX 요청을 사용하여 서버에 데이터 전송
+        });
+
+        cancelQuestionBtn.addEventListener("click", function() {
+            qnaForm.style.display = "none";
+        });
+    });
+</script>
+
 
 </head>
 <body>
@@ -140,7 +163,7 @@
                   </div>
                   <div class="col-1">
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
-                      후기 사용
+                      후기 쓰기
                     </button>
                   </div>
                 </div>
@@ -148,7 +171,7 @@
   
   
   
-                <div class="row justify-content-center mt-3">
+<div class="row justify-content-center mt-3">
   <div class="col-12">
     <table id="table1" class="table table-dark">
       <thead>
@@ -165,11 +188,13 @@
             <th>${r.r_rate}</th>
             <th>${r.r_id}</th>
             <th>${r.r_content}</th>
-            <th>${r.r_date}</th>
+	        <th>
+            	<fmt:formatDate value="${r.r_date }" type="date" dateStyle="short"/>
+	        </th>
           </tr>
           <tr id="row${r.r_id}" class="collapse">
             <td colspan="4">
-              <img src="${r.r_img}" alt="Review Image">
+              <img src="resources/img/${r.r_img }" alt="Review Image">
             </td>
           </tr>
         </c:forEach>
@@ -184,7 +209,7 @@
   			
   				
   <!-- 페이징 -->
-               <div class="row justify-content-center">
+<div class="row justify-content-center">
     <div class="col-auto">
         <nav aria-label="...">
          <ul class="pagination pagination-sm">
@@ -222,14 +247,116 @@
 
 
 
-              <div class="row justify-content-between mt-5">
-                <div class="col-5 mb-3">
-                  <h2>Q&A</h2>
-                </div>
-                <div class="col-1">
-                  <button type="button" class="btn btn-danger">상품문의</button>
-                </div>
-              </div>
+
+
+
+
+
+
+<!-- QnA -->
+<div class="row justify-content-between mt-5">
+    <div class="col-5 mb-3">
+        <h2>Q & A</h2>
+    </div>
+    <div class="col-1">
+        <button type="button" class="btn btn-danger" id="toggleFormBtn">
+            상품 문의
+        </button>
+    </div>
+</div>
+
+<div id="qnaForm" style="display: none;">
+	<form action="regQnaDo" method="get">
+        <div class="form-group">
+            <label for="title">제 목</label>
+            <input type="text" class="form-control" id="title" name="q_title">
+        </div>
+        <div class="form-group">
+            <label for="content">내 용</label>
+            <textarea class="form-control" id="content" rows="4" name="q_content"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitQuestion">확인</button>
+        <button type="button" class="btn btn-secondary" id="cancelQuestion">취소</button>
+    </form>
+</div>
+
+
+<div class="row justify-content-center mt-3">
+    <div class="col-12">
+        <table id="table2" class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">작성자</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">몰</th>
+                    <th scope="col">날짜</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="q" items="${qnas}">
+                    <tr class="clickable-row" data-toggle="collapse" data-target="#row${q.q_id}">
+                        <td>${q.q_id}</td> <!-- Changed from <th> to <td> -->
+                        <td>${q.q_title}</td> <!-- Displaying q_title instead of q_content -->
+                        <td>${q.q_product}</td> <!-- Displaying q_product -->
+                        <td>
+                            <fmt:formatDate value="${q.q_date}" type="date" dateStyle="short"/>
+                        </td>
+                    </tr>
+                    <tr id="row${q.q_id}" class="collapse">
+                        <td colspan="4">
+                            <img src="resources/img/${q.q_date}" alt="Review Image">
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+	
+
+
+
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <nav aria-label="...">
+            <ul class="pagination pagination-sm">
+                <c:choose>
+                    <c:when test="${curPage != 1}">
+                        <li class="page-item">
+                            <a class="page-link" href="detail.product?p=${curPage - 1}&p_no=${product.p_no}" id="snsL">&lt;</a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&lt;</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+                
+                <!-- 여기에 Q&A 페이지 버튼 생성하는 로직 추가 -->
+                <c:forEach begin="1" end="${pageCount}" varStatus="loop">
+                    <li class="page-item ${loop.index == curPage ? 'active' : ''}">
+                        <a class="page-link" href="detail.product?p=${loop.index}&p_no=${product.p_no}">${loop.index}</a>
+                    </li>
+                </c:forEach>
+                
+                <c:choose>
+                    <c:when test="${curPage != pageCount}">
+                        <li class="page-item">
+                            <a class="page-link" href="detail.product?p=${curPage + 1}&p_no=${product.p_no}" id="snsR">&gt;</a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&gt;</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </ul>
+        </nav>
+    </div>
+</div>
 
 
 
@@ -237,67 +364,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-              <div class="row justify-content-center mt-3">
-                <div class="col-12">
-                  <table class="table table-dark" id="table2">
-                    <thead>
-                      <tr>
-                        <th scope="col">별점</th>
-                        <th scope="col">닉네임</th>
-                        <th scope="col">내용</th>
-                        <th scope="col">작성일</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-
-             <div class="row justify-content-center">
-                <div class="col-auto">
-                  <nav aria-label="...">
-                    <ul class="pagination pagination-sm">
-                      <li class="page-item disabled">
-                        <a class="page-link" href="#" tabindex="-1">1</a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    </ul>
-                  </nav>
-                </div>
-             </div>
 
 
               </div>
@@ -322,14 +388,14 @@
         </button>
       </div>
         <!-- 리뷰 작성 양식  -->
-         <form action="regReviewDo" method="post">
+         <form action="regReviewDo" method="post" enctype="multipart/form-data">
       <div class="modal-body">
           <div class="table-responsive">
             <table class="table table-striped">
               <tbody>
                 <tr>
                   <td><input type="text" class="form-control"
-                    placeholder="이름" name="r_id"></td>
+                    placeholder="이름" name="r_id" ></td>
                 </tr>
                 <tr>
                   <td><input type="text" class="form-control"
@@ -354,7 +420,7 @@
                 </tr>
                <tr>
                 	<td>
-                		<input name="r_img">
+                		<input type="file" name="file"> <br>
                 	</td>
                 </tr> 
               <%--   <tr>
@@ -390,5 +456,7 @@
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="resources/css/detail.css"/>
+
+
 </body>
 </html>
