@@ -118,6 +118,10 @@ public class BoardDAO {
 		req.setAttribute("pageCount", pageCount);
 		req.setAttribute("posts", posts);
 		req.setAttribute("curPage", pageNo);
+		req.setAttribute("totalCnt", postCount);
+		req.setAttribute("count", count);
+		System.out.println(count);
+		System.out.println(postCount);
 	}
 
 	// 모든 게시글의 갯수 계산

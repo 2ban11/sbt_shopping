@@ -209,19 +209,19 @@
 	<!-- 댓글 가져오기 -->
 	<select id="getNoticeReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
 		select * from notice_reply, account
-        where nr_notice = #{n_no} and nr_id = a_id
+        where nr_notice = #{n_no} and nr_id = a_id order by nr_date
 	</select>
 	<select id="getFreeReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
 		select * from free_reply, account
-        where fr_free = #{f_no} and fr_id = a_id
+        where fr_free = #{f_no} and fr_id = a_id order by fr_date
 	</select>
 	<select id="getLessonReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
 		select * from lesson_reply, account
-        where lr_lesson = #{l_no} and lr_id = a_id
+        where lr_lesson = #{l_no} and lr_id = a_id order by lr_date
 	</select>
 	<select id="getJobReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
 		select * from job_reply, account
-        where jr_job = #{j_no} and jr_id = a_id
+        where jr_job = #{j_no} and jr_id = a_id order by jr_date
 	</select>
 	
 	<!-- 댓글 갯수 가져오기 -->

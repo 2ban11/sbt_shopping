@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -37,10 +38,12 @@
 				<th class="notice-date">작성일</th>
 				<th class="notice-view-count">조회</th>
 			</tr>
-			<c:forEach var="p" items="${posts}">
+			<c:forEach var="p" items="${posts}" varStatus="status">
 				<c:if test="${type eq 1}">
 					<tr>
-						<td class="board-list__rn" style="text-align: center">${p.rn}</td>
+						<td class="board-list__rn" style="text-align: center">
+						${totalCnt - (status.index + (count * (curPage-1)))}
+						</td>
 						<td><a class="board-list__title"
 							href="go.notice.detail?n_no=${p.n_no }&type=${type}">
 								${p.n_title } <span style="color: #67c1f5">[${p.notice_reply_count }]</span>
@@ -60,7 +63,7 @@
 				</c:if>
 				<c:if test="${type eq 2}">
 					<tr>
-						<td class="board-list__rn" style="text-align: center">${p.rn}</td>
+						<td class="board-list__rn" style="text-align: center">${totalCnt - (status.index + (count * (curPage-1)))}</td>
 						<td><a class="board-list__title"
 							href="go.free.detail?f_no=${p.f_no }&type=${type}">${p.f_title }
 								<span style="color: #67c1f5">[${p.free_reply_count }]</span>
@@ -80,7 +83,7 @@
 				</c:if>
 				<c:if test="${type eq 3}">
 					<tr>
-						<td class="board-list__rn" style="text-align: center">${p.rn}</td>
+						<td class="board-list__rn" style="text-align: center">${totalCnt - (status.index + (count * (curPage-1)))}</td>
 						<td><a class="board-list__title"
 							href="go.lesson.detail?l_no=${p.l_no }&type=${type}">${p.l_title }
 								<span style="color: #67c1f5">[${p.lesson_reply_count }]</span>
@@ -100,7 +103,7 @@
 				</c:if>
 				<c:if test="${type eq 4}">
 					<tr>
-						<td class="board-list__rn" style="text-align: center">${p.rn}</td>
+						<td class="board-list__rn" style="text-align: center">${totalCnt - (status.index + (count * (curPage-1)))}</td>
 						<td class="board-list__job-category" style="text-align: center">${p.j_category}</td>
 						<td><a href="go.job.detail?j_no=${p.j_no }&type=${type}"
 							class="board-list__title">${p.j_title } <span
