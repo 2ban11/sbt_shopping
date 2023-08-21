@@ -1,5 +1,7 @@
 package com.sbt.shopping.myeonggyu;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -142,25 +144,35 @@ public class AccountController {
 	
 	
 	 @RequestMapping(value = "/account.sendEmailCodePage", method = RequestMethod.GET)
-	    public String sendEmailCodePage() {
-	        return "myeonggyu/emailCode"; 
+	    public String sendEmailCodePage(HttpServletRequest req) {
+		 req.setAttribute("contentPage", "myeonggyu/emailCode.jsp");
+	        return "index"; 
 	    }
 	 
 	 @RequestMapping(value = "/account.sendEmailCode", method = RequestMethod.POST)
-	 public String sendVerificationCode(@RequestParam("email") String email, HttpServletRequest req, Model model) {
+	 public @ResponseBody Map<String, String> sendVerificationCode(@RequestParam("email") String email, HttpServletRequest req, Model model) {
 	     // 이메일 인증 코드 전송
 	     String verificationCode = AEA.generateVerificationCode(); // 인증 코드 생성
-	     AEA.sendVerificationEmail(email); // 이메일 전송
 	     req.getSession().setAttribute("EmailCode", verificationCode); // 세션에 인증번호 저장
 	     model.addAttribute("email", email);
-	     return "myeonggyu/emailCode"; // 인증번호 입력 페이지로 이동
+	     return AEA.sendVerificationEmail(email); // 이메일 전송
 	 }
 	 
 	 @RequestMapping(value = "/account.email.auth", method = RequestMethod.GET)
-	    public String email_Auth() {
-	        return "myeonggyu/email_find_pw"; 
+	    public String email_Auth(HttpServletRequest req) {
+		 req.setAttribute("contentPage", "myeonggyu/email_find_pw.jsp");
+	        return "index"; 
 	    }
 
-	 
+	 @RequestMapping(value = "/shopping/checkEmailExistence", method = RequestMethod.POST)
+	 @ResponseBody
+	 public String checkEmailExistence(@RequestParam("email") HttpServletRequest req) {
+	     // 이메일 존재 여부 확인 로직 수행
+	     if (aDAO.emailExistsInDatabase(req)) {
+	         return "exist";
+	     } else {
+	         return "not_exist";
+	     }
+	 }
 }
 

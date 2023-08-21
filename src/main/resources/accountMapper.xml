@@ -55,5 +55,8 @@
     set a_pw = #{a_pw}
     where a_id = #{a_id}
 </update>
+ <select id="checkEmailExistence" resultType="com.sbt.shopping.myeonggyu.AccountDTO" >
+ select * from account where a_email = #{a_email}
+ </select>
 </mapper>
 

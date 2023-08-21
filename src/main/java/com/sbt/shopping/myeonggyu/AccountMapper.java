@@ -1,5 +1,6 @@
 package com.sbt.shopping.myeonggyu;
 
+import javax.servlet.http.HttpServletRequest;
 
 public interface AccountMapper {
 
@@ -24,4 +25,6 @@ public interface AccountMapper {
 	AccountDTO updateKNickname(String a_id, String a_nickname);
 
 	AccountDTO saveKakaoUserInfo(AccountDTO a);
+
+	int checkEmailExistence(HttpServletRequest req);
 }

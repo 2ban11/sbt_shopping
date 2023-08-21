@@ -285,5 +285,9 @@ public class AccountDAO {
 		    
 	
 	}
-
+	 public boolean emailExistsInDatabase(HttpServletRequest req) {
+	        // 이메일 존재 여부를 데이터베이스에서 확인하는 로직 수행
+	        int count = ss.getMapper(AccountMapper.class).checkEmailExistence(req);
+	        return count > 0;
+	    }
 }
