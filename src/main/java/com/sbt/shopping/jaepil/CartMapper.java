@@ -4,9 +4,11 @@ import java.util.List;
 
 public interface CartMapper {
 
-	 List<CartDTO>getCart();
+	List<CartDTO>getCart();
 
-	 int deleteCart(CartDTO cDTO);
+	int deleteCart(String no);
+
+	int updateCart(CartDTO cDTO);
 	
 
 }

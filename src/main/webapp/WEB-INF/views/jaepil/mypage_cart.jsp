@@ -13,7 +13,7 @@
 </head>
 <body>
 	<div class="mypage-main">
-		<h1>마이페이지</h1>
+		<h1>장바구니</h1>
 	</div>
 	<div class="mypage">
 		<div class="mypage-nav">
@@ -34,7 +34,7 @@
 			</div>
 		</div>
 		<div class="mypage-info-datas">
-			<div class="mypage-info-data">
+			<div class="mypage-info-data-nav">
 				<div class="mypage-info-data-cart-select">
 					<input type="checkbox" id="cbx_chkAll">
 				</div>
@@ -48,7 +48,7 @@
 				<c:forEach items="${carts}" var="c">
 					<div class="mypage-info-data">
 						<div class="mypage-info-data-cart-select">
-							<input type="checkbox" name="chk">
+							<input type="checkbox" name="chk" value="${c.c_no }">
 						</div>
 						<div class="mypage-info-data-cart-category">${c.p_big_category }</div>
 						<div class="mypage-info-data-cart-img">
@@ -56,27 +56,30 @@
 						</div>
 						<div class="mypage-info-data-cart-name">${c.p_name }</div>
 						<div class="mypage-info-data-cart-cnt">
-							<input type="text" value="${c.c_cnt }" name="c_cnt">
-							<button>수정</button>
+							<form action="updatecart" onsubmit="updatecart()">
+								<input type="number" name="c_cnt" value="${c.c_cnt }" min="1"
+									max="99">
+								<button name="c_no" value="${c.c_no }">수정</button>
+							</form>
 						</div>
-						<div class="mypage-info-data-cart-sale">${c.p_sale }원<button class="delete-btn" onclick="deleteCart(${c.c_no })">삭제</button>
+						<div class="mypage-info-data-cart-sale">
+							${c.p_sale}원
 						</div>
 					</div>
 					<c:set var="total" value="${total + c.p_sale }" />
 				</c:forEach>
-				<div class="mypage-cart-total">
-				<div>합계</div>
-				<div>${total}원</div>
-			</div>
 			</c:if>
 			<div class="mypage-btn-delete">
 				<button class="selectDelete-btn">선택삭제</button>
 			</div>
-			<div class="mypage-cart-order">
-				<button>주문하기</button>
+			<div class="mypage-cart-total">
+				<div>합계</div>
+				<div>${total}원</div>
 			</div>
 		</div>
 	</div>
+	<div class="mypage-cart-order">
+		<button onclick="cartOrder()">주문하기</button>
 	</div>
 </body>
 </html>

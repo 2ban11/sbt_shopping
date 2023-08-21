@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +10,9 @@
 <link rel="stylesheet" href="resources/css/jaepil/mypage.css">
 </head>
 <body>
-	<h1>마이페이지</h1>
+	<div class="mypage-main">
+		<h1>문의내역</h1>
+	</div>
 	<div class="mypage">
 		<div class="mypage-nav">
 			<div>
@@ -35,13 +39,45 @@
 		</div>
 		<div>
 			<div class="mypage-info-datas">
-				<div class="mypage-info-data">
+				<div class="mypage-info-data-nav">
 					<div class="mypage-info-data-qna-no">번호</div>
 					<div class="mypage-info-data-qna-title">제목</div>
 					<div class="mypage-info-data-qna-date">작성일자</div>
 				</div>
+				<c:if test="${not empty qnas}">
+					<c:forEach var="q" items="${qnas }">
+						<details>
+							<summary>
+								<div class="mypage-info-data">
+									<div class="mypage-info-data-qna-no">${q.rn }</div>
+									<div class="mypage-info-data-qna-title">${q.q_title }</div>
+									<div class="mypage-info-data-qna-date">
+										<fmt:formatDate value="${q.q_date }" dateStyle="long" />
+									</div>
+								</div>
+							</summary>
+							<div class="mypage-info-data">
+								<div class="mypage-info-data-qna-content">${q.q_content }</div>
+							</div>
+						</details>
+					</c:forEach>
+				</c:if>
 			</div>
 		</div>
 	</div>
+	<%-- <details>
+				<summary>
+								<div class="mypage-info-data">
+									<div class="mypage-info-data-qna-no">${q.rn }</div>
+									<div class="mypage-info-data-qna-title">${q.q_title }</div>
+									<div class="mypage-info-data-qna-date">
+										<fmt:formatDate value="${q.q_date }" dateStyle="long" />
+									</div>
+								</div>
+							</summary>
+							<div class="mypage-info-data">
+								<div class="mypage-info-data-qna-content">${q.q_content }</div>
+							</div>
+						</details> --%>
 </body>
 </html>

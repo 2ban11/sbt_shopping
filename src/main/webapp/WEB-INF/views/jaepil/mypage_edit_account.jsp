@@ -31,40 +31,40 @@
 			※ 아이디로 사용하는 이메일 주소는 변경이 불가하며, 수신 전용 이메일 주소만 변경이 가능합니다. <br> ※
 			닉네임은 변경이 불가합니다.
 		</div>
-		<form action="accountEdit">
+		<form action="accountedit" method="post">
 			<div class="mypage-info-accounts">
 				<div class="mypage-info-accounts-items">
 					<div class="mypage-info-account">
 						<div class="mypage-info-account-des">아이디</div>
-						<div class="mypage-info-account-value">아이디</div>
+						<div class="mypage-info-account-value">${account.a_id }</div>
 					</div>
 					<div class="mypage-info-account">
 						<div class="mypage-info-account-des">이메일</div>
-						<div class="mypage-info-account-value">이메일</div>
+						<div class="mypage-info-account-value">${account.a_email }</div>
 					</div>
 					<div class="mypage-info-account">
 						<div class="mypage-info-account-des">비밀번호</div>
 						<div class="mypage-info-account-value">
-							<input type="text" name="a_password">
+							<input type="password" name="a_password" id="pw" minlength="8" maxlength="16" pattern="[a-z\d$!%*?&]{8,16}" required> 소문자, 숫자, 특수문자(@제외)를 포함하여 8자 이상, 16자 이하
 						</div>
 					</div>
 					<div class="mypage-info-account">
 						<div class="mypage-info-account-des">비밀번호확인</div>
 						<div class="mypage-info-account-value">
-							<input type="text" name="a_password">
+							<input type="password" id="PWConfirm" minlength="8" maxlength="16" pattern="[a-z\d$!%*?&]{8,16}" required> 소문자, 숫자, 특수문자(@제외)를 포함하여 8자 이상, 16자 이하
 						</div>
 					</div>
 					<div class="mypage-info-account">
 						<div class="mypage-info-account-des">닉네임</div>
-						<div class="mypage-info-account-value">닉네임</div>
+						<div class="mypage-info-account-value">${account.a_nickname }</div>
 					</div>
 					<div class="mypage-info-account">
 						<div class="mypage-info-account-des">이름</div>
-						<div class="mypage-info-account-value">이름</div>
+						<div class="mypage-info-account-value">${account.a_name }</div>
 					</div>
 					<div class="mypage-btn-account">
 						<div>
-							<button class="mypage-btn-account-btn">정보 수정</button>
+							<button class="mypage-btn-account-btn" onclick="validatePassword()">정보 수정</button>
 						</div>
 					</div>
 				</div>
@@ -72,4 +72,5 @@
 		</form>
 	</div>
 </body>
+<script type="text/javascript" src="resources/js/jaepil/mypage.js"></script>
 </html>

@@ -45,6 +45,9 @@
 			<beans:list>
 				<beans:value>classpath:kimoon.xml</beans:value>
 				<beans:value>classpath:cartMapper.xml</beans:value>
+				<beans:value>classpath:orderMapper.xml</beans:value>
+				<beans:value>classpath:qnaMapper.xml</beans:value>
+				<beans:value>classpath:accountMapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

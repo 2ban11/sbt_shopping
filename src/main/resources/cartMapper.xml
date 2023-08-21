@@ -11,7 +11,12 @@
 
 	<delete id="deleteCart">
 		delete cart
-		where c_id = 'mk'
-		and c_no = #{c_no}
+		where c_no = #{no}
 	</delete>
+	
+	<update id="updateCart">
+		update cart
+		set c_cnt = #{c_cnt} 
+		where c_no = #{c_no}
+	</update>
 </mapper>
