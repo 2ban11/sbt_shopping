@@ -14,7 +14,7 @@ public class HC_MG {
 	
 	
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = "/fff", method = RequestMethod.GET)
 	public String home(HttpServletRequest req ) {
 		req.setAttribute("contentPage", "myeonggyu/login.jsp");
 		return "index";

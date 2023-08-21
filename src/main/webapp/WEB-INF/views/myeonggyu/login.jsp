@@ -5,68 +5,67 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css" >
-body{
-color: white;
-}
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link rel="stylesheet" href="resources/css/myeonggyu/login.css">
+  <script type="text/javascript"src="resources/js/myeonggyu/logIn.js"></script>
+<style>
+  .error {
+    color: red;
+  }
 </style>
 </head>
 <body>
 <div class="login-wrap">
-						<div class="page-header">
-							<h1><strong>기존회원 로그인</strong></h1>
-						</div>
-						<div class="login">
-							<form action="account.login" id="loginFrm" method="post" class="form-horizontal">
-    <input type="hidden" id="visitorId" name="visitorId" value="">
-    <fieldset>
-        <div class="form-group">
-            <div class="col-sm-12 control-label">
-                <label id="username-lbl" for="a_id" class="required">아이디(이메일)<span class="star">&nbsp;*</span></label>
+	<div class="basic-login">
+    <div class="page-header">
+        <h4><strong>기존회원 로그인</strong></h4>
+    </div>
+    <div class="login">
+        <form action="account.login" id="loginFrm" method="post" class="form-horizontal">
+            <!-- 입력 폼을 부트스트랩 컨테이너로 감싸기 -->
+            <div class="container">
+               <div class="form-group">
+    <label for="a_id" class="required">아이디(이메일)<span class="star">*</span></label>
+    <input type="text" name="a_id" id="a_id" class="form-control" autofocus="">
+    <p id="a_id_error" class="error" style="display: none;">아이디를 입력해주세요.</p>
+</div>
+<div class="form-group">
+    <label for="a_password" class="required">비밀번호<span class="star">*</span></label>
+    <input type="password" name="a_password" id="a_password" class="form-control" >
+    <p id="a_password_error" class="error" style="display: none;">비밀번호를 입력해주세요.</p>
+</div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg btn-block" id="btn_login">로그인</button>
+                </div>
+                <div class="form-group">
+                    <ul class="list-inline">
+                        <li class="list-inline-item"><a href="/shopping/account.sendEmailCodePage"  >비밀번호 찾기</a></li>
+                        <li class="list-inline-item bars">|</li>
+                        <li class="list-inline-item"><a href="/shopping/account.join.go">회원가입</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-sm-12">
-                <input type="text" name="a_id" id="a_id" class="required" required="" aria-required="true" autofocus="" style="width:414px;">
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-12 control-label">
-                <label id="password-lbl" for="a_password" class="required">비밀번호<span class="star">&nbsp;*</span></label>
-            </div>
-            <div class="col-sm-12">
-                <input type="password" name="a_password" id="a_password" class="required" maxlength="99" required="" aria-required="true" style="width:414px;">
-            </div>
-        </div>
-									<div class="form-group">
-										<div class="col-sm-12 btn-wrap">
-											<button type="submit" class="btn btn-primary btn-lg btn-block" id="btn_login">로그인</button>
-										</div>
-									</div>
-
-									<div class="other-links form-group">
-										<div class="col-sm-12">
-											<ul>
-												<li><a href="/shopping/account.sendEmailCodePage" >비밀번호 찾기</a> </li>
-												<li><span class="bars">|</span></li>
-												<li><a href="/shopping/account.join.go">회원가입</a></li>
-											</ul>
-										</div>
-									</div>
 									<input type="hidden" name="return_url" value="">
 									 <input type="hidden" name="token" id="token">
-								</fieldset>
 							</form>
 						</div>
 
+	</div>
 						<div class="snsLoginWrap" style="margin-top:30px">
 							<div class="page-header">
-								<h1><strong>간편로그인</strong></h1>
+								<h4><strong>간편로그인</strong></h4>
 							</div>
-					<div class="login">
+							<div class="s_login">
+					<div class="n_login">
 
 				    <%@ include file="naver_login.jsp"  %>
+				    </div>
+				    <div class="k_login" >
     				<%@ include file="kakao_login.jsp"  %>
     
 								</div>
+							</div>
 							</div>
 								
 							<div class="docs-section">

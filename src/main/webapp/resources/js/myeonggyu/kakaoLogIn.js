@@ -9,7 +9,6 @@
       Kakao.Auth.login({
         success: function (authObj) {
           isKakaoLoggedIn = true; // 카카오 로그인 성공 시 변수를 true로 설정
-
           //2. 로그인 성공시, API 호출
           Kakao.API.request({
             url: '/v2/user/me',
@@ -36,11 +35,8 @@
 			}
 			})*/
 			
-<<<<<<< HEAD
-           window.location.href = 'http://localhost/shopping/loginSuccess.go?type=kakao';
-=======
-           // window.location.href = 'http://localhost/shopping/loginSuccess.go?type=kakao';
->>>>>>> 12fecef (8/17 myeonggyu 커밋)
+          window.location.href = 'http://localhost/shopping';
+
             },
             fail: function (error) {
               // 실패 처리
@@ -58,12 +54,11 @@
 
 
  function logoutKakao() {
-        // 카카오 로그아웃 API 호출
-        var kakaoLogoutURL = 'https://kauth.kakao.com/oauth/logout?client_id=e57e76752dce19149944038091a5e349&logout_redirect_uri=http://localhost/shopping/login.go';
-        window.location.href = kakaoLogoutURL;
+    var kakaoLogoutURL = 'https://kauth.kakao.com/oauth/logout?client_id=e57e76752dce19149944038091a5e349&logout_redirect_uri=http://localhost/shopping/logout-process';
+    window.location.href = kakaoLogoutURL;
 }
-    
 
+    
 
  // 서버로 사용자 정보 전송하는 함수
     function saveKakaoUserData(userEmail, nickName) {

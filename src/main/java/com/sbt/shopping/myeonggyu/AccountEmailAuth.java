@@ -25,7 +25,7 @@ public class AccountEmailAuth {
         message.setSubject("이메일 인증 코드");
         message.setText("인증 코드: " + verificationCode);
         mailSender.send(message);
-
+        
         Map<String, String> response = new HashMap<>();
         response.put("verificationCode", verificationCode);
         System.out.println(response);

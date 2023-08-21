@@ -1,0 +1,7 @@
+
+.logOut{
+	text-decoration: none;
+    border: 1px solid #cccccc;
+    box-shadow: 0 0 1px rgba(255,255,255,0.2) inset;
+    background: linear-gradient(#f4f4f4,#f2f2f2);
+    }

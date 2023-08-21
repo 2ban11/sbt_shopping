@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -12,7 +13,7 @@
     <meta charset="UTF-8">
     <title>인증번호 확인 및 비밀번호 변경</title>
     <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="resources/js/find_pw.js"></script>
+    <script type="text/javascript" src="resources/js/myeonggyu/find_pw.js"></script>
 </head>
 <body>
 <div class="pwf-content pwf-container pwf-margin-top">

@@ -1,0 +1,103 @@
+body{
+color: white;
+width: 100%
+
+}
+h4{
+	padding:15px;
+	width: 100%;
+	margin-bottom: 2px;
+	border-bottom: 1px solid rgba(255,255,255,0.1);
+	
+}
+.login-wrap{
+	margin-left:25%;
+	width: 100%;
+	padding: 20px;
+}
+.basic-login{
+	width:50%;
+
+ border: 1px solid rgba(255,255,255,0.1);
+}
+
+.snsLoginWrap{
+	width: 50%;
+	 border: 1px solid rgba(255,255,255,0.1);
+}
+#btn_login{
+	margin-top:12px;
+	width: 100%;
+}
+
+.s_login{
+	padding:10px;
+	margin-left:12px;
+	margin-bottom:5px;
+	justify-content:space-between;
+	width: 900%;
+}
+.k_login{
+	margin-top:15px;
+	width: 10%;
+	height: 40px;
+	background-color: #FFE500;
+	border-radius: 5px;
+	color: black;
+	font-weight: bold;
+	display: flex;
+	justify-content: start;		
+	
+}
+#k_login-img{
+	width: 40px;
+	height: 40px;
+
+}
+
+.n_login{
+	width: 10%;
+	height: 40px;
+	background-color: #1EC800;
+	border-radius: 5px;
+	color: white;
+	font-weight: bold;
+	display: flex;
+	justify-content: start;		
+}
+#n_login-img{
+	width: 40px;
+	height: 40px;
+
+}
+.n_login a{
+	text-decoration: none;
+}
+.list-inline-item a{
+	text-decoration: none;
+	color: #ffffff;
+}
+
+#a_id{
+	background-color: rgba(255,255,255,0.1);
+	color: white;
+	
+}
+#a_password{
+	background-color: rgba(255,255,255,0.1);
+	color: white;
+}
+
+.docs-section{
+	width:50%;
+	margin-top:15px;
+	border: 1px solid rgba(255,255,255,0.1);
+	display: flex;
+	justify-content: space-between;
+}
+.button-login{
+	
+}
+
+.naver-login-btn{background-color: green;}
+.star{color:gold;}

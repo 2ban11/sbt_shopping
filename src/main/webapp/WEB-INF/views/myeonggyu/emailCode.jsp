@@ -1,13 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="resources/js/find_pw.js" ></script>
-
+<script type="text/javascript" src="resources/js/myeonggyu/find_pw.js" ></script>
+<script type="text/javascript">
+    var response = <c:out value="${sessionScope.response}" />;
+    var verificationCode = response.verificationCode;
+</script>
 </head>
 <body>
 <div class="pwf-content pwf-container pwf-margin-top">

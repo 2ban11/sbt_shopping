@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -25,7 +24,7 @@ public class AccountController {
 	@RequestMapping(value = "/account.login", method = RequestMethod.POST)
 	public String loginMember(AccountDTO a, HttpServletRequest req) {
 	    if (aDAO.login(a, req)) {
-	        return "redirect:/loginSuccess.go"; // 로그인 성공 시 loginSuccess.jsp로 리다이렉트
+	        return "redirect:/"; 
 	    } else {
 	        aDAO.loginCheck(req);
 	        req.setAttribute("contentPage", "myeonggyu/login.jsp"); // 로그인 실패 시 그대로 머무르기
@@ -40,6 +39,11 @@ public class AccountController {
 	        req.setAttribute("contentPage", "myeonggyu/login.jsp");
 	        return "index";
 	    }
+	@RequestMapping(value = "/social.logout", method = RequestMethod.GET)
+	public String socialLogOut(HttpServletRequest req) {
+		aDAO.socialLogOut(req);
+		return "redirect:/";
+	}
 
     @RequestMapping(value = "/account.info", method = RequestMethod.GET)
     public String infoMember(AccountDTO a, HttpServletRequest req) {
@@ -97,7 +101,7 @@ public class AccountController {
     @RequestMapping(value = "/naver_login_callback", method = RequestMethod.GET)
     public String goNaverCallBack(HttpServletRequest req) {
         aDAO.naverLoginCallBack(req);
-        return "redirect:/loginSuccess.go?type=naver";
+        return "redirect:/";
         }
 	
     @RequestMapping(value = "/kakao_login.go", method = RequestMethod.GET)

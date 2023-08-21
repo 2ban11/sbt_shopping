@@ -9,19 +9,18 @@
 <body>
   <div class="button-login">
     <a id="kakao-login-btn" style="cursor: pointer;">
-      <img src="//k.kakaocdn.net/14/dn/btqbjxsO6vP/KPiGpdnsubSq3a0PHEGUK1/o.jpg" width="10%" height="50px" />
+      <img id="k_login-img" src="resources/img/Login/icon_kakao3.png" />
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;카카오 로그인
     </a>
-<<<<<<< HEAD
-    <script type="text/javascript"src="resources/js/kakaoLogIn.js"></script>
-=======
->>>>>>> 12fecef (8/17 myeonggyu 커밋)
+    <script type="text/javascript"src="resources/js/myeonggyu/kakaoLogIn.js"></script>
+
   </div>
 
   <input type="hidden" id="user-email" name="user-email" value="" />
   <input type="hidden" id="kakao-user-id" name="kakao-user-id" value="" />
 	
   <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-  <script type="text/javascript"src="resources/js/kakaoLogIn.js"></script>
+  <script type="text/javascript"src="resources/js/myeonggyu/kakaoLogIn.js"></script>
             
 </body>
 </html>

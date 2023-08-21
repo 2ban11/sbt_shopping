@@ -18,25 +18,24 @@
       crossorigin="anonymous"
     ></script>
 <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
-      <script type="text/javascript" src="resources/js/kakaoLogIn.js"></script>
-<<<<<<< HEAD
-      <script type="text/javascript"src="resources/js/s_logout.js"></script>
-=======
->>>>>>> 12fecef (8/17 myeonggyu 커밋)
+      <script type="text/javascript" src="resources/js/myeonggyu/kakaoLogIn.js"></script>
+      <script type="text/javascript"src="resources/js/myeonggyu/s_logout.js"></script>
+      <link rel="stylesheet" href="resources/css/myeonggyu/logOut.css">
 </head>
 <body>
-    <h1>환영합니다!!</h1>
-    
-    	<a href="/shopping/account.logout"><button>로그아웃</button></a>
-        
+    <h3> 환영합니다!!</h3>
+    	<c:if test='${param.type eq "basic"}'>
+    	<a href="/shopping/account.logout" class="logOut"><button>로그아웃</button></a>
+        </c:if>
     
     <c:if test='${param.type eq "kakao"}'>
-     <a href="#" id="kakao-logout-btn" onclick="logoutKakao()">카카오 로그아웃</a>
+     <a href="#" id="kakao-logout-btn" onclick="logoutKakao()"class="logOut">카카오 로그아웃</a>
     </c:if>
     <c:if test='${param.type eq "naver"}'>
-    <a href="#" onclick="logoutNaver()">네이버 로그아웃</a> 
+    <a href="#" onclick="logoutNaver()"class="logOut">네이버 로그아웃</a> 
     </c:if>
 
+	<button onclick="" >마이 페이지</button>
     
 </body>
 <script type="text/javascript">

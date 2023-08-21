@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,6 +20,9 @@
       crossorigin="anonymous"
     ></script>
     <script type="text/javascript" src="resources/js/headerFooter.js"></script>
+    
+     <script type="text/javascript"src="resources/js/myeonggyu/s_logout.js"></script>
+      <script type="text/javascript"src="resources/js/myeonggyu/kakaoLogIn.js"></script>
   </head>
   <body>
     <div class="site-container">
@@ -59,15 +63,48 @@
               </form>
             </div>
             <div class="header__button">
+            
+              	<c:choose>
+              <c:when test="${not empty loginMember }">
+              	<a href="/shopping/account.logout" class="logOut"><button>로그아웃</button></a>
+              	 <form action="/mypage.order">
+              <div>
+                <button class="header__signup">마이페이지</button>
+              </div>
+            </form>
+              	</c:when>
+              <c:when test="${not empty LoginMemberNaver }">
+				<a href="#" onclick="logoutNaver()"class="logOut">로그아웃 </a> 
+              	 <form action="/mypage.order">
+              <div>
+                <button class="header__signup">마이페이지</button>
+              </div>
+            </form>
+              	</c:when>
+              <c:when test="${not empty kakaoInfo }">
+				 <a href="#" id="kakao-logout-btn" onclick="logoutKakao()"class="logOut">카카오 로그아웃</a>
+              	 <form action="/mypage.order">
+              <div>
+                <button class="header__signup">마이페이지</button>
+              </div>
+            </form>
+              	</c:when>
+              	<c:otherwise>
+            <form action=/shopping/login.go>
               <div>
                 <button class="header__login">
                   <span class="haader__login--text">로그인</span
                   ><i class="fa-regular fa-user"></i>
                 </button>
               </div>
+            </form>
+            <form action="/shopping/account.join.go">
               <div>
                 <button class="header__signup">회원가입</button>
               </div>
+            </form>
+              	</c:otherwise>
+              	</c:choose>
               <div>
                 <button class="header__cart">
                   <i class="fa-solid fa-cart-shopping"></i>
@@ -84,10 +121,42 @@
           <ul class="sidebar__contents__wrap">
             <div class="sidebar__login-signup-wrapper">
               <div class="sidebar__login-signup--btn">
+               	<c:choose>
+              <c:when test="${not empty loginMember }">
+              	<a href="/shopping/account.logout" class="logOut"><button>로그아웃</button></a>
+              	 <form action="/mypage.order">
+              <div>
+                <button class="header__signup">마이페이지</button>
+              </div>
+            </form>
+              	</c:when>
+              <c:when test="${not empty LoginMemberNaver }">
+				<a href="#" onclick="logoutNaver()"class="logOut">로그아웃 </a> 
+              	 <form action="/mypage.order">
+              <div>
+                <button class="header__signup">마이페이지</button>
+              </div>
+            </form>
+              	</c:when>
+              <c:when test="${not empty kakaoInfo }">
+				 <a href="#" id="kakao-logout-btn" onclick="logoutKakao()"class="logOut">카카오 로그아웃</a>
+              	 <form action="/mypage.order">
+              <div>
+                <button class="header__signup">마이페이지</button>
+              </div>
+            </form>
+              	</c:when>
+              	<c:otherwise>
+                  <form action="/shopping/account.join.go">
                 <span class="sidebar__login">
                   <a href="#">로그인</a>
                 </span>
+                  </form>
+                  <form action="/shopping/account.join.go">
                 <span class="sidebar__signup"><a href="#">회원가입</a></span>
+                </form>
+              	</c:otherwise>
+              	</c:choose>
               </div>
             </div>
             <li>

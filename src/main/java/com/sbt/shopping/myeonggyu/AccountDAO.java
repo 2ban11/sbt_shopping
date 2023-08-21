@@ -28,9 +28,11 @@ public class AccountDAO {
 		if (dbAccount != null && a.getA_password().equals(dbAccount.getA_password())) {
 			req.getSession().setAttribute("loginMember", dbAccount);
 			req.getSession().setMaxInactiveInterval(60 * 10);
+			System.out.println("로그인 성공!");
 			return true; // 로그인 성공
 		} else {
 			req.setAttribute("result", "can't find user or password error");
+			System.out.println("로그인 실패!");
 			return false; // 로그인 실패
 		}
 	}
@@ -118,29 +120,31 @@ public class AccountDAO {
 		return (AccountDTO) req.getSession().getAttribute("loginMember");
 	}
 
+	
 	public void naverLogIn(HttpServletRequest req) {
-		String clientId = "UaEIf33g3s0PC0nCawKU";
-		try {
-			String redirectURI = URLEncoder.encode("http://localhost/shopping/naver_login_callback", "UTF-8");
-			SecureRandom random = new SecureRandom();
-			String state = new BigInteger(130, random).toString();
-			String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
-			apiURL += "&client_id=" + clientId;
-			apiURL += "&redirect_uri=" + redirectURI;
-			apiURL += "&state=" + state;
+	    String clientId = "UaEIf33g3s0PC0nCawKU";
+	    try {
+	        String redirectURI = URLEncoder.encode("http://localhost/shopping/naver_login_callback", "UTF-8");
+	        SecureRandom random = new SecureRandom();
+	        String naverState = new BigInteger(130, random).toString();
+	        String apiURL = "https://nid.naver.com/oauth2.0/authorize?response_type=code";
+	        apiURL += "&client_id=" + clientId;
+	        apiURL += "&redirect_uri=" + redirectURI;
+	        apiURL += "&state=" + naverState;
 
-			HttpSession session = req.getSession();
-			session.setAttribute("naverLoginState", state);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	        HttpSession session = req.getSession();
+	        session.setAttribute("LoginMemberNaver", naverState);
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
+	 
 
 	public void naverLoginCallBack(HttpServletRequest req) {
 		String clientId = "UaEIf33g3s0PC0nCawKU";
 		String clientSecret = "XJPThm8DJ2";
 		String code = req.getParameter("code");
-		String state = req.getParameter("state");
+		String naverState = req.getParameter("state");
 		String redirectURI;
 		try {
 			redirectURI = URLEncoder.encode("http://localhost/shopping/naver_login_callback", "UTF-8");
@@ -149,7 +153,7 @@ public class AccountDAO {
 			apiURL += "&client_secret=" + clientSecret;
 			apiURL += "&redirect_uri=" + redirectURI;
 			apiURL += "&code=" + code;
-			apiURL += "&state=" + state;
+			apiURL += "&state=" + naverState;
 
 			URL url = new URL(apiURL);
 			HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -191,7 +195,7 @@ public class AccountDAO {
 					// 사용자 정보 저장 메서드 호출
 					AccountDTO dbAccount = new AccountDTO();
 					dbAccount.setA_nickname(userNickname);
-					req.getSession().setAttribute("loginMember", dbAccount);
+					req.getSession().setAttribute("LoginMemberNaver", dbAccount);
 					saveUserNaverInfo(req, userNickname, naverUserId, naverUserId, naverUserId); // 수정된 부분
 				}
 			}
@@ -202,7 +206,7 @@ public class AccountDAO {
 
 	public void saveUserNaverInfo(HttpServletRequest req, String a_nickname, String a_id, String a_email,
 			String a_password) {
-		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginMember");
+		AccountDTO a = (AccountDTO) req.getSession().getAttribute("LoginMemberNaver");
 		System.out.println("loginMember 세션 정보: " + a);
 
 		if (a != null) {
@@ -244,69 +248,7 @@ public class AccountDAO {
 		return passwordEncoder.encode(plainPassword);
 	}
 
-	public String goKakaoCallBack(HttpServletRequest req) {
-		try {
-			String code = req.getParameter("code");
-			String redirectURI = URLEncoder.encode("http://localhost/shopping/kakao_login_callback", "UTF-8");
-			String clientSecret = "T0mlLcFLCbiQsFuSYcCCTihcTXdoa7xJ";
-
-			// 카카오 토큰 요청
-			String tokenURL = "https://kauth.kakao.com/oauth/token?grant_type=authorization_code&";
-			tokenURL += "client_id=" + "6c80bbe815aefb376c537f4a76aaf65b";
-			tokenURL += "&redirect_uri=" + redirectURI;
-			tokenURL += "&code=" + code;
-			tokenURL += "&client_secret=" + clientSecret;
-
-			URL url = new URL(tokenURL);
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
-			con.setRequestMethod("POST");
-			int responseCode = con.getResponseCode();
-			BufferedReader br;
-			if (responseCode == 200) { // 정상 호출
-				br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-				String inputLine;
-				StringBuffer response = new StringBuffer();
-				while ((inputLine = br.readLine()) != null) {
-					response.append(inputLine);
-				}
-				br.close();
-
-				JSONObject jsonResponse = new JSONObject(response.toString());
-				String accessToken = jsonResponse.getString("access_token");
-
-				// 사용자 정보 가져오기
-				String userInfoURL = "https://kapi.kakao.com/v2/user/me";
-				HttpURLConnection userInfoCon = (HttpURLConnection) new URL(userInfoURL).openConnection();
-				userInfoCon.setRequestProperty("Authorization", "Bearer " + accessToken);
-				int userInfoResponseCode = userInfoCon.getResponseCode();
-				BufferedReader userInfoBr;
-				if (userInfoResponseCode == 200) { // 정상 호출
-					userInfoBr = new BufferedReader(new InputStreamReader(userInfoCon.getInputStream()));
-					String userInfoInputLine;
-					StringBuffer userInfoResponse = new StringBuffer();
-					while ((userInfoInputLine = userInfoBr.readLine()) != null) {
-						userInfoResponse.append(userInfoInputLine);
-					}
-					userInfoBr.close();
-
-					JSONObject userInfo = new JSONObject(userInfoResponse.toString());
-					String userNickname = userInfo.getJSONObject("kakao_account").getJSONObject("profile")
-							.getString("nickname");
-					String kakaoUserId = userInfo.getString("id");
-
-					// 사용자 정보 저장 메서드 호출
-					AccountDTO dbAccount = new AccountDTO();
-					dbAccount.setA_nickname(userNickname);
-					req.getSession().setAttribute("loginMember", dbAccount);
-					saveKakaoUserInfo(req, userNickname, kakaoUserId); // 카카오 사용자 정보 저장 메서드 호출
-				}
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return "redirect:/loginSuccess.go?type=kakao";
-	}
+	
 
 	public void saveKakaoUserInfo(HttpServletRequest req, String userEmail, String kakaoUserId) {
 		AccountDTO aa = (AccountDTO) req.getSession().getAttribute("loginMember");
@@ -321,6 +263,7 @@ public class AccountDAO {
 			String encryptedPassword = encryptPassword("asd");
 			a.setA_password(encryptedPassword);
 			// 해당 ID를 기반으로 사용자 계정이 있는지 확인합니다.
+			req.getSession().setAttribute("kakaoInfo", a);
 			int accountNum = checkId(a, req);
 			String originalPassword = a.getA_password();
 			if (originalPassword.length() > 20) {
@@ -335,7 +278,12 @@ public class AccountDAO {
 		}
 
 		// 카카오 로그인 세션 정보 초기화
-		req.getSession().setAttribute("kakaoLoginState", null);
+	}
+
+	public void socialLogOut(HttpServletRequest req) {
+		req.getSession().removeAttribute("LoginMemberNaver");
+		    
+	
 	}
 
 }
