@@ -16,7 +16,7 @@
 
 		<div class="board-detail__header-detail">
 			<div>조회 : ${board.n_view }</div>
-			<div>댓글</div>
+			<div>댓글 : ${noticeReplyCount }</div>
 			<div>
 				작성일 : 
 				<fmt:formatDate value="${board.n_date }" pattern="yyyy-MM-dd HH:mm" />
@@ -44,21 +44,25 @@
 
 
 	<div class="board-reply__wrapper">
-		<div class="board-reply__header">댓글 (??건)</div>
+		<div class="board-reply__header">댓글 (${noticeReplyCount }건)</div>
 		
 		<c:forEach var="reply" items="${reply }">
+		<form action="notice.reply.delete" method="post" onsubmit="return deleteAlert()">
 		<div class="board-reply__content">
 			<div class="board-reply__nick-date-wrapper">
-				<div class="board-reply__nick">${reply.nr_id}</div>
-				<div class="board-reply__date">${reply.nr_date}</div>
+				<div class="board-reply__nick">${reply.a_nickname}</div>
+				<div class="board-reply__date"><fmt:formatDate value="${reply.nr_date}" pattern="yyyy-MM-dd HH:mm" /></div>
 			</div>
 			<div class="board-reply__txt-delete-wrapper">
 				<div class="board-reply__txt">${reply.nr_text}</div>
 				<div class="board-reply__delete">
-				<button>삭제</button>
+				<button name="nr_no" value="${reply.nr_no}">삭제</button>
+				<input type="hidden" name="nr_notice" value="${reply.nr_notice }">
+				<input type="hidden" name="type" value="1">
 				</div>
 			</div>
 		</div>
+		</form>
 		</c:forEach>
 		
 		
@@ -68,7 +72,7 @@
 				<input type="hidden" name="nr_notice" value="${board.n_no }">
 				<input type="hidden" name="nr_id" value="jp@gmail.com">
 				<input type="hidden" name="type" value="1">
-				<div class="board-reply__write"> <textarea name="nr_text"></textarea> </div>
+				<div class="board-reply__write"> <textarea name="nr_text" maxlength="1000"></textarea> </div>
 				<div class="board-reply__write--btn"><button>등록</button></div>
 			</div>
 		</form>

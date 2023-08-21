@@ -25,6 +25,15 @@ public interface BoardMapper {
     
     // 게시글 댓글 작성
     int writeNoticeReply(BoardReplyDTO brDTO);
+    int writeFreeReply(BoardReplyDTO brDTO);
+    int writeLessonReply(BoardReplyDTO brDTO);
+    int writeJobReply(BoardReplyDTO brDTO);
+    
+    // 게시글 댓글 갯수 세기
+    int getNoticeReplyCount(int no);
+    int getFreeReplyCount(int no);
+    int getLessonReplyCount(int no);
+    int getJobReplyCount(int no);
     
     // 게시글 작성
 	int summernoteNoticeInsert(BoardDTO bDTO);
@@ -55,4 +64,10 @@ public interface BoardMapper {
 	int deleteFree(BoardDTO bDTO);
 	int deleteLesson(BoardDTO bDTO);
 	int deleteJob(BoardDTO bDTO);
+	
+	// 댓글 삭제
+	int deleteNoticeReply(BoardReplyDTO brDTO);
+	int deleteFreeReply(BoardReplyDTO brDTO);
+	int deleteLessonReply(BoardReplyDTO brDTO);
+	int deleteJobReply(BoardReplyDTO brDTO);
 }

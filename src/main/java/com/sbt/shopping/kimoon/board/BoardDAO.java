@@ -55,18 +55,30 @@ public class BoardDAO {
 			case 1:
 				postCount = allPostCount1;
 				posts = ss.getMapper(BoardMapper.class).getNotice(search);
+				for (BoardDTO b : posts) {
+					b.setNotice_reply_count(getNoticeReplyCount(req, b.getN_no()));
+				}
 				break;
 			case 2:
 				postCount = allPostCount2;
 				posts = ss.getMapper(BoardMapper.class).getFree(search);
+				for (BoardDTO b : posts) {
+					b.setFree_reply_count(getFreeReplyCount(req, b.getF_no()));
+				}
 				break;
 			case 3:
 				postCount = allPostCount3;
 				posts = ss.getMapper(BoardMapper.class).getLesson(search);
+				for (BoardDTO b : posts) {
+					b.setLesson_reply_count(getLessonReplyCount(req, b.getL_no()));
+				}
 				break;
 			case 4:
 				postCount = allPostCount4;
 				posts = ss.getMapper(BoardMapper.class).getJob(search);
+				for (BoardDTO b : posts) {
+					b.setJob_reply_count(getJobReplyCount(req, b.getJ_no()));
+				}
 				break;
 			default:
 				break;
@@ -77,17 +89,28 @@ public class BoardDAO {
 			System.out.println("search : " + search);
 			if (type == 1) {
 				postCount = ss.getMapper(BoardMapper.class).getNoticeCount(search);
-				System.out.println("noticeSearchPostCount : " + postCount);
 				posts = ss.getMapper(BoardMapper.class).getNotice(search);
+				for (BoardDTO b : posts) {
+					b.setNotice_reply_count(getNoticeReplyCount(req, b.getN_no()));
+				}
 			} else if (type == 2) {
 				postCount = ss.getMapper(BoardMapper.class).getFreeCount(search);
 				posts = ss.getMapper(BoardMapper.class).getFree(search);
+				for (BoardDTO b : posts) {
+					b.setFree_reply_count(getFreeReplyCount(req, b.getF_no()));
+				}
 			} else if (type == 3) {
 				postCount = ss.getMapper(BoardMapper.class).getLessonCount(search);
 				posts = ss.getMapper(BoardMapper.class).getLesson(search);
+				for (BoardDTO b : posts) {
+					b.setLesson_reply_count(getLessonReplyCount(req, b.getL_no()));
+				}
 			} else if (type == 4) {
 				postCount = ss.getMapper(BoardMapper.class).getJobCount(search);
 				posts = ss.getMapper(BoardMapper.class).getJob(search);
+				for (BoardDTO b : posts) {
+					b.setJob_reply_count(getJobReplyCount(req, b.getJ_no()));
+				}
 			}
 		}
 		int pageCount = (int) Math.ceil(postCount / (double) count);
@@ -185,25 +208,33 @@ public class BoardDAO {
 	// 글 자세히 보기
 	public void getNoticeDetail(HttpServletRequest req, BoardDTO bDTO) {
 		int type = Integer.parseInt(req.getParameter("type"));
+		int noticeReplyCount = getNoticeReplyCount(req, bDTO.getN_no());
 		req.setAttribute("type", type);
+		req.setAttribute("noticeReplyCount", noticeReplyCount);
 		req.setAttribute("board", ss.getMapper(BoardMapper.class).getNoticeDetail(bDTO));
 		ss.getMapper(BoardMapper.class).addNoticeView(bDTO);
 	}
 	public void getFreeDetail(HttpServletRequest req, BoardDTO bDTO) {
 		int type = Integer.parseInt(req.getParameter("type"));
+		int freeReplyCount = getFreeReplyCount(req, bDTO.getF_no());
 		req.setAttribute("type", type);
+		req.setAttribute("freeReplyCount", freeReplyCount);
 		req.setAttribute("board", ss.getMapper(BoardMapper.class).getFreeDetail(bDTO));
 		ss.getMapper(BoardMapper.class).addFreeView(bDTO);
 	}
 	public void getLessonDetail(HttpServletRequest req, BoardDTO bDTO) {
 		int type = Integer.parseInt(req.getParameter("type"));
+		int lessonReplyCount = getLessonReplyCount(req, bDTO.getL_no());
 		req.setAttribute("type", type);
+		req.setAttribute("lessonReplyCount", lessonReplyCount);
 		req.setAttribute("board", ss.getMapper(BoardMapper.class).getLessonDetail(bDTO));
 		ss.getMapper(BoardMapper.class).addLessonView(bDTO);
 	}
 	public void getJobDetail(HttpServletRequest req, BoardDTO bDTO) {
 		int type = Integer.parseInt(req.getParameter("type"));
+		int jobReplyCount = getJobReplyCount(req, bDTO.getJ_no());
 		req.setAttribute("type", type);
+		req.setAttribute("jobReplyCount", jobReplyCount);
 		req.setAttribute("board", ss.getMapper(BoardMapper.class).getJobDetail(bDTO));
 		ss.getMapper(BoardMapper.class).addJobView(bDTO);
 	}
@@ -257,6 +288,15 @@ public class BoardDAO {
 	public void writeNoticeReply(HttpServletRequest req, BoardReplyDTO brDTO) {
 		ss.getMapper(BoardMapper.class).writeNoticeReply(brDTO);
 	}
+	public void writeFreeReply(HttpServletRequest req, BoardReplyDTO brDTO) {
+		ss.getMapper(BoardMapper.class).writeFreeReply(brDTO);
+	}
+	public void writeLessonReply(HttpServletRequest req, BoardReplyDTO brDTO) {
+		ss.getMapper(BoardMapper.class).writeLessonReply(brDTO);
+	}
+	public void writeJobReply(HttpServletRequest req, BoardReplyDTO brDTO) {
+		ss.getMapper(BoardMapper.class).writeJobReply(brDTO);
+	}
 
 	
 	
@@ -264,6 +304,43 @@ public class BoardDAO {
 	// 댓글 가져오기
 	public void getNoticeReply(HttpServletRequest req, BoardReplyDTO brDTO) {
 		req.setAttribute("reply", ss.getMapper(BoardMapper.class).getNoticeReply(brDTO));
+	}
+	public void getFreeReply(HttpServletRequest req, BoardReplyDTO brDTO) {
+		req.setAttribute("reply", ss.getMapper(BoardMapper.class).getFreeReply(brDTO));
+	}
+	public void getLessonReply(HttpServletRequest req, BoardReplyDTO brDTO) {
+		req.setAttribute("reply", ss.getMapper(BoardMapper.class).getLessonReply(brDTO));
+	}
+	public void getJobReply(HttpServletRequest req, BoardReplyDTO brDTO) {
+		req.setAttribute("reply", ss.getMapper(BoardMapper.class).getJobReply(brDTO));
+	}
+
+	// 댓글 갯수 가져오기
+	public int getNoticeReplyCount(HttpServletRequest req, int no) {
+		return ss.getMapper(BoardMapper.class).getNoticeReplyCount(no);
+	}
+	public int getFreeReplyCount(HttpServletRequest req, int no) {
+		return ss.getMapper(BoardMapper.class).getFreeReplyCount(no);
+	}
+	public int getLessonReplyCount(HttpServletRequest req, int no) {
+		return ss.getMapper(BoardMapper.class).getLessonReplyCount(no);
+	}
+	public int getJobReplyCount(HttpServletRequest req, int no) {
+		return ss.getMapper(BoardMapper.class).getJobReplyCount(no);
+	}
+
+	// 댓글 삭제하기
+	public void deleteNoticeReply(HttpServletRequest req, BoardReplyDTO brDTO) {
+		ss.getMapper(BoardMapper.class).deleteNoticeReply(brDTO);
+	}
+	public void deleteFreeReply(HttpServletRequest req, BoardReplyDTO brDTO) {
+		ss.getMapper(BoardMapper.class).deleteFreeReply(brDTO);
+	}
+	public void deleteLessonReply(HttpServletRequest req, BoardReplyDTO brDTO) {
+		ss.getMapper(BoardMapper.class).deleteLessonReply(brDTO);
+	}
+	public void deleteJobReply(HttpServletRequest req, BoardReplyDTO brDTO) {
+		ss.getMapper(BoardMapper.class).deleteJobReply(brDTO);
 	}
 	
 	

@@ -201,15 +201,58 @@
 	<insert id="writeJobReply">
 		insert into job_reply
         values(job_reply_seq.nextval,
-        #{jr_notice}, #{jr_text},
+        #{jr_job}, #{jr_text},
         #{jr_id},
         sysdate)
 	</insert>
 	
 	<!-- 댓글 가져오기 -->
 	<select id="getNoticeReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
-		select * from notice_reply
-        where nr_notice = #{n_no}
+		select * from notice_reply, account
+        where nr_notice = #{n_no} and nr_id = a_id
+	</select>
+	<select id="getFreeReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
+		select * from free_reply, account
+        where fr_free = #{f_no} and fr_id = a_id
+	</select>
+	<select id="getLessonReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
+		select * from lesson_reply, account
+        where lr_lesson = #{l_no} and lr_id = a_id
+	</select>
+	<select id="getJobReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
+		select * from job_reply, account
+        where jr_job = #{j_no} and jr_id = a_id
+	</select>
+	
+	<!-- 댓글 갯수 가져오기 -->
+	<select id="getNoticeReplyCount" resultType="int">
+		SELECT COUNT(*) FROM notice_reply
+		where nr_notice = #{no}
+	</select>
+	<select id="getFreeReplyCount" resultType="int">
+		SELECT COUNT(*) FROM free_reply
+		where fr_free = #{no}
+	</select>
+	<select id="getLessonReplyCount" resultType="int">
+		SELECT COUNT(*) FROM lesson_reply
+		where lr_lesson = #{no}
+	</select>
+	<select id="getJobReplyCount" resultType="int">
+		SELECT COUNT(*) FROM job_reply
+		where jr_job = #{no}
 	</select>
 		
+	<!-- 댓글 삭제하기 -->
+	<delete id="deleteNoticeReply">
+		DELETE notice_reply WHERE nr_no = #{nr_no}
+	</delete>	
+	<delete id="deleteFreeReply">
+		DELETE free_reply WHERE fr_no = #{fr_no}
+	</delete>	
+	<delete id="deleteLessonReply">
+		DELETE lesson_reply WHERE lr_no = #{lr_no}
+	</delete>	
+	<delete id="deleteJobReply">
+		DELETE job_reply WHERE jr_no = #{jr_no}
+	</delete>	
 </mapper>

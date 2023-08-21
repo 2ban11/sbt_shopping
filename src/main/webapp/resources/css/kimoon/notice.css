@@ -70,6 +70,10 @@
 	max-width: 791px;
 }
 
+.board-list__title:hover {
+	color: #ba43ae;
+}
+
 .board-list__mobile {
 	display: none;
 }
