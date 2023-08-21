@@ -13,7 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.sbt.shopping.kimoon.board.BoardDAO;
+import com.sbt.shopping.kimoon.board.BoardPaging;
 
 @Controller
 public class HC_KM {
@@ -23,9 +26,17 @@ private MainPageDAO mpDAO;
 	
 	@RequestMapping(value = "/199", method = RequestMethod.GET)
 	public String mainPage(HttpServletRequest request) {
-		// mpDAO.get48Products(request);
+		mpDAO.getMainPageProducts(request);
 		request.setAttribute("contentPage", "kimoon/kimoonMainPage.jsp");
 		return "index";
 	}
-	
+
+//	@RequestMapping(value = "go.notice", method = RequestMethod.GET)
+//	public String goNotice(HttpServletRequest request, @RequestParam int p) {
+//		NoticePaging.clearSearch(request);
+//        nDAO.getNotice(p, request);
+//        request.setAttribute("contentPage", "kimoon/notice.jsp");
+//        return "index";
+//	}
+
 }

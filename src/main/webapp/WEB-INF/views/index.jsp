@@ -28,11 +28,13 @@
           <div class="header__wrapper">
             <div class="menu-hamberger"><i class="fa-solid fa-bars"></i></div>
             <div class="header__logo">
-              <img
-                class="header__logo--img"
-                alt="RIFF몰"
-                src="resources/img/logoWhite.png"
-              />
+            	<a href="/shopping">
+              		<img
+               		 class="header__logo--img"
+               		 alt="RIFF몰"
+               		 src="resources/img/logoWhite.png"
+             		 />
+              </a>
             </div>
             <form class="header__form" onsubmit="return false;">
               <input class="header__input--text" autocomplete="off" />
@@ -123,16 +125,15 @@
                 <li>피크</li>
                 <li>케이블</li>
                 <li>카포</li>
-                <li>우쿠렐레</li>
               </ul>
             </li>
             <li>
               <a class="sidebar__item" href="#">게시판</a>
               <ul class="sidebar__item-detail">
-                <li>공지</li>
-                <li>자유</li>
-                <li>개인레슨</li>
-                <li>구인</li>
+                <li><a href="go.board?type=1">공지</a></li>
+                <li><a href="go.board?type=2">자유</a></li>
+                <li><a href="go.board?type=3">개인레슨</a></li>
+                <li><a href="go.board?type=4">구인</a></li>
               </ul>
             </li>
             <ul>
@@ -223,9 +224,6 @@
                 <li>
                   <a href="#">카포</a>
                 </li>
-                <li>
-                  <a href="#">우쿠렐레</a>
-                </li>
               </ul>
             </div>
           </div>
@@ -234,16 +232,16 @@
             <div class="nav-item-sub">
               <ul>
                 <li>
-                  <a href="#">공지</a>
+                  <a href="go.board?type=1">공지</a>
                 </li>
                 <li>
-                  <a href="#">자유</a>
+                  <a href="go.board?type=2">자유</a>
                 </li>
                 <li>
-                  <a href="#">개인레슨</a>
+                  <a href="go.board?type=3">개인레슨</a>
                 </li>
                 <li>
-                  <a href="#">구인</a>
+                  <a href="go.board?type=4">구인</a>
                 </li>
               </ul>
             </div>

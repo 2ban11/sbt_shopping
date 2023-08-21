@@ -1,18 +1,13 @@
 $(document).ready(function(){
 	bxslider();
 	mainPageNavigation();
-	clickFirstDiv()
+	mainPageContents();
 });
 
 // 슬라이드
 function bxslider() {
 	$('.bxslider').bxSlider({
 	});
-}
-
-// 페이지 로드 시 첫 번째 div를 클릭한 것처럼 처리
-function clickFirstDiv() {
-    $('.main-page__tab div:first').click();
 }
 
 // 네비게이션
@@ -42,4 +37,17 @@ function mainPageNavigation() {
         // 클릭한 div에 파란색 상단 테두리 추가
         $(this).css('border-top', '1px solid #67c1f5');
     });
+}
+
+function mainPageContents() {
+	$(".main-page-contents__wrapper > div").hide();
+    $(".main-page__tab a").click(function () {
+    	$(".main-page-contents__wrapper > div").hide().filter(this.hash) // href와 일치하는 div의 id가져오기
+                    .fadeIn();
+                  $(".main-page__tab a").removeClass("active");
+                  $(this).addClass("active"); // active되면 테두리와 글자를 하늘색으로	
+					return false;
+				})
+                .filter(":eq(0)") // 첫 번째 .main-page__tab a 요소
+                .click();
 }
