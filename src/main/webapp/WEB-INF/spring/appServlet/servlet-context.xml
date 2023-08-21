@@ -55,7 +55,7 @@
 	</beans:bean>
 	
 	<beans:bean id="bp" class="com.sbt.shopping.kimoon.board.BoardPaging">
-		<beans:property name="boardCountPerPage" value="5"/>
+		<beans:property name="boardCountPerPage" value="2"/>
 	</beans:bean>
 
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">

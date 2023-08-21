@@ -42,7 +42,7 @@
 				<c:if test="${type eq 1}">
 					<tr>
 						<td class="board-list__rn" style="text-align: center">
-						${totalCnt - (status.index + (count * (curPage-1)))}
+							${totalCnt - (status.index + (count * (curPage-1)))} <!-- 게시글 전체 갯수 - (for문의 index번째 + (보여줄 갯수 * (현재 페이지-1))) -->
 						</td>
 						<td><a class="board-list__title"
 							href="go.notice.detail?n_no=${p.n_no }&type=${type}">
@@ -133,7 +133,7 @@
 				<a href="board.page.change?type=${type }&p=${curPage - 1 }">&lt;</a>
 			</div>
 		</c:if>
-		<c:forEach var="i" begin="1" end="${pageCount }">
+		<c:forEach var="i" begin="${startPage}" end="${endPage}">
 			<div class="board-paging__num ${i == curPage ? 'active' : ''}">
 				<a href="board.page.change?type=${type }&p=${i }">${i }</a>
 			</div>

@@ -114,14 +114,29 @@ public class BoardDAO {
 			}
 		}
 		int pageCount = (int) Math.ceil(postCount / (double) count);
+		
+		int pagesToShow = 10; // 한 번에 표시할 페이지 수
+		int currentPage = pageNo;
+		int totalPages = pageCount;
+		int startPage = Math.max(currentPage - (pagesToShow / 2), 1);
+		int endPage = Math.min(startPage + pagesToShow - 1, totalPages);
+
+		if (endPage - startPage + 1 < pagesToShow) {
+		    startPage = Math.max(endPage - pagesToShow + 1, 1);
+		}
+		
+		System.out.println("startPage : " + startPage);
+		System.out.println("endPage : " + endPage);
+		req.setAttribute("startPage", startPage);
+		req.setAttribute("endPage", endPage);
+		
+		
 		req.setAttribute("type", type);
 		req.setAttribute("pageCount", pageCount);
 		req.setAttribute("posts", posts);
 		req.setAttribute("curPage", pageNo);
 		req.setAttribute("totalCnt", postCount);
 		req.setAttribute("count", count);
-		System.out.println(count);
-		System.out.println(postCount);
 	}
 
 	// 모든 게시글의 갯수 계산
