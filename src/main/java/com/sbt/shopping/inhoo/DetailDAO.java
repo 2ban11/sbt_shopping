@@ -91,9 +91,9 @@ public class DetailDAO {
 
         int pageCount = (int) Math.ceil(reviewCount / (double) count);
 //        System.out.println(pageCount);
-        model.addAttribute("pageCount", pageCount);
+        model.addAttribute("reviewPageCount", pageCount);
         model.addAttribute("reviews", reviews);
-        model.addAttribute("curPage", pageNo);
+        model.addAttribute("reviewCurPage", pageNo);
         model.addAttribute("product", product);
 	}
 	
@@ -106,7 +106,10 @@ public class DetailDAO {
 	    // 현재 페이지에 해당하는 게시글의 범위 계산
 	    int start = (pageNo - 1) * count + 1;
 	    int end = start + (count - 1);
-
+	    
+	    
+	    System.out.println("여긴 DAOgetQnAPage"+pageNo);
+	    
 	    // QnA 게시글 조회를 위한 셀렉터 객체 생성
 	    QnASelector qnaSelector = new QnASelector(pDTO.getP_no(), new BigDecimal(start), new BigDecimal(end));
 	    

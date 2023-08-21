@@ -178,7 +178,7 @@
         <tr>
           <th scope="col">별점</th>
           <th scope="col">닉네임</th>
-          <th scope="col">내용</th>
+          <th scope="col">제목</th>
           <th scope="col">작성일</th>
         </tr>
       </thead>
@@ -187,15 +187,16 @@
           <tr class="clickable-row" data-toggle="collapse" data-target="#row${r.r_id}">
             <th>${r.r_rate}</th>
             <th>${r.r_id}</th>
-            <th>${r.r_content}</th>
+            <th>${r.r_title}</th>
 	        <th>
             	<fmt:formatDate value="${r.r_date }" type="date" dateStyle="short"/>
 	        </th>
           </tr>
           <tr id="row${r.r_id}" class="collapse">
-            <td colspan="4">
+            <td colspan="2">
               <img src="resources/img/${r.r_img }" alt="Review Image">
             </td>
+              <td>${r.r_content}</td>
           </tr>
         </c:forEach>
       </tbody>
@@ -209,7 +210,7 @@
   			
   				
   <!-- 페이징 -->
-<div class="row justify-content-center">
+ <%-- <div class="row justify-content-center">
     <div class="col-auto">
         <nav aria-label="...">
          <ul class="pagination pagination-sm">
@@ -243,14 +244,7 @@
 </ul>
         </nav>
     </div>
-</div>
-
-
-
-
-
-
-
+</div>  --%>
 
 
 <!-- QnA -->
@@ -313,11 +307,8 @@
     </div>
 </div>
 
-	
 
-
-
-<div class="row justify-content-center">
+<%-- <div class="row justify-content-center">
     <div class="col-auto">
         <nav aria-label="...">
             <ul class="pagination pagination-sm">
@@ -356,9 +347,82 @@
             </ul>
         </nav>
     </div>
+</div> --%> 
+
+
+<!-- 구매후기 페이징 -->
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <nav aria-label="...">
+            <ul class="pagination pagination-sm">
+                <c:choose>
+                   
+                    <c:when test="${reviewCurPage != 1}">
+                        <li class="page-item">
+                            <a class="page-link" href="detail.product?reviewPage=${reviewCurPage - 1}&qnaPage=${qnaCurPage}&p_no=${product.p_no}" id="snsL">&lt;</a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&lt;</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+
+              
+                <c:choose>
+                    <c:when test="${reviewCurPage != reviewPageCount}">
+                        <li class="page-item">
+                            <a class="page-link" href="detail.product?reviewPage=${reviewCurPage + 1}&qnaPage=${qnaCurPage}&p_no=${product.p_no}" id="snsR">&gt;</a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&gt;</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </ul>
+        </nav>
+    </div>
 </div>
 
+<!-- QnA 페이징 -->
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <nav aria-label="...">
+            <ul class="pagination pagination-sm">
+                    
+                <c:choose>
+                    <c:when test="${qnaCurPage != 1}">
+                        <li class="page-item">
+                            <a class="page-link" href="detail.product?reviewPage=${reviewCurPage}&qnaPage=${qnaCurPage - 1}&p_no=${product.p_no}" id="snsL">&lt;</a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&lt;</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
 
+                
+                <c:choose>
+                    <c:when test="${qnaCurPage != qnaPageCount}">
+                        <li class="page-item">
+                            <a class="page-link" href="detail.product?reviewPage=${reviewCurPage}&qnaPage=${qnaCurPage + 1}&p_no=${product.p_no}" id="snsR">&gt;</a>
+                        </li>
+                    </c:when>
+                    <c:otherwise>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&gt;</a>
+                        </li>
+                    </c:otherwise>
+                </c:choose>
+            </ul>
+        </nav>
+    </div>
+</div>
 
 
 

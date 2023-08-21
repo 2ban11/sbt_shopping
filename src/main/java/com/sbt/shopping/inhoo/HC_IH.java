@@ -54,12 +54,19 @@ public class HC_IH {
 //	도전중
 	@RequestMapping(value = "/detail.product", method = RequestMethod.GET)
 	public String detailProduct(HttpServletRequest request, ProductDTO pDTO, Model model) {
-		int p = 1;
-		if( request.getParameter("p") != null) {
-			p = Integer.parseInt(request.getParameter("p")); 
+		int reviewPage = 1;
+		if(request.getParameter("reviewPage") != null) {
+		    reviewPage = Integer.parseInt(request.getParameter("reviewPage"));
 		}
-		dDAO.getProduct(p, model, pDTO);
-		dDAO.getQnAPage(p, model, pDTO); //추가된 메소드
+
+		int qnaPage = 1;
+		if(request.getParameter("qnaPage") != null) {
+		    qnaPage = Integer.parseInt(request.getParameter("qnaPage"));
+		}
+
+		dDAO.getProduct(reviewPage, model, pDTO);
+		dDAO.getQnAPage(qnaPage, model, pDTO); //추가된 메소드
+		System.out.println("여긴 컨트롤러 = " + request);
 		request.setAttribute("contentPage", "inhoo/detail.jsp");
 		return "index";
 	}
