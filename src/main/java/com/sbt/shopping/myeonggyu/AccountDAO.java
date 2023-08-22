@@ -40,15 +40,19 @@ public class AccountDAO {
 	}
 
 	public boolean loginCheck(HttpServletRequest req) {
-		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginMember");
-		if (a != null) {
-			req.setAttribute("loginPage", "Account/loginSuccess.jsp");
-			return true;
-		}
-		req.setAttribute("loginPage", "Account/login.jsp");
-		return false;
-
+	    AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginMember");
+	    if (a != null) {
+	        if (a.getA_id().equals("master")) { // 특정 아이디인 경우
+	            req.setAttribute("showAdminButton", true);
+	        }
+	        req.setAttribute("loginPage", "Account/loginSuccess.jsp");
+	        return true;
+	    }
+	    req.setAttribute("loginPage", "Account/login.jsp");
+	    return false;
 	}
+
+	
 
 	public void logout(HttpServletRequest req) {
 		req.getSession().setAttribute("loginMember", null);

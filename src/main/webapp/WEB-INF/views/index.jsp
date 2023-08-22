@@ -23,6 +23,7 @@
     
      <script type="text/javascript"src="resources/js/myeonggyu/s_logout.js"></script>
       <script type="text/javascript"src="resources/js/myeonggyu/kakaoLogIn.js"></script>
+       <script type="text/javascript"src="resources/js/myeonggyu/masterPage.js"></script>
   </head>
   <body>
     <div class="site-container">
@@ -63,17 +64,18 @@
               </form>
             </div>
             <div class="header__button">
-            
+            	
               	<c:choose>
               <c:when test="${not empty loginMember }">
               	<a href="/shopping/account.logout" class="logOut"><button>로그아웃</button></a>
               	 <form action="/mypage.order">
               <div>
-                <button class="header__signup">마이페이지</button>
+                <button class="header__signup" onclick="/mypage.order">마이페이지</button>
               </div>
             </form>
               	</c:when>
               <c:when test="${not empty LoginMemberNaver }">
+              	
 				<a href="#" onclick="logoutNaver()"class="logOut">로그아웃 </a> 
               	 <form action="/mypage.order">
               <div>
@@ -86,18 +88,23 @@
               	 <form action="/mypage.order">
               <div>
                 <button class="header__signup">마이페이지</button>
+                
               </div>
+              
             </form>
               	</c:when>
               	<c:otherwise>
             <form action=/shopping/login.go>
               <div>
-                <button class="header__login">
+                <button class="header__login" onclick="/shopping/login.go" >
                   <span class="haader__login--text">로그인</span
-                  ><i class="fa-regular fa-user"></i>
+                  >
                 </button>
               </div>
             </form>
+                  <button onclick="/mypage.order">
+                   <i class="fa-regular fa-user"></i>
+                  </button>
             <form action="/shopping/account.join.go">
               <div>
                 <button class="header__signup">회원가입</button>
@@ -147,14 +154,10 @@
             </form>
               	</c:when>
               	<c:otherwise>
-                  <form action="/shopping/account.join.go">
                 <span class="sidebar__login">
-                  <a href="#">로그인</a>
+                  <a href="/shopping/login.go">로그인</a>
                 </span>
-                  </form>
-                  <form action="/shopping/account.join.go">
-                <span class="sidebar__signup"><a href="#">회원가입</a></span>
-                </form>
+                <span class="sidebar__signup"><a href="/shopping/account.join.go">회원가입</a></span>
               	</c:otherwise>
               	</c:choose>
               </div>
@@ -367,8 +370,12 @@
             </tr>
           </table>
         </div>
+  <div class="master" id="master-button-container">
+   <button class="admin-button" onclick="showAdminButton()">관리자</button>
+</div>
       </footer>
       <!-- //FOOTER -->
     </div>
+    
   </body>
 </html>
