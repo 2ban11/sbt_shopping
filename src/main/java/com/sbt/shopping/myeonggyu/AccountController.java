@@ -1,11 +1,14 @@
 package com.sbt.shopping.myeonggyu;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -120,7 +123,14 @@ public class AccountController {
         aDAO.saveKakaoUserInfo(req, userEmail, kakaoUserId);
         return "redirect:/loginSuccess.go?type=kakao";
     }
-
+    
+    @RequestMapping(value="/logout-process", method = RequestMethod.GET)
+    public String logoutAndClearSession(HttpServletRequest request) {
+        
+        request.getSession().setAttribute("kakaoInfo", null);
+        
+        return "redirect:/"; // 로그아웃 후 리다이렉트할 페이지
+    }
     
 	
 	@RequestMapping(value = "/loginSuccess.go", method = RequestMethod.GET)
@@ -151,11 +161,22 @@ public class AccountController {
 	 
 	 @RequestMapping(value = "/account.sendEmailCode", method = RequestMethod.POST)
 	 public @ResponseBody Map<String, String> sendVerificationCode(@RequestParam("email") String email, HttpServletRequest req, Model model) {
-	     // 이메일 인증 코드 전송
-	     String verificationCode = AEA.generateVerificationCode(); // 인증 코드 생성
-	     req.getSession().setAttribute("EmailCode", verificationCode); // 세션에 인증번호 저장
-	     model.addAttribute("email", email);
-	     return AEA.sendVerificationEmail(email); // 이메일 전송
+	     // 이메일 존재 여부 확인
+	     boolean emailExists = aDAO.checkEmailExists(email, req);
+	     
+	     if (emailExists) {
+	         // 이메일 인증 코드 전송
+	         String verificationCode = AEA.generateVerificationCode();
+	         req.getSession().setAttribute("EmailCode", verificationCode);
+	         model.addAttribute("email", email);
+	         
+	         return AEA.sendVerificationEmail(email); // 이메일 전송
+	     } else {
+	         // 이메일이 존재하지 않으면 아무 작업도 하지 않고 응답 반환
+	         Map<String, String> response = new HashMap<>();
+	         response.put("message", "email_not_exist");
+	         return response;
+	     }
 	 }
 	 
 	 @RequestMapping(value = "/account.email.auth", method = RequestMethod.GET)
@@ -163,16 +184,34 @@ public class AccountController {
 		 req.setAttribute("contentPage", "myeonggyu/email_find_pw.jsp");
 	        return "index"; 
 	    }
-
-	 @RequestMapping(value = "/shopping/checkEmailExistence", method = RequestMethod.POST)
-	 @ResponseBody
-	 public String checkEmailExistence(@RequestParam("email") HttpServletRequest req) {
-	     // 이메일 존재 여부 확인 로직 수행
-	     if (aDAO.emailExistsInDatabase(req)) {
-	         return "exist";
+	 
+	 @RequestMapping(value = "/account.email.check", method = RequestMethod.POST)
+	 public @ResponseBody Map<String, String> emailCheck(@RequestParam("email") String a_email, HttpServletRequest req) {
+	     Map<String, String> response = new HashMap<>();
+	     
+	     boolean emailExists = aDAO.checkEmailExists(a_email,req); // 이메일 존재 여부 확인
+	     if (emailExists) {
+	         response.put("message", "exist"); // 이메일이 존재하는 경우
 	     } else {
-	         return "not_exist";
+	         response.put("message", "not_exist"); // 이메일이 존재하지 않는 경우
 	     }
+	     
+	     return response;
 	 }
+	 
+	 @RequestMapping(value = "/account.changePassword", method = RequestMethod.POST)
+	 @ResponseBody
+	 public Map<String, Object> changePassword(@RequestParam String email, @RequestParam String new_password) {
+	     Map<String, Object> response = new HashMap<>();
+	     if (aDAO.updatePassword(email, new_password)) {
+	         response.put("success", true);
+	     } else {
+	         response.put("success", false);
+	     }
+	     return response;
+	 }
+	 
+	
+	 
 }
 

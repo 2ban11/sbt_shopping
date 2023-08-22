@@ -29,7 +29,7 @@
 </insert>
     <update id="update" parameterType="com.sbt.shopping.myeonggyu.AccountDTO">
         update account
-        set a_pw =
+        set a_password =
         #{a_pw}, a_name = #{a_name}, a_nickname=#{a_nickname}
         where a_id = #{a_id}
     </update>
@@ -52,10 +52,10 @@
 </update>
 <update id="updatePw" parameterType="com.sbt.shopping.myeonggyu.AccountDTO">
     update account
-    set a_pw = #{a_pw}
-    where a_id = #{a_id}
+    set a_password = #{a_password}
+    where a_email = #{a_email}
 </update>
- <select id="checkEmailExistence" resultType="com.sbt.shopping.myeonggyu.AccountDTO" >
+ <select id="checkEmail" resultType="com.sbt.shopping.myeonggyu.AccountDTO" >
  select * from account where a_email = #{a_email}
  </select>
 </mapper>

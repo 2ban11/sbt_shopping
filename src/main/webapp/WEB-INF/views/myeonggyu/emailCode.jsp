@@ -13,7 +13,7 @@
 <body>
 <div class="pwf-content pwf-container pwf-margin-top">
 	
-    <div class="w3-container w3-card-4 w3-auto" style="width: 382px; height: 456.3px;">
+    <div class="w3-container">
         <div class="findPw">
             <h3>비밀번호 찾기</h3>
         </div>

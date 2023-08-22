@@ -8,6 +8,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -285,9 +287,28 @@ public class AccountDAO {
 		    
 	
 	}
-	 public boolean emailExistsInDatabase(HttpServletRequest req) {
-	        // 이메일 존재 여부를 데이터베이스에서 확인하는 로직 수행
-	        int count = ss.getMapper(AccountMapper.class).checkEmailExistence(req);
-	        return count > 0;
+
+	public boolean checkEmailExists(String email, HttpServletRequest req){ 
+		AccountDTO a = ss.getMapper(AccountMapper.class).checkEmail(email);
+		if (a!=null) {
+			return true;
+		}
+		return false;
+	}
+
+	
+	public boolean updatePassword(String email, String newPassword) {
+	    AccountDTO a = new AccountDTO();
+	    a.setA_email(email);
+	    
+	    // Encrypt the new password before updating
+	    a.setA_password(newPassword);
+	    // Update the password in the database
+	    if (ss.getMapper(AccountMapper.class).updatePw(a)==1) {
+	        return true; // Password updated successfully
 	    }
+	    return false; // Password update failed
+	}
+	
+	
 }

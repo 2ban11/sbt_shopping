@@ -26,5 +26,9 @@ public interface AccountMapper {
 
 	AccountDTO saveKakaoUserInfo(AccountDTO a);
 
-	int checkEmailExistence(HttpServletRequest req);
+	AccountDTO checkEmail(String email );
+
+	int updatePw(AccountDTO a);
+
+	
 }
