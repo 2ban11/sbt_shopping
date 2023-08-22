@@ -1,5 +1,6 @@
 $(document).ready(() => {
 	createSummernote();
+	connectAddrSearchEvent();
 });
 
 function createSummernote() {
@@ -65,4 +66,15 @@ function createSummernote() {
 					
 				}
 			});
+}
+
+function connectAddrSearchEvent() {
+    $("#board-write-adress-btn").click(function() {
+        new daum.Postcode({
+            oncomplete : function(data) {
+                $("#board-write-zonecode").val(data.zonecode);
+                $("#board-write-road-adress").val(data.roadAddress);
+            }
+        }).open();
+    });
 }

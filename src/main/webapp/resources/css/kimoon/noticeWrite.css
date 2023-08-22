@@ -43,6 +43,7 @@
 .board-write__input-div {
 	width: 100%;
 	flex: 1;
+	display: flex;
 }
 
 .board-write__input--input {

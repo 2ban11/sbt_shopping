@@ -199,10 +199,10 @@ public class BoardDAO {
 			System.out.println("등록 성공");
 		}
 	}
-	public void summernoteLessonInsert(BoardDTO bDTO, String boardTitle, String editorarea, String boardAdress, String boardPhone, String boardLessonFee) {
+	public void summernoteLessonInsert(BoardDTO bDTO, String boardTitle, String editorarea, String boardAddressZoneCode, String boardAddressRoadAddress, String boardAddressDetailAddress, String boardPhone, String boardLessonFee) {
 		bDTO.setL_title(boardTitle);
 		bDTO.setL_txt(editorarea);
-		bDTO.setL_addr(boardAdress);
+		bDTO.setL_addr(boardAddressZoneCode + " / " + boardAddressRoadAddress + " / " + boardAddressDetailAddress);
 		bDTO.setL_phone(boardPhone);
 		bDTO.setL_pay(boardLessonFee);
 		if(ss.getMapper(BoardMapper.class).summernoteLessonInsert(bDTO)==1) {
@@ -210,10 +210,10 @@ public class BoardDAO {
 			System.out.println("등록 성공");
 		}
 	}
-	public void summernoteJobInsert(BoardDTO bDTO, String boardTitle, String editorarea, String boardAdress, String boardPhone, String boardJob) {
+	public void summernoteJobInsert(BoardDTO bDTO, String boardTitle, String editorarea, String boardAddressZoneCode, String boardAddressRoadAddress, String boardAddressDetailAddress, String boardPhone, String boardJob) {
 		bDTO.setJ_title(boardTitle);
 		bDTO.setJ_txt(editorarea);
-		bDTO.setJ_addr(boardAdress);
+		bDTO.setJ_addr(boardAddressZoneCode + " / " + boardAddressRoadAddress + " / " + boardAddressDetailAddress);
 		bDTO.setJ_phone(boardPhone);
 		bDTO.setJ_category(boardJob);
 		if(ss.getMapper(BoardMapper.class).summernoteJobInsert(bDTO)==1) {
