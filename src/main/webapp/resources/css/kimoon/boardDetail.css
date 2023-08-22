@@ -3,15 +3,15 @@
 .board-detail__wrapper {
 	background-color: #ffffff08;
 	margin: 20px 0 20px 0;
-    padding: 20px;
-    color: white;
+	padding: 20px;
+	color: white;
 }
 
 .board-detail__header {
 	width: 100%;
 	padding-bottom: 20px;
-    margin-bottom: 10px;
-    font-size: 2rem;
+	margin-bottom: 10px;
+	font-size: 2rem;
 	border-bottom: 1px solid #67c1f5;
 }
 
@@ -28,7 +28,7 @@
 
 .board-detail__header-extra {
 	padding: 10px;
-    background-color: rgba(128, 128, 128, 0.20);
+	background-color: rgba(128, 128, 128, 0.20);
 }
 
 .board-detail__header-extra--div {
@@ -37,15 +37,15 @@
 }
 
 .board-detail__header-extra--div div:nth-child(1) {
-    width: 100px;
+	width: 100px;
 }
 
 .board-detail__header-extra div:nth-child(3) {
-    margin-bottom: 5px;
+	margin-bottom: 5px;
 }
 
 .board-detail__text {
-	margin-top: 50px;	
+	margin-top: 50px;
 }
 
 .board-del-upd__wrapper {
@@ -57,8 +57,8 @@
 .board-reply__wrapper {
 	background-color: #ffffff08;
 	margin: 20px 0 20px 0;
-    padding: 20px;
-    color: white;
+	padding: 20px;
+	color: white;
 }
 
 .board-reply__header {
@@ -69,7 +69,7 @@
 .board-reply__content {
 	width: 100%;
 	padding: 10px 15px 8px 20px;
-	border-bottom: 1px solid rgba(255,255,255,0.1);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .board-reply__nick-date-wrapper {
@@ -123,4 +123,10 @@
 	border-radius: 0 8px 8px 0;
 	font-size: 1rem;
 	cursor: pointer;
+}
+
+@media screen and (max-width: 500px) {
+	.board-detail__header-detail {
+		display: block;
+	}
 }

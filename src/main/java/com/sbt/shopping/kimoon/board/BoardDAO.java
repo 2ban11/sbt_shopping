@@ -125,8 +125,6 @@ public class BoardDAO {
 		    startPage = Math.max(endPage - pagesToShow + 1, 1);
 		}
 		
-		System.out.println("startPage : " + startPage);
-		System.out.println("endPage : " + endPage);
 		req.setAttribute("startPage", startPage);
 		req.setAttribute("endPage", endPage);
 		
