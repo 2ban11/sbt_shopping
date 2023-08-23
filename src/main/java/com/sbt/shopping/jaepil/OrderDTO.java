@@ -6,6 +6,7 @@ public class OrderDTO {
 	private int o_no;
 	private Date o_date;
 	private int o_price;
+	private String a_id;
 	private int p_sale;
 	private String p_name;
 	private String od_cnt;
@@ -14,11 +15,14 @@ public OrderDTO() {
 	// TODO Auto-generated constructor stub
 }
 
-public OrderDTO(int o_no, Date o_date, int o_price, int p_sale, String p_name, String od_cnt) {
+
+
+public OrderDTO(int o_no, Date o_date, int o_price, String a_id, int p_sale, String p_name, String od_cnt) {
 	super();
 	this.o_no = o_no;
 	this.o_date = o_date;
 	this.o_price = o_price;
+	this.a_id = a_id;
 	this.p_sale = p_sale;
 	this.p_name = p_name;
 	this.od_cnt = od_cnt;
@@ -46,6 +50,14 @@ public int getO_price() {
 
 public void setO_price(int o_price) {
 	this.o_price = o_price;
+}
+
+public String getA_id() {
+	return a_id;
+}
+
+public void setA_id(String a_id) {
+	this.a_id = a_id;
 }
 
 public int getP_sale() {

@@ -13,7 +13,6 @@ function checkAll() {
 			});
 	}
 
-	
 function updatecart(){
 	alert('수정되었습니다');
 }
@@ -29,7 +28,6 @@ function cartDeleteSelected(){
 			console.log(param);
 	});
 	location.href='deletecart?' + param;
-		//location.href = 'deletecart?c_no=' + o.value;
 	}	
 	});
 }
@@ -204,10 +202,25 @@ function signOut(){
 }
 
 
+function cartOrder(){
+	$(".mypage-cart-order").click(function(){
+	let aa = $("input[name='chk']:checked");
+	let ok = confirm('주문하시겠습니까?');
+	let param="";
+	if(ok){
+		$.each(aa, function(i,o){
+			param += 'c_no='+o.value+'&';
+			console.log(param);
+	});
+	//location.href='ordercart?' + param;
+	}	
+	});
+}
 
 $(function(){
 	checkAll();
 	cartDeleteSelected();
 	date();
+	cartOrder();
 	/*makeChecked();*/
 })

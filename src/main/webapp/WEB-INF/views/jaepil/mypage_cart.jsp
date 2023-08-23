@@ -24,7 +24,7 @@
 				<a href="mypage.qna">문의내역</a>
 			</div>
 			<div>
-				<a href="mypage.cart">장바구니</a>
+				<a href="mypage.cart?c_id=mk">장바구니</a>
 			</div>
 			<div>
 				<a href="mypage.editaccount">정보수정</a>
@@ -37,6 +37,7 @@
 			<div class="mypage-info-data-nav">
 				<div class="mypage-info-data-cart-select">
 					<input type="checkbox" id="cbx_chkAll">
+					<input type="hidden" name="a_id" value="mk">
 				</div>
 				<div class="mypage-info-data-cart-category">분류</div>
 				<div class="mypage-info-data-cart-img">이미지</div>
@@ -52,7 +53,20 @@
 						</div>
 						<div class="mypage-info-data-cart-category">${c.p_big_category }</div>
 						<div class="mypage-info-data-cart-img">
-							<img alt="" src="${c.p_img1 }">
+							<c:choose>
+								<c:when test="${ '기타' eq c.p_big_category}">
+									<img alt="" src="resources/img/Guitar/${c.p_img1 }">
+								</c:when>
+								<c:when test="${ '앰프' eq c.p_big_category}">
+									<img alt="" src="resources/img/Amp/${c.p_img1 }">
+								</c:when>
+								<c:when test="${ '이펙터' eq c.p_big_category}">
+									<img alt="" src="resources/img/Effector/${c.p_img1 }">
+								</c:when>
+								<c:when test="${ '주변용품' eq c.p_big_category}">
+									<img alt="" src="resources/img/Accessory/${c.p_img1 }">
+								</c:when>
+							</c:choose>
 						</div>
 						<div class="mypage-info-data-cart-name">${c.p_name }</div>
 						<div class="mypage-info-data-cart-cnt">
@@ -62,9 +76,7 @@
 								<button name="c_no" value="${c.c_no }">수정</button>
 							</form>
 						</div>
-						<div class="mypage-info-data-cart-sale">
-							${c.p_sale}원
-						</div>
+						<div class="mypage-info-data-cart-sale">${c.p_sale}원</div>
 					</div>
 					<c:set var="total" value="${total + c.p_sale }" />
 				</c:forEach>
@@ -75,11 +87,12 @@
 			<div class="mypage-cart-total">
 				<div>합계</div>
 				<div>${total}원</div>
+				<input type="hidden" name="total" value="${total}">
 			</div>
 		</div>
 	</div>
 	<div class="mypage-cart-order">
-		<button onclick="cartOrder()">주문하기</button>
+		<button>주문하기</button>
 	</div>
 </body>
 </html>

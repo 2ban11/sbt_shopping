@@ -31,6 +31,7 @@ public class MypageDAO {
 	
 	public void getCart(HttpServletRequest req,CartDTO cDTO) {
 		req.setAttribute("carts",ss.getMapper(CartMapper.class).getCart());
+		System.out.println(cDTO.getC_id());
 	}
 
 	public void deleteCart(CartDTO cDTO, HttpServletRequest req) {

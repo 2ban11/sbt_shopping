@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sbt.shopping.jaepil.OrderMapper">
+	<insert id="regOrder">
+		insert into orders values(orders_seq.nextval, #{total}, sysdate, 'mk')
+	</insert>
 	<select id="getOrder"
 		resultType="com.sbt.shopping.jaepil.OrderDTO">
 		select * from orders o, order_detail od, product p

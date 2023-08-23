@@ -81,8 +81,6 @@ public class HC_JP {
 		return "redirect:/mypage.editaccount";
 	}
 	
-	
-	
 	@RequestMapping(value = "/mypage.signout", method = RequestMethod.GET)
 	public String signOutGo(HttpServletRequest req, AccountDTO aDTO) {
 		mDAO.getAccount(req, aDTO);
@@ -90,13 +88,20 @@ public class HC_JP {
 		return "index";
 	}
 	
-	
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
 	public String signOutDo(HttpServletRequest req, AccountDTO aDTO) {
 		mDAO.signOut(req, aDTO);
 		req.setAttribute("contentPage", "jaepil/mypage_signout.jsp");
 		return "index";
 	}
+	
+	@RequestMapping(value = "/signout", method = RequestMethod.GET)
+	public String cartOrder(HttpServletRequest req, AccountDTO aDTO) {
+		mDAO.signOut(req, aDTO);
+		req.setAttribute("contentPage", "jaepil/mypage_signout.jsp");
+		return "index";
+	}
+	
 	
 	
 	

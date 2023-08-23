@@ -1,12 +1,13 @@
-
 summary::marker {
-    display: none;
-    content: "";
+	display: none;
+	content: "";
 }
+
 details[open] summary::marker {
-    display: none;
-    content: "";
+	display: none;
+	content: "";
 }
+
 .mypage-main {
 	display: block;
 	font-size: 2em;
@@ -109,20 +110,21 @@ details[open] summary::marker {
 	text-align: center;
 }
 
-.mypage-info-data-nav{
+.mypage-info-data-nav {
 	display: flex;
 	background-color: rgba(255, 255, 255, 0.05);
 }
-.mypage-info-data-nav div{
+
+.mypage-info-data-nav div {
 	padding: 12px;
 	border: 1px solid rgba(255, 255, 255, 0.1);
 	text-align: center;
 }
+
 .mypage-info-data div {
 	border: 1px solid rgba(255, 255, 255, 0.1);
 	padding: 12px;
 }
-
 
 .mypage-info-data-order-no {
 	width: 10%;
@@ -160,8 +162,6 @@ details[open] summary::marker {
 	width: 20%;
 }
 
-
-
 .mypage-info-data-qna-content {
 	width: 100%;
 	background-color: rgba(255, 255, 255, 0.05);
@@ -174,6 +174,12 @@ details[open] summary::marker {
 
 .mypage-info-data-cart-img {
 	width: 10%;
+}
+
+.mypage-info-data-cart-img img {
+	max-width: 85%;
+	height: auto;
+	display: block;
 }
 
 .mypage-info-data-cart-name {
