@@ -34,7 +34,7 @@
 
 
 
-<select id="getProduct" resultType="com.sbt.shopping.inhoo.ProductDTO">
+<select id="getProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
     SELECT * FROM product WHERE p_no = 1 <!-- #{p_no} -->
 </select>
 

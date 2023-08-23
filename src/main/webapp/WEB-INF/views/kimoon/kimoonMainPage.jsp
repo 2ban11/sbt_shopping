@@ -83,7 +83,7 @@
 			</div>
 			<div class="main-page-content__info">
 				<div class="main-page-content__desc-wrapper">
-					<div class="main-page-content__title">${mainProducts.p_name}
+					<div class="main-page-content__title"><span onclick="location.href='detail.product?p_no=${mainProducts.p_no}'">${mainProducts.p_name}</span>
 					</div>
 					<div style="display: flex">
 

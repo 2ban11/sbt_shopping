@@ -1,7 +1,6 @@
 package com.sbt.shopping.inhoo;
 
 import java.io.File;
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
@@ -13,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.sbt.shopping.jaehwan.ProductDTO;
 
 @Service
 public class DetailDAO {
@@ -63,7 +64,7 @@ public class DetailDAO {
 	        }
 
 	        ss.getMapper(DetailMapper.class).regReview(dDTO);
-	    } catch (IllegalStateException | IOException e) {
+	    } catch (Exception e) {
 	        e.printStackTrace();
 	    }
 	}

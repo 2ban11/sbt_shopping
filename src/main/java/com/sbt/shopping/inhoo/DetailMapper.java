@@ -2,8 +2,7 @@ package com.sbt.shopping.inhoo;
 
 import java.util.List;
 
-import org.apache.ibatis.annotations.Param;
-import org.springframework.ui.Model;
+import com.sbt.shopping.jaehwan.ProductDTO;
 
 public interface DetailMapper {
 

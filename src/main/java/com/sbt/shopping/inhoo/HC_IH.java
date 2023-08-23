@@ -21,21 +21,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sbt.shopping.jaehwan.ProductDTO;
+
 @Controller
 public class HC_IH {
 	
 	@Autowired
 	private DetailDAO dDAO;
 	
-	
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(HttpServletRequest request) {
-		
-		//request.setAttribute("contentPage", "inhoo/detail.jsp");
-		
-		return "redirect:detail.product";
-	}
 	
 //	강사님 페이징
 //	@RequestMapping(value = "/detail.product", method = RequestMethod.GET)
