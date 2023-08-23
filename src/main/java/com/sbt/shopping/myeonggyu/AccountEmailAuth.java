@@ -26,7 +26,7 @@ public class AccountEmailAuth {
         message.setText("인증 코드: " + verificationCode);
         mailSender.send(message);
         
-        Map<String, String> response = new HashMap<>();
+        Map<String, String> response = new HashMap<String, String>();
         response.put("verificationCode", verificationCode);
         System.out.println(response);
         return response; // 생성된 인증번호 반환

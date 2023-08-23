@@ -24,7 +24,7 @@ public class AccountController {
 	private AccountDAO aDAO;
 	
 	 @Autowired
-	    private AccountEmailAuth AEA ; // EmailAuthService 주입
+	 private AccountEmailAuth AEA ; // EmailAuthService 주입
 	
 	
 	 
@@ -42,7 +42,7 @@ public class AccountController {
 	  @RequestMapping(value = "/check-login", method = RequestMethod.GET, produces = "application/json")
 	    @ResponseBody
 	    public Map<String, Object> checkLogin(HttpServletRequest req) {
-	        Map<String, Object> response = new HashMap<>();
+	        Map<String, Object> response = new HashMap<String, Object>();
 	        AccountDTO loggedInAccount = (AccountDTO) req.getSession().getAttribute("loginMember");
 
 	        if (loggedInAccount != null) {
@@ -198,7 +198,7 @@ public class AccountController {
 	         return AEA.sendVerificationEmail(email); // 이메일 전송
 	     } else {
 	         // 이메일이 존재하지 않으면 아무 작업도 하지 않고 응답 반환
-	         Map<String, String> response = new HashMap<>();
+	         Map<String, String> response = new HashMap<String, String>();
 	         response.put("message", "email_not_exist");
 	         return response;
 	     }
@@ -212,7 +212,7 @@ public class AccountController {
 	 
 	 @RequestMapping(value = "/account.email.check", method = RequestMethod.POST)
 	 public @ResponseBody Map<String, String> emailCheck(@RequestParam("email") String a_email, HttpServletRequest req) {
-	     Map<String, String> response = new HashMap<>();
+	     Map<String, String> response = new HashMap<String, String>();
 	     
 	     boolean emailExists = aDAO.checkEmailExists(a_email,req); // 이메일 존재 여부 확인
 	     if (emailExists) {
@@ -227,7 +227,7 @@ public class AccountController {
 	 @RequestMapping(value = "/account.changePassword", method = RequestMethod.POST)
 	 @ResponseBody
 	 public Map<String, Object> changePassword(@RequestParam String email, @RequestParam String new_password) {
-	     Map<String, Object> response = new HashMap<>();
+	     Map<String, Object> response = new HashMap<String, Object>();
 	     if (aDAO.updatePassword(email, new_password)) {
 	         response.put("success", true);
 	     } else {
