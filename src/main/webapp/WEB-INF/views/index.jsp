@@ -67,7 +67,7 @@
                 <button class="header__signup">회원가입</button>
               </div>
               <div>
-              <form action="adminPage" method="POST">
+              <form action="adminPage" method="GET">
                 <button class="header__signup" type="submit">관리자</button>
                 </form>
               </div>

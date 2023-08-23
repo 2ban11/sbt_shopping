@@ -88,7 +88,7 @@ public String getP_content() {
 	return p_content;
 }
 public void setP_content(String p_content) {
-	this.p_content = p_content;
+	this.p_content = p_content.replaceAll("\r\n","<br>");
 }
 public String getP_color() {
 	return p_color;
