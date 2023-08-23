@@ -56,10 +56,11 @@
 					<div class="main-page-content" id="main-tab-accessory">
 				</c:when>
 			</c:choose>
-			<div class="main-page-content__thumbnail-wrapper ${mainProducts.p_cnt eq 0 ? 'out-of-stock' : ''}">
-			<c:if test="${mainProducts.p_cnt eq 0}">
-			<h1>-일시품절-</h1>
-			</c:if>
+			<div
+				class="main-page-content__thumbnail-wrapper ${mainProducts.p_cnt eq 0 ? 'out-of-stock' : ''}">
+				<c:if test="${mainProducts.p_cnt eq 0}">
+					<h1>-일시품절-</h1>
+				</c:if>
 				<c:choose>
 					<c:when test="${mainProducts.p_big_category eq '기타'}">
 						<img class="main-page-content__thumbnail"
@@ -96,18 +97,18 @@
 				</div>
 				<div class="main-page-content__price">
 					<div>
-					<c:if test="${mainProducts.p_price ne mainProducts.p_sale }">
-						<p class="main-page-content__original-price">
-							정상가: <span style="opacity: 0.5; text-decoration: line-through">
+						<c:if test="${mainProducts.p_price ne mainProducts.p_sale }">
+							<p class="main-page-content__original-price">
+								정상가: <span style="opacity: 0.5; text-decoration: line-through">
 
-								<fmt:formatNumber value="${mainProducts.p_price }"
-									type="currency" />
-							</span>
-						</p>
-					</c:if>
-					<c:if test="${mainProducts.p_price eq mainProducts.p_sale }">
-						<p class="main-page-content__original-price">&nbsp;</p>
-					</c:if>
+									<fmt:formatNumber value="${mainProducts.p_price }"
+										type="currency" />
+								</span>
+							</p>
+						</c:if>
+						<c:if test="${mainProducts.p_price eq mainProducts.p_sale }">
+							<p class="main-page-content__original-price">&nbsp;</p>
+						</c:if>
 						<p class="main-page-content__sale-price">
 							판매가: <span style="font-weight: bold"> <fmt:formatNumber
 									value="${mainProducts.p_sale }" type="currency" />
@@ -123,17 +124,50 @@
 					</c:if>
 				</div>
 				<div class="main-page-content__addtocart-bar">
-				<c:if test="${not empty mainProducts.p_maker }">
-					<img class="addtocart__company-logo"
-						src="resources/img/MakerLogo/${mainProducts.p_maker }_Logo_White.png" />
-				</c:if>
-					<button class="fa-solid fa-cart-shopping addtocart__company--btn">
-						&nbsp;장바구니</button>
+					<c:if test="${not empty mainProducts.p_maker }">
+						<img class="addtocart__company-logo"
+							src="resources/img/MakerLogo/${mainProducts.p_maker }_Logo_White.png" />
+					</c:if>
+					<form action="do.insert.cart" id="main-add-to-cart-form">
+					<c:if test="${mainProducts.p_cnt ne 0}">
+						<button class="fa-solid fa-cart-shopping addtocart__company--btn"
+							name="c_product" value="${mainProducts.p_no }">&nbsp;장바구니</button>
+					</c:if>
+						<input type="hidden" name="c_id" value="jp@gmail.com">
+					</form>
 				</div>
 			</div>
 	</div>
 	</c:forEach>
 	</div>
+
+
+
+
+
+	<!-- 모달창 -->
+	<div id="mainModal" class="main-cart__modal">
+		<div class="main-cart__modal-wrapper">
+			<div class="main-cart__modal-header">
+				<div style="font-weight: bold">장바구니</div>
+				<div>
+					<button class="main-cart__modal--close">&times;</button>
+				</div>
+			</div>
+			<div
+				style="padding: 2.5em 1em; border-bottom: 1px solid rgba(255, 255, 255, 0.2);">장바구니에
+				추가되었습니다.</div>
+			<div class="main-how-to-cart">
+				<div>
+					<button id="main-continue-shopping">계속 쇼핑하기</button>
+				</div>
+				<div>
+					<button id="main-go-to-cart">장바구니로 이동하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
 
 </body>
 </html>

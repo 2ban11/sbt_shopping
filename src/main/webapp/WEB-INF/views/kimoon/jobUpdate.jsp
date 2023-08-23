@@ -22,7 +22,7 @@
 
 <title>Insert title here</title>
 <script type="text/javascript" src="resources/js/kimoon/boardWrite.js"></script>
-<link rel="stylesheet" href="resources/css/kimoon/noticeWrite.css" />
+<link rel="stylesheet" href="resources/css/kimoon/boardWrite.css" />
 </head>
 <body>
 	<form action="do.job.update">

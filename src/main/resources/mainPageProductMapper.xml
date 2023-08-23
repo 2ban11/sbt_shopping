@@ -31,4 +31,19 @@ WHERE
 ORDER BY p_big_category, p_middle_category, row_num
 </select>
 
+<!-- 장바구니 중복확인 -->
+<select id="checkDupliCart" resultType="int">
+	SELECT COUNT(*) FROM CART WHERE C_ID = #{c_id} AND C_PRODUCT = #{c_product}
+</select>
+
+<!-- 장바구니 등록 -->
+<insert id="insertMainPageCart">
+	INSERT INTO cart VALUES (cart_seq.nextval, #{c_id}, #{c_product}, 1)
+</insert>
+
+<!-- 장바구니 갯수 증가 -->
+<update id="updateMainCart">
+	UPDATE cart SET c_cnt = c_cnt + 1 WHERE c_id = #{c_id} and c_product = #{c_product}
+</update>
+
 </mapper>

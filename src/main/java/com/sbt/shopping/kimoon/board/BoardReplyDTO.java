@@ -65,7 +65,7 @@ public class BoardReplyDTO {
 		return nr_text;
 	}
 	public void setNr_text(String nr_text) {
-		this.nr_text = nr_text;
+		this.nr_text = nr_text.replaceAll("\r\n", "<br>");
 	}
 	public String getNr_id() {
 		return nr_id;
@@ -105,7 +105,7 @@ public class BoardReplyDTO {
 		return fr_text;
 	}
 	public void setFr_text(String fr_text) {
-		this.fr_text = fr_text;
+		this.fr_text = fr_text.replaceAll("\r\n", "<br>");
 	}
 	public String getFr_id() {
 		return fr_id;
@@ -145,7 +145,7 @@ public class BoardReplyDTO {
 		return lr_text;
 	}
 	public void setLr_text(String lr_text) {
-		this.lr_text = lr_text;
+		this.lr_text = lr_text.replaceAll("\r\n", "<br>");
 	}
 	public String getLr_id() {
 		return lr_id;
@@ -185,7 +185,7 @@ public class BoardReplyDTO {
 		return jr_text;
 	}
 	public void setJr_text(String jr_text) {
-		this.jr_text = jr_text;
+		this.jr_text = jr_text.replaceAll("\r\n", "<br>");
 	}
 	public String getJr_id() {
 		return jr_id;

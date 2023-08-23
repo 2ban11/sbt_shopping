@@ -14,29 +14,32 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sbt.shopping.cart.Cart;
 import com.sbt.shopping.kimoon.board.BoardDAO;
 import com.sbt.shopping.kimoon.board.BoardPaging;
 
 @Controller
 public class HC_KM {
+	@Autowired
+	private MainPageDAO mpDAO;
 	
-@Autowired
-private MainPageDAO mpDAO;
-	
-	@RequestMapping(value = "/199", method = RequestMethod.GET)
+	@Autowired
+	private BoardDAO bDAO;
+
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String mainPage(HttpServletRequest request) {
 		mpDAO.getMainPageProducts(request);
 		request.setAttribute("contentPage", "kimoon/kimoonMainPage.jsp");
 		return "index";
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/do.insert.cart", method = RequestMethod.GET)
+	public int insertMainPageCart(HttpServletRequest request, Cart cart) {
+		return mpDAO.insertMainPageCart(cart);
+	}
 
-//	@RequestMapping(value = "go.notice", method = RequestMethod.GET)
-//	public String goNotice(HttpServletRequest request, @RequestParam int p) {
-//		NoticePaging.clearSearch(request);
-//        nDAO.getNotice(p, request);
-//        request.setAttribute("contentPage", "kimoon/notice.jsp");
-//        return "index";
-//	}
 
 }
