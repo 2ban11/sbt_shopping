@@ -1,5 +1,6 @@
 $(document).ready(() => {
 	createSummernote();
+	connectAddrSearchEvent();
 });
 
 function createSummernote() {
@@ -57,10 +58,23 @@ function createSummernote() {
 				processData : false,
 				success : function(data) {
 					console.log(data);
-					$(el).summernote('editor.insertImage', data.url);
+					$(el).summernote('editor.insertImage', data.url, function(image){
+	//						 $(image).css("width", "30%"); // 이미지 요소에 스타일 추가
+					});
 				}, error : function(status){
 					console.log(status)
 					
 				}
 			});
+}
+
+function connectAddrSearchEvent() {
+    $("#board-write-address-btn").click(function() {
+        new daum.Postcode({
+            oncomplete : function(data) {
+                $("#board-write-zonecode").val(data.zonecode);
+                $("#board-write-road-address").val(data.roadAddress);
+            }
+        }).open();
+    });
 }

@@ -2,6 +2,7 @@ $(document).ready(function(){
 	bxslider();
 	mainPageNavigation();
 	mainPageContents();
+	addToCartModal();
 });
 
 // 슬라이드
@@ -50,4 +51,61 @@ function mainPageContents() {
 				})
                 .filter(":eq(0)") // 첫 번째 .main-page__tab a 요소
                 .click();
+}
+
+function addToCartModal() {
+    $(".addtocart__company--btn").click(function(e) {
+        e.preventDefault();
+
+        var c_product = $(this).closest("form").find("[name='c_product']").val();
+        var c_id = $(this).closest("form").find("[name='c_id']").val();
+
+        $.ajax({
+            type: "GET",
+            url: "do.insert.cart",
+            data: {
+                c_id: c_id,
+                c_product: c_product
+            },
+            success: function(response) {
+				console.log('success')
+                showModal(response === "success");
+            },
+            error: function() {
+				console.log("error")
+                showModal(false);
+            }
+        });
+    });
+
+    function showModal(success) {
+       //모달창 띄우기
+	var modal = document.getElementById("mainModal");
+	var close = document.getElementsByClassName("main-cart__modal--close")[0];
+    modal.style.display = "block";
+	
+	// 창 닫기
+	close.addEventListener("click", function() {
+    	modal.style.display = "none";
+	});
+
+	// 계속 쇼핑하기 버튼
+	var continueShoppingBtn = document.getElementById("main-continue-shopping");
+	continueShoppingBtn.addEventListener("click", function() {
+   		modal.style.display = "none";
+	});
+
+	// 장바구니로 이동하기 버튼
+	var goToCartBtn = document.getElementById("main-go-to-cart");
+	goToCartBtn.addEventListener("click", function() {
+    	// 장바구니 페이지로 이동하는 코드 추가하기
+	});
+    }
+
+	/*var openCartBtn = document.getElementById("main-add-to-cart-form");
+    openCartBtn.addEventListener("submit", function(event) {
+        event.preventDefault(); // 기본 동작 중단
+        addToCartModal(); // 모달창 열기 함수 호출
+    });*/
+
 }

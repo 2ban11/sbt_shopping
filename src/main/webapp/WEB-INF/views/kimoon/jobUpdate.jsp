@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,24 +25,48 @@
 <link rel="stylesheet" href="resources/css/kimoon/boardWrite.css" />
 </head>
 <body>
-
-	<form action="do.notice.update">
+	<form action="do.job.update">
+	<hr>
+			<div class="board-write__input-group">
+				<div class="board-write__input-title">주소</div>
+				<div class="board-write__input-div">
+					<input class="board-write__input--input" name="j_addr"
+					placeholder="100자 제한" maxlength="100" value="${board.j_addr }" required>
+				</div>
+			</div>
+			<div class="board-write__input-group">
+				<div class="board-write__input-title">전화번호</div>
+				<div class="board-write__input-div">
+					<input class="board-write__input--input" name="j_phone"
+						placeholder="예) 01012345678" maxlength="11" value="${board.j_phone }" required>
+				</div>
+			</div>
+			<div class="board-write__input-group">
+				<div class="board-write__input-title">구인/구직</div>
+				<div class="board-write__input-div">
+					<select class="board-write__job-select" name="j_category">
+						<option value="구인">구인</option>
+						<option value="구직">구직</option>
+					</select>
+				</div>
+			</div>
 	
 		<hr>
-
+		
 		<div class="board-write__textarea">
 			<div class="board-write__input-group">
 				<div class="board-write__input-title">제목</div>
 				<div class="board-write__input-div">
-					<input class="board-write__input--input" name="n_title"
-						value="${board.n_title }" maxlength="100" required>
-						 <input	type="hidden" name="n_id" value="ddd@naver.com">
-						 <input	type="hidden" name="n_no" value="${param.n_no }">
+					<input class="board-write__input--input" name="j_title"
+						value="${board.j_title }" maxlength="100" required> <input
+						type="hidden" name="j_id" value="ddd@naver.com"> <input
+						type="hidden" name="j_no" value="${board.j_no }">
+
 				</div>
 			</div>
 
 			<div class="summernote__wrapper">
-				<textarea class="summernote" name="n_txt" required>${board.n_txt }</textarea>
+				<textarea class="summernote" name="j_txt" required>${board.j_txt }</textarea>
 			</div>
 			<div style="display: flex; justify-content: space-between;">
 				<div>
@@ -52,7 +74,7 @@
 						onclick="history.back()">취소</button>
 				</div>
 				<div>
-					<button class="board-write__do-write" name="type" value="1">등록</button>
+					<button class="board-write__do-write" name="type" value="4">등록</button>
 				</div>
 			</div>
 		</div>

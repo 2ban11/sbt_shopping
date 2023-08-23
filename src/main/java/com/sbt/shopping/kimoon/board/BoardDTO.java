@@ -4,8 +4,8 @@ import java.util.Date;
 import java.util.List;
 
 public class BoardDTO {
-	// 댓글도 받아와야하는 거 같은데???
-	
+
+// 공통
 	private int rn; // 글 번호
 	private String a_nickname; // 작성자
 	
@@ -29,7 +29,9 @@ public class BoardDTO {
 	private Date n_date;
 	private int n_view;
 	private String n_txt;
-
+	private int notice_reply_count;
+	
+	
 	public int getN_no() {
 		return n_no;
 	}
@@ -66,7 +68,12 @@ public class BoardDTO {
 	public void setN_txt(String n_txt) {
 		this.n_txt = n_txt;
 	}
-
+	public int getNotice_reply_count() {
+		return notice_reply_count;
+	}
+	public void setNotice_reply_count(int notice_reply_count) {
+		this.notice_reply_count = notice_reply_count;
+	}
 	
 	
 // free
@@ -76,7 +83,9 @@ public class BoardDTO {
 	private Date f_date;
 	private int f_view;
 	private String f_txt;
+	private int free_reply_count;
 
+	
 	public int getF_no() {
 		return f_no;
 	}
@@ -113,10 +122,15 @@ public class BoardDTO {
 	public void setF_txt(String f_txt) {
 		this.f_txt = f_txt;
 	}
+	public int getFree_reply_count() {
+		return free_reply_count;
+	}
+	public void setFree_reply_count(int free_reply_count) {
+		this.free_reply_count = free_reply_count;
+	}
 	
 	
-	
-//// lesson
+// lesson
 	private int l_no;
 	private String l_title;
 	private String l_id;
@@ -126,7 +140,9 @@ public class BoardDTO {
 	private String l_addr;
 	private String l_pay;
 	private String l_phone;
-
+	private int lesson_reply_count;
+	
+	
 	public int getL_no() {
 		return l_no;
 	}
@@ -181,9 +197,14 @@ public class BoardDTO {
 	public void setL_phone(String l_phone) {
 		this.l_phone = l_phone;
 	}
+	public int getLesson_reply_count() {
+		return lesson_reply_count;
+	}
+	public void setLesson_reply_count(int lesson_reply_count) {
+		this.lesson_reply_count = lesson_reply_count;
+	}
 	
-	
-//// job
+// job
 	private int j_no;
 	private String j_title;
 	private String j_id;
@@ -193,7 +214,9 @@ public class BoardDTO {
 	private String j_addr;
 	private String j_phone;
 	private String j_category;
-
+	private int job_reply_count;
+	
+	
 	public int getJ_no() {
 		return j_no;
 	}
@@ -248,6 +271,13 @@ public class BoardDTO {
 	public void setJ_category(String j_category) {
 		this.j_category = j_category;
 	}
+	public int getJob_reply_count() {
+		return job_reply_count;
+	}
+	public void setJob_reply_count(int job_reply_count) {
+		this.job_reply_count = job_reply_count;
+	}
+	
 	@Override
 	public String toString() {
 		return "BoardDTO [rn=" + rn + ", a_nickname=" + a_nickname + ", n_no=" + n_no + ", n_title=" + n_title
