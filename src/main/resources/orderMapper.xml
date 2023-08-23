@@ -6,7 +6,7 @@
 		select * from orders o, order_detail od, product p
 		where
 		od.od_product = p.p_no
-		and o.o_no = od.od_orders and o.o_id = 'mk'
+		and o.o_no = od.od_orders and o.o_id = #{a_id}
 	</select>
 
 	<select id="getOrderByDate" resultType="com.sbt.shopping.jaepil.OrderDTO" parameterType="map">
@@ -14,6 +14,6 @@
 		od, product p
 		where od.od_product = p.p_no
 		and o.o_no = od.od_orders and o_date between to_date(#{startdate}) and
-		to_date(#{enddate}) + 0.99999 and o.o_id = 'mk'
+		to_date(#{enddate}) + 0.99999 and o.o_id = #{a_id}
 	</select>
 </mapper>

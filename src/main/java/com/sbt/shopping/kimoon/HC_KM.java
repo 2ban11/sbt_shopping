@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sbt.shopping.cart.Cart;
 import com.sbt.shopping.kimoon.board.BoardDAO;
 import com.sbt.shopping.kimoon.board.BoardPaging;
+import com.sbt.shopping.myeonggyu.AccountDTO;
 
 @Controller
 public class HC_KM {

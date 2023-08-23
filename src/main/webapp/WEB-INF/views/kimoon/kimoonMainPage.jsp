@@ -133,7 +133,7 @@
 						<button class="fa-solid fa-cart-shopping addtocart__company--btn"
 							name="c_product" value="${mainProducts.p_no }">&nbsp;장바구니</button>
 					</c:if>
-						<input type="hidden" name="c_id" value="jp@gmail.com">
+						<input type="hidden" name="c_id" value="${sessionScope.loginMember.a_id }">
 					</form>
 				</div>
 			</div>

@@ -35,7 +35,7 @@
     <a href="#" onclick="logoutNaver()"class="logOut">네이버 로그아웃</a> 
     </c:if>
 
-	<button onclick="" >마이 페이지</button>
+	<button onclick="location.href='mypage.order'" >마이 페이지</button>
     
 </body>
 <script type="text/javascript">

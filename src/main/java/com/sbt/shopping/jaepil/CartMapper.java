@@ -2,9 +2,11 @@ package com.sbt.shopping.jaepil;
 
 import java.util.List;
 
+import com.sbt.shopping.myeonggyu.AccountDTO;
+
 public interface CartMapper {
 
-	List<CartDTO>getCart();
+	List<CartDTO>getCart(AccountDTO aDTO);
 
 	int deleteCart(String no);
 

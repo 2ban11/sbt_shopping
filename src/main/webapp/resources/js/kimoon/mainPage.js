@@ -57,9 +57,13 @@ function addToCartModal() {
     $(".addtocart__company--btn").click(function(e) {
         e.preventDefault();
 
+		let c_id = $(this).next().val();
+		console.log(c_id);
         var c_product = $(this).closest("form").find("[name='c_product']").val();
-        var c_id = $(this).closest("form").find("[name='c_id']").val();
-
+			
+		if(c_id !== ''){
+			
+		
         $.ajax({
             type: "GET",
             url: "do.insert.cart",
@@ -76,6 +80,10 @@ function addToCartModal() {
                 showModal(false);
             }
         });
+}else{
+	alert('로그인 해주세요!')
+}
+		
     });
 
     function showModal(success) {

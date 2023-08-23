@@ -1,18 +1,13 @@
 package com.sbt.shopping.jaepil;
 
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Locale;
-
 import javax.servlet.http.HttpServletRequest;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.sbt.shopping.myeonggyu.AccountDTO;
 
 @Controller
 public class HC_JP {
@@ -20,17 +15,11 @@ public class HC_JP {
 	@Autowired
 	private MypageDAO mDAO;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(HttpServletRequest req, OrderDTO oDTO) {
-		req.setAttribute("contentPage", "jaepil/mypage_order.jsp");
-		mDAO.getOrder(req);
-		return "index";
-	}
 	
 	@RequestMapping(value = "/mypage.order", method = RequestMethod.GET)
-	public String order(HttpServletRequest req, OrderDTO oDTO) {
+	public String order(HttpServletRequest req, OrderDTO oDTO, AccountDTO aDTO) {
 		req.setAttribute("contentPage", "jaepil/mypage_order.jsp");
-		mDAO.getOrder(req);
+		mDAO.getOrder(req,aDTO);
 		return "index";
 	}
 	
@@ -42,15 +31,15 @@ public class HC_JP {
 	}
 	
 	@RequestMapping(value = "/mypage.qna", method = RequestMethod.GET)
-	public String qna(HttpServletRequest req, OrderDTO oDTO) {
+	public String qna(HttpServletRequest req, OrderDTO oDTO, AccountDTO aDTO) {
 		req.setAttribute("contentPage", "jaepil/mypage_qna.jsp");
-		mDAO.getQna(req);
+		mDAO.getQna(req,aDTO);
 		return "index";
 	}
 
 	@RequestMapping(value = "/mypage.cart", method = RequestMethod.GET)
-	public String cart(HttpServletRequest req, CartDTO cDTO) {
-		mDAO.getCart(req, cDTO);
+	public String cart(HttpServletRequest req, CartDTO cDTO, AccountDTO aDTO) {
+		mDAO.getCart(req, cDTO,aDTO);
 		req.setAttribute("contentPage", "jaepil/mypage_cart.jsp");
 		return "index";
 	}
