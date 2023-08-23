@@ -407,6 +407,7 @@ body.sidebar-open {
     display: none;
   }
 
+
   .fa-regular.fa-user:before {
     display: block;
   }
@@ -480,3 +481,20 @@ body.sidebar-open {
   }
 }
 /* //MOBILE MEDIA QUERY */
+
+/* myeonggyu 추가 */
+
+	@media (max-width: 1000px) {
+  .login_btn_container {
+    display: none;
+  }
+}
+@media (min-width: 1001px) {
+  #small_myPageBtn {
+    display: none;
+  }
+}
+@media (max-width: 1000px) {
+	.header_logout_btn{ display: none;
+	}
+

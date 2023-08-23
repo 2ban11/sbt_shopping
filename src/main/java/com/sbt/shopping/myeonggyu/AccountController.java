@@ -26,6 +26,8 @@ public class AccountController {
 	 @Autowired
 	    private AccountEmailAuth AEA ; // EmailAuthService 주입
 	
+	
+	 
 	@RequestMapping(value = "/account.login", method = RequestMethod.POST)
 	public String loginMember(AccountDTO a, HttpServletRequest req) {
 	    if (aDAO.login(a, req)) {
@@ -36,6 +38,29 @@ public class AccountController {
 	        return "index";
 	    }
 	}
+	
+	  @RequestMapping(value = "/check-login", method = RequestMethod.GET, produces = "application/json")
+	    @ResponseBody
+	    public Map<String, Object> checkLogin(HttpServletRequest req) {
+	        Map<String, Object> response = new HashMap<>();
+	        AccountDTO loggedInAccount = (AccountDTO) req.getSession().getAttribute("loginMember");
+
+	        if (loggedInAccount != null) {
+	            response.put("loggedIn", true);
+
+	            if (loggedInAccount.getA_id().equals("master")) {
+	                response.put("isAdmin", true);
+	            } else {
+	                response.put("isAdmin", false);
+	            }
+	        } else {
+	            response.put("loggedIn", false);
+	            response.put("isAdmin", false);
+	        }
+
+	        return response;
+	    }
+
 	 
 	@RequestMapping(value = "/account.logout", method = RequestMethod.GET)
 	    public String logoutMember(HttpServletRequest req) {

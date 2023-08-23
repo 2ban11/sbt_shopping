@@ -42,12 +42,16 @@ public class AccountDAO {
 	public boolean loginCheck(HttpServletRequest req) {
 	    AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginMember");
 	    if (a != null) {
-	        if (a.getA_id().equals("master")) { // 특정 아이디인 경우
-	            req.setAttribute("showAdminButton", true);
+	        if (a.getA_id().equals("master")) {
+	            req.setAttribute("isAdmin", true); // 특정 아이디로 로그인한 경우 true로 설정
+	        } else {
+	            req.setAttribute("isAdmin", false);
 	        }
 	        req.setAttribute("loginPage", "Account/loginSuccess.jsp");
 	        return true;
 	    }
+	    
+	    req.setAttribute("isAdmin", false);
 	    req.setAttribute("loginPage", "Account/login.jsp");
 	    return false;
 	}

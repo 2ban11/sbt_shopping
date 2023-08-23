@@ -23,7 +23,8 @@
     
      <script type="text/javascript"src="resources/js/myeonggyu/s_logout.js"></script>
       <script type="text/javascript"src="resources/js/myeonggyu/kakaoLogIn.js"></script>
-       <script type="text/javascript"src="resources/js/myeonggyu/masterPage.js"></script>
+        <script type="text/javascript"src="resources/js/myeonggyu/masterPage.js"></script>
+        <script type="text/javascript"src="resources/js/myeonggyu/login_chk.js"></script>
   </head>
   <body>
     <div class="site-container">
@@ -67,42 +68,58 @@
             	
               	<c:choose>
               <c:when test="${not empty loginMember }">
+              	
+              	<div class="login_btn_container">
+              	<div class="header_logout_btn">
               	<a href="/shopping/account.logout" class="logOut"><button>로그아웃</button></a>
-              	 <form action="/mypage.order">
-              <div>
-                <button class="header__signup" onclick="/mypage.order">마이페이지</button>
+              	</div>
+              	</div>
+              <div class="myPageBtn" >
+                 <a class="header__signup" href="/shopping/mypage.order">
+                 <button >마이페이지</button>
+                 </a> 
               </div>
-            </form>
+              	 <button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
+                   <i class="fa-regular fa-user"></i>
+                  </button>
               	</c:when>
               <c:when test="${not empty LoginMemberNaver }">
-              	
-				<a href="#" onclick="logoutNaver()"class="logOut">로그아웃 </a> 
-              	 <form action="/mypage.order">
-              <div>
+              	<div class="header_logout_btn">
+				<a href="#" onclick="logoutNaver()"class="logOut"><button>로그아웃</button></a> 
+              	</div>
+              	 <form action="/shopping/mypage.order">
+               <div class="myPageBtn" >
                 <button class="header__signup">마이페이지</button>
               </div>
             </form>
+            <button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
+                   <i class="fa-regular fa-user"></i>
+                  </button>
               	</c:when>
               <c:when test="${not empty kakaoInfo }">
-				 <a href="#" id="kakao-logout-btn" onclick="logoutKakao()"class="logOut">카카오 로그아웃</a>
-              	 <form action="/mypage.order">
-              <div>
+              <div class="header_logout_btn">
+				 <a href="#" id="kakao-logout-btn" onclick="logoutKakao()"class="logOut"><button>로그아웃</button></a>
+				 </div>
+              	 <form action="/shopping/mypage.order">
+               <div class="myPageBtn" >
                 <button class="header__signup">마이페이지</button>
-                
+                <button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
+                   <i class="fa-regular fa-user"></i>
+                  </button>
               </div>
               
             </form>
               	</c:when>
               	<c:otherwise>
             <form action=/shopping/login.go>
-              <div>
+              <div class="login_btn_container" >
                 <button class="header__login" onclick="/shopping/login.go" >
                   <span class="haader__login--text">로그인</span
                   >
                 </button>
               </div>
             </form>
-                  <button onclick="/mypage.order">
+                  <button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
                    <i class="fa-regular fa-user"></i>
                   </button>
             <form action="/shopping/account.join.go">
@@ -132,26 +149,17 @@
               <c:when test="${not empty loginMember }">
               	<a href="/shopping/account.logout" class="logOut"><button>로그아웃</button></a>
               	 <form action="/mypage.order">
-              <div>
-                <button class="header__signup">마이페이지</button>
-              </div>
             </form>
               	</c:when>
               <c:when test="${not empty LoginMemberNaver }">
-				<a href="#" onclick="logoutNaver()"class="logOut">로그아웃 </a> 
+				<a href="#" onclick="logoutNaver()"class="logOut"><button>로그아웃</button> </a> 
               	 <form action="/mypage.order">
-              <div>
-                <button class="header__signup">마이페이지</button>
-              </div>
+            
             </form>
               	</c:when>
               <c:when test="${not empty kakaoInfo }">
-				 <a href="#" id="kakao-logout-btn" onclick="logoutKakao()"class="logOut">카카오 로그아웃</a>
-              	 <form action="/mypage.order">
-              <div>
-                <button class="header__signup">마이페이지</button>
-              </div>
-            </form>
+				 <a href="#" id="kakao-logout-btn" onclick="logoutKakao()"class="logOut"><button>로그아웃</button></a>
+              
               	</c:when>
               	<c:otherwise>
                 <span class="sidebar__login">
@@ -371,7 +379,7 @@
           </table>
         </div>
   <div class="master" id="master-button-container">
-   <button class="admin-button" onclick="showAdminButton()">관리자</button>
+    <button class="admin-button" id="adminButton">관리자</button>
 </div>
       </footer>
       <!-- //FOOTER -->
