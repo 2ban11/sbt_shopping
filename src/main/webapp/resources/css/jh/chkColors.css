@@ -36,38 +36,15 @@
   transform: rotate(-45deg);
 }
 
-.chkbox1 input[id="cbtest1"]:checked + .cb1 {
+.chkbox1 input[name="p_color"]:checked + .cb1 {
   border: 3px solid #34b93d;
-}
-.chkbox1 input[id="cbtest2"]:checked + .cb1 {
- border: 3px solid #34b93d;
-}
-.chkbox1 input[id="cbtest3"]:checked + .cb1 {
- border: 3px solid #34b93d;
-}
-.chkbox1 input[id="cbtest4"]:checked + .cb1 {
- border: 3px solid #34b93d;
-}
-.chkbox1 input[id="cbtest5"]:checked + .cb1 {
- border: 3px solid #34b93d;
-}
-.chkbox1 input[id="cbtest6"]:checked + .cb1 {
-  border: 3px solid #34b93d;
-}
-.chkbox2 input[id="cbtest7"]:checked + .cb1 {
-   border: 3px solid #34b93d;
-}
-.chkbox2 input[id="cbtest8"]:checked + .cb1 {
-   border: 3px solid #34b93d;
-}
-.chkbox2 input[id="cbtest9"]:checked + .cb1 {
-  border: 3px solid #34b93d;
-}
-.chkbox2 input[id="cbtest10"]:checked + .cb1 {
- border: 3px solid #34b93d;
 }
 
-.chkboxAll input[id="cbtest1"]:checked + .cb1::after {
+.chkbox2 input[name="p_color"]:checked + .cb1 {
+   border: 3px solid #34b93d;
+}
+
+.chkboxAll input[name="p_color"]:checked + .cb1::after {
   
    forwards;
 }

@@ -19,6 +19,7 @@
     	delete product where p_no = #{p_no}
     </delete>
     
+    
 	<select id="getSearchProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
     SELECT * FROM Product
     WHERE (
@@ -41,8 +42,26 @@
 </select>
 
 
+	<select id="getSearchProductForAdmin" resultType="com.sbt.shopping.jaehwan.ProductDTO">
+    SELECT * FROM Product
+    WHERE 
+        p_big_category = #{p_big_category}
+        <if test="sortOrder == 'sort1'">
+        ORDER BY p_sale DESC
+    </if>
+    <if test="sortOrder == 'sort2'">
+        ORDER BY p_sale
+    </if>
+    <if test="sortOrder == ''">
+        ORDER BY p_no desc
+    </if>
+</select>
+
+
 <insert id="regProduct">
-	insert into product values(product_seq.nextval,#{p_big_category},#{p_middle_category},#{p_small_category},#{p_maker},#{p_name},#{p_img1},'',#{p_content},#{p_color},#{p_price},#{p_sale},#{p_cnt},sysdate)
+	insert into product values(
+	product_seq.nextval,#{p_big_category},#{p_middle_category},#{p_small_category},#{p_maker},#{p_name},#{p_img1},'',#{p_content},#{p_color},#{p_price},#{p_sale},#{p_cnt},sysdate
+	)
 </insert>
 
 </mapper>

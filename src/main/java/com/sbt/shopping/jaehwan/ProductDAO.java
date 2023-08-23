@@ -28,9 +28,13 @@ public class ProductDAO {
 		pDTO.setColors(pDTO.getP_color().split("!"));
 		return ss.getMapper(Jh_productMapper.class).getSearchProduct(pDTO);
 	}
+	
+	
 	public void getAdminProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
-		 model.addAttribute("products", ss.getMapper(Jh_productMapper.class).getAdminProduct(pDTO));
+		model.addAttribute("products", ss.getMapper(Jh_productMapper.class).getAdminProduct(pDTO));
 	}
+	
+	
 	public void deleteProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
 		if (ss.getMapper(Jh_productMapper.class).deleteProduct(pDTO) == 1);
 	}
@@ -55,7 +59,7 @@ public class ProductDAO {
 				
 				
 				if (ss.getMapper(Jh_productMapper.class).regProduct(pDTO)==1) {
-					
+					model.addAttribute("products", ss.getMapper(Jh_productMapper.class).getAdminProduct(pDTO));
 				}
 			}
 			
@@ -65,5 +69,8 @@ public class ProductDAO {
 	}
 	public void updateProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
 		
+	}
+	public List<ProductDTO> searchDetailForAdmin(ProductDTO pDTO) {
+		return ss.getMapper(Jh_productMapper.class).getSearchProductForAdmin(pDTO);
 	}
 }

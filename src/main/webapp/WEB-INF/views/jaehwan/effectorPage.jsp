@@ -9,7 +9,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
-
+<link rel="stylesheet" href="resources/css/jh/listPage.css" />
+<link rel="stylesheet" href="resources/css/jh/chkColors.css" />
+<link rel="stylesheet" href="resources/css/jh/regProduct.css" />
+<script type="text/javascript" src="resources/js/jh/isNotElec.js"></script>
 </head>
 
 <body>

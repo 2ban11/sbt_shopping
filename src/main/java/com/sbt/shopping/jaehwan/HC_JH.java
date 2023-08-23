@@ -56,13 +56,38 @@ public class HC_JH {
     public List<ProductDTO> searchDetail(ProductDTO pDTO) {
     	return pDAO.getSearchProduct(pDTO);
     }
-    
+    @ResponseBody
+    @RequestMapping(value = "/searchDetailForAdmin", method = RequestMethod.POST)
+    public List<ProductDTO> searchDetailForAdmin(ProductDTO pDTO, HttpServletRequest req, Model model) {
+    	System.out.println("sdfsdf");
+    	return pDAO.searchDetailForAdmin(pDTO);
+    	
+    }
     
     // 관리자페이지 
     @RequestMapping(value = "/adminPage", method = RequestMethod.POST)
     public String admin(HttpServletRequest req, Model model, ProductDTO pDTO) {
     	pDAO.getAdminProduct(req, model, pDTO);
     	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
+    	return "index";
+    }
+    @RequestMapping(value = "/controlProduct", method = RequestMethod.GET)
+    public String controlProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    	pDAO.getAdminProduct(req, model, pDTO);
+    	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
+    	req.setAttribute("controlPage", "controlProduct.jsp");
+    	return "index";
+    }
+    @RequestMapping(value = "/controlOrder", method = RequestMethod.GET)
+    public String controlOrder(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
+    	req.setAttribute("controlPage", "controlOrder.jsp");
+    	return "index";
+    }
+    @RequestMapping(value = "/controlMargin", method = RequestMethod.GET)
+    public String controlMargin(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
+    	req.setAttribute("controlPage", "controlMargin.jsp");
     	return "index";
     }
     @RequestMapping(value = "/deleteProduct", method = RequestMethod.GET)
@@ -77,10 +102,11 @@ public class HC_JH {
     	pDAO.regProduct(req,model,pDTO);
     	pDAO.getAdminProduct(req, model, pDTO);
     	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
-    	return "index";
+    	return "redirect:/adminPage";
     }
     @RequestMapping(value = "/updateProduct", method = RequestMethod.POST)
     public String updateProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    	System.out.println("sdfsdf");
     	pDAO.updateProduct(req,model,pDTO);
     	pDAO.getAdminProduct(req, model, pDTO);
     	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");

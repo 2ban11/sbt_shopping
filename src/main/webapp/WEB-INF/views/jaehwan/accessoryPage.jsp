@@ -244,5 +244,7 @@ function updateResults() {
     });
 }
 </script>
+<script type="text/javascript" src="resources/js/jh/updatePopup.js"></script>
+<script type="text/javascript" src="resources/js/jh/popup.js"></script>
 </body>
 </html>
