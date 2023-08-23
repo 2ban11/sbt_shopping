@@ -81,7 +81,7 @@
 <select id="getQnAs" resultType="com.sbt.shopping.inhoo.QnaDTO">
     SELECT *
     FROM (
-        SELECT ROWNUM AS rn, q_product, q_id, q_title, q_content, q_date
+        SELECT ROWNUM AS rn, q_no, q_product, q_id, q_title, q_content, q_date
         FROM (
             SELECT *
             FROM qna
@@ -91,6 +91,7 @@
     )
     WHERE rn &gt;= #{start} AND rn &lt;= #{end}
 </select>
+
 
 
 <select id="getQnACount" resultType="int">

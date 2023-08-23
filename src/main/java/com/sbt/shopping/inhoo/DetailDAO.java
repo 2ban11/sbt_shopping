@@ -118,7 +118,10 @@ public class DetailDAO {
 
 	    // 전체 페이지 수 계산
 	    int pageCount = (int) Math.ceil(qnaCount / (double) count);
-
+	    
+	    ReviewPageInfo pageInfo = new ReviewPageInfo(pageNo, pageCount);
+	    
+	    model.addAttribute("pageInfo", pageInfo);
 	    model.addAttribute("qnas", qnas); // QnA 게시글 목록
 	    model.addAttribute("qnaPageCount", pageCount); // 전체 페이지 수
 	    System.out.println("여긴 DetailDAO" + qnas);

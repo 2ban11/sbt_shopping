@@ -79,8 +79,7 @@ public class HC_IH {
 	    dDAO.getProduct(reviewPage, model, pDTO);
 	    dDAO.getQnAPage(qnaPage, model, pDTO);
 	    request.setAttribute("contentPage", "inhoo/detail.jsp");
-	    System.out.println("qnaPage value: " + qnaPage);
-
+	    model.addAttribute("qnaCurPage", qnaPage);
 	    return "index";
 	}
 
