@@ -23,6 +23,7 @@ import com.sbt.shopping.kimoon.board.BoardPaging;
 @Controller
 public class HC_KM {
 
+
 	@Autowired
 	private MainPageDAO mpDAO;
 	
@@ -30,6 +31,7 @@ public class HC_KM {
 	private BoardDAO bDAO;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
+
 	public String mainPage(HttpServletRequest request) {
 		mpDAO.getMainPageProducts(request);
 		request.setAttribute("contentPage", "kimoon/kimoonMainPage.jsp");

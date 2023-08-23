@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sbt.shopping.jaepil.CartMapper">
+	<select id="getCart"
+		resultType="com.sbt.shopping.jaepil.CartDTO">
+		select *
+		from product, cart
+		where p_no = c_product and c_id =
+		'mk'
+	</select>
+
+	<delete id="deleteCart">
+		delete cart
+		where c_no = #{no}
+	</delete>
+	
+	<update id="updateCart">
+		update cart
+		set c_cnt = #{c_cnt} 
+		where c_no = #{c_no}
+	</update>
+</mapper>

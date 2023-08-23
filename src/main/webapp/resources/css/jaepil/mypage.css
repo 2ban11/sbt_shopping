@@ -1,0 +1,285 @@
+
+summary::marker {
+    display: none;
+    content: "";
+}
+details[open] summary::marker {
+    display: none;
+    content: "";
+}
+.mypage-main {
+	display: block;
+	font-size: 2em;
+	margin-block-start: 0.67em;
+	margin-block-end: 0.67em;
+	margin-inline-start: 0px;
+	margin-inline-end: 0px;
+	font-weight: bold;
+	color: white;
+}
+
+.mypage-nav {
+	display: flex;
+	background-color: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: white;
+	height: 3rem;
+}
+
+.mypage-nav div {
+	cursor: pointer;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	width: 20%;
+	padding: 12px 5vh 12px 5vh;
+	font-size: 100%;
+	text-align: center;
+}
+
+.mypage-nav a {
+	text-decoration: none;
+	color: white;
+}
+
+.mypage-info-date {
+	display: flex;
+	background-color: rgba(255, 255, 255, 0.05);
+	margin: 20px 0 20px 0;
+	border: 0;
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	height: 3rem;
+}
+
+.mypage-info-date div {
+	padding: 12px;
+}
+
+.mypage-info-date-item:nth-child(1) {
+	color: white;
+}
+
+.mypage-info-date-item:nth-child(3) {
+	color: white;
+}
+
+.mypage-info-date-item input {
+	background-color: rgba(255, 255, 255, 0.05);
+	border-color: rgba(255, 255, 255, 0.1);
+	color: white
+}
+
+.btn-select-date {
+	background-color: white;
+	font-weight: 700;
+	border: 1px solid #cccccc;
+	float: left;
+}
+
+.btn-select-date:nth-child(1) {
+	border-radius: 2px 0 0 2px;
+}
+
+.btn-select-date:nth-child(5) {
+	border-radius: 0 2px 2px 0;
+}
+
+.btn-search-date {
+	background-color: #67c1f5;
+	padding: 5px 10px;
+	border-radius: 2px;
+	font-weight: 700;
+	border: none;
+	color: white;
+}
+
+.mypage-info-des {
+	margin: 20px 0 20px 0;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 20px;
+	color: #FF9900;
+}
+
+.mypage-info-datas {
+	margin: 20px 0 20px 0;
+	color: white;
+}
+
+.mypage-info-data {
+	display: flex;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	text-align: center;
+}
+
+.mypage-info-data-nav{
+	display: flex;
+	background-color: rgba(255, 255, 255, 0.05);
+}
+.mypage-info-data-nav div{
+	padding: 12px;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	text-align: center;
+}
+.mypage-info-data div {
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	padding: 12px;
+}
+
+
+.mypage-info-data-order-no {
+	width: 10%;
+}
+
+.mypage-info-data-order-name {
+	width: 50%;
+}
+
+.mypage-info-data-order-pay {
+	width: 10%;
+}
+
+.mypage-info-data-order-sale {
+	width: 10%;
+}
+
+.mypage-info-data-order-state {
+	width: 10%;
+}
+
+.mypage-info-data-order-other {
+	width: 10%;
+}
+
+.mypage-info-data-qna-no {
+	width: 10%;
+}
+
+.mypage-info-data-qna-title {
+	width: 70%;
+}
+
+.mypage-info-data-qna-date {
+	width: 20%;
+}
+
+
+
+.mypage-info-data-qna-content {
+	width: 100%;
+	background-color: rgba(255, 255, 255, 0.05);
+	text-align: left;
+}
+
+.mypage-info-data-cart-select {
+	width: 5%;
+}
+
+.mypage-info-data-cart-img {
+	width: 10%;
+}
+
+.mypage-info-data-cart-name {
+	width: 50%;
+}
+
+.mypage-info-data-cart-sale {
+	width: 15%;
+}
+
+.mypage-info-data-cart-category {
+	width: 10%;
+}
+
+.mypage-info-data-cart-cnt {
+	width: 10%;
+}
+
+.mypage-info-data-cart-cnt input {
+	width: 40px;
+}
+
+.mypage-btn-delete {
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mypage-btn-delete button {
+	padding: auto;
+	height: 30px;
+}
+
+.mypage-cart-total {
+	display: flex;
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	justify-content: space-between;
+	padding-right: 3%;
+}
+
+.mypage-cart-order {
+	margin-top: 1%;
+	display: flex;
+	flex-direction: row-reverse;
+}
+
+.mypage-cart-order button {
+	width: 110px;
+	height: 42px;
+	font-weight: bold;
+	color: white;
+	background-color: #67c1f5;
+	border: none;
+	border-radius: 2px;
+	font-size: 1em;
+}
+
+.mypage-info-accounts {
+	border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mypage-info-accounts-items {
+	padding: 3%;
+}
+
+.mypage-info-account {
+	display: flex;
+	margin: 3%;
+}
+
+.mypage-info-account-des {
+	font-weight: bold;
+	width: 10%;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.mypage-info-account-value {
+	margin-left: 10vh;
+	color: rgba(255, 255, 255, 0.5);
+}
+
+.mypage-info-account-value input {
+	background-color: rgba(255, 255, 255, 0.05);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	color: white;
+	outline: none;
+}
+
+.mypage-btn-account {
+	display: flex;
+	margin: 3%;
+	justify-content: center;
+}
+
+.mypage-btn-account-btn {
+	background-color: #67c1f5;
+	padding: 5px 10px;
+	border-radius: 2px;
+	font-weight: 700;
+	border: none;
+	color: white;
+}
+
+.mypage-btn-account-btn-signout {
+	background-color: #d43f3a;
+	padding: 5px 10px;
+	border-radius: 2px;
+	font-weight: 700;
+	border: none;
+	color: white;
+}

@@ -28,7 +28,7 @@
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
         <beans:property name="url"
-            value="jdbc:oracle:thin:@f0e8tcdui31dsn2e_high?TNS_ADMIN=C:/KKM_sbt7/Wallet_F0E8TCDUI31DSN2E" />
+            value="jdbc:oracle:thin:@f0e8tcdui31dsn2e_high?TNS_ADMIN=C:/HJP/Wallet_F0E8TCDUI31DSN2E" />
         <beans:property name="username" value="ADMIN" />
         <beans:property name="password" value="Soldesk802!!" />
     </beans:bean>
@@ -43,6 +43,10 @@
 		<beans:property name="typeAliasesPackage" value="com.sbt.shopping" />
 		<beans:property name="mapperLocations">
 			<beans:list>
+				<beans:value>classpath:cartMapper.xml</beans:value>
+				<beans:value>classpath:orderMapper.xml</beans:value>
+				<beans:value>classpath:qnaMapper.xml</beans:value>
+				<beans:value>classpath:accountMapper.xml</beans:value>
 				<beans:value>classpath:mainPageProductMapper.xml</beans:value>
 				<beans:value>classpath:boardMapper.xml</beans:value>
 				<beans:value>classpath:accountMapper.xml</beans:value>
