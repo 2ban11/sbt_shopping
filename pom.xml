@@ -238,7 +238,6 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
-		
 		<!-- https://mvnrepository.com/artifact/com.oracle.database.security/osdt_cert -->
 <dependency>
         <groupId>com.oracle.database.security</groupId>

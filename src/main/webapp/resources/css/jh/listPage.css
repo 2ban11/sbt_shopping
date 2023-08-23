@@ -1,0 +1,304 @@
+
+.ul-div {
+	font-size: 18px;
+	font-weight: bold;
+	color: white;
+	margin: auto;
+	text-align: center;
+}
+
+.ul-div:nth-child(1) {
+	width: 30%;
+	
+}
+
+.ul-div:nth-child(2) {
+	margin-left : 10px;
+	width: 22%;
+}
+
+.ul-div:nth-child(3) {
+	margin-left : 20px;
+	width: 12%;
+}
+
+.ul-div:nth-child(4) {
+	margin-left : 10px;
+	width:14%;
+}
+
+.ul-div:nth-child(5) {
+    width: 100%;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    overflow: hidden;
+    text-align: center;
+    line-height: 30px;
+    font-size: 20px;
+}
+
+.ul-div:nth-child(6) {
+	width: 70%;
+}
+
+.ul-div:nth-child(7) {
+	width: 5%;
+}
+.ul-div:nth-child(8) {
+	width: 13%;
+}
+.ul-div:nth-child(9) {
+	width: 30%;
+}
+.ul-div:nth-child(10) {
+	width: 100%;
+}
+.ul-div:nth-child(11) {
+	width: 5%;
+}
+
+.listPage_item1 {
+	display: flex;
+	width: 100%;
+	height: 130px;
+	background-color: #1b2838;
+	justify-content: start;
+	line-height: 80px;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.listPage_item1:hover {
+	background-color: #ffffff08;
+}
+
+.listPage_contents {
+	padding-top: 5%;
+}
+
+.productImg {
+	width: 200px;
+	height:	128px;
+}
+
+.LogoImg {
+	width: 90px;
+	height: 60px;
+	margin-top : 30px;
+	line-height: 40px;
+}
+
+.CartImg {
+	width: 35px;
+	height: 35px;
+	background-color: #ff8000;
+	border-radius: 10px;
+	margin-top: 35px;
+}
+
+.detail_Search {
+	width: 200px;
+	height: 30px;
+	color: white;
+	background-color: #46b8da;
+	border-radius: 20px;
+	margin-left: 20px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.detail_Search_Window {
+	width: 100%;
+	margin-bottom: 30px;
+	align-items: center;
+	background-color: #547eb1;
+}
+
+.detail_Search_Window select {
+	margin-top : 10px;
+	padding-top: 20px;
+	width: 20vw
+	border: 1px solid #C4C4C4;
+	box-sizing: border-box;
+	padding: 12px 13px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-size: 16px;
+	font-weight: bold;
+	background-color: transparent;
+	color: white;
+}
+
+.detail_Search_Window select option {
+	color: white;
+}
+
+.detail_Search_Window select:focus {
+	box-sizing: border-box;
+	outline: 2px solid #4d729f;
+	background-color: #1b2838;
+}
+
+.detail_Search_Window h3 {
+	color: white;
+	font-size: 20px;
+}
+
+.paginationjs {
+	padding-left: 40%;
+	padding-top: 3%;
+	
+}
+
+
+.typeBy {
+	margin: 10px;
+}
+
+#searchDetail {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding-bottom: 12px;
+	background-color: #131c27;
+}
+
+.chkbox1 {
+	display: flex;
+	background-color: #131c27;
+	padding-top: 10px;
+}
+
+.chkbox2 {
+	display: flex;
+	background-color: #131c27;
+}
+.intoTheCart--btn{
+	width : 50px;
+	height : 50px;
+	padding: 10px 16px;
+	font-size: 1.125rem;
+	font-weight: 700;
+	border-color: #eea236;
+	border-radius: 2px;
+	background: linear-gradient(#f0ad4e, #eea236);
+	border: 1px solid #eea236;
+	box-shadow: 0 0 1px rgba(255, 255, 255, 0.2) inset;
+	border-radius: 2px;
+	border-color: #eea236;
+	word-break: keep-all;
+	margin: auto;
+	margin-right: 10px;
+}
+.intoTheCart--btn:hover {
+	background: #eea236;
+	border-color: #d58512;
+}
+.aaa {
+	display: grid;
+	width: 23%;
+	color: white;
+	font-size: 18px;
+	font-weight: bold;
+	align-content: center;
+	margin-left: 10px;
+}
+.productSale{
+	position: absolute;
+    margin-top: 59px;
+}
+
+.productDifference{
+background : transparent;
+	color: white;
+	font-size: 20px;
+	height: 50px;
+	line-height : 50px;
+	width: 150px;
+	background-color: red;
+	text-align: center;
+	border-radius: 5px;
+	font-weight: bold;
+	margin: auto;
+	margin-right: 10px;
+	
+}
+.productModify{
+	display: flex;
+	justify-content: end;
+}
+.productModify a{
+	text-decoration: none;
+}
+.productModify button{
+	width: 45px;
+	height:32px;
+	margin : 5px 5px 10px 5px;
+	
+}
+.reg-popup--btn{
+	position: absolute;
+	right: 20%;
+}
+
+
+----------------------------------------------
+
+@media screen and (max-width: 500px) {
+	/* 화면크기가 500px 이하일 경우 */
+	.detail_Search_Window {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	.listPage_item1 {
+	justify-content : space-between;
+	display : inline-table;
+	width: 165px;
+	height: 350px;
+	background-color: #1b2838;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	margin-left: 20px
+	
+}
+.detail_Search_Window select {
+	padding-top: 20px;
+	width: 29vw;
+	height: 4vh;
+	border: 1px solid #C4C4C4;
+	box-sizing: border-box;
+	padding: 12px 13px;
+	font-family: 'Roboto';
+	font-style: normal;
+	font-size: 14px;
+	font-weight: bold;
+	background-color: transparent;
+	color: white;
+}
+	.productImg {
+	
+	height : 60px;
+	width: 40vw;
+	margin-top: 60px;
+}
+	.companyLogo {
+	width: 60px;
+	height: 60px;
+}
+	.productColor{
+	margin-bottom: 
+	}
+	.companyName {
+	display:none;
+}
+	.productTitle{
+	width: 20%;
+	}
+	.productPrice{
+	}
+.ul-div{
+    font-size: 14px;
+    font-weight: bold;
+    display: contents;
+}
+
+
+}

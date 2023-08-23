@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sbt.shopping.jaehwan.Jh_productMapper">
+
+    <select id="getAllProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
+        SELECT * FROM Product
+        where
+        p_big_category = #{p_big_category}
+     	and p_middle_category = #{p_middle_category}
+        order by p_no desc
+    </select>
+    
+    <select id="getAdminProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
+        SELECT * FROM Product
+        order by p_no desc
+    </select>
+    
+    <delete id="deleteProduct">
+    	delete product where p_no = #{p_no}
+    </delete>
+    
+    
+	<select id="getSearchProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
+    SELECT * FROM Product
+    WHERE (
+        p_maker like '%'||#{p_maker}||'%'
+        and p_small_category like  '%'||#{p_small_category}||'%'
+           <if test="colors != '' and p_color.length > 0">
+            and p_color IN
+            <foreach collection="colors" item="color" open="(" separator="," close=")">#{color}</foreach>
+           </if>
+    )
+    <if test="sortOrder == 'sort1'">
+        ORDER BY p_sale DESC
+    </if>
+    <if test="sortOrder == 'sort2'">
+        ORDER BY p_sale
+    </if>
+    <if test="sortOrder == ''">
+        ORDER BY p_no desc
+    </if>
+</select>
+
+
+	<select id="getSearchProductForAdmin" resultType="com.sbt.shopping.jaehwan.ProductDTO">
+    SELECT * FROM Product
+    WHERE 
+        p_big_category = #{p_big_category}
+        <if test="sortOrder == 'sort1'">
+        ORDER BY p_sale DESC
+    </if>
+    <if test="sortOrder == 'sort2'">
+        ORDER BY p_sale
+    </if>
+    <if test="sortOrder == ''">
+        ORDER BY p_no desc
+    </if>
+</select>
+
+
+<insert id="regProduct">
+	insert into product values(
+	product_seq.nextval,#{p_big_category},#{p_middle_category},#{p_small_category},#{p_maker},#{p_name},#{p_img1},'',#{p_content},#{p_color},#{p_price},#{p_sale},#{p_cnt},sysdate
+	)
+</insert>
+
+</mapper>
