@@ -208,148 +208,6 @@
   			
   			
   			
-  				
-  <!-- 페이징 -->
- <%-- <div class="row justify-content-center">
-    <div class="col-auto">
-        <nav aria-label="...">
-         <ul class="pagination pagination-sm">
-    <c:choose>
-        <c:when test="${curPage != 1 }">
-            <li class="page-item">
-                <a class="page-link" href="detail.product?p=${curPage - 1 }&p_no=${product.p_no}" id="snsL">&lt;</a>
-            </li>
-        </c:when>
-        <c:otherwise>
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&lt;</a>
-            </li>
-        </c:otherwise>
-    </c:choose>
-    
-    <!-- 여기에 페이지 버튼 생성하는 로직 추가 -->
-    
-    <c:choose>
-        <c:when test="${curPage != pageCount }">
-            <li class="page-item">
-                <a class="page-link" href="detail.product?p=${curPage + 1 }&p_no=${product.p_no}" id="snsR">&gt;</a>
-            </li>
-        </c:when>
-        <c:otherwise>
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&gt;</a>
-            </li>
-        </c:otherwise>
-    </c:choose>
-</ul>
-        </nav>
-    </div>
-</div>  --%>
-
-
-<!-- QnA -->
-<div class="row justify-content-between mt-5">
-    <div class="col-5 mb-3">
-        <h2>Q & A</h2>
-    </div>
-    <div class="col-1">
-        <button type="button" class="btn btn-danger" id="toggleFormBtn">
-            상품 문의
-        </button>
-    </div>
-</div>
-
-<div id="qnaForm" style="display: none;">
-	<form action="regQnaDo" method="get">
-        <div class="form-group">
-            <label for="title">제 목</label>
-            <input type="text" class="form-control" id="title" name="q_title">
-        </div>
-        <div class="form-group">
-            <label for="content">내 용</label>
-            <textarea class="form-control" id="content" rows="4" name="q_content"></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary" id="submitQuestion">확인</button>
-        <button type="button" class="btn btn-secondary" id="cancelQuestion">취소</button>
-    </form>
-</div>
-
-
-<div class="row justify-content-center mt-3">
-    <div class="col-12">
-        <table id="table2" class="table table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">작성자</th>
-                    <th scope="col">제목</th>
-                    <th scope="col">몰</th>
-                    <th scope="col">날짜</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="q" items="${qnas}">
-                    <tr class="clickable-row" data-toggle="collapse" data-target="#row${q.q_id}">
-                        <td>${q.q_id}</td> <!-- Changed from <th> to <td> -->
-                        <td>${q.q_title}</td> <!-- Displaying q_title instead of q_content -->
-                        <td>${q.q_product}</td> <!-- Displaying q_product -->
-                        <td>
-                            <fmt:formatDate value="${q.q_date}" type="date" dateStyle="short"/>
-                        </td>
-                    </tr>
-                    <tr id="row${q.q_id}" class="collapse">
-                        <td colspan="4">
-                            <img src="resources/img/${q.q_date}" alt="Review Image">
-                        </td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-
-<%-- <div class="row justify-content-center">
-    <div class="col-auto">
-        <nav aria-label="...">
-            <ul class="pagination pagination-sm">
-                <c:choose>
-                    <c:when test="${curPage != 1}">
-                        <li class="page-item">
-                            <a class="page-link" href="detail.product?p=${curPage - 1}&p_no=${product.p_no}" id="snsL">&lt;</a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&lt;</a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
-                
-                <!-- 여기에 Q&A 페이지 버튼 생성하는 로직 추가 -->
-                <c:forEach begin="1" end="${pageCount}" varStatus="loop">
-                    <li class="page-item ${loop.index == curPage ? 'active' : ''}">
-                        <a class="page-link" href="detail.product?p=${loop.index}&p_no=${product.p_no}">${loop.index}</a>
-                    </li>
-                </c:forEach>
-                
-                <c:choose>
-                    <c:when test="${curPage != pageCount}">
-                        <li class="page-item">
-                            <a class="page-link" href="detail.product?p=${curPage + 1}&p_no=${product.p_no}" id="snsR">&gt;</a>
-                        </li>
-                    </c:when>
-                    <c:otherwise>
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&gt;</a>
-                        </li>
-                    </c:otherwise>
-                </c:choose>
-            </ul>
-        </nav>
-    </div>
-</div> --%> 
-
-
 <!-- 구매후기 페이징 -->
 <div class="row justify-content-center">
     <div class="col-auto">
@@ -385,7 +243,83 @@
             </ul>
         </nav>
     </div>
+</div>  			
+  			
+  			
+  			
+  			
+  			
+  			
+  			
+  			
+  				
+
+
+
+<!-- QnA 등록 -->
+<div class="row justify-content-between mt-5">
+    <div class="col-5 mb-3">
+        <h2>Q & A</h2>
+    </div>
+    <div class="col-1">
+        <button type="button" class="btn btn-danger" id="toggleFormBtn">
+            상품 문의
+        </button>
+    </div>
 </div>
+
+<div id="qnaForm" style="display: none;">
+	<form action="regQnaDo" method="get">
+        <div class="form-group">
+            <label for="title">제 목</label>
+            <input type="text" class="form-control" id="title" name="q_title">
+        </div>
+        <div class="form-group">
+            <label for="content">내 용</label>
+            <textarea class="form-control" id="content" rows="4" name="q_content"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submitQuestion">확인</button>
+        <button type="button" class="btn btn-secondary" id="cancelQuestion">취소</button>
+    </form>
+</div>
+
+
+<!-- Q&A 뷰 -->
+<div class="row justify-content-center mt-3">
+    <div class="col-12">
+        <table id="table2" class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col">작성자</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">몰</th>
+                    <th scope="col">날짜</th>
+                </tr>
+            </thead>
+            <tbody>
+                <c:forEach var="q" items="${qnas}">
+                    <tr class="clickable-row" data-toggle="collapse" data-target="#row${q.q_id}">
+                        <td>${q.q_id}</td> <!-- Changed from <th> to <td> -->
+                        <td>${q.q_title}</td> <!-- Displaying q_title instead of q_content -->
+                        <td>${q.q_product}</td> <!-- Displaying q_product -->
+                        <td>
+                            <fmt:formatDate value="${q.q_date}" type="date" dateStyle="short"/>
+                        </td>
+                    </tr>
+                    <tr id="row${q.q_id}" class="collapse">
+                        <td colspan="4">
+                            <img src="resources/img/${q.q_date}" alt="Review Image">
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
 
 <!-- QnA 페이징 -->
 <div class="row justify-content-center">
@@ -425,6 +359,8 @@
 </div>
 
 
+<c:out value="${qnaCurPage}" />
+<c:out value="${qnaPageCount}" />
 
 
 

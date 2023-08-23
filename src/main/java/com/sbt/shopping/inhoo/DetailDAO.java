@@ -122,6 +122,8 @@ public class DetailDAO {
 	    model.addAttribute("qnas", qnas); // QnA 게시글 목록
 	    model.addAttribute("qnaPageCount", pageCount); // 전체 페이지 수
 	    System.out.println("여긴 DetailDAO" + qnas);
+	    System.out.println("Total QnA count: " + qnaCount);
+
 	}
 
 	

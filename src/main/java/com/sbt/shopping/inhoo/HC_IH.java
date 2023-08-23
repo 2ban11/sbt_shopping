@@ -54,22 +54,36 @@ public class HC_IH {
 //	도전중
 	@RequestMapping(value = "/detail.product", method = RequestMethod.GET)
 	public String detailProduct(HttpServletRequest request, ProductDTO pDTO, Model model) {
-		int reviewPage = 1;
-		if(request.getParameter("reviewPage") != null) {
-		    reviewPage = Integer.parseInt(request.getParameter("reviewPage"));
-		}
+	    int reviewPage = 1;
+	    String reviewPageStr = request.getParameter("reviewPage");
+	    if(reviewPageStr != null && !reviewPageStr.isEmpty()) {
+	        try {
+	            reviewPage = Integer.parseInt(reviewPageStr);
+	        } catch (NumberFormatException e) {
+	            // 로깅 또는 적절한 예외 처리
+	            e.printStackTrace();
+	        }
+	    }
 
-		int qnaPage = 1;
-		if(request.getParameter("qnaPage") != null) {
-		    qnaPage = Integer.parseInt(request.getParameter("qnaPage"));
-		}
+	    int qnaPage = 1;
+	    String qnaPageStr = request.getParameter("qnaPage");
+	    if(qnaPageStr != null && !qnaPageStr.isEmpty()) {
+	        try {
+	            qnaPage = Integer.parseInt(qnaPageStr);
+	        } catch (NumberFormatException e) {
+	            // 로깅 또는 적절한 예외 처리
+	            e.printStackTrace();
+	        }
+	    }
 
-		dDAO.getProduct(reviewPage, model, pDTO);
-		dDAO.getQnAPage(qnaPage, model, pDTO); //추가된 메소드
-		System.out.println("여긴 컨트롤러 = " + request);
-		request.setAttribute("contentPage", "inhoo/detail.jsp");
-		return "index";
+	    dDAO.getProduct(reviewPage, model, pDTO);
+	    dDAO.getQnAPage(qnaPage, model, pDTO);
+	    request.setAttribute("contentPage", "inhoo/detail.jsp");
+	    System.out.println("qnaPage value: " + qnaPage);
+
+	    return "index";
 	}
+
 	
 	
 	
