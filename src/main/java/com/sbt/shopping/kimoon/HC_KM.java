@@ -18,6 +18,7 @@ public class HC_KM {
 	@Autowired
 	private MainPageDAO mpDAO;
 	
+
 	@Autowired
 	private BoardDAO bDAO;
 
@@ -26,6 +27,7 @@ public class HC_KM {
 	public String mainPage(HttpServletRequest request) {
 		mpDAO.getMainPageProducts(request);
 		request.setAttribute("contentPage", "kimoon/kimoonMainPage.jsp");
+
 		return "index";
 	}
 	

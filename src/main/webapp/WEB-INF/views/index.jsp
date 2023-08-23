@@ -7,10 +7,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>INDEX</title>
+
     <link rel="stylesheet" href="resources/css/header.css" />
     <link rel="stylesheet" href="resources/css/footer.css" />
     <link rel="stylesheet" href="resources/css/reset.css" />
     <link rel="stylesheet" href="resources/css/kimoon/MainPage.css" />
+
     <script
       src="https://kit.fontawesome.com/f0a74bdf41.js"
       crossorigin="anonymous"
@@ -32,7 +34,7 @@
     <div class="site-container">
       <div class="wrapper-without-footer">
         <!-- HEADER -->
-        <header class="row header">
+        <header class="row-km header">
           <div class="header__wrapper">
             <div class="menu-hamberger"><i class="fa-solid fa-bars"></i></div>
             <div class="header__logo">
@@ -342,8 +344,9 @@
         <!-- //MAIN NAVIGATION -->
 
         <!-- CONTENTS -->
-        <section class="row">
-       		<jsp:include page="${contentPage }"></jsp:include>
+        <section class="row-km">
+        
+            <jsp:include page="${contentPage }"></jsp:include> 
         </section>
       </div>
       <!-- //CONTENTS -->

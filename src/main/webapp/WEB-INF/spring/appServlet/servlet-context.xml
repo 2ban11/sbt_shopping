@@ -24,7 +24,6 @@
 	</beans:bean>
 
 	<context:component-scan base-package="com.sbt.shopping" />
-
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
         <beans:property name="url"
@@ -54,6 +53,7 @@
 				<beans:value>classpath:boardMapper.xml</beans:value>
 				<beans:value>classpath:accountMapper.xml</beans:value>
 				<beans:value>classpath:Jh_ProductMapper.xml</beans:value>
+				<beans:value>classpath:detailmapper.xml</beans:value>
 			</beans:list>
 		</beans:property>
 	</beans:bean>

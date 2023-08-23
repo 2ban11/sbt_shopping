@@ -1,0 +1,177 @@
+body{
+  color:#ffffff;
+  background-color: #1b2838;
+}
+
+
+
+/* 장바구니 노란색 */
+.fa{
+    display: inline-block;
+}
+
+
+
+/* 왼쪽 컨텐츠 */
+.left{
+  margin-right: 35px;
+}
+
+
+
+
+
+#custCarousel .carousel-indicators li img {
+display: block;
+opacity: 0.5;
+
+}
+
+#custCarousel .carousel-indicators li.active img {
+opacity: 1;
+}
+
+#custCarousel .carousel-indicators li:hover img {
+opacity: 0.75;
+}
+
+.carousel-item img{
+width:80%;
+height:50%;
+margin-bottom: 20px;
+}
+
+
+#mainImg{
+	width: 100%;
+}
+
+
+
+
+/* right */
+.t3-module.normal-module .module-ct {
+  /* border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid #323e4c \9; */
+  border-top: 0;
+  padding: 20px;
+  width: 200%;
+}
+
+.product-share-container{
+  /* border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid #323e4c \9; */
+  border-top: 0;
+  padding: 20px;
+  width: 126%;
+}
+
+
+.table{
+  border-top: 4px solid #ffffff;
+}
+
+
+
+
+
+/* 별 */
+.star {
+  color: #ffca28;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-size: 20px;
+}
+
+.star:hover {
+  color: #f57c00;
+}
+
+/* Modal 설정 */
+.modal-content {
+  background-color: #fff2e6;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-header {
+  background-color: #1b2838;
+  border-radius: 15px 15px 0 0;
+  padding: 10px;
+  text-align: center;
+}
+
+.modal-header button.close {
+  color: #f66685;
+  font-size: 30px;
+  font-weight: bold;
+  opacity: 0.8;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  background-color: #1b2838;
+  border-radius: 0 0 15px 15px;
+  padding: 10px;
+  text-align: center;
+}
+
+.modal-footer input[type="submit"].btn-primary {
+  background-color: #f66685;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+  cursor: pointer;
+}
+
+.modal-footer input[type="submit"].btn-primary:hover {
+  background-color: #bc2b26;
+}
+
+.modal-body .table-responsive {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.modal-body table.table {
+  background-color: #ffffff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.modal-body table.table th {
+  background-color: #1b2838;
+  font-weight: bold;
+  padding: 10px;
+  text-align: center;
+}
+
+.modal-body table.table td {
+  padding: 10px;
+}
+
+.modal-body .rating .star {
+  color: #ffca28;
+  cursor: pointer;
+  font-size: 20px;
+  transition: color 0.3s;
+}
+
+.modal-body .rating .star:hover {
+  color: #f57c00;
+}
+
+.modal-body input[type="file"].form-control-file {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background-color: #ffffff;
+
+
+}
