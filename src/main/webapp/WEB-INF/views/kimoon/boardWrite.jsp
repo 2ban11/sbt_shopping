@@ -26,7 +26,7 @@
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/kimoon/noticeWrite.css" />
+<link rel="stylesheet" href="resources/css/kimoon/boardWrite.css" />
 <script type="text/javascript" src="resources/js/kimoon/boardWrite.js"></script>
 </head>
 <body>
@@ -65,19 +65,19 @@
 			<div class="board-write__input-group">
 				<div class="board-write__input-title">주소</div>
 				<div class="board-write__input-div">
-					<div>
+					<div style="margin-right: 5px;">
 						<div id="board-write-adress-btn">검색</div>
 					</div>
-					<div>
+					<div style="margin-right: 5px; width: 100%;">
 						<input class="board-write__input--input" id="board-write-zonecode"
 							name="boardAddressZoneCode" placeholder="우편번호">
 					</div>
-					<div>
+					<div style="margin-right: 5px; width: 100%;">
 						<input class="board-write__input--input"
 							id="board-write-road-adress" placeholder="도로명주소"
 							name="boardAddressRoadAddress">
 					</div>
-					<div>
+					<div style="width: 100%;">
 						<input class="board-write__input--input" maxlength="50"
 							name="boardAddressDetailAddress" placeholder="상세주소" required>
 					</div>
