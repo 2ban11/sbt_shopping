@@ -134,7 +134,7 @@
         </div>
         <br>
         			<div class="int-area2">
-      					<a>상품명</a><input type="text" name="p_name"
+      					<a>상품명</a><input type="text" name="p_name" value="1111"
 							 autocomplete="off" maxlength="100" required>
 						<a>정가</a><input type="text" name="p_price"
 							 autocomplete="off" maxlength="10" required>

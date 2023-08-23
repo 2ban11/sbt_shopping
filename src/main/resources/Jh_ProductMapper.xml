@@ -60,7 +60,21 @@
 
 <insert id="regProduct">
 	insert into product values(
-	product_seq.nextval,#{p_big_category},#{p_middle_category},#{p_small_category},#{p_maker},#{p_name},#{p_img1},'',#{p_content},#{p_color},#{p_price},#{p_sale},#{p_cnt},sysdate
+	product_seq.nextval,
+	#{p_big_category},
+	#{p_middle_category},
+	#{p_small_category},
+	#{p_maker},
+	#{p_name},
+	#{p_img1},
+	'',
+	#{p_content},
+	#{p_color},
+	#{p_price},
+	#{p_sale},
+	#{p_cnt},
+	sysdate,
+	111
 	)
 </insert>
 

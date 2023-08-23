@@ -43,14 +43,24 @@ public class ProductDAO {
 			System.out.println(pDTO);
 			String imgOrgName = pDTO.getImg().getOriginalFilename();
 			long imgSize = pDTO.getImg().getSize();
-			
+			String uploadURL = "resources/img/";
+			String bigCate = pDTO.getP_big_category();
+			if(bigCate.equals("기타")) {
+				uploadURL+="Guitar";
+			}else if(bigCate.equals("앰프")) {
+				uploadURL+="Amp";
+			}else if(bigCate.equals("이펙터")) {
+				uploadURL+="Effector";
+			}else if(bigCate.equals("주변용품")) {
+				uploadURL+="Accessory";
+			}
 			if (imgSize == 0) {
 				pDTO.setP_img1(pDTO.getImg().getOriginalFilename());
 			} else {
 				String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
 				String newName = UUID.randomUUID().toString().split("-")[0]; //새로운 이름 만들기
 
-				String path = sc.getRealPath("resources/img"); // 이미지 저장할 루트
+				String path = sc.getRealPath(uploadURL); // 이미지 저장할 루트
 				System.out.println(path);
 				File saveImg = new File(path + "//" + newName + extension); //그래서 java에서 file 인식시키게 하기 (루트 + 새 이름 + 기존에 따온 확장자)
 				

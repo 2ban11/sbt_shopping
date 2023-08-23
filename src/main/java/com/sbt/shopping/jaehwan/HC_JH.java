@@ -65,7 +65,7 @@ public class HC_JH {
     }
     
     // 관리자페이지 
-    @RequestMapping(value = "/adminPage", method = RequestMethod.POST)
+    @RequestMapping(value = "/adminPage", method = RequestMethod.GET)
     public String admin(HttpServletRequest req, Model model, ProductDTO pDTO) {
     	pDAO.getAdminProduct(req, model, pDTO);
     	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
@@ -101,8 +101,7 @@ public class HC_JH {
     public String regProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
     	pDAO.regProduct(req,model,pDTO);
     	pDAO.getAdminProduct(req, model, pDTO);
-    	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
-    	return "redirect:/adminPage";
+    	return "redirect:adminPage";
     }
     @RequestMapping(value = "/updateProduct", method = RequestMethod.POST)
     public String updateProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
