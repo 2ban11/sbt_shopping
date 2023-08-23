@@ -66,7 +66,7 @@
 				<div class="board-write__input-title">주소</div>
 				<div class="board-write__input-div">
 					<div style="margin-right: 5px;">
-						<div id="board-write-adress-btn">검색</div>
+						<div id="board-write-address-btn">검색</div>
 					</div>
 					<div style="margin-right: 5px; width: 100%;">
 						<input class="board-write__input--input" id="board-write-zonecode"
@@ -74,7 +74,7 @@
 					</div>
 					<div style="margin-right: 5px; width: 100%;">
 						<input class="board-write__input--input"
-							id="board-write-road-adress" placeholder="도로명주소"
+							id="board-write-road-address" placeholder="도로명주소"
 							name="boardAddressRoadAddress">
 					</div>
 					<div style="width: 100%;">

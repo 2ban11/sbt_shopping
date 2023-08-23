@@ -46,7 +46,7 @@
 	display: flex;
 }
 
-#board-write-adress-btn {
+#board-write-address-btn {
 	background: white;
     width: 46px;
     height: 36px;
@@ -57,6 +57,7 @@
     background-color: #67c1f5;
     color: white;
     margin-right: 5px;
+    cursor: pointer;
 }
 
 .board-write__input--input {

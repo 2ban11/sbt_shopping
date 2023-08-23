@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/kimoon/notice.css" />
+<link rel="stylesheet" href="resources/css/kimoon/board.css" />
 </head>
 <body>
 	<div class="board-title">

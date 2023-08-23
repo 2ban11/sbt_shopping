@@ -16,14 +16,13 @@ public class MainPageDAO {
 	@Autowired
 	private SqlSession ss;
 	
-	private Cart cart;
-	
+	// 상품 전체 가져오기(전체 48개)
 	public void getMainPageProducts(HttpServletRequest request) {
 		request.setAttribute("mainProducts", ss.getMapper(MainPageProductMapper.class).getMainPageProducts(request));
 	}
-
+	
+	// 장바구니 추가
 	public int insertMainPageCart(Cart cart) {
-
 		if(ss.getMapper(MainPageProductMapper.class).checkDupliCart(cart) == 0) {
 			// 없을 때 장바구니 insert
 			return ss.getMapper(MainPageProductMapper.class).insertMainPageCart(cart);
@@ -31,7 +30,6 @@ public class MainPageDAO {
 			// 있을 때 장바구니 카운트 update +1
 			return ss.getMapper(MainPageProductMapper.class).updateMainCart(cart);
 		}
-		
-		
 	}
+	
 }

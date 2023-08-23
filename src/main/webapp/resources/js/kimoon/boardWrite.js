@@ -69,11 +69,11 @@ function createSummernote() {
 }
 
 function connectAddrSearchEvent() {
-    $("#board-write-adress-btn").click(function() {
+    $("#board-write-address-btn").click(function() {
         new daum.Postcode({
             oncomplete : function(data) {
                 $("#board-write-zonecode").val(data.zonecode);
-                $("#board-write-road-adress").val(data.roadAddress);
+                $("#board-write-road-address").val(data.roadAddress);
             }
         }).open();
     });

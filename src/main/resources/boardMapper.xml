@@ -2,23 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sbt.shopping.kimoon.board.BoardMapper">
 	
-	<!-- 게시판 글 작성 -->
-	<insert id="summernoteNoticeInsert">
-		insert into notice values (notice_seq.nextval,#{n_title},#{n_id}, sysdate,0,#{n_txt})
-	</insert>
-	<insert id="summernoteFreeInsert">
-		insert into free values (free_seq.nextval,#{f_title},#{f_id},sysdate,0,#{f_txt})
-	</insert>
-	<insert id="summernoteLessonInsert">
-		insert into lesson values (lesson_seq.nextval,#{l_title},#{l_id},sysdate,0,#{l_txt},#{l_addr},#{l_pay},#{l_phone})
-	</insert>
-	<insert id="summernoteJobInsert">
-		insert into job values (job_seq.nextval,#{j_title},#{j_id},sysdate,0,#{j_txt},#{j_addr},#{j_phone},#{j_category})
-	</insert>
-	
-	
-	
-	<!-- 검색한 게시글의 갯수 -->
+	<!-- (검색한) 게시글 전체 갯수 가져오기 -->
 	<select id="getNoticeCount" resultType="java.lang.Integer">
 		SELECT COUNT(*)
 		FROM notice, account
@@ -46,7 +30,11 @@
 	
 	
 	
-	<!-- 게시판 리스트 -->
+	
+	
+	
+	
+	<!-- 게시판 리스트 가져오기 -->
 	<select id="getNotice" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
 		select *
 		from (
@@ -95,12 +83,115 @@
 		)
 		where rn &gt;= #{start} and rn &lt;= #{end}
 	</select>
+	
+	
+	
+	<!-- 댓글 갯수 가져오기 -->
+	<select id="getNoticeReplyCount" resultType="int">
+		SELECT COUNT(*) FROM notice_reply
+		where nr_notice = #{no}
+	</select>
+	<select id="getFreeReplyCount" resultType="int">
+		SELECT COUNT(*) FROM free_reply
+		where fr_free = #{no}
+	</select>
+	<select id="getLessonReplyCount" resultType="int">
+		SELECT COUNT(*) FROM lesson_reply
+		where lr_lesson = #{no}
+	</select>
+	<select id="getJobReplyCount" resultType="int">
+		SELECT COUNT(*) FROM job_reply
+		where jr_job = #{no}
+	</select>
+	
+	
+	
+	<!-- 댓글 가져오기 -->
+	<select id="getNoticeReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
+		select * from notice_reply, account
+        where nr_notice = #{n_no} and nr_id = a_id order by nr_date
+	</select>
+	<select id="getFreeReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
+		select * from free_reply, account
+        where fr_free = #{f_no} and fr_id = a_id order by fr_date
+	</select>
+	<select id="getLessonReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
+		select * from lesson_reply, account
+        where lr_lesson = #{l_no} and lr_id = a_id order by lr_date
+	</select>
+	<select id="getJobReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
+		select * from job_reply, account
+        where jr_job = #{j_no} and jr_id = a_id order by jr_date
+	</select>
 		
 		
 		
-	<!-- 게시판 글 상세 -->
+	<!-- 댓글 작성 -->
+	<insert id="writeNoticeReply">
+		insert into notice_reply
+        values(notice_reply_seq.nextval,
+        #{nr_notice}, #{nr_text},
+        #{nr_id},
+        sysdate)
+	</insert>
+	<insert id="writeFreeReply">
+		insert into free_reply
+        values(free_reply_seq.nextval,
+        #{fr_free}, #{fr_text},
+        #{fr_id},
+        sysdate)
+	</insert>
+	<insert id="writeLessonReply">
+		insert into lesson_reply
+        values(lesson_reply_seq.nextval,
+        #{lr_lesson}, #{lr_text},
+        #{lr_id},
+        sysdate)
+	</insert>
+	<insert id="writeJobReply">
+		insert into job_reply
+        values(job_reply_seq.nextval,
+        #{jr_job}, #{jr_text},
+        #{jr_id},
+        sysdate)
+	</insert>
+		
+		
+		
+	<!-- 댓글 삭제하기 -->
+	<delete id="deleteNoticeReply">
+		DELETE notice_reply WHERE nr_no = #{nr_no}
+	</delete>	
+	<delete id="deleteFreeReply">
+		DELETE free_reply WHERE fr_no = #{fr_no}
+	</delete>	
+	<delete id="deleteLessonReply">
+		DELETE lesson_reply WHERE lr_no = #{lr_no}
+	</delete>	
+	<delete id="deleteJobReply">
+		DELETE job_reply WHERE jr_no = #{jr_no}
+	</delete>
+		
+		
+		
+	<!-- 게시글 작성 -->
+	<insert id="summernoteNoticeInsert">
+		insert into notice values (notice_seq.nextval,#{n_title},#{n_id}, sysdate,0,#{n_txt})
+	</insert>
+	<insert id="summernoteFreeInsert">
+		insert into free values (free_seq.nextval,#{f_title},#{f_id},sysdate,0,#{f_txt})
+	</insert>
+	<insert id="summernoteLessonInsert">
+		insert into lesson values (lesson_seq.nextval,#{l_title},#{l_id},sysdate,0,#{l_txt},#{l_addr},#{l_pay},#{l_phone})
+	</insert>
+	<insert id="summernoteJobInsert">
+		insert into job values (job_seq.nextval,#{j_title},#{j_id},sysdate,0,#{j_txt},#{j_addr},#{j_phone},#{j_category})
+	</insert>
+	
+		
+		
+	<!-- 게시글 상세보기 -->
 	<select id="getNoticeDetail" resultType="com.sbt.shopping.kimoon.board.BoardDTO">
-		<!-- select * from notice where n_no=#{n_no} -->
 		SELECT notice.*, account.a_nickname
 		FROM notice
 		JOIN account ON notice.n_id = account.a_id
@@ -127,19 +218,16 @@
 		
 		
 		
-	<!-- 게시글 제목 클릭시 조회수 +1 증가 -->
+	<!-- 조회수 증가 -->
 	<update id="addNoticeView">
 		UPDATE notice SET n_view = n_view + 1 WHERE n_no = #{n_no}
 	</update>
-	
 	<update id="addFreeView">
 		UPDATE free SET f_view = f_view + 1 WHERE f_no = #{f_no}
 	</update>
-	
 	<update id="addLessonView">
 		UPDATE lesson SET l_view = l_view + 1 WHERE l_no = #{l_no}
 	</update>
-	
 	<update id="addJobView">
 		UPDATE job SET j_view = j_view + 1 WHERE j_no = #{j_no}
 	</update>
@@ -175,84 +263,4 @@
 	<delete id="deleteJob">
 		DELETE job WHERE j_no = #{j_no}
 	</delete>
-		
-	<!-- 댓글 작성 -->
-	<insert id="writeNoticeReply">
-		insert into notice_reply
-        values(notice_reply_seq.nextval,
-        #{nr_notice}, #{nr_text},
-        #{nr_id},
-        sysdate)
-	</insert>
-	<insert id="writeFreeReply">
-		insert into free_reply
-        values(free_reply_seq.nextval,
-        #{fr_free}, #{fr_text},
-        #{fr_id},
-        sysdate)
-	</insert>
-	<insert id="writeLessonReply">
-		insert into lesson_reply
-        values(lesson_reply_seq.nextval,
-        #{lr_lesson}, #{lr_text},
-        #{lr_id},
-        sysdate)
-	</insert>
-	<insert id="writeJobReply">
-		insert into job_reply
-        values(job_reply_seq.nextval,
-        #{jr_job}, #{jr_text},
-        #{jr_id},
-        sysdate)
-	</insert>
-	
-	<!-- 댓글 가져오기 -->
-	<select id="getNoticeReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
-		select * from notice_reply, account
-        where nr_notice = #{n_no} and nr_id = a_id order by nr_date
-	</select>
-	<select id="getFreeReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
-		select * from free_reply, account
-        where fr_free = #{f_no} and fr_id = a_id order by fr_date
-	</select>
-	<select id="getLessonReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
-		select * from lesson_reply, account
-        where lr_lesson = #{l_no} and lr_id = a_id order by lr_date
-	</select>
-	<select id="getJobReply" resultType="com.sbt.shopping.kimoon.board.BoardReplyDTO">
-		select * from job_reply, account
-        where jr_job = #{j_no} and jr_id = a_id order by jr_date
-	</select>
-	
-	<!-- 댓글 갯수 가져오기 -->
-	<select id="getNoticeReplyCount" resultType="int">
-		SELECT COUNT(*) FROM notice_reply
-		where nr_notice = #{no}
-	</select>
-	<select id="getFreeReplyCount" resultType="int">
-		SELECT COUNT(*) FROM free_reply
-		where fr_free = #{no}
-	</select>
-	<select id="getLessonReplyCount" resultType="int">
-		SELECT COUNT(*) FROM lesson_reply
-		where lr_lesson = #{no}
-	</select>
-	<select id="getJobReplyCount" resultType="int">
-		SELECT COUNT(*) FROM job_reply
-		where jr_job = #{no}
-	</select>
-		
-	<!-- 댓글 삭제하기 -->
-	<delete id="deleteNoticeReply">
-		DELETE notice_reply WHERE nr_no = #{nr_no}
-	</delete>	
-	<delete id="deleteFreeReply">
-		DELETE free_reply WHERE fr_no = #{fr_no}
-	</delete>	
-	<delete id="deleteLessonReply">
-		DELETE lesson_reply WHERE lr_no = #{lr_no}
-	</delete>	
-	<delete id="deleteJobReply">
-		DELETE job_reply WHERE jr_no = #{jr_no}
-	</delete>	
 </mapper>

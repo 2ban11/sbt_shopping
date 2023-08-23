@@ -20,7 +20,8 @@ public class BoardController {
 	public BoardController() {
 		firstReq = true;
 	}
-
+	
+	// 게시글 전체 갯수 가져오기, 게시판 리스트 가져오기
 	@RequestMapping(value = "go.board", method = RequestMethod.GET)
 	public String goBoard(HttpServletRequest request, BoardReplyDTO brDTO) {
 		BoardPaging.clearSearch(request);
@@ -35,7 +36,8 @@ public class BoardController {
 		request.setAttribute("contentPage", "kimoon/board.jsp");
 		return "index";
 	}
-
+	
+	// 게시글 리스트 페이징
 	@RequestMapping(value = "/board.page.change", method = RequestMethod.GET)
 	public String paging(HttpServletRequest req, @RequestParam int p) {
 		BoardPaging.clearSearch(req);

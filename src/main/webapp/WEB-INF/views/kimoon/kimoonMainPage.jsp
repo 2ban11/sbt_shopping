@@ -129,8 +129,10 @@
 							src="resources/img/MakerLogo/${mainProducts.p_maker }_Logo_White.png" />
 					</c:if>
 					<form action="do.insert.cart" id="main-add-to-cart-form">
+					<c:if test="${mainProducts.p_cnt ne 0}">
 						<button class="fa-solid fa-cart-shopping addtocart__company--btn"
 							name="c_product" value="${mainProducts.p_no }">&nbsp;장바구니</button>
+					</c:if>
 						<input type="hidden" name="c_id" value="jp@gmail.com">
 					</form>
 				</div>
