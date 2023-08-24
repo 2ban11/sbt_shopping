@@ -33,7 +33,7 @@ public class AccountDAO {
 			System.out.println("로그인 성공!");
 			return true; // 로그인 성공
 		} else {
-			req.setAttribute("result", "can't find user or password error");
+			req.setAttribute("result", "사용자나 비밀번호를 찾을 수 없습니다.");
 			System.out.println("로그인 실패!");
 			return false; // 로그인 실패
 		}
@@ -120,7 +120,20 @@ public class AccountDAO {
 
 		return ss.getMapper(AccountMapper.class).getNicknameNum(a);
 	}
-
+	
+	
+	public String getIDbyPhoneNum(AccountDTO a, HttpServletRequest req) {
+	    AccountDTO result = ss.getMapper(AccountMapper.class).getIDbyPhoneNum(a);
+	    if (result != null) {
+	        HttpSession session = req.getSession();
+	        session.setAttribute("foundId", result.getA_id()); // 아이디를 세션에 저장
+	        System.out.println(result.getA_id());
+	        return result.getA_id();
+	    } else {
+	        return "Not Found"; // 아이디를 찾을 수 없는 경우 메시지를 리턴
+	    }
+	}
+	
 	public void setLoginMember(HttpServletRequest req, AccountDTO account) {
 		req.getSession().setAttribute("loginMember", account);
 		req.getSession().setMaxInactiveInterval(60 * 10);
@@ -206,7 +219,7 @@ public class AccountDAO {
 					AccountDTO dbAccount = new AccountDTO();
 					dbAccount.setA_nickname(userNickname);
 					req.getSession().setAttribute("LoginMemberNaver", dbAccount);
-					saveUserNaverInfo(req, userNickname, naverUserId, naverUserId, naverUserId); // 수정된 부분
+					saveUserNaverInfo(req, userNickname, naverUserId, naverUserId, naverUserId, naverUserId); // 수정된 부분
 				}
 			}
 		} catch (Exception e) {
@@ -215,7 +228,7 @@ public class AccountDAO {
 	}
 
 	public void saveUserNaverInfo(HttpServletRequest req, String a_nickname, String a_id, String a_email,
-			String a_password) {
+			String a_password,String a_phone) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("LoginMemberNaver");
 		System.out.println("loginMember 세션 정보: " + a);
 
@@ -227,6 +240,8 @@ public class AccountDAO {
 			a.setA_name(a_nickname); // 추가된 부분
 			a.setA_email(a_email);
 			// 암호를 암호화하여 설정합니다.
+			a.setA_phone(a_phone);
+			
 			String encryptedPassword = encryptPassword(a_password);
 			a.setA_password(encryptedPassword);
 			// 해당 ID를 기반으로 사용자 계정이 있는지 확인합니다.

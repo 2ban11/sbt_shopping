@@ -6,19 +6,10 @@ public class AccountDTO {
 	private String a_name; 
 	private String a_nickname;
 	private String a_password; 
-	
+	private String a_phone;
 
 	public AccountDTO() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public AccountDTO(String a_id, String a_email, String a_name, String a_nickname, String a_password) {
-		super();
-		this.a_id = a_id;
-		this.a_email = a_email;
-		this.a_name = a_name;
-		this.a_nickname = a_nickname;
-		this.a_password = a_password;
 	}
 
 	public String getA_id() {
@@ -61,7 +52,13 @@ public class AccountDTO {
 		this.a_password = a_password;
 	}
 
-	
+	public String getA_phone() {
+		return a_phone;
+	}
+
+	public void setA_phone(String a_phone) {
+		this.a_phone = a_phone;
+	}
 	
 	
 	

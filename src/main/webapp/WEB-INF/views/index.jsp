@@ -134,9 +134,11 @@
               	</c:otherwise>
               	</c:choose>
               <div>
-              <form action="adminPage" method="POST">
+              <c:if test="${loginMember.a_id eq 'master'}">
+              <form action="adminPage" method="GET">
                 <button class="header__signup" type="submit">관리자</button>
                 </form>
+                </c:if>
               </div>
               <div>
                 <button class="header__cart">
@@ -391,9 +393,7 @@
             </tr>
           </table>
         </div>
-  <div class="master" id="master-button-container">
-    <button class="admin-button" id="adminButton">관리자</button>
-</div>
+ 
       </footer>
       <!-- //FOOTER -->
     </div>

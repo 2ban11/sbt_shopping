@@ -1,3 +1,5 @@
+
+
 package com.sbt.shopping.myeonggyu;
 
 import java.util.HashMap;
@@ -24,7 +26,7 @@ public class AccountController {
 	private AccountDAO aDAO;
 	
 	 @Autowired
-	 private AccountEmailAuth AEA ; // EmailAuthService 주입
+	    private AccountEmailAuth AEA ; // EmailAuthService 주입
 	
 	
 	 
@@ -53,6 +55,7 @@ public class AccountController {
 	            } else {
 	                response.put("isAdmin", false);
 	            }
+	            
 	        } else {
 	            response.put("loggedIn", false);
 	            response.put("isAdmin", false);
@@ -236,7 +239,21 @@ public class AccountController {
 	     return response;
 	 }
 	 
-	
+	 @RequestMapping(value = "/account.phone.getID", method = RequestMethod.GET)
+	    public String PhoneGetId(HttpServletRequest req) {
+		 req.setAttribute("contentPage", "myeonggyu/find_id.jsp");
+	        return "index"; 
+	    }
 	 
+	 @RequestMapping(value = "/account.phone.ID", method = RequestMethod.POST)
+	 public String findIdByPhone(HttpServletRequest req, @RequestParam("phoneNumber") String phoneNumber) {
+	     AccountDTO a = new AccountDTO();
+	     a.setA_phone(phoneNumber);
+	     aDAO.loginCheck(req);
+	     String foundId = (String) req.getSession().getAttribute("foundId"); // 세션에서 아이디 가져오기
+	     
+	     req.setAttribute("foundId", foundId);
+	     return "myeonggyu/find_id"; // 해당 JSP 파일로 forward
+	 }
 }
 

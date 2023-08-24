@@ -80,6 +80,25 @@ $(document).ready(function() {
         }
         return false;
     }
+	// 전화번호 유효성 검사
+function validatePhoneNumber() {
+    var phoneRegex = /^\d{20}$/; // 10자리 숫자만 허용
+    var a_phone = $("#a_phone").val();
+    if (!phoneRegex.test(a_phone)) {
+        alert("올바른 전화번호를 입력하세요.");
+        return false;
+    }
+    return true;
+}
+
+// 전화번호 중복 확인 함수
+function isPhoneNumberDuplicated() {
+    if ($("#a_phone").val() === "") {
+        alert("전화번호 중복확인을 하세요.");
+        return true;
+    }
+    return false;
+}
 	
     // 회원가입 폼 제출을 처리하는 함수
     $(".joinForm").submit(function() {
@@ -87,7 +106,8 @@ $(document).ready(function() {
         var isNicknameValid = validateNickname();
         var isPasswordValid = validatePassword();
         var isPasswordMatched = checkPasswordMatch();
-
+		var isPhoneNumberValid = validatePhoneNumber(); // 전화번호 유효성 검사
+   		var isPhoneNumberDuplicated = isPhoneNumberDuplicated(); // 전화번호 중복 확인
         // 아이디 중복 확인
         if (isIdDuplicated()) {
             return false;
@@ -99,7 +119,7 @@ $(document).ready(function() {
             return false;
         }
 
-        if (!isEmailValid || !isNicknameValid || !isPasswordValid || !isPasswordMatched) {
+        if (!isEmailValid || !isNicknameValid || !isPasswordValid || !isPasswordMatched|| !isPhoneNumberValid || isPhoneNumberDuplicated) {
             alert("입력한 정보를 다시 확인해주세요.");
             return false; // 유효성 검사 실패 시 폼 제출 막음
         }
@@ -168,4 +188,31 @@ $(document).ready(function() {
             }
         });
     });
+$("#btn_phone_chk").click(function() {
+    var a_phone = $("#a_phone").val();
+
+    if (a_phone === "") {
+        alert("전화번호를 입력해주세요");
+        return;
+    }
+
+    // AJAX를 사용하여 전화번호 중복 확인을 요청합니다.
+    $.ajax({
+        url: "/shopping/accountPhone.get",
+        type: "GET",
+        data: { a_phone: a_phone },
+        success: function(result) {
+            if (result === 1) {
+                alert("이미 사용 중인 전화번호입니다.");
+                $("#phone_chk").val("");
+            } else {
+                alert("사용 가능한 전화번호입니다.");
+                $("#phone_chk").val("1");
+            }
+        },
+        error: function(xhr, status, error) {
+            alert("전화번호 중복 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+        }
+    });
+});
 });

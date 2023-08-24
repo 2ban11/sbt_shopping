@@ -30,5 +30,6 @@ public interface AccountMapper {
 
 	int updatePw(AccountDTO a);
 
+	AccountDTO getIDbyPhoneNum(AccountDTO a);
 	
 }

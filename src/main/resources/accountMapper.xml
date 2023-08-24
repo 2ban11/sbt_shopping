@@ -5,7 +5,11 @@
 	<select id="getAccountByID" resultType="com.sbt.shopping.myeonggyu.AccountDTO">  
 		select * from account where a_id = #{a_id}
 	</select>
-
+	
+	<select id="getIDbyPhoneNum" resultType="com.sbt.shopping.myeonggyu.AccountDTO" >
+	  SELECT a_id FROM account WHERE a_phone=#{a_phone}
+	</select>
+	
 	 <delete id="bye">
         delete account where a_id = #{a_id}
     </delete>
@@ -18,6 +22,7 @@
         <if test="a_name != null">a_name,</if>
         <if test="a_nickname != null">a_nickname,</if>
         <if test="a_password != null">a_password,</if>
+        <if test="a_phone != null">a_phone,</if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
         <if test="a_id != null">#{a_id},</if>
@@ -25,6 +30,7 @@
         <if test="a_name != null">#{a_name},</if>
         <if test="a_nickname != null">#{a_nickname},</if>
         <if test="a_password != null">#{a_password},</if>
+        <if test="a_phone != null">#{a_phone},</if>
     </trim>
 </insert>
     <update id="update" parameterType="com.sbt.shopping.myeonggyu.AccountDTO">
