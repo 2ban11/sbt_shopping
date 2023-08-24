@@ -175,7 +175,9 @@ details[open] summary::marker {
 .mypage-info-data-cart-img {
 	width: 10%;
 }
-
+.mypage-info-data-cart-img img {
+	max-width: 85%
+}
 .mypage-info-data-cart-name {
 	width: 50%;
 }

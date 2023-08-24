@@ -196,18 +196,34 @@ var PWConfirm = document.getElementById("PWConfirm");
   }
 }
 
-function signOut(){
+
+function signOut2(){
+	$(".mypage-btn-account-btn-signout").click(function(){
+	let id = $("#a_id").val();
+	console.log(id);
 	let ok = confirm('탈퇴하시겠습니까?');
+	let param="";
 	if(ok){
-		location.href="signout"
-	}
+		param = 'a_id='+ id;
+			console.log(param);
+	}	
+	location.href='signout?' + param;
+	});
 }
 
+/*function signOut(no){
+	let ok = confirm('탈퇴하시겠습니까?');
+	if(ok){
+		location.href='signout?' + param;
+	}
+}
+*/
 
 
 $(function(){
 	checkAll();
 	cartDeleteSelected();
 	date();
+	signOut2();
 	/*makeChecked();*/
 })

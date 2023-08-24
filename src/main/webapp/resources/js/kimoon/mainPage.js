@@ -54,6 +54,7 @@ function mainPageContents() {
 }
 
 function addToCartModal() {
+	$(".addtocart__company--btn").off("click");
     $(".addtocart__company--btn").click(function(e) {
         e.preventDefault();
 
