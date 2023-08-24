@@ -134,7 +134,7 @@
               	</c:otherwise>
               	</c:choose>
               <div>
-              <form action="adminPage" method="POST">
+              <form action="adminPage" method="GET">
                 <button class="header__signup" type="submit">관리자</button>
                 </form>
               </div>

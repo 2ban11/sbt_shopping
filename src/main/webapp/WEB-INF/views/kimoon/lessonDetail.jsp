@@ -43,20 +43,22 @@
 
 		<div class="board-detail__text">${board.l_txt }</div>
 
-		<div class="board-del-upd__wrapper">
-			<div>
-				<form action="go.lesson.update">
-					<button name="l_no" value="${board.l_no }">수정</button>
-					<input type="hidden" name="type" value="3">
-				</form>
+		<c:if test="${sessionScope.loginMember.a_id eq board.l_id }">
+			<div class="board-del-upd__wrapper">
+				<div>
+					<form action="go.lesson.update">
+						<button name="l_no" value="${board.l_no }">수정</button>
+						<input type="hidden" name="type" value="3">
+					</form>
+				</div>
+				<div>
+					<form action="do.lesson.delete" onsubmit="return deleteAlert()">
+						<button name="l_no" value="${board.l_no }">삭제</button>
+						<input type="hidden" name="type" value="3">
+					</form>
+				</div>
 			</div>
-			<div>
-				<form action="do.lesson.delete" onsubmit="return deleteAlert()">
-					<button name="l_no" value="${board.l_no }">삭제</button>
-					<input type="hidden" name="type" value="3">
-				</form>
-			</div>
-		</div>
+		</c:if>
 	</div>
 
 	<div class="board-reply__wrapper">
@@ -75,22 +77,25 @@
 					</div>
 					<div class="board-reply__txt-delete-wrapper">
 						<div class="board-reply__txt">${reply.lr_text}</div>
-						<div class="board-reply__delete">
-							<button name="lr_no" value="${reply.lr_no}">삭제</button>
-							<input type="hidden" name="lr_lesson" value="${reply.lr_lesson }">
-							<input type="hidden" name="type" value="3">
-						</div>
+						<c:if test="${sessionScope.loginMember.a_id eq reply.lr_id }">
+							<div class="board-reply__delete">
+								<button name="lr_no" value="${reply.lr_no}">삭제</button>
+								<input type="hidden" name="lr_lesson"
+									value="${reply.lr_lesson }"> <input type="hidden"
+									name="type" value="3">
+							</div>
+						</c:if>
 					</div>
 				</div>
 			</form>
 		</c:forEach>
 
-
+		<c:if test="${not empty sessionScope.loginMember.a_id}">
 		<form action="lesson.reply.write">
 			<div class="board-reply__write-header">댓글 작성</div>
 			<div class="board-reply__write-wrapper">
 				<input type="hidden" name="lr_lesson" value="${board.l_no }">
-				<input type="hidden" name="lr_id" value="jp@gmail.com"> <input
+				<input type="hidden" name="lr_id" value="${sessionScope.loginMember.a_id}"> <input
 					type="hidden" name="type" value="3">
 				<div class="board-reply__write">
 					<textarea name="lr_text" maxlength="1000"></textarea>
@@ -100,6 +105,7 @@
 				</div>
 			</div>
 		</form>
+		</c:if>
 	</div>
 
 	<script type="text/javascript">

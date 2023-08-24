@@ -59,7 +59,7 @@
 				<div class="board-write__input-div">
 					<input class="board-write__input--input" name="j_title"
 						value="${board.j_title }" maxlength="100" required> <input
-						type="hidden" name="j_id" value="ddd@naver.com"> <input
+						type="hidden" name="j_id" value="${sessionScope.loginMember.a_id}"> <input
 						type="hidden" name="j_no" value="${board.j_no }">
 
 				</div>

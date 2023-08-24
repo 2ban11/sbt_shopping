@@ -122,16 +122,16 @@
 					<input class="board-write__input--input" name="boardTitle"
 						placeholder="100자 제한" maxlength="100" required>
 					<c:if test="${type eq 1}">
-						<input type="hidden" name="n_id" value="ddd@naver.com">
+						<input type="hidden" name="n_id" value="${sessionScope.loginMember.a_id}">
 					</c:if>
 					<c:if test="${type eq 2}">
-						<input type="hidden" name="f_id" value="ddd@naver.com">
+						<input type="hidden" name="f_id" value="${sessionScope.loginMember.a_id}">
 					</c:if>
 					<c:if test="${type eq 3}">
-						<input type="hidden" name="l_id" value="ddd@naver.com">
+						<input type="hidden" name="l_id" value="${sessionScope.loginMember.a_id}">
 					</c:if>
 					<c:if test="${type eq 4}">
-						<input type="hidden" name="j_id" value="ddd@naver.com">
+						<input type="hidden" name="j_id" value="${sessionScope.loginMember.a_id}">
 					</c:if>
 				</div>
 			</div>

@@ -62,9 +62,7 @@
 								<button name="c_no" value="${c.c_no }">수정</button>
 							</form>
 						</div>
-						<div class="mypage-info-data-cart-sale">
-							${c.p_sale}원
-						</div>
+						<div class="mypage-info-data-cart-sale">${c.p_sale}원</div>
 					</div>
 					<c:set var="total" value="${total + c.p_sale }" />
 				</c:forEach>
@@ -78,8 +76,18 @@
 			</div>
 		</div>
 	</div>
-	<div class="mypage-cart-order">
-		<button onclick="cartOrder()">주문하기</button>
-	</div>
+	<form method="post" action="kakaoPay">
+		<div class="mypage-cart-order">
+			<button>주문하기</button>
+		</div>
+		<c:forEach items="${carts}" var="c">
+			<input type="hidden" name="c_no" value="${c.c_no }">
+			<input type="hidden" name="p_name" value="${c.p_name }">
+		<%-- <input type="hidden" name="p_big_category" value="${carts.p_big_category }">
+		<input type="hidden" name="c_cnt" value="${carts.c_cnt }">
+		<input type="hidden" name="p_sale" value="${carts.p_sale }"> --%>
+		</c:forEach>
+		<input type="hidden" name="total" value="${total }">
+	</form>
 </body>
 </html>

@@ -60,6 +60,7 @@ public class AccountDAO {
 
 	public void logout(HttpServletRequest req) {
 		req.getSession().setAttribute("loginMember", null);
+		req.getSession().setAttribute("totalAmount", null);
 	}
 
 	public void bye(HttpServletRequest req) {
