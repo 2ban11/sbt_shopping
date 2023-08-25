@@ -3,17 +3,17 @@
 <mapper namespace="com.sbt.shopping.jaepil.OrderMapper">
 	<select id="getOrder"
 		resultType="com.sbt.shopping.jaepil.OrderDTO">
-		select * from orders o, order_detail od, product p
+		select * from order_detail od, product p
 		where
 		od.od_product = p.p_no
-		and o.o_no = od.od_orders and o.o_id = #{a_id}
+		and od.od_id = #{a_id}
 	</select>
 
 	<select id="getOrderByDate" resultType="com.sbt.shopping.jaepil.OrderDTO" parameterType="map">
-		select * from orders o, order_detail
+		select * from order_detail
 		od, product p
 		where od.od_product = p.p_no
-		and o.o_no = od.od_orders and o_date between to_date(#{startdate}) and
-		to_date(#{enddate}) + 0.99999 and o.o_id = #{a_id}
+		and od.od_date between to_date(#{startdate}) and
+		to_date(#{enddate}) + 0.99999 and od.od_id = #{a_id}
 	</select>
 </mapper>

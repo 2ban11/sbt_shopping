@@ -65,19 +65,21 @@
 				<div class="mypage-info-data-order-name">상품명</div>
 				<div class="mypage-info-data-order-pay">수량</div>
 				<div class="mypage-info-data-order-sale">가격</div>
-				<div class="mypage-info-data-order-state">결제상태</div>
-				<div class="mypage-info-data-order-other">비고</div>
+				<div class="mypage-info-data-order-date">주문날짜</div>
+				<div class="mypage-info-data-order-state">주문상태</div>
+				<div class="mypage-info-data-order-other">주문환불</div>
 			</div>
 			<c:if test="${not empty orders}">
 				<c:forEach var="o" items="${orders }">
 					<div class="mypage-info-data">
-						<div class="mypage-info-data-order-no">${o.o_no }</div>
+						<div class="mypage-info-data-order-no">${o.od_no }</div>
 						<div class="mypage-info-data-order-name">${o.p_name }</div>
 						<div class="mypage-info-data-order-pay">${o.od_cnt }</div>
-						<div class="mypage-info-data-order-sale">${o.p_sale }</div>						
-						<div class="mypage-info-data-order-state"><fmt:formatDate value="${o.o_date }" dateStyle="long"/></div>
+						<div class="mypage-info-data-order-sale">${o.od_price }</div>						
+						<div class="mypage-info-data-order-date"><fmt:formatDate value="${o.od_date }" dateStyle="long"/></div>
+						<div class="mypage-info-data-order-state">${o.od_state }</div>
 						<div class="mypage-info-data-order-other">
-							<button>상세보기</button>
+							<button>환불</button>
 						</div>
 					</div>
 				</c:forEach>

@@ -28,8 +28,7 @@
 			</div>
 		</div>
 		<div class="mypage-info-des">
-			※ 아이디로 사용하는 이메일 주소는 변경이 불가하며, 수신 전용 이메일 주소만 변경이 가능합니다. <br> ※
-			닉네임은 변경이 불가합니다.
+			※ 이메일 주소, 닉네임은 변경이 불가합니다.
 		</div>
 		<form action="accountedit" method="post">
 			<div class="mypage-info-accounts">
