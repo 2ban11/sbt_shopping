@@ -84,13 +84,13 @@
 				<button class="selectDelete-btn">선택삭제</button>
 			</div>
 			<div class="mypage-cart-total">
-				<div>합계</div>
+				<div>합계 : </div>
 				<div>${total}원</div>
 			</div>
-		</div>
-	</div>
 	<div class="mypage-cart-order">
 		<button onclick="cartOrder()">주문하기</button>
+	</div>
+		</div>
 	</div>
 </body>
 </html>
