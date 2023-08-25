@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.sbt.shopping.myeonggyu.AccountDAO;
 import com.sbt.shopping.myeonggyu.AccountDTO;
 
 @Controller
@@ -14,6 +15,9 @@ public class HC_JP {
 
 	@Autowired
 	private MypageDAO mDAO;
+	
+	@Autowired
+	private AccountDAO aDAO;
 	
 	
 	@RequestMapping(value = "/mypage.order", method = RequestMethod.GET)
@@ -24,9 +28,9 @@ public class HC_JP {
 	}
 	
 	@RequestMapping(value = "mypage.orderdate", method = RequestMethod.GET)
-	public String getOrderByDate(HttpServletRequest req, OrderDTO oDTO) {
+	public String getOrderByDate(HttpServletRequest req, OrderDTO oDTO, AccountDTO aDTO) {
 		req.setAttribute("contentPage", "jaepil/mypage_order.jsp");
-		mDAO.getOrderByDate(req);
+		mDAO.getOrderByDate(req, aDTO);
 		return "index";
 	}
 	
@@ -81,10 +85,21 @@ public class HC_JP {
 	
 	
 	@RequestMapping(value = "/signout", method = RequestMethod.GET)
-	public String signOutDo(HttpServletRequest req, AccountDTO aDTO) {
+	public String signOutDo(HttpServletRequest req, AccountDTO aDTO, AccountDAO aDAO) {
 		mDAO.signOut(req, aDTO);
-		req.setAttribute("contentPage", "jaepil/mypage_signout.jsp");
-		return "index";
+		aDAO.logout(req);	
+		return "redirect:/";
+	}
+	
+	@RequestMapping(value = "/refund", method = RequestMethod.GET)
+	public String refund(HttpServletRequest req, OrderDTO oDTO) {
+		mDAO.refund(req, oDTO);
+		return "redirect:/mypage.order";
+	}
+	@RequestMapping(value = "/refundcancel", method = RequestMethod.GET)
+	public String refundCancel(HttpServletRequest req, OrderDTO oDTO) {
+		mDAO.refundCancel(req, oDTO);
+		return "redirect:/mypage.order";
 	}
 	
 	

@@ -3,74 +3,131 @@ package com.sbt.shopping.jaepil;
 import java.util.Date;
 
 public class OrderDTO {
-	private int o_no;
-	private Date o_date;
-	private int o_price;
-	private int p_sale;
+	private int od_no;
+	private String od_id;
+	private int od_product;
+	private int od_price;
+	private int od_cnt;
+	private Date od_date;
+	private String od_state;
 	private String p_name;
-	private String od_cnt;
 	
-public OrderDTO() {
-	// TODO Auto-generated constructor stub
-}
+	
 
-public OrderDTO(int o_no, Date o_date, int o_price, int p_sale, String p_name, String od_cnt) {
-	super();
-	this.o_no = o_no;
-	this.o_date = o_date;
-	this.o_price = o_price;
-	this.p_sale = p_sale;
-	this.p_name = p_name;
-	this.od_cnt = od_cnt;
-}
+	public OrderDTO() {
+		// TODO Auto-generated constructor stub
+	}
 
-public int getO_no() {
-	return o_no;
-}
 
-public void setO_no(int o_no) {
-	this.o_no = o_no;
-}
 
-public Date getO_date() {
-	return o_date;
-}
+	public OrderDTO(int od_no, String od_id, int od_product, int od_price, int od_cnt, Date od_date, String od_state,
+			String p_name) {
+		super();
+		this.od_no = od_no;
+		this.od_id = od_id;
+		this.od_product = od_product;
+		this.od_price = od_price;
+		this.od_cnt = od_cnt;
+		this.od_date = od_date;
+		this.od_state = od_state;
+		this.p_name = p_name;
+	}
 
-public void setO_date(Date o_date) {
-	this.o_date = o_date;
-}
 
-public int getO_price() {
-	return o_price;
-}
 
-public void setO_price(int o_price) {
-	this.o_price = o_price;
-}
+	public int getOd_no() {
+		return od_no;
+	}
 
-public int getP_sale() {
-	return p_sale;
-}
 
-public void setP_sale(int p_sale) {
-	this.p_sale = p_sale;
-}
 
-public String getP_name() {
-	return p_name;
-}
+	public void setOd_no(int od_no) {
+		this.od_no = od_no;
+	}
 
-public void setP_name(String p_name) {
-	this.p_name = p_name;
-}
 
-public String getOd_cnt() {
-	return od_cnt;
-}
 
-public void setOd_cnt(String od_cnt) {
-	this.od_cnt = od_cnt;
-}
+	public String getOd_id() {
+		return od_id;
+	}
+
+
+
+	public void setOd_id(String od_id) {
+		this.od_id = od_id;
+	}
+
+
+
+	public int getOd_product() {
+		return od_product;
+	}
+
+
+
+	public void setOd_product(int od_product) {
+		this.od_product = od_product;
+	}
+
+
+
+	public int getOd_price() {
+		return od_price;
+	}
+
+
+
+	public void setOd_price(int od_price) {
+		this.od_price = od_price;
+	}
+
+
+
+	public int getOd_cnt() {
+		return od_cnt;
+	}
+
+
+
+	public void setOd_cnt(int od_cnt) {
+		this.od_cnt = od_cnt;
+	}
+
+
+
+	public Date getOd_date() {
+		return od_date;
+	}
+
+
+
+	public void setOd_date(Date od_date) {
+		this.od_date = od_date;
+	}
+
+
+
+	public String getOd_state() {
+		return od_state;
+	}
+
+
+
+	public void setOd_state(String od_state) {
+		this.od_state = od_state;
+	}
+
+
+
+	public String getP_name() {
+		return p_name;
+	}
+
+
+
+	public void setP_name(String p_name) {
+		this.p_name = p_name;
+	}
 
 
 }

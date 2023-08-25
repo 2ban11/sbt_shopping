@@ -60,6 +60,8 @@ public class AccountDAO {
 
 	public void logout(HttpServletRequest req) {
 		req.getSession().setAttribute("loginMember", null);
+		req.getSession().setAttribute("LoginMemberNaver", null);
+		req.getSession().setAttribute("kakaoInfo", null);
 	}
 
 	public void bye(HttpServletRequest req) {

@@ -6,7 +6,7 @@
 		select * from account where a_id = #{a_id}
 	</select>
 
-	 <delete id="bye">
+	 <delete id="bye" parameterType="com.sbt.shopping.myeonggyu.AccountDTO">
         delete account where a_id = #{a_id}
     </delete>
 
