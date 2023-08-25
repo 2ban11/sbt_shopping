@@ -12,6 +12,9 @@
 <link rel="stylesheet" href="resources/css/jh/listPage.css" />
 <link rel="stylesheet" href="resources/css/jh/chkColors.css" />
 <link rel="stylesheet" href="resources/css/jh/regProduct.css" />
+<link rel="stylesheet" href="resources/css/jh/charts.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.3/chart.min.js" integrity="sha512-fMPPLjF/Xr7Ga0679WgtqoSyfUoQgdt8IIxJymStR5zV3Fyb6B3u/8DcaZ6R6sXexk5Z64bCgo2TYyn760EdcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
 <script type="text/javascript" src="resources/js/jh/isNotElec.js"></script>
 </head>
 

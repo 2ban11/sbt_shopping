@@ -17,6 +17,8 @@ public class HC_JH {
 
     @Autowired
     private ProductDAO pDAO;
+    @Autowired
+    private OrderDetailDAO odDAO;
 
     @RequestMapping(value = "/guitarPage", method = RequestMethod.GET)
     public String guitar(HttpServletRequest req, Model model, ProductDTO pDTO) {
@@ -59,7 +61,6 @@ public class HC_JH {
     @ResponseBody
     @RequestMapping(value = "/searchDetailForAdmin", method = RequestMethod.POST)
     public List<ProductDTO> searchDetailForAdmin(ProductDTO pDTO, HttpServletRequest req, Model model) {
-    	System.out.println("sdfsdf");
     	return pDAO.searchDetailForAdmin(pDTO);
     	
     }
@@ -85,7 +86,8 @@ public class HC_JH {
     	return "index";
     }
     @RequestMapping(value = "/controlMargin", method = RequestMethod.GET)
-    public String controlMargin(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    public String controlMargin(HttpServletRequest req, Model model, OrderDetailDTO odDTO) {
+    	odDAO.getChartData(req);
     	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
     	req.setAttribute("controlPage", "controlMargin.jsp");
     	return "index";
@@ -105,7 +107,6 @@ public class HC_JH {
     }
     @RequestMapping(value = "/updateProduct", method = RequestMethod.POST)
     public String updateProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
-    	System.out.println("sdfsdf");
     	pDAO.updateProduct(req,model,pDTO);
     	pDAO.getAdminProduct(req, model, pDTO);
     	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");

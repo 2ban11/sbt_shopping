@@ -1,3 +1,4 @@
+<%@page import="java.util.Arrays"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,14 +6,40 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="resources/css/jh/listPage.css" />
-<link rel="stylesheet" href="resources/css/jh/chkColors.css" />
-<link rel="stylesheet" href="resources/css/jh/regProduct.css" />
-<script type="text/javascript" src="resources/js/jh/isNotElec.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 </head>
 <body>
-<h1 style="font-size:30px;">sdfsdsfsddsf</h1>
-<script type="text/javascript" src="resources/js/jh/updatePopup.js"></script>
-<script type="text/javascript" src="resources/js/jh/popup.js"></script>
+<div style="width: 700px; height: 700px;">
+<canvas id="marginChart"> </canvas>
+</div>
 </body>
+<%
+    int[] bc = (int[])request.getAttribute("arr");
+%>
+<script>
+
+let ChartData = <%= Arrays.toString(bc) %>;
+let marginChart = document.getElementById('marginChart').getContext('2d');
+let data ={
+    labels : ['SUN','MON','TUE','WED','THU','FRI','SAT'],
+    datasets : [{
+        label : '매출액',
+        data : ChartData,
+        borderColor: 'skyblue',
+        borderWidth: 1,
+        fill : false
+    }]
+};
+let options = {
+    scales: {
+        y: {beginAtZero: true}
+    }
+};
+
+let lineChart = new Chart(marginChart, {
+    type : 'line',    
+    data : data,
+    options : options
+});
+</script>
 </html>

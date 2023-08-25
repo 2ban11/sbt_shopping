@@ -9,4 +9,6 @@ public interface Jh_productMapper {
 	List<ProductDTO> getSearchProductForAdmin(ProductDTO pDTO);
 	int deleteProduct(ProductDTO pDTO);
 	int regProduct(ProductDTO pDTO);
+	List<OrderDetailDTO> getOrderDetail(OrderDetailDTO odDTO);
+	List<OrderDetailDTO> getAllodDTO();
 }

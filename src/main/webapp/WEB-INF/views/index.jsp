@@ -134,7 +134,7 @@
               	</c:otherwise>
               	</c:choose>
               <div>
-              <form action="adminPage" method="POST">
+              <form action="adminPage" method="GET">
                 <button class="header__signup" type="submit">관리자</button>
                 </form>
               </div>
@@ -245,16 +245,16 @@
                   <a href="guitarPage?BC=기타&MC=일렉기타">일렉기타</a>
                 </li>
                 <li>
-                  <a href="guitarPage?BC=Guitar&MC=Acoustic">어쿠스틱</a>
+                  <a href="guitarPage?BC=기타&MC=어쿠스틱">어쿠스틱</a>
                 </li>
                 <li>
-                  <a href="guitarPage?BC=Guitar&MC=Classic">클래식</a>
+                  <a href="guitarPage?BC=기타&MC=클래식">클래식</a>
                 </li>
                 <li>
-                  <a href="guitarPage?BC=Guitar&MC=Bass">베이스</a>
+                  <a href="guitarPage?BC=기타&MC=베이스">베이스</a>
                 </li>
                 <li>
-                  <a href="guitarPage?BC=Guitar&MC=Ukulele">우쿠렐레</a>
+                  <a href="guitarPage?BC=기타&MC=우쿠렐레">우쿠렐레</a>
                 </li>
               </ul>
             </div>
@@ -264,13 +264,13 @@
             <div class="nav-item-sub jh">
               <ul>
                 <li>
-                  <a href="ampPage?BC=Amp&MC=Elec">일렉기타</a>
+                  <a href="ampPage?BC=앰프&MC=일렉기타">일렉기타</a>
                 </li>
                 <li>
-                  <a href="ampPage?BC=Amp&MC=Acoustic">어쿠스틱</a>
+                  <a href="ampPage?BC=앰프&MC=어쿠스틱">어쿠스틱</a>
                 </li>
                 <li>
-                  <a href="ampPage?BC=Amp&MC=Bass">베이스</a>
+                  <a href="ampPage?BC=앰프&MC=베이스">베이스</a>
                 </li>
               </ul>
             </div>
@@ -280,19 +280,19 @@
             <div class="nav-item-sub jh">
               <ul>
                 <li>
-                  <a href="effectorPage?BC=Effector&MC=Elec">일렉기타</a>
+                  <a href="effectorPage?BC=이펙터&MC=일렉기타">일렉기타</a>
                 </li>
                 <li>
-                  <a href="effectorPage?BC=Effector&MC=Acoustic">어쿠스틱</a>
+                  <a href="effectorPage?BC=이펙터&MC=어쿠스틱">어쿠스틱</a>
                 </li>
                 <li>
-                  <a href="effectorPage?BC=Effector&MC=Classic">클래식</a>
+                  <a href="effectorPage?BC=이펙터&MC=클래식">클래식</a>
                 </li>
                 <li>
-                  <a href="effectorPage?BC=Effector&MC=Bass">베이스</a>
+                  <a href="effectorPage?BC=이펙터&MC=베이스">베이스</a>
                 </li>
                 <li>
-                  <a href="effectorPage?BC=Effector&MC=Multi">멀티</a>
+                  <a href="effectorPage?BC=이펙터&MC=멀티">멀티</a>
                 </li>
               </ul>
             </div>
@@ -302,19 +302,19 @@
             <div class="nav-item-sub jh">
               <ul>
                 <li>
-                  <a href="accessoryPage?BC=Accessory&MC=String">기타줄</a>
+                  <a href="accessoryPage?BC=주변용품&MC=기타줄">기타줄</a>
                 </li>
                 <li>
-                  <a href="accessoryPage?BC=Accessory&MC=Pick">피크</a>
+                  <a href="accessoryPage?BC=주변용품&MC=피크">피크</a>
                 </li>
                 <li>
-                  <a href="accessoryPage?BC=Accessory&MC=Cable">케이블</a>
+                  <a href="accessoryPage?BC=주변용품&MC=케이블">케이블</a>
                 </li>
                 <li>
-                  <a href="accessoryPage?BC=Accessory&MC=Capo">카포</a>
+                  <a href="accessoryPage?BC=주변용품&MC=카포">카포</a>
                 </li>
                 <li>
-                  <a href="accessoryPage?BC=Accessory&MC=Ukulele">우쿠렐레</a>
+                  <a href="accessoryPage?BC=주변용품&MC=우쿠렐레">우쿠렐레</a>
                 </li>
               </ul>
             </div>

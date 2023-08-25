@@ -16,7 +16,7 @@ function isNotElec() {
 		console.log(bigCategory);
 		console.log(middleCategory);
 		
-        if (bigCategory === "Guitar" && middleCategory === "Elec") {
+        if (bigCategory === "기타" && middleCategory === "일렉기타") {
             $("#categorySelect").css("display", "block");
         } else {
             $("#categorySelect").css("display", "none");

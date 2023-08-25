@@ -74,8 +74,15 @@
 	#{p_sale},
 	#{p_cnt},
 	sysdate,
-	111
 	)
 </insert>
+
+<select id="getAllodDTO" resultType="com.sbt.shopping.jaehwan.OrderDetailDTO">
+	select p_sale, p_cost, od_date from order_detail, product where od_product = p_no 
+	
+	<!--  -->
+	
+</select>
+
 
 </mapper>
