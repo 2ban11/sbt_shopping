@@ -21,15 +21,16 @@
     background-color: #ffffff08;
     font-size: 1.2rem;
     text-align: center;
-    padding: 3px 0 3px;
 }
 
 .kp-table td {
-	padding: 3px 1px 3px;
+	padding: 10px 1px 10px;
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
+
 
 .kp-gohome {
 	display: flex;
 	justify-content: center;
+	margin-top: 15px;
 }

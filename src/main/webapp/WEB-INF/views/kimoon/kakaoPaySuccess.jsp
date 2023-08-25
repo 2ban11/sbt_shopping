@@ -14,7 +14,7 @@
 	</div>
 	<table class="kp-table">
 		<tr>
-			<td class="kp-table-top" colspan="2">주문 정보</td>
+			<td class="kp-table-top" colspan="2" style="padding: 10px 0 10px;">주문 정보</td>
 		</tr>
 		<tr>
 			<td>결제일시</td>

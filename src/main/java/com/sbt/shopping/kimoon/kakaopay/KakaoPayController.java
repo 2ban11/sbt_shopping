@@ -1,5 +1,7 @@
 package com.sbt.shopping.kimoon.kakaopay;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sbt.shopping.jaepil.CartDTO;
+import com.sbt.shopping.jaepil.OrderDTO;
 
 @Controller
 public class KakaoPayController {
@@ -36,7 +39,7 @@ public class KakaoPayController {
     public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, HttpServletRequest request) {
     	System.out.println("kakaoPaySuccess get............................................");
     	System.out.println("kakaoPaySuccess pg_token : " + pg_token);
-    	System.out.println(kpDAO.kakaoPayInfo(request, pg_token));
+    	System.out.println("kakaoPayInfo : " + kpDAO.kakaoPayInfo(request, pg_token));
     	request.setAttribute("info", kpDAO.kakaoPayInfo(request, pg_token));
     	request.setAttribute("contentPage", "kimoon/kakaoPaySuccess.jsp");
     	return "index";

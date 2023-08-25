@@ -11,6 +11,8 @@ public interface CartMapper {
 	int deleteCart(String no);
 
 	int updateCart(CartDTO cDTO);
+
+	List<CartDTO> getOrderCart(CartDTO cDTO);
 	
 
 }

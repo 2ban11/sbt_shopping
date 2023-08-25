@@ -8,6 +8,14 @@
 		where p_no = c_product and c_id =
 		#{a_id}
 	</select>
+	
+	<select id="getOrderCart"
+		resultType="com.sbt.shopping.jaepil.CartDTO">
+		select *
+		from product, cart
+		where p_no = c_product and c_id =
+		'mk'
+	</select>
 
 	<delete id="deleteCart">
 		delete cart

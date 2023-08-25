@@ -210,12 +210,6 @@
 							<li><a href="go.board?type=3">개인레슨</a></li>
 							<li><a href="go.board?type=4">구인</a></li>
 						</ul></li>
-					<ul>
-						<li><a class="sidebar__item" href="#">문의하기</a></li>
-					</ul>
-					<ul>
-						<li><a class="sidebar__item" href="#">회사소개</a></li>
-					</ul>
 				</ul>
 			</div>
 			<!-- //SIDEBAR -->
@@ -281,8 +275,6 @@
 						</ul>
 					</div>
 				</div>
-				<div class="nav-item">문의하기</div>
-				<div class="nav-item">회사소개</div>
 			</nav>
 			<!-- //MAIN NAVIGATION -->
 
