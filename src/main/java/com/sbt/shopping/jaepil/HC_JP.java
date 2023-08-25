@@ -91,6 +91,17 @@ public class HC_JP {
 		return "redirect:/";
 	}
 	
+	@RequestMapping(value = "/refund", method = RequestMethod.GET)
+	public String refund(HttpServletRequest req, OrderDTO oDTO) {
+		mDAO.refund(req, oDTO);
+		return "redirect:/mypage.order";
+	}
+	@RequestMapping(value = "/refundcancel", method = RequestMethod.GET)
+	public String refundCancel(HttpServletRequest req, OrderDTO oDTO) {
+		mDAO.refundCancel(req, oDTO);
+		return "redirect:/mypage.order";
+	}
+	
 	
 	
 }

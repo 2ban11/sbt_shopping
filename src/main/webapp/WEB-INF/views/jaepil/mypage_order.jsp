@@ -79,7 +79,14 @@
 						<div class="mypage-info-data-order-date"><fmt:formatDate value="${o.od_date }" dateStyle="long"/></div>
 						<div class="mypage-info-data-order-state">${o.od_state }</div>
 						<div class="mypage-info-data-order-other">
-							<button>환불</button>
+						<c:choose>
+						<c:when test="${o.od_state eq '주문완료' }">						
+							<button onclick="refund(${o.od_no})">환불</button>
+						</c:when>
+						<c:when test="${o.od_state eq '환불요청' }">						
+							<button onclick="refundCancel(${o.od_no})">환불취소</button>
+						</c:when>
+						</c:choose>
 						</div>
 					</div>
 				</c:forEach>

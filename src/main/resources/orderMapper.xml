@@ -16,4 +16,11 @@
 		and od.od_date between to_date(#{startdate}) and
 		to_date(#{enddate}) + 0.99999 and od.od_id = #{a_id}
 	</select>
+	
+	<update id="refund">
+		update order_detail set od_state = '환불요청' where od_no = #{od_no}
+	</update>
+	<update id="refundCancel">
+		update order_detail set od_state = '주문완료' where od_no = #{od_no}
+	</update>
 </mapper>

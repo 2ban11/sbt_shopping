@@ -197,7 +197,7 @@ var PWConfirm = document.getElementById("PWConfirm");
 }
 
 
-function signOut2(){
+function signOut(){
 	$(".mypage-btn-account-btn-signout").click(function(){
 	let id = $("#a_id").val();
 	console.log(id);
@@ -211,19 +211,26 @@ function signOut2(){
 	});
 }
 
-/*function signOut(no){
-	let ok = confirm('탈퇴하시겠습니까?');
+
+function refund(no){
+	let ok = confirm('환불하시겠습니까?');
 	if(ok){
-		location.href='signout?' + param;
+		location.href='refund?od_no=' + no;
 	}
 }
-*/
+function refundCancel(no){
+	let ok = confirm('취소하시겠습니까?');
+	if(ok){
+		location.href='refundcancel?od_no=' + no;
+	}
+}
+
 
 
 $(function(){
 	checkAll();
 	cartDeleteSelected();
 	date();
-	signOut2();
+	signOut();
 	/*makeChecked();*/
 })
