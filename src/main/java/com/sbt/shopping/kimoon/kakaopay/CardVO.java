@@ -209,7 +209,7 @@ public class CardVO {
 				+ ", card_mid=" + card_mid + ", interest_free_install=" + interest_free_install + ", card_item_code="
 				+ card_item_code + "]";
 	}
-    
-    
+
+	
 	
 }

@@ -93,8 +93,11 @@ public class KakaoPayDAO {
         params.add("partner_user_id", account.getA_nickname());
         params.add("pg_token", pg_token);
         params.add("total_amount", totalAmount);
-        
         HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
+        
+        
+        
+        
         
         try {
             kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, KakaoPayApprovalVO.class);

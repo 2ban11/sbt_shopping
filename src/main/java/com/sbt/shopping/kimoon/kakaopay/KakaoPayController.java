@@ -36,6 +36,7 @@ public class KakaoPayController {
     public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, HttpServletRequest request) {
     	System.out.println("kakaoPaySuccess get............................................");
     	System.out.println("kakaoPaySuccess pg_token : " + pg_token);
+    	System.out.println(kpDAO.kakaoPayInfo(request, pg_token));
     	request.setAttribute("info", kpDAO.kakaoPayInfo(request, pg_token));
     	request.setAttribute("contentPage", "kimoon/kakaoPaySuccess.jsp");
     	return "index";
