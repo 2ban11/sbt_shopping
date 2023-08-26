@@ -24,15 +24,15 @@
 						<input type="text" class="form-control" id="a_id" name="a_id" placeholder="아이디를 입력하세요" style="width:170px;">
 						<span style="color:#A4A4A4">@</span>
 						<input type="text" class="form-control" id="a_email2" name="a_email2" style="width:150px;">
-						<select name="a_email3" id="a_email3" class="form-control inputbox" style="">
-							<option value="direct">직접입력</option>
-							<option value="naver.com">naver.com</option>
-							<option value="nate.com">nate.com</option>
-							<option value="gmail.com">gmail.com</option>
-							<option value="hotmail.com">hotmail.com</option>
-							<option value="korea.com">korea.com</option>
-							<option value="hanmail.net">hanmail.net</option>
-						</select>
+							<select name="a_email3" id="a_email3" class="form-control inputbox" style="">
+    									<option value="direct">직접입력</option>
+    									<option value="naver.com">naver.com</option>
+   										<option value="nate.com">nate.com</option>
+   										<option value="gmail.com">gmail.com</option>
+  										<option value="hotmail.com">hotmail.com</option>
+ 										<option value="korea.com">korea.com</option>
+ 										<option value="hanmail.net">hanmail.net</option>
+							</select>
 						<button type="button" class="btn btn-default" id="btn_id_chk">중복확인</button>
 						<!-- 아이디 중복 확인 버튼 -->
 						<input type="hidden" id="id_chk" name="id_chk" value="">

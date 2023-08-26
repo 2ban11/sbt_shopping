@@ -9,6 +9,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -122,18 +123,11 @@ public class AccountDAO {
 	}
 	
 	
-	public String getIDbyPhoneNum(AccountDTO a, HttpServletRequest req) {
-	    AccountDTO result = ss.getMapper(AccountMapper.class).getIDbyPhoneNum(a);
-	    if (result != null) {
-	        HttpSession session = req.getSession();
-	        session.setAttribute("foundId", result.getA_id()); // 아이디를 세션에 저장
-	        System.out.println(result.getA_id());
-	        return result.getA_id();
-	    } else {
-	        return "Not Found"; // 아이디를 찾을 수 없는 경우 메시지를 리턴
-	    }
-	}
 	
+	
+	public List<String> getAccountListByPhoneNum(String a_phone) {
+	    return ss.getMapper(AccountMapper.class).getAccountListByPhoneNum(a_phone);
+	}
 	public void setLoginMember(HttpServletRequest req, AccountDTO account) {
 		req.getSession().setAttribute("loginMember", account);
 		req.getSession().setMaxInactiveInterval(60 * 10);
@@ -331,6 +325,10 @@ public class AccountDAO {
 	        return true; // Password updated successfully
 	    }
 	    return false; // Password update failed
+	}
+
+	public int PhoneCheck(AccountDTO a_phone, HttpServletRequest req) {
+	    return ss.getMapper(AccountMapper.class).getPhoneCheck(a_phone);
 	}
 	
 	

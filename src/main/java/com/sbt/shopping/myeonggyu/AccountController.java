@@ -3,9 +3,11 @@
 package com.sbt.shopping.myeonggyu;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -154,7 +156,7 @@ public class AccountController {
     
     @RequestMapping(value="/logout-process", method = RequestMethod.GET)
     public String logoutAndClearSession(HttpServletRequest request) {
-        
+    	  request.getSession().setAttribute("LoginMemberNaver", null);
         request.getSession().setAttribute("kakaoInfo", null);
         
         return "redirect:/"; // 로그아웃 후 리다이렉트할 페이지
@@ -245,15 +247,24 @@ public class AccountController {
 	        return "index"; 
 	    }
 	 
-	 @RequestMapping(value = "/account.phone.ID", method = RequestMethod.POST)
-	 public String findIdByPhone(HttpServletRequest req, @RequestParam("phoneNumber") String phoneNumber) {
-	     AccountDTO a = new AccountDTO();
-	     a.setA_phone(phoneNumber);
-	     aDAO.loginCheck(req);
-	     String foundId = (String) req.getSession().getAttribute("foundId"); // 세션에서 아이디 가져오기
-	     
-	     req.setAttribute("foundId", foundId);
-	     return "myeonggyu/find_id"; // 해당 JSP 파일로 forward
+	 @RequestMapping(value = "/account.phone.get", method = RequestMethod.GET)
+	 @ResponseBody
+	    public int PhoneCheck(AccountDTO a, HttpServletRequest req) {
+	        return aDAO.PhoneCheck(a, req); 
+	    }
+	 
+	 @RequestMapping(value = "/findIdByPhoneNum", method = RequestMethod.POST)
+	 @ResponseBody
+	 public String findIdByPhone(@RequestParam("a_phone") String phoneNumber,HttpServletResponse response) {
+	     List<String> foundIds = aDAO.getAccountListByPhoneNum(phoneNumber);
+	     	System.out.println(foundIds);
+	     	response.setCharacterEncoding("UTF-8");
+	     if (foundIds.isEmpty()) {
+	         return "Can't find ID";
+	     } else {
+	         return "ID: " +  foundIds;
+	     }
 	 }
+
 }
 

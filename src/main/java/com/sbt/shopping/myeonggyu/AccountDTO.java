@@ -60,6 +60,9 @@ public class AccountDTO {
 		this.a_phone = a_phone;
 	}
 	
-	
+	@Override
+	public String toString() {
+	    return a_id; // AccountDTO에서 원하는 필드를 반환하도록 수정
+	}
 	
 }
