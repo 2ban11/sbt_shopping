@@ -41,7 +41,6 @@
     </if>
 </select>
 
-
 	<select id="getSearchProductForAdmin" resultType="com.sbt.shopping.jaehwan.ProductDTO">
     SELECT * FROM Product
     WHERE 
@@ -74,8 +73,47 @@
 	#{p_sale},
 	#{p_cnt},
 	sysdate,
-	111
 	)
 </insert>
 
+<select id="getChartData" resultType="com.sbt.shopping.jaehwan.OrderDetailDTO">
+	select p_sale, p_cost, od_date from order_detail, product where od_product = p_no 
+</select>
+
+<select id="getAllOrder" resultType="com.sbt.shopping.jaehwan.OrderDetailDTO">
+	select * from order_detail, product where p_no = od_product order by od_date desc
+</select>
+<select id="getMargin" resultType="com.sbt.shopping.jaehwan.OrderDetailDTO">
+SELECT 
+    SUM(P.P_SALE) AS totalSales,
+    SUM(P.P_COST) AS totalCost,
+    (SUM(P.P_SALE) - SUM(P.P_COST)) AS totalMargin,
+    (SUM(P.P_SALE) - SUM(P.P_COST)) / SUM(P.P_SALE) * 100 AS totalMarginByPercent
+FROM 
+    product P
+JOIN 
+    order_detail O
+ON 
+    P.P_NO = O.OD_PRODUCT
+WHERE 
+    TO_CHAR(O.OD_DATE, 'YYYY-MM-DD') = #{date}
+</select>
+<update id="updateProduct">
+update product
+set
+    p_big_category = #{p_big_category},        
+    p_middle_category = #{p_middle_category},      
+    p_small_category = #{p_small_category},       
+    p_maker = #{p_maker},                 
+    p_name = #{p_name},                  
+    p_img1 = #{p_img1},                  
+    p_img2 = #{p_img2},                 
+    p_content = #{p_content},              
+    p_color = #{p_color},              
+    p_price = #{p_price},                
+    p_sale = #{p_sale},               
+    p_cnt = #{p_cnt}                    
+where
+    p_no = #{p_no};                    
+</update>
 </mapper>

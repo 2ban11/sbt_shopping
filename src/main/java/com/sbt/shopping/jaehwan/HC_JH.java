@@ -1,10 +1,12 @@
 package com.sbt.shopping.jaehwan;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +14,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sbt.shopping.jaepil.MypageDAO;
+import com.sbt.shopping.jaepil.OrderDTO;
+import com.sbt.shopping.myeonggyu.AccountDAO;
+import com.sbt.shopping.myeonggyu.AccountDTO;
+
 @Controller
 public class HC_JH {
 
     @Autowired
     private ProductDAO pDAO;
-
+    @Autowired
+    private OrderDetailDAO odDAO;
+    
+    
     @RequestMapping(value = "/guitarPage", method = RequestMethod.GET)
     public String guitar(HttpServletRequest req, Model model, ProductDTO pDTO) {
     	
@@ -59,7 +69,6 @@ public class HC_JH {
     @ResponseBody
     @RequestMapping(value = "/searchDetailForAdmin", method = RequestMethod.POST)
     public List<ProductDTO> searchDetailForAdmin(ProductDTO pDTO, HttpServletRequest req, Model model) {
-    	System.out.println("sdfsdf");
     	return pDAO.searchDetailForAdmin(pDTO);
     	
     }
@@ -79,13 +88,21 @@ public class HC_JH {
     	return "index";
     }
     @RequestMapping(value = "/controlOrder", method = RequestMethod.GET)
-    public String controlOrder(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    public String controlOrder(HttpServletRequest req, Model model, ProductDTO pDTO, OrderDetailDTO oDTO) {
+    	pDAO.getAllOrder(req,pDTO,oDTO);
     	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
     	req.setAttribute("controlPage", "controlOrder.jsp");
     	return "index";
     }
+    @RequestMapping(value = "/controlRefund", method = RequestMethod.GET)
+    public String controlRefund(HttpServletRequest req, Model model, ProductDTO pDTO, OrderDetailDTO oDTO) {
+    	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
+    	req.setAttribute("controlPage", "controlRefund.jsp");
+    	return "index";
+    }
     @RequestMapping(value = "/controlMargin", method = RequestMethod.GET)
-    public String controlMargin(HttpServletRequest req, Model model, ProductDTO pDTO) {
+    public String controlMargin(HttpServletRequest req, Model model) {
+    	odDAO.getChartData(req);
     	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
     	req.setAttribute("controlPage", "controlMargin.jsp");
     	return "index";
@@ -105,11 +122,17 @@ public class HC_JH {
     }
     @RequestMapping(value = "/updateProduct", method = RequestMethod.POST)
     public String updateProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
-    	System.out.println("sdfsdf");
     	pDAO.updateProduct(req,model,pDTO);
     	pDAO.getAdminProduct(req, model, pDTO);
     	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
-    	return "index";
+    	return "redirect:adminPage";
     }
-
-}
+    @RequestMapping(value = "/getMargin", method = RequestMethod.POST)
+    public @ResponseBody List<OrderDetailDTO> getMargin(HttpServletRequest req, Model model, ProductDTO pDTO, OrderDetailDTO odDTO) {
+    	System.out.println(odDTO);
+    	return pDAO.getMargin(req,odDTO);
+    }
+    
+    }
+    
+    

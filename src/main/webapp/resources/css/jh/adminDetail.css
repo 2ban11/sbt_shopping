@@ -1,0 +1,42 @@
+.marginContainer{
+	margin-left: 15%;
+}
+.marginContent{
+	display: flex;
+}
+.marginTitle{
+	color: white;
+}
+.marginInfo{
+	border: 1px solid white;
+	color: white;
+	width: 100%;
+}
+.marginInfo div{
+	display : flex;
+	border-bottom: 1px solid white;
+}
+#info-container{
+	margin-left: 2%;
+	width: 320px;
+	height : 470px;
+	padding: 30px;
+	background: rgba(125,125,125,0.25);
+	border-radius: 30px;
+	font-size: 20px;
+	font-weight: 400;
+}
+p{
+	border-bottom: 1px solid grey;
+}
+#info-header{
+	border-bottom: 1px solid grey;
+}
+#lineChart{
+	margin-top : 2%;
+	border-radius : 10px;
+	background: #131c27;
+	padding: 30px;
+	width: 950px;
+	height : 500px;
+}
