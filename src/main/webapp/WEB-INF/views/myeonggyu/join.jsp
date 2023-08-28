@@ -24,21 +24,29 @@
 						<input type="text" class="form-control" id="a_id" name="a_id" placeholder="아이디를 입력하세요" style="width:170px;">
 						<span style="color:#A4A4A4">@</span>
 						<input type="text" class="form-control" id="a_email2" name="a_email2" style="width:150px;">
-						<select name="a_email3" id="a_email3" class="form-control inputbox" style="">
-							<option value="" selected="">선택</option>
-							<option value="naver.com">naver.com</option>
-							<option value="nate.com">nate.com</option>
-							<option value="gmail.com">gmail.com</option>
-							<option value="hotmail.com">hotmail.com</option>
-							<option value="korea.com">korea.com</option>
-							<option value="hanmail.net">hanmail.net</option>
-							<option value="direct">직접입력</option>
-						</select>
+							<select name="a_email3" id="a_email3" class="form-control inputbox" style="">
+    									<option value="direct">직접입력</option>
+    									<option value="naver.com">naver.com</option>
+   										<option value="nate.com">nate.com</option>
+   										<option value="gmail.com">gmail.com</option>
+  										<option value="hotmail.com">hotmail.com</option>
+ 										<option value="korea.com">korea.com</option>
+ 										<option value="hanmail.net">hanmail.net</option>
+							</select>
 						<button type="button" class="btn btn-default" id="btn_id_chk">중복확인</button>
 						<!-- 아이디 중복 확인 버튼 -->
 						<input type="hidden" id="id_chk" name="id_chk" value="">
 					</div>
 				</div>
+				   <div id="verificationCodeContainer" style="display: none;">
+                <p>
+                    <label>인증 번호</label>
+                    <input type="text" id="verificationCode" placeholder="인증 번호를 입력하세요">
+                </p>
+                <p>
+                    <button type="button" id="verifyCodeBtn">인증 번호 확인</button>
+                </p>
+            </div>
 				<div class="form-group">
 					<label for="a_password" class="col-sm-2 control-label">비밀번호</label>
 					<div class="col-sm-4">
@@ -57,6 +65,14 @@
 					<label for="name" class="col-sm-2 control-label">이름</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="a_name" name="a_name" placeholder="이름을 입력하세요" aria-describedby="nameReHelpBlock" maxlength="10"  style="width:200px;">
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="phone_no." class="col-sm-2 control-label">전화번호</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="a_phone" name="a_phone" placeholder="전화번호를 입력하세요" aria-describedby="phoneNumberReHelpBlock" maxlength="15"  style="width:200px;">
+						<button type="button" class="btn phone-default" id="btn_phone_chk">중복확인</button>
+						<input type="hidden" id="phone_chk" name="phone_chk" value="">
 					</div>
 				</div>
 				<div class="form-inline-form-group">

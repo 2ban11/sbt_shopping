@@ -218,6 +218,8 @@ function refund(no){
 		location.href='refund?od_no=' + no;
 	}
 }
+
+
 function refundCancel(no){
 	let ok = confirm('취소하시겠습니까?');
 	if(ok){
@@ -225,6 +227,19 @@ function refundCancel(no){
 	}
 }
 
+function refundCancel2(no){
+	let ok = confirm('취소하시겠습니까?');
+	if(ok){
+		location.href='refundcancel2?od_no=' + no;
+	}
+}
+
+function refundAccept(no){
+	let ok = confirm('환불하시겠습니까?');
+	if(ok){
+		location.href='refundaccept?od_no=' + no;
+	}
+}
 
 
 $(function(){

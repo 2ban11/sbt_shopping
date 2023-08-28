@@ -2,83 +2,64 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sbt.shopping.jaehwan.Jh_productMapper">
 
-    <select id="getAllProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
-        SELECT * FROM Product
-        where
-        p_big_category = #{p_big_category}
-     	and p_middle_category = #{p_middle_category}
-        order by p_no desc
-    </select>
-    
-    <select id="getAdminProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
-        SELECT * FROM Product
-        order by p_no desc
-    </select>
-    
-    <delete id="deleteProduct">
-    	delete product where p_no = #{p_no}
-    </delete>
-    
-    
-	<select id="getSearchProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
-    SELECT * FROM Product
-    WHERE (
-        p_maker like '%'||#{p_maker}||'%'
-        and p_small_category like  '%'||#{p_small_category}||'%'
-           <if test="colors != '' and p_color.length > 0">
-            and p_color IN
-            <foreach collection="colors" item="color" open="(" separator="," close=")">#{color}</foreach>
-           </if>
-    )
-    <if test="sortOrder == 'sort1'">
-        ORDER BY p_sale DESC
-    </if>
-    <if test="sortOrder == 'sort2'">
-        ORDER BY p_sale
-    </if>
-    <if test="sortOrder == ''">
-        ORDER BY p_no desc
-    </if>
-</select>
+	<select id="getAllProduct"
+		resultType="com.sbt.shopping.jaehwan.ProductDTO">
+		SELECT * FROM Product
+		where
+		p_big_category = #{p_big_category}
+		and p_middle_category = #{p_middle_category}
+		order by p_no desc
+	</select>
 
-	<select id="getSearchProductForAdmin" resultType="com.sbt.shopping.jaehwan.ProductDTO">
-    SELECT * FROM Product
-    WHERE 
-        p_big_category = #{p_big_category}
-        <if test="sortOrder == 'sort1'">
-        ORDER BY p_sale DESC
-    </if>
-    <if test="sortOrder == 'sort2'">
-        ORDER BY p_sale
-    </if>
-    <if test="sortOrder == ''">
-        ORDER BY p_no desc
-    </if>
-</select>
+	<select id="getAdminProduct"
+		resultType="com.sbt.shopping.jaehwan.ProductDTO">
+		SELECT * FROM Product
+		order by p_no desc
+	</select>
+
+	<delete id="deleteProduct">
+		delete product where p_no = #{p_no}
+	</delete>
 
 
-<insert id="regProduct">
-	insert into product values(
-	product_seq.nextval,
-	#{p_big_category},
-	#{p_middle_category},
-	#{p_small_category},
-	#{p_maker},
-	#{p_name},
-	#{p_img1},
-	'',
-	#{p_content},
-	#{p_color},
-	#{p_price},
-	#{p_sale},
-	#{p_cnt},
-	sysdate,
-	)
-</insert>
+	<select id="getSearchProduct"
+		resultType="com.sbt.shopping.jaehwan.ProductDTO">
+		SELECT * FROM Product
+		WHERE (
+		p_maker like '%'||#{p_maker}||'%'
+		and p_small_category like '%'||#{p_small_category}||'%'
+		<if test="colors != '' and p_color.length > 0">
+			and p_color IN
+			<foreach collection="colors" item="color" open="("
+				separator="," close=")">#{color}</foreach>
+		</if>
+		)
+		<if test="sortOrder == 'sort1'">
+			ORDER BY p_sale DESC
+		</if>
+		<if test="sortOrder == 'sort2'">
+			ORDER BY p_sale
+		</if>
+		<if test="sortOrder == ''">
+			ORDER BY p_no desc
+		</if>
+	</select>
 
-<select id="getChartData" resultType="com.sbt.shopping.jaehwan.OrderDetailDTO">
-	select p_sale, p_cost, od_date from order_detail, product where od_product = p_no 
-</select>
+	<select id="getSearchProductForAdmin"
+		resultType="com.sbt.shopping.jaehwan.ProductDTO">
+		SELECT * FROM Product
+		WHERE
+		p_big_category = #{p_big_category}
+		<if test="sortOrder == 'sort1'">
+			ORDER BY p_sale DESC
+		</if>
+		<if test="sortOrder == 'sort2'">
+			ORDER BY p_sale
+		</if>
+		<if test="sortOrder == ''">
+			ORDER BY p_no desc
+		</if>
+	</select>
 
 <select id="getAllOrder" resultType="com.sbt.shopping.jaehwan.OrderDetailDTO">
 	select * from order_detail, product where p_no = od_product order by od_date desc
@@ -120,4 +101,88 @@ where
 	insert into Margin values
 	(#{ma_date},#{ma_totalCost},#{ma_totalSales},#{ma_totalMargin})
 </insert> 
+
+	<insert id="regProduct">
+		insert into product values(
+		product_seq.nextval,
+		#{p_big_category},
+		#{p_middle_category},
+		#{p_small_category},
+		#{p_maker},
+		#{p_name},
+		#{p_img1},
+		'',
+		#{p_content},
+		#{p_color},
+		#{p_price},
+		#{p_sale},
+		#{p_cnt},
+		sysdate,
+		)
+	</insert>
+
+	<select id="getChartData"
+		resultType="com.sbt.shopping.jaehwan.OrderDetailDTO">
+		select p_sale, p_cost, od_date from order_detail, product where od_product =
+		p_no
+	</select>
+
+	<select id="getAllOrder"
+		resultType="com.sbt.shopping.jaehwan.OrderDetailDTO">
+		select * from order_detail, product where p_no = od_product order by od_date
+		desc
+	</select>
+	
+	<select id="getRefundOrder"
+		resultType="com.sbt.shopping.jaehwan.OrderDetailDTO">
+		select * from order_detail , product where p_no = od_product and od_state like '%환불%' order by od_date
+		desc
+	</select>
+	
+	<update id="refundAccept">
+		update order_detail set od_state = '환불완료' where od_no = #{od_no}
+	</update>
+	
+	<update id="refundCancel2">
+		update order_detail set od_state = '주문완료' where od_no = #{od_no}
+	</update>
+	
+	<select id="getMargin"
+		resultType="com.sbt.shopping.jaehwan.OrderDetailDTO">
+		SELECT
+		SUM(P.P_SALE) AS totalSales,
+		SUM(P.P_COST) AS totalCost,
+		(SUM(P.P_SALE) - SUM(P.P_COST)) AS totalMargin,
+		(SUM(P.P_SALE) - SUM(P.P_COST)) / SUM(P.P_SALE) * 100 AS totalMarginByPercent
+		FROM
+		product P
+		JOIN
+		order_detail O
+		ON
+		P.P_NO = O.OD_PRODUCT
+		WHERE
+		TO_CHAR(O.OD_DATE, 'YYYY-MM-DD') = #{date}
+	</select>
+	<update id="updateProduct">
+		update product
+		set
+		p_big_category = #{p_big_category},
+		p_middle_category = #{p_middle_category},
+		p_small_category = #{p_small_category},
+		p_maker = #{p_maker},
+		p_name = #{p_name},
+		p_img1 = #{p_img1},
+		p_img2 = #{p_img2},
+		p_content = #{p_content},
+		p_color = #{p_color},
+		p_price = #{p_price},
+		p_sale = #{p_sale},
+		p_cnt = #{p_cnt}
+		where
+		p_no = #{p_no};
+	</update>
+
+	
+	
+	
 </mapper>

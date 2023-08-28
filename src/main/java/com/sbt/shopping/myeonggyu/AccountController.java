@@ -1,9 +1,13 @@
+
+
 package com.sbt.shopping.myeonggyu;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +28,7 @@ public class AccountController {
 	private AccountDAO aDAO;
 	
 	 @Autowired
-	 private AccountEmailAuth AEA ; // EmailAuthService 주입
+	    private AccountEmailAuth AEA ; // EmailAuthService 주입
 	
 	
 	 
@@ -53,6 +57,7 @@ public class AccountController {
 	            } else {
 	                response.put("isAdmin", false);
 	            }
+	            
 	        } else {
 	            response.put("loggedIn", false);
 	            response.put("isAdmin", false);
@@ -151,7 +156,7 @@ public class AccountController {
     
     @RequestMapping(value="/logout-process", method = RequestMethod.GET)
     public String logoutAndClearSession(HttpServletRequest request) {
-        
+    	  request.getSession().setAttribute("LoginMemberNaver", null);
         request.getSession().setAttribute("kakaoInfo", null);
         
         return "redirect:/"; // 로그아웃 후 리다이렉트할 페이지
@@ -194,7 +199,6 @@ public class AccountController {
 	         String verificationCode = AEA.generateVerificationCode();
 	         req.getSession().setAttribute("EmailCode", verificationCode);
 	         model.addAttribute("email", email);
-	         
 	         return AEA.sendVerificationEmail(email); // 이메일 전송
 	     } else {
 	         // 이메일이 존재하지 않으면 아무 작업도 하지 않고 응답 반환
@@ -236,7 +240,30 @@ public class AccountController {
 	     return response;
 	 }
 	 
-	
+	 @RequestMapping(value = "/account.phone.getID", method = RequestMethod.GET)
+	    public String PhoneGetId(HttpServletRequest req) {
+		 req.setAttribute("contentPage", "myeonggyu/find_id.jsp");
+	        return "index"; 
+	    }
 	 
+	 @RequestMapping(value = "/account.phone.get", method = RequestMethod.GET)
+	 @ResponseBody
+	    public int PhoneCheck(AccountDTO a, HttpServletRequest req) {
+	        return aDAO.PhoneCheck(a, req); 
+	    }
+	 
+	 @RequestMapping(value = "/findIdByPhoneNum", method = RequestMethod.POST)
+	 @ResponseBody
+	 public String findIdByPhone(@RequestParam("a_phone") String phoneNumber,HttpServletResponse response) {
+	     List<String> foundIds = aDAO.getAccountListByPhoneNum(phoneNumber);
+	     	System.out.println(foundIds);
+	     	response.setCharacterEncoding("UTF-8");
+	     if (foundIds.isEmpty()) {
+	         return "Can't find ID";
+	     } else {
+	         return "ID: " +  foundIds;
+	     }
+	 }
+
 }
 

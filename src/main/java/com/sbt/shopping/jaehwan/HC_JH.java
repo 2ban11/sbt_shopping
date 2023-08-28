@@ -99,10 +99,23 @@ public class HC_JH {
     }
     @RequestMapping(value = "/controlRefund", method = RequestMethod.GET)
     public String controlRefund(HttpServletRequest req, Model model, ProductDTO pDTO, OrderDetailDTO oDTO) {
+    	pDAO.getRefundOrder(req,pDTO,oDTO);
     	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
     	req.setAttribute("controlPage", "controlRefund.jsp");
     	return "index";
     }
+    @RequestMapping(value = "/refundaccept", method = RequestMethod.GET)
+	public String refundAccept(HttpServletRequest req, OrderDetailDTO oDTO) {
+    	pDAO.refundAccept(req, oDTO);
+		return "redirect:/controlRefund";
+	}
+    
+    @RequestMapping(value = "/refundcancel2", method = RequestMethod.GET)
+	public String refundCancel2(HttpServletRequest req, OrderDetailDTO oDTO) {
+		pDAO.refundCancel2(req, oDTO);
+		return "redirect:/controlRefund";
+	}
+    
     @RequestMapping(value = "/controlMargin", method = RequestMethod.GET)
     public String controlMargin(HttpServletRequest req, Model model) {
     	odDAO.getChartData(req);
