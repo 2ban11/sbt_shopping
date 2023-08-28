@@ -30,9 +30,6 @@
             value="jdbc:oracle:thin:@f0e8tcdui31dsn2e_high?TNS_ADMIN=/Users/inhookwon/eclipse-workspace/Wallet_F0E8TCDUI31DSN2E"/>
         <beans:property name="username" value="ADMIN" />
         <beans:property name="password" value="Soldesk802!!" />
-        
-        
-        
     </beans:bean>
 
 	<beans:bean id="transactionManager"

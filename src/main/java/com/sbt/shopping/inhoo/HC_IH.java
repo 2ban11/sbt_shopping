@@ -46,7 +46,14 @@ public class HC_IH {
 	
 //	도전중
 	@RequestMapping(value = "/detail.product", method = RequestMethod.GET)
-	public String detailProduct(HttpServletRequest request, ProductDTO pDTO, Model model) {
+	public String detailProduct(
+	    HttpServletRequest request, 
+	    @RequestParam("p_no") int pNo,  // 여기서 p_no 값을 받아옵니다.
+	    Model model) {
+
+	    ProductDTO pDTO = new ProductDTO();
+	    pDTO.setP_no(pNo); // 받아온 p_no 값을 ProductDTO에 설정합니다.
+
 	    int reviewPage = 1;
 	    String reviewPageStr = request.getParameter("reviewPage");
 	    if(reviewPageStr != null && !reviewPageStr.isEmpty()) {
@@ -76,27 +83,31 @@ public class HC_IH {
 	    return "index";
 	}
 
+
 	
 	
 	
 	
 
-	
-	
-	
 	@RequestMapping(value = "/regReviewDo", method = RequestMethod.POST)
-	public String regReview( HttpServletRequest req, DetailDTO dDTO, Model model) {
-		req.setAttribute("contentPage", "inhoo/detail.jsp");
-		dDAO.regReviewDo(dDTO, model);
-		return "redirect:/"; // 홈 페이지로 리다이렉트
+	public String regReview(HttpServletRequest req, DetailDTO dDTO, Model model, ProductDTO pDTO) {
+	    req.setAttribute("contentPage", "inhoo/detail.jsp");
+	    dDAO.regReviewDo(dDTO, model, pDTO, req);
+	    return "redirect:/detail.product?p_no=" + dDTO.getR_product(); // 홈 페이지로 리다이렉트
 	}
+
 	
 	
-	@RequestMapping(value = "/regQnaDo", method = RequestMethod.GET)
-	public String regQna(HttpServletRequest req, QnaDTO qDTO, Model model) {
+	
+
+	
+	@RequestMapping(value = "/regQnaDo", method = RequestMethod.POST)
+	public String regQna(HttpServletRequest req, QnaDTO qDTO, Model model, ProductDTO pDTO) {
 		req.setAttribute("contentPage", "inhoo/detail.jsp");
-		dDAO.regQnaDo(qDTO, model);
-		return "redirect:/"; // 홈 페이지로 리다이렉트
+		dDAO.regQnaDo(qDTO, model, pDTO, req);
+		return "redirect:/detail.product?p_no=" + pDTO.getP_no();
 	}
+
+	
 	
 }

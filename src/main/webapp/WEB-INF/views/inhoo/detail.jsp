@@ -126,31 +126,6 @@
                     </div>
 
                     <div class="clear"></div>
-
-                    <div class="product-share-container">
-                      <div class="docs-section">
-                        <div class="page-header">
-                          <h2 style="font-size: 16px; text-indent: 20px">
-                            공유하기
-                          </h2>
-                        </div>
-                        <div class="row">
-                          <div class="col-md-12">
-                            <div class="input-inline">
-                              <button type="button" class="btn" id="btn_facebook" style="background: #4e69a2; color: #ffffff; font-size: 13px;">
-                                <i class="fa fa-facebook" style="background: #4e69a2; color: #ffffff"></i>
-                                페이스북
-                              </button>
-                              <button type="button" class="btn" id="btn_twitter" style="background: #319de1; color: #ffffff; font-size: 13px;">
-                                <i class="fa fa-twitter"style="background:#319de1; color: #ffffff"></i>
-                                트위터
-                              </button>
-                              <!--<button type="button" class="btn" id="btn_google" style="background:#df513f;color:#ffffff;font-size:13px"><i class="fa fa-google-plus" style="background:#df513f;color:#ffffff"></i> 구글+</button>-->
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                 </div>
 
@@ -162,15 +137,17 @@
                     <h2>구매 후기</h2>
                   </div>
                   <div class="col-1">
+                  <c:if test="${not empty loginMember || not empty LoginMemberNaver || not empty kakaoInfo  }">
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
                       후기 쓰기
                     </button>
+                  </c:if>
                   </div>
                 </div>
   
   
   
-  
+  <!-- 리뷰 뷰 -->
 <div class="row justify-content-center mt-3">
   <div class="col-12">
     <table id="table1" class="table table-dark">
@@ -194,15 +171,24 @@
           </tr>
           <tr id="row${r.r_id}" class="collapse">
             <td colspan="2">
-              <img src="resources/img/${r.r_img }" alt="Review Image">
+              <!-- 이미지가 존재하는 경우만 이미지를 표시합니다. -->
+              <c:choose>
+                <c:when test="${not empty r.r_img}">
+                  <img src="resources/img/${r.r_img }" alt="Review Image">
+                </c:when>
+                <c:otherwise>
+                  <!-- 이미지가 없을 경우 아무것도 표시하지 않습니다. -->
+                </c:otherwise>
+              </c:choose>
             </td>
-              <td>${r.r_content}</td>
+            <td>${r.r_content}</td>
           </tr>
         </c:forEach>
       </tbody>
     </table>
   </div>
 </div>
+
 
   			
   			
@@ -262,14 +248,16 @@
         <h2>Q & A</h2>
     </div>
     <div class="col-1">
+    <c:if test="${not empty loginMember || not empty LoginMemberNaver || not empty kakaoInfo  }">
         <button type="button" class="btn btn-danger" id="toggleFormBtn">
             상품 문의
         </button>
+     </c:if>
     </div>
 </div>
 
 <div id="qnaForm" style="display: none;">
-	<form action="regQnaDo" method="get">
+	<form action="regQnaDo" method="post">
         <div class="form-group">
             <label for="title">제 목</label>
             <input type="text" class="form-control" id="title" name="q_title">
@@ -277,6 +265,7 @@
         <div class="form-group">
             <label for="content">내 용</label>
             <textarea class="form-control" id="content" rows="4" name="q_content"></textarea>
+            <input type="hidden" name="p_no" value="${product.p_no}">
         </div>
         <button type="submit" class="btn btn-primary" id="submitQuestion">확인</button>
         <button type="button" class="btn btn-secondary" id="cancelQuestion">취소</button>
@@ -298,24 +287,28 @@
             </thead>
             <tbody>
                 <c:forEach var="q" items="${qnas}">
-                    <tr class="clickable-row" data-toggle="collapse" data-target="#row${q.q_id}">
-                        <td>${q.q_id}</td> <!-- Changed from <th> to <td> -->
-                        <td>${q.q_title}</td> <!-- Displaying q_title instead of q_content -->
-                        <td>${q.q_product}</td> <!-- Displaying q_product -->
+                    <!-- 클릭 가능한 행. 클릭 시 아래의 행을 펼치거나 접습니다. -->
+                    <tr class="clickable-row" data-toggle="collapse" data-target="#row${q.q_no}-content">
+                        <td>${q.q_id}</td>
+                        <td>${q.q_title}</td>
+                        <td>${q.q_product}</td>
                         <td>
                             <fmt:formatDate value="${q.q_date}" type="date" dateStyle="short"/>
                         </td>
                     </tr>
-                    <tr id="row${q.q_id}" class="collapse">
-                        <td colspan="4">
-                            <img src="resources/img/${q.q_date}" alt="Review Image">
-                        </td>
+                    <!-- 펼쳐지는 행. 해당 게시글의 내용을 표시합니다. -->
+                    <tr id="row${q.q_no}-content" class="collapse">
+                        <td colspan="4">${q.q_content}</td>
                     </tr>
                 </c:forEach>
             </tbody>
         </table>
     </div>
 </div>
+
+
+
+
 
 
 
@@ -359,8 +352,6 @@
 </div>
 
 
-<c:out value="${qnaCurPage}" />
-<c:out value="${qnaPageCount}" />
 
 
 
@@ -395,11 +386,8 @@
               <tbody>
                 <tr>
                   <td><input type="text" class="form-control"
-                    placeholder="이름" name="r_id" ></td>
-                </tr>
-                <tr>
-                  <td><input type="text" class="form-control"
                     placeholder="제목" name="r_title" maxlength="20"></td>
+                    <input type="hidden" name="p_no" value="${product.p_no}">
                 </tr>
                 <tr>
                   <td><textarea class="form-control" placeholder="리뷰 내용"

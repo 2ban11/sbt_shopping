@@ -5,7 +5,7 @@
 <mapper namespace="com.sbt.shopping.inhoo.DetailMapper">
 
 <insert id="regReview">
-		 insert into review values(review_seq.nextval, 1, #{r_id}, #{r_title}, #{r_content}, #{r_rate}, #{r_img, jdbcType=VARCHAR}, sysdate)
+		 insert into review values(review_seq.nextval, #{p_no}, #{r_id}, #{r_title}, #{r_content}, #{r_rate}, #{r_img, jdbcType=VARCHAR}, sysdate)
 </insert>
     
 <!-- <insert id="regReview">
@@ -13,13 +13,8 @@
 </insert> -->
 
 
-
-
-
-
-
 <insert id="regQna">
-		insert into qna values(qna_seq.nextval, 'mk', 1, #{q_title }, #{q_content }, sysdate)
+		insert into qna values(qna_seq.nextval, #{q_id}, #{p_no }, #{q_title }, #{q_content }, sysdate)
 </insert>
     
     
@@ -28,34 +23,15 @@
 	select * from review
 </select>
 
-<!-- <select id="searchReview" resultType="com.sbt.shopping.inhoo.DetailDTO">
-	select * from review where r_product between #{start} and #{end}
-</select> -->
 
 
 
 <select id="getProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
-    SELECT * FROM product WHERE p_no = 1 <!-- #{p_no} -->
+    SELECT * FROM product WHERE p_no = #{p_no} 
 </select>
 
 
 
-
-
-
-<!-- 페이징 -->
-<!-- <select id="getReviewsInRange" resultType="com.sbt.shopping.inhoo.DetailDTO">
-    SELECT *
-    FROM (
-        SELECT ROWNUM AS rnum, review.*
-        FROM (
-            SELECT *
-            FROM review
-            ORDER BY r_no DESC
-        ) review
-    )
-    WHERE rnum BETWEEN #{startIndex} AND #{endIndex}
-</select> -->
 
 <select id="getReviews" resultType="com.sbt.shopping.inhoo.DetailDTO">
 	  select *

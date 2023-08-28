@@ -4,6 +4,7 @@ import java.util.Date;
 
 public class QnaDTO {
 	private int q_no;
+	private int p_no;
 	private String q_id;
 	private int q_product;
 	private String q_title;
@@ -16,9 +17,10 @@ public class QnaDTO {
 	}
 
 
-	public QnaDTO(int q_no, String q_id, int q_product, String q_title, String q_content, Date q_date) {
+	public QnaDTO(int q_no, int p_no, String q_id, int q_product, String q_title, String q_content, Date q_date) {
 		super();
 		this.q_no = q_no;
+		this.p_no = p_no;
 		this.q_id = q_id;
 		this.q_product = q_product;
 		this.q_title = q_title;
@@ -34,6 +36,16 @@ public class QnaDTO {
 
 	public void setQ_no(int q_no) {
 		this.q_no = q_no;
+	}
+
+
+	public int getP_no() {
+		return p_no;
+	}
+
+
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
 	}
 
 
@@ -89,9 +101,11 @@ public class QnaDTO {
 
 	@Override
 	public String toString() {
-		return "QnaDTO [q_no=" + q_no + ", q_id=" + q_id + ", q_product=" + q_product + ", q_title=" + q_title
-				+ ", q_content=" + q_content + ", q_date=" + q_date + "]";
+		return "QnaDTO [q_no=" + q_no + ", p_no=" + p_no + ", q_id=" + q_id + ", q_product=" + q_product + ", q_title="
+				+ q_title + ", q_content=" + q_content + ", q_date=" + q_date + "]";
 	}
+	
+	
 	
 	
 	
