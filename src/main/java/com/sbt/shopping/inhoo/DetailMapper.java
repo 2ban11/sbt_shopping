@@ -19,6 +19,10 @@ public interface DetailMapper {
 	int getQnACount(ProductDTO pDTO);
 
 	List<QnaDTO> getQnAs(QnASelector qnaSelector);
+
+	int deleteQna(QnaDTO qDTO);
+
+	int deleteReview(DetailDTO dDTO);
 	
 	
 

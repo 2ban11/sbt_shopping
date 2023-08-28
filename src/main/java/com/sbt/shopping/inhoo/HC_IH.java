@@ -30,21 +30,7 @@ public class HC_IH {
 	private DetailDAO dDAO;
 	
 	
-//	강사님 페이징
-//	@RequestMapping(value = "/detail.product", method = RequestMethod.GET)
-//	public String detailProduct(HttpServletRequest request, ProductDTO pDTO, Model model) {
-//		int p = 1;
-//		if( request.getParameter("p") != null) {
-//			p = Integer.parseInt(request.getParameter("p")); 
-//		}
-//		dDAO.getProduct(p, model, pDTO);
-//		request.setAttribute("contentPage", "inhoo/detail.jsp");
-//		return "index";
-//	}
-	
-	
-	
-//	도전중
+
 	@RequestMapping(value = "/detail.product", method = RequestMethod.GET)
 	public String detailProduct(
 	    HttpServletRequest request, 
@@ -111,12 +97,41 @@ public class HC_IH {
 	
 	
 	
-	@RequestMapping(value = "/qna.delete.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/qna.delete.do", method = RequestMethod.GET)
 	public String qnaDelete(HttpServletRequest req, QnaDTO qDTO, Model model, ProductDTO pDTO) {
-		req.setAttribute("contentPage", "inhoo/detail.jsp");
-		dDAO.qnaDelete(qDTO, model, pDTO, req);
-		return "redirect:/detail.product?p_no=" + pDTO.getP_no();
+	    req.setAttribute("contentPage", "inhoo/detail.jsp");
+
+	    String pNo = req.getParameter("p_no");
+	    pDTO.setP_no(Integer.parseInt(pNo));
+	    qDTO.setP_no(Integer.parseInt(pNo));
+
+	    dDAO.qnaDelete(qDTO, model, pDTO, req);
+
+	    return "redirect:/detail.product?p_no=" + pNo;
 	}
+	
+	@RequestMapping(value = "/review.delete.do", method = RequestMethod.GET)
+	public String reviewDelete(HttpServletRequest req, DetailDTO dDTO, Model model, ProductDTO pDTO) {
+	    req.setAttribute("contentPage", "inhoo/detail.jsp");
+	    
+	    String pNo = req.getParameter("p_no");
+	    String rNo = req.getParameter("r_no");
+	    
+	    System.out.println("pNo는="+pNo);
+	    System.out.println("rNo는="+rNo);
+	    
+	    pDTO.setP_no(Integer.parseInt(pNo));
+	    dDTO.setP_no(Integer.parseInt(pNo));
+	    dDTO.setR_no(Integer.parseInt(rNo));
+	    
+	    dDAO.reviewDelete(dDTO, model, pDTO, req);
+	    
+	    return "redirect:/detail.product?p_no=" + pNo;
+	}
+
+
+
+
 
 	
 	

@@ -167,4 +167,23 @@ public class DetailDAO {
 	}
 
 
+
+
+	public void qnaDelete(QnaDTO qDTO, Model model, ProductDTO pDTO, HttpServletRequest req) {
+		if(ss.getMapper(DetailMapper.class).deleteQna(qDTO)==1) {
+			System.out.println("삭제 성공!");
+		}
+	}
+
+
+
+
+	public void reviewDelete(DetailDTO dDTO, Model model, ProductDTO pDTO, HttpServletRequest req) {
+		if(ss.getMapper(DetailMapper.class).deleteReview(dDTO)==1) {
+			System.out.println("삭제 성공!");
+		}
+		
+	}
+
+
 }

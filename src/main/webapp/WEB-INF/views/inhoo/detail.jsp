@@ -14,11 +14,14 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"/>
-<script src="resources/js/IH_modal.js"></script>
-<script src="resources/js/IH_DetailDo.js"></script>
-<script src="resources/js/IH_ReviewT.js"></script>
+<script src="resources/js/inhoo/IH_modal.js"></script>
+<script src="resources/js/inhoo/IH_DetailDo.js"></script>
+<script src="resources/js/inhoo/IH_ReviewT.js"></script>
+
+
+
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+     document.addEventListener("DOMContentLoaded", function() {
         const toggleFormBtn = document.getElementById("toggleFormBtn");
         const qnaForm = document.getElementById("qnaForm");
         const submitQuestionBtn = document.getElementById("submitQuestion");
@@ -36,9 +39,39 @@
         cancelQuestionBtn.addEventListener("click", function() {
             qnaForm.style.display = "none";
         });
-    });
+    }); 
 </script>
 
+<script type="text/javascript">
+ function ReviewDelete(r_no, p_no){
+    if (confirm('정말 삭제하시겠습니까?')) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", 'review.delete.do?r_no=' + r_no + '&p_no=' + p_no, true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                alert("리뷰가 삭제되었습니다.");
+                location.reload();
+            }
+        }
+        xhr.send();
+    }
+}
+
+function QnaDelete(q_no, p_no){
+    if (confirm('정말 삭제하시겠습니까?')) {
+        location.href='qna.delete.do?q_no=' + q_no + '&p_no=' + p_no;
+    }
+}
+
+
+function validateForm() {
+    var r_rate = document.getElementById("starpoint").value;
+    if (r_rate == null || r_rate == "") {
+      alert("별점을 선택해주세요.");
+      return false;
+    }
+  } 
+ </script>
 
 </head>
 <body>
@@ -137,7 +170,7 @@
                     <h2>구매 후기</h2>
                   </div>
                   <div class="col-1">
-                  <c:if test="${not empty loginMember || not empty LoginMemberNaver || not empty kakaoInfo  }">
+                  <c:if test="${not empty loginMember }">
                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModalCenter">
                       후기 쓰기
                     </button>
@@ -161,23 +194,25 @@
       </thead>
       <tbody>
         <c:forEach var="r" items="${reviews}">
-          <tr class="clickable-row" data-toggle="collapse" data-target="#row${r.r_id}">
+          <tr class="clickable-row" data-toggle="collapse" data-target="#row${r.r_no}">
             <th>${r.r_rate}</th>
             <th>${r.r_id}</th>
             <th>${r.r_title}</th>
-	        <th>
-            	<fmt:formatDate value="${r.r_date }" type="date" dateStyle="short"/>
-	        </th>
+            <th>
+              <fmt:formatDate value="${r.r_date}" type="date" dateStyle="short"/>
+            </th>
+            <c:if test="${r.r_id == loginMember.a_id}">
+              <th><button type="button" class="btn btn-danger" onclick="ReviewDelete('${r.r_no}', '${product.p_no}')">리뷰 삭제</button></th>
+            </c:if>
           </tr>
-          <tr id="row${r.r_id}" class="collapse">
+          <tr id="row${r.r_no}" class="collapse">
             <td colspan="2">
-              <!-- 이미지가 존재하는 경우만 이미지를 표시합니다. -->
               <c:choose>
                 <c:when test="${not empty r.r_img}">
-                  <img src="resources/img/${r.r_img }" alt="Review Image">
+                  <img src="resources/img/${r.r_img}" alt="Review Image">
                 </c:when>
                 <c:otherwise>
-                  <!-- 이미지가 없을 경우 아무것도 표시하지 않습니다. -->
+                  <td></td>
                 </c:otherwise>
               </c:choose>
             </td>
@@ -188,6 +223,7 @@
     </table>
   </div>
 </div>
+
 
 
   			
@@ -248,7 +284,7 @@
         <h2>Q & A</h2>
     </div>
     <div class="col-1">
-    <c:if test="${not empty loginMember || not empty LoginMemberNaver || not empty kakaoInfo  }">
+    <c:if test="${not empty loginMember }">
         <button type="button" class="btn btn-danger" id="toggleFormBtn">
             상품 문의
         </button>
@@ -275,36 +311,38 @@
 
 <!-- Q&A 뷰 -->
 <div class="row justify-content-center mt-3">
-    <div class="col-12">
-        <table id="table2" class="table table-dark">
-            <thead>
-                <tr>
-                    <th scope="col">작성자</th>
-                    <th scope="col">제목</th>
-                    <th scope="col">몰</th>
-                    <th scope="col">날짜</th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach var="q" items="${qnas}">
-                    <!-- 클릭 가능한 행. 클릭 시 아래의 행을 펼치거나 접습니다. -->
-                    <tr class="clickable-row" data-toggle="collapse" data-target="#row${q.q_no}-content">
-                        <td>${q.q_id}</td>
-                        <td>${q.q_title}</td>
-                        <td>${q.q_product}</td>
-                        <td>
-                            <fmt:formatDate value="${q.q_date}" type="date" dateStyle="short"/>
-                        </td>
-                    </tr>
-                    <!-- 펼쳐지는 행. 해당 게시글의 내용을 표시합니다. -->
-                    <tr id="row${q.q_no}-content" class="collapse">
-                        <td colspan="4">${q.q_content}</td>
-                    </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-    </div>
+  <div class="col-12">
+    <table id="table2" class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">작성자</th>
+          <th scope="col">제목</th>
+          <th scope="col">몰</th>
+          <th scope="col">날짜</th>
+        </tr>
+      </thead>
+      <tbody>
+        <c:forEach var="q" items="${qnas}">
+          <tr class="clickable-row" data-toggle="collapse" data-target="#row${q.q_no}-content">
+            <td>${q.q_id}</td>
+            <td>${q.q_title}</td>
+            <td>${q.q_product}</td>
+            <td>
+              <fmt:formatDate value="${q.q_date}" type="date" dateStyle="short"/>
+            </td>
+            <c:if test="${q.q_id == loginMember.a_id}">
+              <td><button type="button" class="btn btn-danger" onclick="QnaDelete('${q.q_no}', '${product.p_no}')">QnA 삭제</button></td>
+            </c:if>
+          </tr>
+          <tr id="row${q.q_no}-content" class="collapse">
+            <td colspan="4">${q.q_content}</td>
+          </tr>
+        </c:forEach>
+      </tbody>
+    </table>
+  </div>
 </div>
+
 
 
 
@@ -379,7 +417,7 @@
         </button>
       </div>
         <!-- 리뷰 작성 양식  -->
-         <form action="regReviewDo" method="post" enctype="multipart/form-data">
+         <form action="regReviewDo" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
       <div class="modal-body">
           <div class="table-responsive">
             <table class="table table-striped">
@@ -443,7 +481,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="resources/css/detail.css"/>
+<link rel="stylesheet" href="resources/css/inhoo/detail.css"/>
 
 
 </body>

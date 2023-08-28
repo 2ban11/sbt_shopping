@@ -36,7 +36,7 @@
 <select id="getReviews" resultType="com.sbt.shopping.inhoo.DetailDTO">
 	  select *
         from (
-        	select rownum as rn, r_product, r_id,r_title,r_content,r_rate,r_img,r_date
+        	select rownum as rn, r_no, r_product, r_id,r_title,r_content,r_rate,r_img,r_date
         	from (
         		select * from review
         		where r_product = #{no}
@@ -45,6 +45,9 @@
         )
         where rn &gt;= #{start} and rn &lt;= #{end}
 </select>
+
+
+
 
 <select id="getReviewCount" resultType="int">
 	select count(*) from review where r_product = #{p_no}
@@ -77,7 +80,13 @@
 
 
 
+<delete id="deleteQna">
+	 delete qna where q_no = #{q_no}
+</delete>
 
+<delete id="deleteReview">
+	 delete review where r_no = #{r_no}
+</delete>
 
 
 
