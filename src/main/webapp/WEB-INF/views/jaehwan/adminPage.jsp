@@ -4,18 +4,22 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
 <link rel="stylesheet" href="resources/css/jh/listPage.css" />
 <link rel="stylesheet" href="resources/css/jh/chkColors.css" />
 <link rel="stylesheet" href="resources/css/jh/regProduct.css" />
-<link rel="stylesheet" href="resources/css/jh/charts.css" />
+<link rel="stylesheet" href="resources/css/jh/adminDetail.css" />
+<link rel="stylesheet" href="resources/css/jh/calendar.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.3/chart.min.js" integrity="sha512-fMPPLjF/Xr7Ga0679WgtqoSyfUoQgdt8IIxJymStR5zV3Fyb6B3u/8DcaZ6R6sXexk5Z64bCgo2TYyn760EdcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
 <script type="text/javascript" src="resources/js/jh/isNotElec.js"></script>
+
 </head>
 
 <body>
@@ -39,6 +43,7 @@
     <div class="adminPage__tab" style="user-select: auto;">
 		<div class="" style="user-select: auto;"><a href="controlProduct">상품관리</a></div>
 		<div class="" style="user-select: auto;"><a href="controlOrder">주문관리</a></div>
+		<div class="" style="user-select: auto;"><a href="controlRefund">환불관리</a></div>
 		<div class="" style="user-select: auto;"><a href="controlMargin">매상/매출</a></div>
 	</div>
     </div>
@@ -334,8 +339,8 @@
     	              
     	              dataHtml += '<div>'; 			              
     	              dataHtml += '<div class="productModify">';
-    	              dataHtml += '<button class="update-popup--btn" title="수정하기">수정</button>'
-    	              dataHtml += '<button class="delete-popup--btn" title="삭제하기"><a href="deleteProduct?p_no='+ item.p_no + '">삭제</a></button>'
+    	              dataHtml += '<button class="update-popup--btn" title="수정하기" style="font-size: revert;line-height: normal;">수정</button>'
+    	              dataHtml += '<button class="delete-popup--btn" title="삭제하기" style="font-size: revert;line-height: normal;"><a href="deleteProduct?p_no='+ item.p_no + '">삭제</a></button>'
     	              dataHtml += '</div>';
     	              
     	              // 할인율
@@ -350,7 +355,6 @@
     	                dataHtml += '<div class="productDifference" style="background:transparent">';
     	                dataHtml += '</div>';
     					}
-    	                dataHtml += '<button class="fa-solid fa-cart-shopping intoTheCart--btn"></button>';
     	                dataHtml += '</div>';
     	                dataHtml += '</div>'; // 그 디브 끝
     	                dataHtml += '</div>'; // 그 디브 끝
@@ -397,6 +401,7 @@ function updateResults() {
 }
 
 </script>
+<script type="text/javascript" src="resources/js/jh/calendar.js"></script>
 <script type="text/javascript" src="resources/js/jh/updatePopup.js"></script>
 <script type="text/javascript" src="resources/js/jh/popup.js"></script>
 </body>

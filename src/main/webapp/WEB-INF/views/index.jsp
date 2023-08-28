@@ -13,149 +13,12 @@
 <link rel="stylesheet" href="resources/css/reset.css" />
 <link rel="stylesheet" href="resources/css/kimoon/MainPage.css" />
 
-<<<<<<< HEAD
-    <script
-      src="https://kit.fontawesome.com/f0a74bdf41.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://code.jquery.com/jquery-3.7.0.js"
-      integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
-      crossorigin="anonymous"
-    ></script>
-    <script type="text/javascript" src="resources/js/headerFooter.js"></script>
-    
-     <script type="text/javascript"src="resources/js/myeonggyu/s_logout.js"></script>
-      <script type="text/javascript"src="resources/js/myeonggyu/kakaoLogIn.js"></script>
-        <script type="text/javascript"src="resources/js/myeonggyu/masterPage.js"></script>
-        <script type="text/javascript"src="resources/js/myeonggyu/login_chk.js"></script>
-    <script type="text/javascript" src="resources/js/kimoon/mainPage.js"></script>
-  </head>
-  <body>
-    <div class="site-container">
-      <div class="wrapper-without-footer">
-        <!-- HEADER -->
-        <header class="row-km header">
-          <div class="header__wrapper">
-            <div class="menu-hamberger"><i class="fa-solid fa-bars"></i></div>
-            <div class="header__logo">
-            	<a href="/shopping">
-              		<img
-               		 class="header__logo--img"
-               		 alt="RIFF몰"
-               		 src="resources/img/logoWhite.png"
-             		 />
-              </a>
-            </div>
-            <form class="header__form" onsubmit="return false;">
-              <input class="header__input--text" autocomplete="off" />
-              <button class="header__input--button">
-                <i class="fa-solid fa-magnifying-glass"></i>
-              </button>
-            </form>
-            <button class="mobile-search--button">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <!-- 모바일 팝업 검색창 -->
-            <div class="header-search-popup">
-              <form>
-                <input
-                  class="header-popup__delete--input"
-                  type="search"
-                  placeholder="검색어를 입력해주세요"
-                />
-                <button class="header-popup__delete--btn"></button>
-                <button class="header-popup__search--btn">검색</button>
-                <button class="header-popup__close--btn">닫기</button>
-              </form>
-            </div>
-            <div class="header__button">
-            	
-              	<c:choose>
-              <c:when test="${not empty loginMember }">
-              	
-              	<div class="login_btn_container">
-              	<div class="header_logout_btn">
-              	<a href="/shopping/account.logout" class="logOut"><button>로그아웃</button></a>
-              	</div>
-              	</div>
-              <div class="myPageBtn" >
-                 <a class="header__signup" href="/shopping/mypage.order">
-                 <button >마이페이지</button>
-                 </a> 
-              </div>
-              	 <button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
-                   <i class="fa-regular fa-user"></i>
-                  </button>
-              	</c:when>
-              <c:when test="${not empty LoginMemberNaver }">
-              	<div class="header_logout_btn">
-				<a href="#" onclick="logoutNaver()"class="logOut"><button>로그아웃</button></a> 
-              	</div>
-              	 <form action="/shopping/mypage.order">
-               <div class="myPageBtn" >
-                <button class="header__signup">마이페이지</button>
-              </div>
-            </form>
-            <button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
-                   <i class="fa-regular fa-user"></i>
-                  </button>
-              	</c:when>
-              <c:when test="${not empty kakaoInfo }">
-              <div class="header_logout_btn">
-				 <a href="#" id="kakao-logout-btn" onclick="logoutKakao()"class="logOut"><button>로그아웃</button></a>
-				 </div>
-              	 <form action="/shopping/mypage.order">
-               <div class="myPageBtn" >
-                <button class="header__signup">마이페이지</button>
-                <button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
-                   <i class="fa-regular fa-user"></i>
-                  </button>
-              </div>
-              
-            </form>
-              	</c:when>
-              	<c:otherwise>
-            <form action=/shopping/login.go>
-              <div class="login_btn_container" >
-                <button class="header__login" onclick="/shopping/login.go" >
-                  <span class="haader__login--text">로그인</span
-                  >
-                </button>
-              </div>
-            </form>
-                  <button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
-                   <i class="fa-regular fa-user"></i>
-                  </button>
-            <form action="/shopping/account.join.go">
-              <div>
-                <button class="header__signup">회원가입</button>
-              </div>
-            </form>
-              	</c:otherwise>
-              	</c:choose>
-              <div>
-              <form action="adminPage" method="GET">
-                <button class="header__signup" type="submit">관리자</button>
-                </form>
-              </div>
-              <div>
-                <button class="header__cart">
-                  <i class="fa-solid fa-cart-shopping"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </header>
-        <!-- //HEADER -->
-=======
 <script src="https://kit.fontawesome.com/f0a74bdf41.js"
 	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"
 	integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM="
 	crossorigin="anonymous"></script>
 <script type="text/javascript" src="resources/js/headerFooter.js"></script>
->>>>>>> fbf65363f8f6a9e6900cdc0a41c20c11163b60ba
 
 <script type="text/javascript" src="resources/js/myeonggyu/s_logout.js"></script>
 <script type="text/javascript"
@@ -200,115 +63,6 @@
 					</div>
 					<div class="header__button">
 
-<<<<<<< HEAD
-        <!-- MAIN NAVIGATION -->
-        <nav class="nav-header">
-          <div class="nav-item">
-            기타<em class="caret"></em>
-            <div class="nav-item-sub jh">
-              <ul>
-                <li>
-                  <a href="guitarPage?BC=기타&MC=일렉기타">일렉기타</a>
-                </li>
-                <li>
-                  <a href="guitarPage?BC=기타&MC=어쿠스틱">어쿠스틱</a>
-                </li>
-                <li>
-                  <a href="guitarPage?BC=기타&MC=클래식">클래식</a>
-                </li>
-                <li>
-                  <a href="guitarPage?BC=기타&MC=베이스">베이스</a>
-                </li>
-                <li>
-                  <a href="guitarPage?BC=기타&MC=우쿠렐레">우쿠렐레</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="nav-item">
-            앰프<em class="caret"></em>
-            <div class="nav-item-sub jh">
-              <ul>
-                <li>
-                  <a href="ampPage?BC=앰프&MC=일렉기타">일렉기타</a>
-                </li>
-                <li>
-                  <a href="ampPage?BC=앰프&MC=어쿠스틱">어쿠스틱</a>
-                </li>
-                <li>
-                  <a href="ampPage?BC=앰프&MC=베이스">베이스</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="nav-item">
-            이펙터<em class="caret"></em>
-            <div class="nav-item-sub jh">
-              <ul>
-                <li>
-                  <a href="effectorPage?BC=이펙터&MC=일렉기타">일렉기타</a>
-                </li>
-                <li>
-                  <a href="effectorPage?BC=이펙터&MC=어쿠스틱">어쿠스틱</a>
-                </li>
-                <li>
-                  <a href="effectorPage?BC=이펙터&MC=클래식">클래식</a>
-                </li>
-                <li>
-                  <a href="effectorPage?BC=이펙터&MC=베이스">베이스</a>
-                </li>
-                <li>
-                  <a href="effectorPage?BC=이펙터&MC=멀티">멀티</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="nav-item">
-            주변용품<em class="caret"></em>
-            <div class="nav-item-sub jh">
-              <ul>
-                <li>
-                  <a href="accessoryPage?BC=주변용품&MC=기타줄">기타줄</a>
-                </li>
-                <li>
-                  <a href="accessoryPage?BC=주변용품&MC=피크">피크</a>
-                </li>
-                <li>
-                  <a href="accessoryPage?BC=주변용품&MC=케이블">케이블</a>
-                </li>
-                <li>
-                  <a href="accessoryPage?BC=주변용품&MC=카포">카포</a>
-                </li>
-                <li>
-                  <a href="accessoryPage?BC=주변용품&MC=우쿠렐레">우쿠렐레</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="nav-item">
-            게시판<em class="caret"></em>
-            <div class="nav-item-sub">
-              <ul>
-                <li>
-                  <a href="go.board?type=1">공지</a>
-                </li>
-                <li>
-                  <a href="go.board?type=2">자유</a>
-                </li>
-                <li>
-                  <a href="go.board?type=3">개인레슨</a>
-                </li>
-                <li>
-                  <a href="go.board?type=4">구인</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="nav-item">문의하기</div>
-          <div class="nav-item">회사소개</div>
-        </nav>
-        <!-- //MAIN NAVIGATION -->
-=======
 						<c:choose>
 							<c:when test="${not empty loginMember }">
 								<div class="login_btn_container">
@@ -353,7 +107,6 @@
 											<i class="fa-regular fa-user"></i>
 										</button>
 									</div>
->>>>>>> fbf65363f8f6a9e6900cdc0a41c20c11163b60ba
 
 								</form>
 							</c:when>
@@ -376,7 +129,7 @@
 							</c:otherwise>
 						</c:choose>
 						<div>
-							<form action="adminPage" method="POST">
+							<form action="adminPage" method="GET">
 								<button class="header__signup" type="submit">관리자</button>
 							</form>
 						</div>
@@ -474,10 +227,10 @@
 					<div class="nav-item-sub jh">
 						<ul>
 							<li><a href="guitarPage?BC=기타&MC=일렉기타">일렉기타</a></li>
-							<li><a href="guitarPage?BC=Guitar&MC=Acoustic">어쿠스틱</a></li>
-							<li><a href="guitarPage?BC=Guitar&MC=Classic">클래식</a></li>
-							<li><a href="guitarPage?BC=Guitar&MC=Bass">베이스</a></li>
-							<li><a href="guitarPage?BC=Guitar&MC=Ukulele">우쿠렐레</a></li>
+							<li><a href="guitarPage?BC=기타&MC=어쿠스틱">어쿠스틱</a></li>
+							<li><a href="guitarPage?BC=기타&MC=클래식">클래식</a></li>
+							<li><a href="guitarPage?BC=기타&MC=베이스">베이스</a></li>
+							<li><a href="guitarPage?BC=기타&MC=우쿠렐레">우쿠렐레</a></li>
 						</ul>
 					</div>
 				</div>
@@ -485,9 +238,9 @@
 					앰프<em class="caret"></em>
 					<div class="nav-item-sub jh">
 						<ul>
-							<li><a href="ampPage?BC=Amp&MC=Elec">일렉기타</a></li>
-							<li><a href="ampPage?BC=Amp&MC=Acoustic">어쿠스틱</a></li>
-							<li><a href="ampPage?BC=Amp&MC=Bass">베이스</a></li>
+							<li><a href="ampPage?BC=앰프&MC=일렉기타">일렉기타</a></li>
+							<li><a href="ampPage?BC=앰프&MC=어쿠스틱">어쿠스틱</a></li>
+							<li><a href="ampPage?BC=앰프&MC=베이스">베이스</a></li>
 						</ul>
 					</div>
 				</div>
@@ -495,12 +248,12 @@
 					이펙터<em class="caret"></em>
 					<div class="nav-item-sub jh">
 						<ul>
-							<li><a href="effectorPage?BC=Effector&MC=Elec">일렉기타</a></li>
-							<li><a href="effectorPage?BC=Effector&MC=Acoustic">어쿠스틱</a>
+							<li><a href="effectorPage?BC=이펙터&MC=일렉기타">일렉기타</a></li>
+							<li><a href="effectorPage?BC=이펙터&MC=어쿠스틱">어쿠스틱</a>
 							</li>
-							<li><a href="effectorPage?BC=Effector&MC=Classic">클래식</a></li>
-							<li><a href="effectorPage?BC=Effector&MC=Bass">베이스</a></li>
-							<li><a href="effectorPage?BC=Effector&MC=Multi">멀티</a></li>
+							<li><a href="effectorPage?BC=이펙터&MC=클래식">클래식</a></li>
+							<li><a href="effectorPage?BC=이펙터&MC=베이스">베이스</a></li>
+							<li><a href="effectorPage?BC=이펙터&MC=멀티">멀티</a></li>
 						</ul>
 					</div>
 				</div>
@@ -508,11 +261,11 @@
 					주변용품<em class="caret"></em>
 					<div class="nav-item-sub jh">
 						<ul>
-							<li><a href="accessoryPage?BC=Accessory&MC=String">기타줄</a></li>
-							<li><a href="accessoryPage?BC=Accessory&MC=Pick">피크</a></li>
-							<li><a href="accessoryPage?BC=Accessory&MC=Cable">케이블</a></li>
-							<li><a href="accessoryPage?BC=Accessory&MC=Capo">카포</a></li>
-							<li><a href="accessoryPage?BC=Accessory&MC=Ukulele">우쿠렐레</a>
+							<li><a href="accessoryPage?BC=주변용품&MC=기타줄">기타줄</a></li>
+							<li><a href="accessoryPage?BC=주변용품&MC=피크">피크</a></li>
+							<li><a href="accessoryPage?BC=주변용품&MC=케이블">케이블</a></li>
+							<li><a href="accessoryPage?BC=주변용품&MC=카포">카포</a></li>
+							<li><a href="accessoryPage?BC=주변용품&MC=우쿠렐레">우쿠렐레</a>
 							</li>
 						</ul>
 					</div>
