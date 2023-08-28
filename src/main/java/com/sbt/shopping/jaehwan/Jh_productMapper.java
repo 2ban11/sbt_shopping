@@ -16,7 +16,10 @@ public interface Jh_productMapper {
 	int regProduct(ProductDTO pDTO);
 	List<OrderDetailDTO> getOrderDetail(OrderDetailDTO odDTO);
 	List<OrderDetailDTO> getAllOrder(ProductDTO pDTO);
+	List<OrderDetailDTO> getRefundOrder(ProductDTO pDTO);
 	List<OrderDetailDTO> getChartData();
 	List<OrderDetailDTO> getMargin(OrderDetailDTO odDTO);
 	int updateProduct(ProductDTO pDTO);
+	int refundAccept(OrderDetailDTO oDTO);
+	int refundCancel2(OrderDetailDTO oDTO);
 }

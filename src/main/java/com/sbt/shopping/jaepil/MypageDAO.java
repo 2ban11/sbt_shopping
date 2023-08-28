@@ -100,6 +100,7 @@ public class MypageDAO {
 	public void refundCancel(HttpServletRequest req, OrderDTO oDTO) {
 		if (ss.getMapper(OrderMapper.class).refundCancel(oDTO) == 1) {
 		}
-
 	}
+
+	
 }

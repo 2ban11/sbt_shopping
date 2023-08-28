@@ -96,6 +96,7 @@ public class HC_JP {
 		mDAO.refund(req, oDTO);
 		return "redirect:/mypage.order";
 	}
+	
 	@RequestMapping(value = "/refundcancel", method = RequestMethod.GET)
 	public String refundCancel(HttpServletRequest req, OrderDTO oDTO) {
 		mDAO.refundCancel(req, oDTO);
