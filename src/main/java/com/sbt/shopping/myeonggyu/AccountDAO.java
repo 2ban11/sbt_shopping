@@ -84,13 +84,15 @@ public class AccountDAO {
 
 	public void join(AccountDTO a, HttpServletRequest req) {
 		String id = a.getA_id();
-		String email = req.getParameter("a_email3");
-		 if (email == null) {
-		        a.setA_id(id);
-		        a.setA_email(id);
+		 String email2 = req.getParameter("a_email2"); // 직접 입력한 이메일 도메인 값 가져오기
+		    String email3 = req.getParameter("a_email3");
+
+		    if (email3 == null || email3.equals("direct")) {
+		        a.setA_id(id+ "@" + email2);
+		        a.setA_email(id + "@" + email2);
 		    } else {
-		        a.setA_id(id + "@" + email);
-		        a.setA_email(id + "@" + email);
+		        a.setA_id(id + "@" + email3);
+		        a.setA_email(id + "@" + email3);
 		    }
 		System.out.println(a.getA_id());
 		System.out.println(a.getA_email());
@@ -229,12 +231,13 @@ public class AccountDAO {
 		}
 	}
 
+	@SuppressWarnings("null")
 	public void saveUserNaverInfo(HttpServletRequest req, String a_nickname, String a_id, String a_email,
 			String a_password,String a_phone) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginMember");
 		System.out.println("loginMember 세션 정보: " + a);
 
-		if (a != null) {
+		if (a == null) {
 			// 사용자의 닉네임을 계정 객체에 저장합니다.
 			a.setA_nickname(a_nickname);
 			a.setA_id(a_id);
@@ -283,6 +286,7 @@ public class AccountDAO {
 
 		AccountDTO a = new AccountDTO();
 		if (aa == null) {
+			req.getSession().setAttribute("loginMember", a);
 			a.setA_nickname(kakaoUserId);
 			a.setA_id(userEmail);
 			a.setA_email(userEmail);
@@ -290,7 +294,6 @@ public class AccountDAO {
 			String encryptedPassword = encryptPassword("asd");
 			a.setA_password(encryptedPassword);
 			// 해당 ID를 기반으로 사용자 계정이 있는지 확인합니다.
-			req.getSession().setAttribute("loginMember", a);
 			int accountNum = checkId(a, req);
 			String originalPassword = a.getA_password();
 			if (originalPassword.length() > 20) {

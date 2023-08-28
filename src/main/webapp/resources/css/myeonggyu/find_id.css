@@ -10,6 +10,9 @@ div{
     display: flex;
     justify-content: center;
 }
+.title_txt{
+	margin-right: 12%;
+}
 #result{
 	
 	margin-left: 15%;

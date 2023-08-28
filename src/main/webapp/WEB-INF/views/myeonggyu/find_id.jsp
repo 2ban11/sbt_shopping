@@ -8,7 +8,9 @@
 <link rel="stylesheet" href="resources/css/myeonggyu/find_id.css" >
 <body>
 		<div class="w3-container" >
+		<div class="title_txt" >
 		<h3>아이디 찾기</h3>
+		</div>
 	<div>
    <input type="text" id="a_phone" placeholder="핸드폰 번호를 입력하세요">
     <button id="findButton">조회</button>

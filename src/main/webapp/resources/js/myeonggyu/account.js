@@ -4,42 +4,31 @@ function goHome() {
 
 
 $(document).ready(function() {
-     $("#a_email3").change(function() {
-        var selectedDomain = $(this).val();
-        if (selectedDomain === 'direct') {
-            $("#a_email2").prop("disabled", false).val("").focus();
-        } else {
-            $("#a_email2").prop("disabled", true).val(selectedDomain);
+	
+    $("#a_email3").change(function() {
+        if ($(this).val() == 'direct') { // 직접입력일 경우
+            $("#a_email2").val('').prop("disabled", false).focus();
+        } else { // 직접입력이 아닐경우
+            $("#a_email2").val($(this).val()).prop("disabled", true);
         }
-    });
-
-    // #a_email2 값이 변경될 때 이벤트 처리
-    $("#a_email2").on("input", function() {
-        // 선택 옵션을 "직접입력"으로 변경
-        $("#a_email3").val('direct');
-    });
-    
-    // #a_email2 값이 변경될 때 이벤트 처리
-    $("#a_email2").on("change", function() {
-        // 선택한 이메일 주소 가져오기
-        var enteredEmail = $(this).val();
-        // 이메일 주소 출력 (개발 시 확인용)
-        console.log(enteredEmail);
     });
 
     // 이메일 유효성 검사
     function validateEmail() {
-        var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-        var a_email3 = $("#a_email3").val();
-        var a_email2 = $("#a_email2").val(); // 직접 입력한 이메일 값 가져오기
-        if (a_email3 === "direct") {
-            if (!emailRegex.test(a_email2)) {
-                alert("올바른 이메일 주소를 입력하세요.");
-                return false;
-            }
+    var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    var a_email3 = $("#a_email3").val();
+    var a_email2 = $("#a_email2").val(); // 직접 입력한 이메일 도메인 값 가져오기
+
+    if (a_email3 == 'direct') {
+        var a_id = $("#a_id").val(); // 직접 입력한 아이디 값 가져오기
+        if (a_id == "" || a_email2 == "" || !emailRegex.test(a_id + "@" + a_email2)) {
+            alert("올바른 이메일 주소를 입력하세요.");
+            return false;
         }
-        return true;
     }
+
+    return true;
+}
  
    
      
@@ -139,35 +128,42 @@ function isPhoneNumberDuplicated() {
 });
 
     // 아이디 중복 확인 버튼 클릭 시
-     $("#btn_id_chk").click(function() {
-        var a_id = $("#a_id").val();
-        var a_email2 = $("#a_email2").val();
-        if (a_id === "") {
-            alert("아이디를 입력해주세요");
-            return;
-        } else if (a_email2 === "") {
-            alert("주소를 선택해주세요");
-            return;
-        }
-        // AJAX를 사용하여 아이디 중복 확인을 요청합니다.
-        $.ajax({
-            url: "/shopping/account.get",
-            type: "GET",
-            data: { a_id: a_id + "@" + a_email2 },
-            success: function(result) {
-                if (result === 1) {
-                    alert("이미 사용 중인 아이디입니다.");
-                    $("#id_chk").val("");
-                } else {
-                    alert("사용 가능한 아이디입니다.");
-                    $("#id_chk").val("1");
-                }
-            },
-            error: function(xhr, status, error) {
-                alert("아이디 중복 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+ $("#btn_id_chk").click(function() {
+    var a_id = $("#a_id").val();
+    var a_email2 = $("#a_email2").val();
+    
+    if (a_id === "") {
+        alert("아이디를 입력해주세요");
+        return;
+    } else if (a_email2 === "") {
+        alert("주소를 선택해주세요");
+        return;
+    }
+    
+    var domain = a_email2.substring(a_email2.indexOf('@') + 1); // 도메인 추출
+    
+    // AJAX를 사용하여 MX 레코드 확인을 요청합니다.
+    $.ajax({
+        url: "/shopping/account.email.check",
+        type: "POST",
+        data: { email: a_id + "@" + a_email2 },
+        success: function(response) {
+            if (response.message === "exist") {
+                alert("이미 사용 중인 아이디입니다.");
+                $("#id_chk").val("");
+            } else if (response.message === "invalid_domain") {
+                alert("유효한 도메인이지만 실제 계정이 없습니다.");
+                $("#id_chk").val("");
+            } else if (response.message === "not_exist") {
+                alert("사용 가능한 아이디입니다.");
+                $("#id_chk").val("1");
             }
-        });
+        },
+        error: function(xhr, status, error) {
+            alert("이메일 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+        }
     });
+});
 
     // 닉네임 중복 확인 버튼 클릭 시
     $("#btn_nickname_chk").click(function() {
