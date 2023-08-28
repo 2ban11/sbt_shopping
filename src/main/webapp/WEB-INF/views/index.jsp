@@ -155,14 +155,12 @@
 									<form action="/mypage.order"></form>
 								</c:when>
 								<c:when test="${not empty LoginMemberNaver }">
-									<a href="#" onclick="logoutNaver()" class="logOut"><button>로그아웃</button>
+									<a href="/shopping/account.logout" class="logOut"><button>로그아웃</button></a>
 									</a>
 									<form action="/mypage.order"></form>
 								</c:when>
 								<c:when test="${not empty kakaoInfo }">
-									<a href="#" id="kakao-logout-btn" onclick="logoutKakao()"
-										class="logOut"><button>로그아웃</button></a>
-
+									<a href="/shopping/account.logout" class="logOut"><button>로그아웃</button></a>
 								</c:when>
 								<c:otherwise>
 									<span class="sidebar__login"> <a
