@@ -277,7 +277,6 @@
     	              
     	              dataHtml += '<div>'; 			              
     	              dataHtml += '<div class="productModify">';
-    	              dataHtml += '<button class="reg-popup--btn" title="등록하기"><a href="#regProductPopup">등록</a></button>'
     	              dataHtml += '<button class="update-popup--btn" title="수정하기"><a href="#updateProductPopup">수정</a></button>'
     	              dataHtml += '<button class="delete-popup--btn" title="삭제하기"><a href="deleteProduct?p_no='+ item.p_no + '">삭제</a></button>'
     	              dataHtml += '</div>';
@@ -294,7 +293,6 @@
     	                dataHtml += '<div class="productDifference" style="background:transparent">';
     	                dataHtml += '</div>';
     					}
-    	                dataHtml += '<button class="fa-solid fa-cart-shopping intoTheCart--btn"></button>';
     	                dataHtml += '</div>';
     	                dataHtml += '</div>'; // 그 디브 끝
     	                dataHtml += '</div>'; // 그 디브 끝

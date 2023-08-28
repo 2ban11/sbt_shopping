@@ -52,7 +52,20 @@
 						</div>
 						<div class="mypage-info-data-cart-category">${c.p_big_category }</div>
 						<div class="mypage-info-data-cart-img">
-							<img alt="" src="${c.p_img1 }">
+							<c:choose>
+								<c:when test="${ '기타' eq c.p_big_category}">
+									<img alt="" src="resources/img/Guitar/${c.p_img1 }">
+								</c:when>
+								<c:when test="${ '앰프' eq c.p_big_category}">
+									<img alt="" src="resources/img/Amp/${c.p_img1 }">
+								</c:when>
+								<c:when test="${ '이펙터' eq c.p_big_category}">
+									<img alt="" src="resources/img/Effector/${c.p_img1 }">
+								</c:when>
+								<c:when test="${ '주변용품' eq c.p_big_category}">
+									<img alt="" src="resources/img/Accessory/${c.p_img1 }">
+								</c:when>
+							</c:choose>
 						</div>
 						<div class="mypage-info-data-cart-name">${c.p_name }</div>
 						<div class="mypage-info-data-cart-cnt">
@@ -62,9 +75,7 @@
 								<button name="c_no" value="${c.c_no }">수정</button>
 							</form>
 						</div>
-						<div class="mypage-info-data-cart-sale">
-							${c.p_sale}원
-						</div>
+						<div class="mypage-info-data-cart-sale">${c.p_sale * c.c_cnt}원</div>
 					</div>
 					<c:set var="total" value="${total + c.p_sale }" />
 				</c:forEach>
@@ -73,13 +84,13 @@
 				<button class="selectDelete-btn">선택삭제</button>
 			</div>
 			<div class="mypage-cart-total">
-				<div>합계</div>
+				<div>합계 : </div>
 				<div>${total}원</div>
 			</div>
-		</div>
-	</div>
 	<div class="mypage-cart-order">
 		<button onclick="cartOrder()">주문하기</button>
+	</div>
+		</div>
 	</div>
 </body>
 </html>

@@ -11,5 +11,9 @@ public interface OrderMapper {
 
 	List<OrderDTO> getOrderByDate(Map<String, String> vals);
 
+	int refund(OrderDTO oDTO);
+
+	int refundCancel(OrderDTO oDTO);
+
 
 }
