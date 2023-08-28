@@ -26,13 +26,15 @@
 	<context:component-scan base-package="com.sbt.shopping" />
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
         <beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+<<<<<<< HEAD
           <beans:property name="url"
             value="jdbc:oracle:thin:@f0e8tcdui31dsn2e_medium?TNS_ADMIN=D:/JJH/egov/eGovFrameDev-3.10.0-64bit/eclipse/wallet/Wallet_F0E8TCDUI31DSN2E" />
+=======
+        <beans:property name="url"
+            value="jdbc:oracle:thin:@f0e8tcdui31dsn2e_high?TNS_ADMIN=C:/Users/soldesk/Desktop/Wallet_F0E8TCDUI31DSN2E" />
+>>>>>>> f507ea895d521a19cd2185eaaf1bcb1822bc2653
         <beans:property name="username" value="ADMIN" />
         <beans:property name="password" value="Soldesk802!!" />
-        
-        
-        
     </beans:bean>
 
 	<beans:bean id="transactionManager"
