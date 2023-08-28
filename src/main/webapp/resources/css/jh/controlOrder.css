@@ -310,6 +310,7 @@ details[open] summary::marker {
 	font-weight: 700;
 	border: none;
 	color: white;
+	word-break: keep-all; 
 }
 
 .refund-cancel-btn {
@@ -322,4 +323,5 @@ details[open] summary::marker {
 	background-color: #d43f3a;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	word-break: keep-all; 
 }
