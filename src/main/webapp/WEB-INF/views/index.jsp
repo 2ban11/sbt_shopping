@@ -87,33 +87,6 @@
                    <i class="fa-regular fa-user"></i>
                   </button>
               	</c:when>
-              <c:when test="${not empty LoginMemberNaver }">
-              	<div class="header_logout_btn">
-				<a href="#" onclick="logoutNaver()"class="logOut"><button>로그아웃</button></a> 
-              	</div>
-              	 <form action="/shopping/mypage.order">
-               <div class="myPageBtn" >
-                <button class="header__signup">마이페이지</button>
-              </div>
-            </form>
-            <button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
-                   <i class="fa-regular fa-user"></i>
-                  </button>
-              	</c:when>
-              <c:when test="${not empty kakaoInfo }">
-              <div class="header_logout_btn">
-				 <a href="#" id="kakao-logout-btn" onclick="logoutKakao()"class="logOut"><button>로그아웃</button></a>
-				 </div>
-              	 <form action="/shopping/mypage.order">
-               <div class="myPageBtn" >
-                <button class="header__signup">마이페이지</button>
-                <button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
-                   <i class="fa-regular fa-user"></i>
-                  </button>
-              </div>
-              
-            </form>
-              	</c:when>
               	<c:otherwise>
             <form action=/shopping/login.go>
               <div class="login_btn_container" >
@@ -162,16 +135,7 @@
               	 <form action="/mypage.order">
             </form>
               	</c:when>
-              <c:when test="${not empty LoginMemberNaver }">
-				<a href="#" onclick="logoutNaver()"class="logOut"><button>로그아웃</button> </a> 
-              	 <form action="/mypage.order">
-            
-            </form>
-              	</c:when>
-              <c:when test="${not empty kakaoInfo }">
-				 <a href="#" id="kakao-logout-btn" onclick="logoutKakao()"class="logOut"><button>로그아웃</button></a>
-              
-              	</c:when>
+             
               	<c:otherwise>
                 <span class="sidebar__login">
                   <a href="/shopping/login.go">로그인</a>

@@ -6,7 +6,7 @@ function goHome() {
 $(document).ready(function() {
      $("#a_email3").change(function() {
         var selectedDomain = $(this).val();
-        if (selectedDomain === "direct") {
+        if (selectedDomain === 'direct') {
             $("#a_email2").prop("disabled", false).val("").focus();
         } else {
             $("#a_email2").prop("disabled", true).val(selectedDomain);
@@ -16,7 +16,7 @@ $(document).ready(function() {
     // #a_email2 값이 변경될 때 이벤트 처리
     $("#a_email2").on("input", function() {
         // 선택 옵션을 "직접입력"으로 변경
-        $("#a_email3").val("direct");
+        $("#a_email3").val('direct');
     });
     
     // #a_email2 값이 변경될 때 이벤트 처리

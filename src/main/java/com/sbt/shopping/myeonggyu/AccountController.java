@@ -199,7 +199,6 @@ public class AccountController {
 	         String verificationCode = AEA.generateVerificationCode();
 	         req.getSession().setAttribute("EmailCode", verificationCode);
 	         model.addAttribute("email", email);
-	         
 	         return AEA.sendVerificationEmail(email); // 이메일 전송
 	     } else {
 	         // 이메일이 존재하지 않으면 아무 작업도 하지 않고 응답 반환
