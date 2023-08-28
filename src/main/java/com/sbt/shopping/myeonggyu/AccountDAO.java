@@ -9,6 +9,7 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.security.SecureRandom;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +19,7 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 
 @Service
 public class AccountDAO {
@@ -33,7 +35,7 @@ public class AccountDAO {
 			System.out.println("로그인 성공!");
 			return true; // 로그인 성공
 		} else {
-			req.setAttribute("result", "can't find user or password error");
+			req.setAttribute("result", "사용자나 비밀번호를 찾을 수 없습니다.");
 			System.out.println("로그인 실패!");
 			return false; // 로그인 실패
 		}
@@ -60,6 +62,8 @@ public class AccountDAO {
 
 	public void logout(HttpServletRequest req) {
 		req.getSession().setAttribute("loginMember", null);
+		req.getSession().setAttribute("LoginMemberNaver", null);
+		req.getSession().setAttribute("kakaoInfo", null);
 	}
 
 	public void bye(HttpServletRequest req) {
@@ -81,8 +85,13 @@ public class AccountDAO {
 	public void join(AccountDTO a, HttpServletRequest req) {
 		String id = a.getA_id();
 		String email = req.getParameter("a_email3");
-		a.setA_id(id + "@" + email);
-		a.setA_email(id + "@" + email);
+		 if (email == null) {
+		        a.setA_id(id);
+		        a.setA_email(id);
+		    } else {
+		        a.setA_id(id + "@" + email);
+		        a.setA_email(id + "@" + email);
+		    }
 		System.out.println(a.getA_id());
 		System.out.println(a.getA_email());
 		
@@ -120,7 +129,13 @@ public class AccountDAO {
 
 		return ss.getMapper(AccountMapper.class).getNicknameNum(a);
 	}
-
+	
+	
+	
+	
+	public List<String> getAccountListByPhoneNum(String a_phone) {
+	    return ss.getMapper(AccountMapper.class).getAccountListByPhoneNum(a_phone);
+	}
 	public void setLoginMember(HttpServletRequest req, AccountDTO account) {
 		req.getSession().setAttribute("loginMember", account);
 		req.getSession().setMaxInactiveInterval(60 * 10);
@@ -205,8 +220,8 @@ public class AccountDAO {
 					// 사용자 정보 저장 메서드 호출
 					AccountDTO dbAccount = new AccountDTO();
 					dbAccount.setA_nickname(userNickname);
-					req.getSession().setAttribute("LoginMemberNaver", dbAccount);
-					saveUserNaverInfo(req, userNickname, naverUserId, naverUserId, naverUserId); // 수정된 부분
+					req.getSession().setAttribute("loginMember", dbAccount);
+					saveUserNaverInfo(req, userNickname, naverUserId, naverUserId, naverUserId, naverUserId); // 수정된 부분
 				}
 			}
 		} catch (Exception e) {
@@ -215,8 +230,8 @@ public class AccountDAO {
 	}
 
 	public void saveUserNaverInfo(HttpServletRequest req, String a_nickname, String a_id, String a_email,
-			String a_password) {
-		AccountDTO a = (AccountDTO) req.getSession().getAttribute("LoginMemberNaver");
+			String a_password,String a_phone) {
+		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginMember");
 		System.out.println("loginMember 세션 정보: " + a);
 
 		if (a != null) {
@@ -227,6 +242,8 @@ public class AccountDAO {
 			a.setA_name(a_nickname); // 추가된 부분
 			a.setA_email(a_email);
 			// 암호를 암호화하여 설정합니다.
+			a.setA_phone(a_phone);
+			
 			String encryptedPassword = encryptPassword(a_password);
 			a.setA_password(encryptedPassword);
 			// 해당 ID를 기반으로 사용자 계정이 있는지 확인합니다.
@@ -273,7 +290,7 @@ public class AccountDAO {
 			String encryptedPassword = encryptPassword("asd");
 			a.setA_password(encryptedPassword);
 			// 해당 ID를 기반으로 사용자 계정이 있는지 확인합니다.
-			req.getSession().setAttribute("kakaoInfo", a);
+			req.getSession().setAttribute("loginMember", a);
 			int accountNum = checkId(a, req);
 			String originalPassword = a.getA_password();
 			if (originalPassword.length() > 20) {
@@ -316,6 +333,10 @@ public class AccountDAO {
 	        return true; // Password updated successfully
 	    }
 	    return false; // Password update failed
+	}
+
+	public int PhoneCheck(AccountDTO a_phone, HttpServletRequest req) {
+	    return ss.getMapper(AccountMapper.class).getPhoneCheck(a_phone);
 	}
 	
 	

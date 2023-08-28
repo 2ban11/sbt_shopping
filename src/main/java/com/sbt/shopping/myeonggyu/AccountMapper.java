@@ -1,5 +1,7 @@
 package com.sbt.shopping.myeonggyu;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 public interface AccountMapper {
@@ -30,5 +32,10 @@ public interface AccountMapper {
 
 	int updatePw(AccountDTO a);
 
+	String getIDbyPhoneNum(String a_phone);
+
+	List<String> getAccountListByPhoneNum(String a_phone);
+
+	int getPhoneCheck(AccountDTO a);
 	
 }
