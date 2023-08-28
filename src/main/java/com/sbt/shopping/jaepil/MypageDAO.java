@@ -20,15 +20,7 @@ public class MypageDAO {
 
 	public void getOrder(HttpServletRequest req, AccountDTO aDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
-		AccountDTO account2 = (AccountDTO) req.getSession().getAttribute("LoginMemberNaver");
-		AccountDTO account3 = (AccountDTO) req.getSession().getAttribute("kakaoInfo");
-		if (account != null) {
-			aDTO.setA_id(account.getA_id());
-		} else if (account2 != null) {
-			aDTO.setA_id(account2.getA_id());
-		} else {
-			aDTO.setA_id(account3.getA_id());
-		}
+		aDTO.setA_id(account.getA_id());
 		req.setAttribute("orders", ss.getMapper(OrderMapper.class).getOrder(aDTO));
 	}
 
@@ -37,18 +29,9 @@ public class MypageDAO {
 		vals.put("startdate", req.getParameter("startdate"));
 		vals.put("enddate", req.getParameter("enddate"));
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
-		AccountDTO account2 = (AccountDTO) req.getSession().getAttribute("LoginMemberNaver");
-		AccountDTO account3 = (AccountDTO) req.getSession().getAttribute("kakaoInfo");
 
-		if (account != null) {
-			aDTO.setA_id(account.getA_id());
-			vals.put("a_id", account.getA_id());
-		} else if (account2 != null) {
-			aDTO.setA_id(account2.getA_id());
-			vals.put("a_id", account2.getA_id());
-		} else {
-			vals.put("a_id", account3.getA_id());
-		}
+		aDTO.setA_id(account.getA_id());
+		vals.put("a_id", account.getA_id());
 
 		System.out.println(vals.put("startdate", req.getParameter("startdate")));
 		System.out.println(vals.put("enddate", req.getParameter("enddate")));
@@ -57,15 +40,7 @@ public class MypageDAO {
 
 	public void getCart(HttpServletRequest req, CartDTO cDTO, AccountDTO aDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
-		AccountDTO account2 = (AccountDTO) req.getSession().getAttribute("LoginMemberNaver");
-		AccountDTO account3 = (AccountDTO) req.getSession().getAttribute("kakaoInfo");
-		if (account != null) {
-			aDTO.setA_id(account.getA_id());
-		} else if (account2 != null) {
-			aDTO.setA_id(account2.getA_id());
-		} else {
-			aDTO.setA_id(account3.getA_id());
-		}
+		aDTO.setA_id(account.getA_id());
 		req.setAttribute("carts", ss.getMapper(CartMapper.class).getCart(aDTO));
 	}
 
@@ -81,15 +56,7 @@ public class MypageDAO {
 
 	public void updateCart(HttpServletRequest req, CartDTO cDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
-		AccountDTO account2 = (AccountDTO) req.getSession().getAttribute("LoginMemberNaver");
-		AccountDTO account3 = (AccountDTO) req.getSession().getAttribute("kakaoInfo");
-		if (account != null) {
-			cDTO.setC_id(account.getA_id());
-		} else if (account2 != null) {
-			cDTO.setC_id(account2.getA_id());
-		} else {
-			cDTO.setC_id(account3.getA_id());
-		}
+		cDTO.setC_id(account.getA_id());
 
 		if (ss.getMapper(CartMapper.class).updateCart(cDTO) == 1) {
 			System.out.println("수정성공!");
@@ -99,43 +66,19 @@ public class MypageDAO {
 
 	public void getQna(HttpServletRequest req, AccountDTO aDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
-		AccountDTO account2 = (AccountDTO) req.getSession().getAttribute("LoginMemberNaver");
-		AccountDTO account3 = (AccountDTO) req.getSession().getAttribute("kakaoInfo");
-		if (account != null) {
-			aDTO.setA_id(account.getA_id());
-		} else if (account2 != null) {
-			aDTO.setA_id(account2.getA_id());
-		} else {
-			aDTO.setA_id(account3.getA_id());
-		}
+		aDTO.setA_id(account.getA_id());
 		req.setAttribute("qnas", ss.getMapper(QnaMapper.class).getQna(aDTO));
 	}
 
 	public void getAccount(HttpServletRequest req, AccountDTO aDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
-		AccountDTO account2 = (AccountDTO) req.getSession().getAttribute("LoginMemberNaver");
-		AccountDTO account3 = (AccountDTO) req.getSession().getAttribute("kakaoInfo");
-		if (account != null) {
-			aDTO.setA_id(account.getA_id());
-		} else if (account2 != null) {
-			aDTO.setA_id(account2.getA_id());
-		} else {
-			aDTO.setA_id(account3.getA_id());
-		}
+		aDTO.setA_id(account.getA_id());
 		req.setAttribute("account", ss.getMapper(AccountMapper.class).getAccountByID(aDTO));
 	}
 
 	public void editAccount(HttpServletRequest req, AccountDTO aDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
-		AccountDTO account2 = (AccountDTO) req.getSession().getAttribute("LoginMemberNaver");
-		AccountDTO account3 = (AccountDTO) req.getSession().getAttribute("kakaoInfo");
-		if (account != null) {
-			aDTO.setA_id(account.getA_id());
-		} else if (account2 != null) {
-			aDTO.setA_id(account2.getA_id());
-		} else {
-			aDTO.setA_id(account3.getA_id());
-		}
+		aDTO.setA_id(account.getA_id());
 		if (ss.getMapper(AccountMapper.class).updatePw(aDTO) == 1) {
 			System.out.println("수정성공!");
 		}
@@ -151,13 +94,11 @@ public class MypageDAO {
 
 	public void refund(HttpServletRequest req, OrderDTO oDTO) {
 		if (ss.getMapper(OrderMapper.class).refund(oDTO) == 1) {
-
 		}
 	}
 
 	public void refundCancel(HttpServletRequest req, OrderDTO oDTO) {
 		if (ss.getMapper(OrderMapper.class).refundCancel(oDTO) == 1) {
-
 		}
 
 	}
