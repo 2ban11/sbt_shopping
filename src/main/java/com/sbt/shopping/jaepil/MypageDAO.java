@@ -21,13 +21,15 @@ public class MypageDAO {
 	public void getOrder(HttpServletRequest req, AccountDTO aDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
 		AccountDTO account2 = (AccountDTO) req.getSession().getAttribute("LoginMemberNaver");
+		AccountDTO account3 = (AccountDTO) req.getSession().getAttribute("kakaoInfo");
 		if (account != null) {
 			aDTO.setA_id(account.getA_id());
-			req.setAttribute("orders", ss.getMapper(OrderMapper.class).getOrder(aDTO));
 		} else if (account2 != null) {
 			aDTO.setA_id(account2.getA_id());
-			req.setAttribute("orders", ss.getMapper(OrderMapper.class).getOrder(aDTO));
-		}
+		} else if (account3 != null) {
+		aDTO.setA_id(account3.getA_id());
+	}
+		req.setAttribute("orders", ss.getMapper(OrderMapper.class).getOrder(aDTO));
 	}
 
 	public void getOrderByDate(HttpServletRequest req, AccountDTO aDTO) {

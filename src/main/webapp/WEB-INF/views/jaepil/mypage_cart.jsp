@@ -49,6 +49,7 @@
 					<div class="mypage-info-data">
 						<div class="mypage-info-data-cart-select">
 							<input type="checkbox" name="chk" value="${c.c_no }">
+							<input type="hidden" name="c_product" value="${c.c_product }">
 						</div>
 						<div class="mypage-info-data-cart-category">${c.p_big_category }</div>
 						<div class="mypage-info-data-cart-img">
@@ -76,6 +77,7 @@
 							</form>
 						</div>
 						<div class="mypage-info-data-cart-sale">${c.p_sale * c.c_cnt}원</div>
+						<input type="hidden" name="p_sale" value="${c.p_sale * c.c_cnt}">
 					</div>
 					<c:set var="total" value="${total + c.p_sale }" />
 				</c:forEach>
@@ -91,16 +93,12 @@
 	</div>
 	<form method="post" action="kakaoPay" id="kakao-form">
 		<div class="mypage-cart-order">
-			<button id="kakao-btn">주문하기</button>
+			<button id="kakao-btn" type="button">주문하기</button>
 		</div>
-		<c:forEach items="${carts}" var="c">
-			<input type="hidden" name="c_no" value="${c.c_no }">
-			<input type="hidden" name="c_cnt" value="${c.c_cnt }">
-			<input type="hidden" name="c_product" value="${c.c_product }">
-			<input type="hidden" name="p_sale" value="${c.p_sale }">
-			<input type="hidden" name="p_name" value="${c.p_name }">
-		</c:forEach>
-			<input type="hidden" name="total" value="">
+		<div id="kakao-div">
+		
+		</div>
+			<input type="hidden" name="total" id="kakaoTotal" value="">
 	</form>
 </body>
 <script type="text/javascript">
@@ -119,6 +117,9 @@
 			targetPrice = parseInt($(this).closest('.mypage-info-data')
 			.find('.mypage-info-data-cart-sale').text()
 			.replace('원'));
+			
+		
+			
 			if (checked) {
 				totalAmount += targetPrice
 			} else {
@@ -150,25 +151,56 @@
 	}
 
 	function checkOrder() {
-		$('#kakao-btn').click(function() {
-			let allFalse;
+		$('#kakao-btn').click(function(e) {
+			console.log("kakao clicked!")
+			let chkCnt = 0;
+			
+			
+           
+            
+			let cNoInput = $("<input hidden>");
+			let cProductInput = $("<input hidden>");
+			let pSaleInput = $("<input hidden>");
+			let cCntInput = $("<input hidden>");
+			$(cNoInput).attr('name', 'c_no');
+			$(cProductInput).attr('name', 'c_product');
+			$(pSaleInput).attr('name', 'p_sale');
+			$(cCntInput).attr('name', 'c_cnt');
+			
+			
 			$("input[name='chk']").each(function(i, e) {
-
-				if (!($(this).is(':checked'))) {
-					allFalse = true;
+				 let c_product = $(this).closest('.mypage-info-data').find('input[name="c_product"]').val();
+		         let p_sale = $(this).closest('.mypage-info-data').find('input[name="p_sale"]').val();
+		         let c_cnt = $(this).closest('.mypage-info-data').find('input[name="c_cnt"]').val();
+				if (($(this).is(':checked'))) {
+					let cNoCloneEl = $(cNoInput).clone();
+					let cProductCloneEl = $(cProductInput).clone();
+					let pSaleCloneEl = $(pSaleInput).clone();
+					let cCntCloneEl = $(cCntInput).clone();
+					$("#kakao-div").append(cNoCloneEl);
+					$("#kakao-div").append(cProductCloneEl);
+					$("#kakao-div").append(pSaleCloneEl);
+					$("#kakao-div").append(cCntCloneEl);
+					$(cNoCloneEl).attr('value', $(this).val());
+					$(cProductCloneEl).attr('value', c_product);
+					$(pSaleCloneEl).attr('value', p_sale);
+					$(cCntCloneEl).attr('value', c_cnt);
+					
+					
+					
+					
 				} else {
-					allFalse = false;
-					return false;
+					chkCnt += 1;
 				}
+				
 			})
-			if (allFalse) {
+			if (chkCnt == $("input[name='chk']").length) {
 				alert('상품을 선택하세요');
 				return false;
 			} else {
 				let setTotalValue = parseInt($("#total-price").text().replace('원'));
 				$("input[name='total']").val(setTotalValue);
-				
-				
+				$("#kakao-form").submit();
 			}
 
 		})

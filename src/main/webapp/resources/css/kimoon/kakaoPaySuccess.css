@@ -28,6 +28,10 @@
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.kp-table__category {
+	width: 10%;
+	word-break: keep-all;
+}
 
 .kp-gohome {
 	display: flex;

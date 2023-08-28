@@ -10,7 +10,7 @@ public class KakaoPayApprovalVO {
     private AmountVO amount;
     private CardVO card_info;
     private String item_name, item_code, payload;
-    private Integer quantity, tax_free_amount, vat_amount;
+    private Integer quantity;
     private Date created_at, approved_at;
     
     public KakaoPayApprovalVO() {
@@ -19,7 +19,7 @@ public class KakaoPayApprovalVO {
     
 	public KakaoPayApprovalVO(String aid, String tid, String cid, String sid, String partner_order_id,
 			String partner_user_id, String payment_method_type, AmountVO amount, CardVO card_info, String item_name,
-			String item_code, String payload, Integer quantity, Integer tax_free_amount, Integer vat_amount,
+			String item_code, String payload, Integer quantity,
 			Date created_at, Date approved_at) {
 		super();
 		this.aid = aid;
@@ -35,8 +35,6 @@ public class KakaoPayApprovalVO {
 		this.item_code = item_code;
 		this.payload = payload;
 		this.quantity = quantity;
-		this.tax_free_amount = tax_free_amount;
-		this.vat_amount = vat_amount;
 		this.created_at = created_at;
 		this.approved_at = approved_at;
 	}
@@ -118,18 +116,6 @@ public class KakaoPayApprovalVO {
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
 	}
-	public Integer getTax_free_amount() {
-		return tax_free_amount;
-	}
-	public void setTax_free_amount(Integer tax_free_amount) {
-		this.tax_free_amount = tax_free_amount;
-	}
-	public Integer getVat_amount() {
-		return vat_amount;
-	}
-	public void setVat_amount(Integer vat_amount) {
-		this.vat_amount = vat_amount;
-	}
 	public Date getCreated_at() {
 		return created_at;
 	}
@@ -142,15 +128,7 @@ public class KakaoPayApprovalVO {
 	public void setApproved_at(Date approved_at) {
 		this.approved_at = approved_at;
 	}
-	@Override
-	public String toString() {
-		return "KakaoPayApprovalVO [aid=" + aid + ", tid=" + tid + ", cid=" + cid + ", sid=" + sid
-				+ ", partner_order_id=" + partner_order_id + ", partner_user_id=" + partner_user_id
-				+ ", payment_method_type=" + payment_method_type + ", amount=" + amount + ", card_info=" + card_info
-				+ ", item_name=" + item_name + ", item_code=" + item_code + ", payload=" + payload + ", quantity="
-				+ quantity + ", tax_free_amount=" + tax_free_amount + ", vat_amount=" + vat_amount + ", created_at="
-				+ created_at + ", approved_at=" + approved_at + "]";
-	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -169,9 +147,7 @@ public class KakaoPayApprovalVO {
 		result = prime * result + ((payment_method_type == null) ? 0 : payment_method_type.hashCode());
 		result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
 		result = prime * result + ((sid == null) ? 0 : sid.hashCode());
-		result = prime * result + ((tax_free_amount == null) ? 0 : tax_free_amount.hashCode());
 		result = prime * result + ((tid == null) ? 0 : tid.hashCode());
-		result = prime * result + ((vat_amount == null) ? 0 : vat_amount.hashCode());
 		return result;
 	}
 	@Override
@@ -253,21 +229,13 @@ public class KakaoPayApprovalVO {
 				return false;
 		} else if (!sid.equals(other.sid))
 			return false;
-		if (tax_free_amount == null) {
-			if (other.tax_free_amount != null)
-				return false;
-		} else if (!tax_free_amount.equals(other.tax_free_amount))
-			return false;
+		
 		if (tid == null) {
 			if (other.tid != null)
 				return false;
 		} else if (!tid.equals(other.tid))
 			return false;
-		if (vat_amount == null) {
-			if (other.vat_amount != null)
-				return false;
-		} else if (!vat_amount.equals(other.vat_amount))
-			return false;
+		
 		return true;
 	}
     

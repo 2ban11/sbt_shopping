@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sbt.shopping.jaepil.CartDTO;
 import com.sbt.shopping.jaepil.OrderDTO;
+import com.sbt.shopping.myeonggyu.AccountDTO;
 
 @Controller
 public class KakaoPayController {
@@ -30,16 +31,12 @@ public class KakaoPayController {
     }
     
     @RequestMapping(value = "/kakaoPay", method = RequestMethod.POST)
-    public String kakaoPay(HttpServletRequest request, CartDTO cart) {
-    	System.out.println("kakaoPay post............................................");
-        return "redirect:" + kpDAO.kakaoPayReady(request, cart);
+    public String kakaoPay(HttpServletRequest request, CartDTO cart, AccountDTO aDTO) {
+        return "redirect:" + kpDAO.kakaoPayReady(request, cart, aDTO);
     }
     
     @RequestMapping(value = "/kakaoPaySuccess", method = RequestMethod.GET)
     public String kakaoPaySuccess(@RequestParam("pg_token") String pg_token, HttpServletRequest request) {
-    	System.out.println("kakaoPaySuccess get............................................");
-    	System.out.println("kakaoPaySuccess pg_token : " + pg_token);
-    	System.out.println("kakaoPayInfo : " + kpDAO.kakaoPayInfo(request, pg_token));
     	request.setAttribute("info", kpDAO.kakaoPayInfo(request, pg_token));
     	request.setAttribute("contentPage", "kimoon/kakaoPaySuccess.jsp");
     	return "index";

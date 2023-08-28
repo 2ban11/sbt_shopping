@@ -162,7 +162,7 @@
 					<button id="main-continue-shopping">계속 쇼핑하기</button>
 				</div>
 				<div>
-					<button id="main-go-to-cart">장바구니로 이동하기</button>
+				<a href="mypage.cart"><button id="main-go-to-cart">장바구니로 이동하기</button></a>
 				</div>
 			</div>
 		</div>

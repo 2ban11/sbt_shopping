@@ -8,11 +8,16 @@ public interface CartMapper {
 
 	List<CartDTO>getCart(AccountDTO aDTO);
 
-	int deleteCart(String no);
+	//int deleteCart(String no);
 
 	int updateCart(CartDTO cDTO);
 
-	List<CartDTO> getOrderCart(CartDTO cDTO);
+	List<CartDTO> getOrderCart(String c);
+
+	int deleteCart(int c_no);
+
+	int deleteCart(String s);
+
 	
 
 }

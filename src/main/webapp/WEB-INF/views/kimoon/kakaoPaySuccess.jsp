@@ -17,25 +17,21 @@
 			<td class="kp-table-top" colspan="2" style="padding: 10px 0 10px;">주문 정보</td>
 		</tr>
 		<tr>
-			<td>결제일시</td>
+			<td class="kp-table__category">결제일시</td>
 			<td>
 			<fmt:formatDate value="${info.approved_at}" pattern="yyyy-MM-dd HH:mm"/>
 			</td>
 		</tr>
 		<tr>
-			<td>주문번호</td>
-			<td>${info.approved_at}</td>
-		</tr>
-		<tr>
-			<td>구매자</td>
+			<td class="kp-table__category">구매자</td>
 			<td>${info.partner_user_id}</td>
 		</tr>
 		<tr>
-			<td>상품명</td>
+			<td class="kp-table__category">상품명</td>
 			<td>${info.item_name}</td>
 		</tr>
 		<tr>
-			<td>결제금액</td>
+			<td class="kp-table__category">결제금액</td>
 			<td>${info.amount.total}</td>
 		</tr>
 	</table>
@@ -43,6 +39,5 @@
 	<div class="kp-gohome">
 		<button onclick="location.href='/shopping'">홈으로</button>
 	</div>
-	<h2>${info}</h2>
 </body>
 </html>
