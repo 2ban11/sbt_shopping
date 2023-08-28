@@ -53,35 +53,37 @@ function attachDateItemListeners() {
 
             // 선택한 날짜로 정보 요청
             const formattedDate = `${selectedYear}-${(selectedMonth + 1).toString().padStart(2, '0')}-${selectedDate.padStart(2, '0')}`;
-            loadInfo(formattedDate);
+loadInfo(formattedDate);
 
             // 선택한 날짜를 형식에 맞게 표시
             $("#selected-date").text(formattedDate);
-        });
+    	    $("#inputDate").val(formattedDate);
+ });
     });
 }
-function formatCurrency(amount) {
-    // amount가 NaN인 경우 0으로 처리
-    if (isNaN(amount)) {
-        return "₩0"; // 또는 다른 기본값 설정
-    }
-    
-    // 화폐 단위 추가 및 숫자 포맷팅 (예: 1000 -> ₩1,000)
-    return "₩" + new Intl.NumberFormat("en-US", {
+function formatCurrency(amount, currencyCode = "KRW") {
+    return new Intl.NumberFormat("en-US", {
         style: "currency",
-        currency: "KRW"
+        currency: currencyCode
     }).format(amount);
 }
+
 // 받은 데이터를 화면에 표시하는 함수
 function displayInfo(data) {
 	console.log(data[0].totalMarginByPercent);
     const marginPercent = `${Number(data[0].totalMarginByPercent).toFixed(2)}%`;
 	
     console.log(data.totalSales);
-	$("#totalCost").html(formatCurrency(data[0].totalCost));
-    $("#totalSales").html(formatCurrency(data[0].totalSales));
-    $("#totalMargin").html(formatCurrency(data[0].totalMargin));
-    $("#totalMarginByPercent").html(marginPercent);
+	$("#totalCost").text(formatCurrency(data[0].totalCost));
+    $("#totalSales").text(formatCurrency(data[0].totalSales));
+    $("#totalMargin").text(formatCurrency(data[0].totalMargin));
+    $("#totalMarginByPercent").text(marginPercent);
+	
+	
+	$("#inputTotalSales").val(data[0].totalSales);
+	$("#inputTotalCost").val(data[0].totalCost);
+	$("#inputTotalMargin").val(data[0].totalMargin);
+	
 }
 
 

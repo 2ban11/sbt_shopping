@@ -19,4 +19,5 @@ public interface Jh_productMapper {
 	List<OrderDetailDTO> getChartData();
 	List<OrderDetailDTO> getMargin(OrderDetailDTO odDTO);
 	int updateProduct(ProductDTO pDTO);
+	int insertMargin(MarginDTO mDTO);
 }

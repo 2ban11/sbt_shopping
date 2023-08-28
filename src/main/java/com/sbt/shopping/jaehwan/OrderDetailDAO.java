@@ -38,10 +38,9 @@ public class OrderDetailDAO {
 		
 	}
 
-	public void getMargin(HttpServletRequest req, OrderDetailDTO oDTO) {
 
-
-	
+	public void insertMargin(HttpServletRequest req, MarginDTO mDTO) {
+		ss.getMapper(Jh_productMapper.class).insertMargin(mDTO);
 	}
 		
 		

@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link rel="stylesheet" href="resources/css/jh/adminDetail.css" />
 </head>
 <body>
 <div class="marginContainer">
@@ -50,18 +51,24 @@
     <div id="calendar_weekdays"></div>
     <div id="calendar_content"></div>
   </div>
-  
   <div id="info-container" style="color:white;">
     <!-- 정보를 표시할 영역 -->
     <h2 id="info-header">일일 매상/매출</h2>
-    <p><strong>날짜 &nbsp;</strong><br><span id="selected-date"></span></p>
+    <p><strong>날짜 &nbsp;</strong><br><span  name="selected-date" id="selected-date"></span></p>
+    <p><strong>총 판매금 &nbsp;</strong><br><span for="totalSales" id="totalSales"></span></p>
     <p><strong>총 원가  &nbsp;</strong><br><span id="totalCost"></span></p>
-    <p><strong>총 판매금 &nbsp;</strong><br><span id="totalSales"></span></p>
     <p><strong>총 수익 &nbsp;</strong><br><span id="totalMargin"></span></p>
-    <p><strong>총 수익률 &nbsp;</strong><br><span id="totalMarginByPercent"></span></p>
+    <p><strong>마진률 &nbsp;</strong><br><span id="totalMarginByPercent"></span></p>
+  <form action="insertMargin" method="post">
+	<input hidden name="date" id="inputDate">
+	<input hidden name="ma_totalSales" id="inputTotalSales">
+	<input hidden name="ma_totalCost" id="inputTotalCost">
+	<input hidden name="ma_totalMargin" id="inputTotalMargin">
+    <button class="reg-info-btn">등록</button>
+</form>
 </div>
 </div>
-
+ 
   
   <div id="lineChart">
 <canvas id="marginChart"> </canvas>

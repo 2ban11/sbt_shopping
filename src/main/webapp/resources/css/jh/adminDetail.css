@@ -23,13 +23,9 @@
 	padding: 30px;
 	background: rgba(125,125,125,0.25);
 	border-radius: 30px;
-	font-size: 20px;
-	font-weight: 400;
+	font-size: 18px;
 }
-p{
-	border-bottom: 1px solid grey;
-}
-#info-header{
+#info-container p{
 	border-bottom: 1px solid grey;
 }
 #lineChart{
@@ -39,4 +35,13 @@ p{
 	padding: 30px;
 	width: 950px;
 	height : 500px;
+}
+.reg-info-btn{
+	margin-left: 23%;
+	width: 50%;
+	height: 10%;
+	border-radius: 10px;
+	color: white;
+	background: #0069d2;
+	border: none;
 }
