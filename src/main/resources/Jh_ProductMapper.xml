@@ -116,4 +116,8 @@ set
 where
     p_no = #{p_no};                    
 </update>
+
+<select id="getRefundOrder" resultType="com.sbt.shopping.jaepil.OrderDTO">
+select * from order_detail where  od_state like '%환불%'
+</select>
 </mapper>
