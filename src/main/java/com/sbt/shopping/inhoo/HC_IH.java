@@ -107,6 +107,16 @@ public class HC_IH {
 		dDAO.regQnaDo(qDTO, model, pDTO, req);
 		return "redirect:/detail.product?p_no=" + pDTO.getP_no();
 	}
+	
+	
+	
+	
+	@RequestMapping(value = "/qna.delete.do", method = RequestMethod.POST)
+	public String qnaDelete(HttpServletRequest req, QnaDTO qDTO, Model model, ProductDTO pDTO) {
+		req.setAttribute("contentPage", "inhoo/detail.jsp");
+		dDAO.qnaDelete(qDTO, model, pDTO, req);
+		return "redirect:/detail.product?p_no=" + pDTO.getP_no();
+	}
 
 	
 	
