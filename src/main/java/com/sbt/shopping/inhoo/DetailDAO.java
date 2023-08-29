@@ -37,7 +37,7 @@ public class DetailDAO {
 	        fileRealName = file.getOriginalFilename();
 	        long size = file.getSize();
 	        String savePath = servlet.getRealPath("resources/img");
-
+	        System.out.println(savePath);
 	        fileExtension = fileRealName.substring(fileRealName.lastIndexOf("."), fileRealName.length());
 
 	        UUID uuid = UUID.randomUUID();
@@ -97,7 +97,7 @@ public class DetailDAO {
 //	    System.out.println(reviewCount);
 //	    System.out.println("====>>");
 		// 1. start= 1 end= 10
-		int count = 10;
+		int count = 5;
 		int start = (pageNo - 1) * count + 1;
 		int end = start + (count - 1);
 
@@ -117,7 +117,7 @@ public class DetailDAO {
 	// 도전중
 	public void getQnAPage(int pageNo, Model model, ProductDTO pDTO) {
 		int qnaCount = ss.getMapper(DetailMapper.class).getQnACount(pDTO);
-		int count = 10; // 한 페이지에 표시할 게시글 수
+		int count = 5; // 한 페이지에 표시할 게시글 수
 
 		// 현재 페이지에 해당하는 게시글의 범위 계산
 		int start = (pageNo - 1) * count + 1;

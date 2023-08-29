@@ -16,24 +16,10 @@ public class DetailDTO {
 	private String r_img;
 	private MultipartFile file;
 	private Date r_date;
+	private String a_nickname;
 	
 	public DetailDTO() {
 		// TODO Auto-generated constructor stub
-	}
-
-	public DetailDTO(int r_no, int p_no, int r_product, String r_id, String r_title, String r_content, int r_rate,
-			String r_img, MultipartFile file, Date r_date) {
-		super();
-		this.r_no = r_no;
-		this.p_no = p_no;
-		this.r_product = r_product;
-		this.r_id = r_id;
-		this.r_title = r_title;
-		this.r_content = r_content;
-		this.r_rate = r_rate;
-		this.r_img = r_img;
-		this.file = file;
-		this.r_date = r_date;
 	}
 
 	public int getR_no() {
@@ -81,7 +67,7 @@ public class DetailDTO {
 	}
 
 	public void setR_content(String r_content) {
-		this.r_content = r_content;
+		this.r_content = r_content.replaceAll("\r\n","<br>");
 	}
 
 	public int getR_rate() {
@@ -116,12 +102,37 @@ public class DetailDTO {
 		this.r_date = r_date;
 	}
 
+	public String getA_nickname() {
+		return a_nickname;
+	}
+
+	public void setA_nickname(String a_nickname) {
+		this.a_nickname = a_nickname;
+	}
+
+	public DetailDTO(int r_no, int p_no, int r_product, String r_id, String r_title, String r_content, int r_rate,
+			String r_img, MultipartFile file, Date r_date, String a_nickname) {
+		super();
+		this.r_no = r_no;
+		this.p_no = p_no;
+		this.r_product = r_product;
+		this.r_id = r_id;
+		this.r_title = r_title;
+		this.r_content = r_content;
+		this.r_rate = r_rate;
+		this.r_img = r_img;
+		this.file = file;
+		this.r_date = r_date;
+		this.a_nickname = a_nickname;
+	}
+
 	@Override
 	public String toString() {
 		return "DetailDTO [r_no=" + r_no + ", p_no=" + p_no + ", r_product=" + r_product + ", r_id=" + r_id
 				+ ", r_title=" + r_title + ", r_content=" + r_content + ", r_rate=" + r_rate + ", r_img=" + r_img
-				+ ", file=" + file + ", r_date=" + r_date + "]";
+				+ ", file=" + file + ", r_date=" + r_date + ", a_nickname=" + a_nickname + "]";
 	}
+
 	
 	
 	

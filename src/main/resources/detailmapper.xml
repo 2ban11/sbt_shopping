@@ -8,9 +8,7 @@
 		 insert into review values(review_seq.nextval, #{p_no}, #{r_id}, #{r_title}, #{r_content}, #{r_rate}, #{r_img, jdbcType=VARCHAR}, sysdate)
 </insert>
     
-<!-- <insert id="regReview">
-		insert into review values(review_seq.nextval, 1, #{r_id}, #{r_title}, #{r_content}, #{r_rate}, #{r_img}, sysdate)
-</insert> -->
+
 
 
 <insert id="regQna">
@@ -36,10 +34,10 @@
 <select id="getReviews" resultType="com.sbt.shopping.inhoo.DetailDTO">
 	  select *
         from (
-        	select rownum as rn, r_no, r_product, r_id,r_title,r_content,r_rate,r_img,r_date
+        	select rownum as rn, r_no, r_product, r_id,r_title,r_content,r_rate,r_img,r_date, a_nickname
         	from (
-        		select * from review
-        		where r_product = #{no}
+        		select * from review, account
+        		where r_product = #{no} and a_id = r_id
         		order by r_date desc
         	)
         )
@@ -60,11 +58,11 @@
 <select id="getQnAs" resultType="com.sbt.shopping.inhoo.QnaDTO">
     SELECT *
     FROM (
-        SELECT ROWNUM AS rn, q_no, q_product, q_id, q_title, q_content, q_date
+        SELECT ROWNUM AS rn, q_no, q_product, q_id, q_title, q_content, q_date, a_nickname
         FROM (
             SELECT *
-            FROM qna
-            WHERE q_product = #{no}
+            FROM qna, account
+            WHERE q_product = #{no} and a_id = q_id
             ORDER BY q_date DESC
         )
     )
