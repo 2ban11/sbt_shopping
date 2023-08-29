@@ -23,30 +23,53 @@
 			<div class="mypage-info-data-order-date">주문날짜</div>
 			<div class="mypage-info-data-order-state">주문상태</div>
 		</div>
-		<c:if test="${not empty orders}">
-			<c:forEach var="o" items="${orders }">
-				<div class="mypage-info-data">
-					<div class="mypage-info-data-order-no">${o.od_no }</div>
-					<div class="mypage-info-data-order-name">${o.p_name }</div>
-					<div class="mypage-info-data-order-pay">${o.od_cnt }</div>
-					<div class="mypage-info-data-order-sale">${o.od_price }</div>
-					<div class="mypage-info-data-order-date">
-						<fmt:formatDate value="${o.od_date }" dateStyle="long" />
-					</div>
-					<div class="mypage-info-data-order-state">${o.od_state }</div>
-					<%-- <div class="mypage-info-data-order-other">
-						<c:choose>
-							<c:when test="${o.od_state eq '주문완료' }">
-								<button onclick="refund(${o.od_no})">환불</button>
-							</c:when>
-							<c:when test="${o.od_state eq '환불요청' }">
-								<button onclick="refundCancel(${o.od_no})">환불취소</button>
-							</c:when>
-						</c:choose>
-					</div> --%>
-				</div>
-			</c:forEach>
-		</c:if>
-	</div>
+		</div>
+		<div id="data-container"></div> 
+		
+	<div id="pagination"></div>
+	
+	<script>
+	let jsonData = [];
+	
+	<c:forEach var="o" items="${orders}">
+		var item = {
+			od_no: '${o.od_no}',
+			p_name: '${o.p_name}',
+			od_cnt: '${o.od_cnt}',
+			od_price: '${o.od_price}',
+			od_date: '<fmt:formatDate value="${o.od_date}" dateStyle="long" />',
+			od_state: '${o.od_state}'
+		};
+		jsonData.push(item);
+	</c:forEach>
+
+	function paging() {
+		console.log('paging called ---------');
+		let container = $('#pagination');
+		container.pagination({
+			dataSource: jsonData,
+			pageSize: 10,
+			callback: function (data, pagination) {
+				var dataHtml = '<ul style="color:white;">';
+				$.each(data, function (index, item) {
+					dataHtml += '<div class="mypage-info-data">';
+					dataHtml += '<div class="mypage-info-data-order-no">' + item.od_no + '</div>';
+					dataHtml += '<div class="mypage-info-data-order-name">' + item.p_name + '</div>';
+					dataHtml += '<div class="mypage-info-data-order-pay">' + item.od_cnt + '</div>';
+					dataHtml += '<div class="mypage-info-data-order-sale">' + item.od_price + '</div>';
+					dataHtml += '<div class="mypage-info-data-order-date">' + item.od_date + '</div>';
+					dataHtml += '<div class="mypage-info-data-order-state">' + item.od_state + '</div>';
+					dataHtml += '</div>';
+				});
+				dataHtml += '</ul>';
+				$("#data-container").html(dataHtml);
+			}
+		});
+	}
+
+	$(function () {
+		paging(); // 페이지 로드 시 paging 함수 호출
+	});
+	</script>
 </body>
 </html>

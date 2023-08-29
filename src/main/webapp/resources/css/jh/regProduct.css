@@ -110,9 +110,10 @@
 	text-align: center;
 	width: 100%;
 	margin-top : 10px;
-	margin-bottom: -42px;
+	margin-bottom: -16px;
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	font-size: 14px;
 }
 .adminPage__tab div:hover{
 		border-top:1px solid white;
@@ -143,6 +144,6 @@
 	justify-content: end;
 }
 .adminPage__select select{
-	width: 9%;
-	font-size: 14px;
+	width: 12%;
+	font-size: 11px;
 }

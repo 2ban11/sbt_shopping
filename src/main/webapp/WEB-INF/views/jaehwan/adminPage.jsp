@@ -10,11 +10,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.min.js"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/paginationjs/2.1.4/pagination.css" />
 <link rel="stylesheet" href="resources/css/jh/listPage.css" />
-<link rel="stylesheet" href="resources/css/jh/chkColors.css" />
 <link rel="stylesheet" href="resources/css/jh/regProduct.css" />
+<link rel="stylesheet" href="resources/css/jh/chkColors.css" />
 <link rel="stylesheet" href="resources/css/jh/calendar.css" />
+<link rel="stylesheet" href="resources/css/jh/pagination.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.3/chart.min.js" integrity="sha512-fMPPLjF/Xr7Ga0679WgtqoSyfUoQgdt8IIxJymStR5zV3Fyb6B3u/8DcaZ6R6sXexk5Z64bCgo2TYyn760EdcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
 <script type="text/javascript" src="resources/js/jh/isNotElec.js"></script>
@@ -47,12 +47,12 @@
 	</div>
     </div>
         </div>
+      <jsp:include page="${controlPage }"></jsp:include>
     <div class="pagination_window">
       <section>
         <div id="data-container"></div>
         <div id="pagination"></div>
       </section>
-      <jsp:include page="${controlPage }"></jsp:include>
     </div>
   </div>
   
@@ -81,11 +81,12 @@
 						<a>상품타입</a><select class="p_middle_category" id="categorySelect" name="p_middle_category">
          						 <option  value="">상품 종류</option>
         					     <option  value="일렉기타">일렉기타</option>
-        					     <option  value="어쿠스틱">어쿠스틱</option>
-      						     <option  value="클래식">클래식</option>
-      						     <option  value="베이스">베이스</option>
-      						     <option  value="우쿠렐레">우쿠렐레</option>
-      						     <option  value="멀티">멀티</option>
+        					     <option  value="어쿠스틱기타">어쿠스틱</option>
+      						     <option  value="클래식기타">클래식</option>
+      						     <option  value="베이스기타">베이스</option>
+      						     <option  value="우쿠렐레기타">우쿠렐레</option>
+      						     <option  value="기타앰프">기타앰프</option>
+      						     <option  value="멀티이펙터">멀티이펙터</option>
       						     <option  value="기타줄">기타줄</option>
       						     <option  value="피크">피크</option>
       						     <option  value="케이블">케이블</option>
@@ -298,10 +299,12 @@
     	        dataSource: jsonData,
     	        pageSize: 10,
     	        callback: function (data, pagination) {
-    	            var dataHtml = '<ul>';
+    	            var dataHtml = '<ul style="padding-left:0;">';
     	            $.each(data, function (index, item) {
     	                dataHtml += '<div class="listPage_item1">';
-    	                dataHtml += '<div class="ul-div product-img"><img src="resources/img/Guitar/' + item.p_img1 + '" class="productImg"></div>';
+    	                dataHtml += '<div class="ul-div product-img">';
+    	                dataHtml += '<img src="' + getProductImage(item.p_big_category, item.p_img1) + '" class="productImg">';
+    	                dataHtml += '</div>';
     	                if (item.p_maker !== '') {
     	                    dataHtml += '<div class="ul-div product-logo"><img src="resources/img/MakerLogo/' + item.p_maker + '_Logo_White.png" class="LogoImg"></div>';
     	                }
@@ -327,7 +330,7 @@
 
     	              if (item.p_price !== item.p_sale) {
     	                  dataHtml += '<div class="productSale"';
-    	                  dataHtml += ' style="font-size: 20px;">';
+    	                  dataHtml += ' style="font-size: 16px;">';
     	                  dataHtml += new Intl.NumberFormat('ko-KR', {
     	                      style: 'currency',
     	                      currency: 'KRW'
@@ -335,7 +338,6 @@
     	                  dataHtml += '</div>';
     	              }
     	              dataHtml += '</div>'; // aaa div 끝
-    	              
     	              dataHtml += '<div>'; 			              
     	              dataHtml += '<div class="productModify">';
     	              dataHtml += '<button class="update-popup--btn" title="수정하기" style="font-size: revert;line-height: normal;">수정</button>'
@@ -363,6 +365,28 @@
     	        }
     	    });
 	}
+ // getProductImage 함수 정의
+    function getProductImage(category, imgName) {
+        var imgPath = 'resources/img/';
+        switch (category) {
+            case '기타':
+                imgPath += 'Guitar/';
+                break;
+            case '앰프':
+                imgPath += 'Amp/';
+                break;
+            case '이펙터':
+                imgPath += 'Effector/';
+                break;
+            case '주변용품':
+                imgPath += 'Accessory/';
+                break;
+            default:
+                imgPath += 'default/'; // 기본 이미지 경로
+                break;
+        }
+        return imgPath + imgName;
+    }
 $(function () {
     $("#searchDetail").change(updateResults);
     paging();

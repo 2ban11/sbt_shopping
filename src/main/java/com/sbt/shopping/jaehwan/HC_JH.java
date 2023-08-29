@@ -117,8 +117,8 @@ public class HC_JH {
 	}
     
     @RequestMapping(value = "/controlMargin", method = RequestMethod.GET)
-    public String controlMargin(HttpServletRequest req, Model model) {
-    	odDAO.getChartData(req);
+    public String controlMargin(HttpServletRequest req, MarginDTO maDTO) {
+    	odDAO.getChartData(req,maDTO);
     	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
     	req.setAttribute("controlPage", "controlMargin.jsp");
     	return "index";
@@ -151,19 +151,25 @@ public class HC_JH {
 	
 	 @RequestMapping(value = "/insertMargin", method = RequestMethod.POST)
 	 public String insertMargin(HttpServletRequest req, MarginDTO mDTO) {
-		 
-		 String dateString = mDTO.getDate();
-	     SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	     try {
-			Date date = dateFormat.parse(dateString);
-			mDTO.setMa_date(date);
-		} catch (ParseException e) {
-			e.printStackTrace();
+		    String dateString = mDTO.getDate();
+		    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		    try {
+		        Date date = dateFormat.parse(dateString);
+		        mDTO.setMa_date(date);
+		    } catch (ParseException e) {
+		        e.printStackTrace();
+		    }
+		    
+		    List<MarginDTO> existingData = odDAO.getMarginByDate(dateString);
+		    
+		    if (existingData != null) {
+		        odDAO.updateMargin(req, mDTO);
+		    } else {
+		        odDAO.insertMargin(req, mDTO);
+		    }
+		    
+		    return "redirect:controlMargin"; 
 		}
-	     odDAO.insertMargin(req,mDTO);
-		 return "redirect:controlMargin"; 
-	 	
-	 }
     
     }
     
