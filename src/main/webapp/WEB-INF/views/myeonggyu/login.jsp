@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="login-wrap">
-	<div class="basic-login">
+	<div class="login-section basic-login">
     <div class="page-header">
         <h4><strong>기존회원 로그인</strong></h4>
     </div>
@@ -46,6 +46,7 @@
                         <li class="list-inline-item"><a href="/shopping/account.join.go">회원가입</a></li>
                     </ul>
                 </div>
+                <div class="login-result">${result }</div>
             </div>
 									<input type="hidden" name="return_url" value="">
 									 <input type="hidden" name="token" id="token">
@@ -53,7 +54,7 @@
 						</div>
 
 	</div>
-						<div class="snsLoginWrap" style="margin-top:30px">
+						<div class="login-section snsLoginWrap" style="margin-top:30px">
 							<div class="page-header">
 								<h4><strong>간편로그인</strong></h4>
 							</div>

@@ -6,19 +6,25 @@ div{
 	width: 100%;
 	height: 30px;
 	margin-top: 20px;
-	margin-bottom: 60px;
 	border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 .emailForPw{
+	margin-top:20px;
+	margin-bottom: 20px;
 	width: 275px;
-	
+	height: 30px;
 }
-
+.writeEmail{
+	text-align: center;
+}
 .w3-container{
 	border: 1px solid rgba(255,255,255,0.1);
-	width:100%;
+	width:70%;
 	height: 80%;
 	margin-top:30px;
-	margin-left: 10px;
+	margin-left: 15%;
 	display: block;
+}
+#findBtn{
+	margin-bottom: 12px;
 }

@@ -18,6 +18,10 @@
     apiURL += "&state=" + naverState;
     session.setAttribute("naverState", naverState);
  %>
-  <a class="n_Login_box"href="<%=apiURL%>"><img id="n_login-img"src="resources/img/Login/icon_naver.png"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;네이버 로그인</a>
+  <a class="n_Login_box"href="<%=apiURL%>"><img id="n_login-img"src="resources/img/Login/icon_naver.png"/>
+  <span>
+  네이버 로그인
+  </span>
+  </a>
   </body>
 </html>

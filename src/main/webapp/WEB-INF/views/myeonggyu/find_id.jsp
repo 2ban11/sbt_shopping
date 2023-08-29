@@ -11,7 +11,7 @@
 		<div class="title_txt" >
 		<h3>아이디 찾기</h3>
 		</div>
-	<div>
+	<div class="textBar">
    <input type="text" id="a_phone" placeholder="핸드폰 번호를 입력하세요">
     <button id="findButton">조회</button>
 	</div>

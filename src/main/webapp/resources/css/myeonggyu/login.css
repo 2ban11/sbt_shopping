@@ -10,8 +10,8 @@ h4 {
     border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 .login-wrap{
-	margin-left:25%;
-	width: 100%;
+	margin-left:33%;
+	width: 70%;
 	padding: 20px;
 }
 .basic-login{
@@ -36,22 +36,26 @@ h4 {
 	justify-content:space-between;
 	width: 900%;
 }
-.k_login{
-	margin-top:15px;
-	width: 10%;
-	height: 40px;
-	background-color: #FFE500;
-	border-radius: 5px;
-	color: black;
-	font-weight: bold;
-	display: flex;
-	justify-content: start;		
-	
+.k_login {
+  display: flex;
+  width:10%;
+  align-items: center;
+  justify-content:flex-start;
+  margin-top: 15px;
+  background-color: #FFE500;
+  border-radius: 5px;
 }
-#k_login-img{
-	width: 40px;
-	height: 40px;
 
+#k_login-img {
+  width: 40px;
+  height: 40px;
+}
+
+.k_login span {
+  margin-left: 80px;
+  color: black;
+  font-weight: bold;
+  vertical-align: 12px;
 }
 
 .n_login{
@@ -72,6 +76,24 @@ h4 {
 .n_login a{
 	text-decoration: none;
 }
+
+.n_login span {
+  margin-left: 80px;
+  flex: 5; /* 나머지 공간을 채우도록 설정 */
+  color: blue;
+  font-weight: bold;
+  height: auto;
+  text-align: center;
+}
+
+.n_Login_box {
+  display: flex;
+  align-items: center; /* 수직 가운데 정렬 */
+  text-decoration: none; /* 링크의 기본 스타일 제거 */
+}
+
+
+
 .list-inline-item a{
 	text-decoration: none;
 	color: #ffffff;
@@ -100,6 +122,12 @@ h4 {
     border-color: #0d6efd;
 	
 }
+.login-result{
+	color: red;
+	text-align: center;
+	
+}
+
 .container{width: 100%;
     padding-right: var(--bs-gutter-x,.75rem);
     padding-left: var(--bs-gutter-x,.75rem);

@@ -216,23 +216,30 @@ public class AccountController {
 	    }
 	 
 	 @RequestMapping(value = "/account.email.check", method = RequestMethod.POST)
-	 public @ResponseBody Map<String, String> emailCheck(@RequestParam("email") String a_email, HttpServletRequest req) {
-	     Map<String, String> response = new HashMap<String, String>();
+	    public @ResponseBody Map<String, String> emailCheck(@RequestParam("email") String a_email, HttpServletRequest req) {
+	        Map<String, String> response = new HashMap<String, String>();
 
-	     boolean emailExists = aDAO.checkEmailExists(a_email, req); // 이메일 존재 여부 확인
-	     if (emailExists) {
-	         boolean isEmailValid = validateEmailUsingMX(a_email); // MX 레코드를 이용한 이메일 도메인의 실제 존재 여부 확인
-	         if (isEmailValid) {
-	             response.put("message", "exist"); // 이메일이 실제로 존재하는 경우
-	         } else {
-	             response.put("message", "invalid_domain"); // 유효한 도메인이지만 실제 계정은 없는 경우
-	         }
-	     } else {
-	         response.put("message", "not_exist"); // 이메일이 존재하지 않는 경우
-	     }
+	        boolean emailExists = aDAO.checkEmailExists(a_email, req); // 이메일 존재 여부 확인
+	        if (emailExists) {
+	            // 여기서부터 MX 레코드를 이용한 이메일 실제 존재 여부 확인 코드 추가
+	            boolean isEmailValid = validateEmailUsingMX(a_email);
+	            if (isEmailValid) {
+	                response.put("message", "exist"); // 이메일이 실제로 존재하는 경우
+	            } else {
+	                response.put("message", "invalid"); // 이메일 주소는 존재하지만 유효하지 않은 경우
+	            }
+	        } else {
+	            response.put("message", "not_exist"); // 이메일이 존재하지 않는 경우
+	        }
 
-	     return response;
-	 }
+	        return response;
+	    }
+	 
+	 @ResponseBody
+	    @RequestMapping(value = "/account.checkMX", method = RequestMethod.GET)
+	    public boolean checkMXRecord(@RequestParam("domain") String domain) {
+	        return validateEmailUsingMX(domain);
+	    }
 
 	    private boolean validateEmailUsingMX(String email) {
 	        String domain = email.substring(email.indexOf('@') + 1);
@@ -244,7 +251,7 @@ public class AccountController {
 	        } catch (NamingException e) {
 	            return false; // MX 레코드 조회 실패
 	        }
-	    }
+	    } 
 	 
 	 @RequestMapping(value = "/account.changePassword", method = RequestMethod.POST)
 	 @ResponseBody

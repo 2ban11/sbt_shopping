@@ -128,7 +128,7 @@ function isPhoneNumberDuplicated() {
 });
 
     // 아이디 중복 확인 버튼 클릭 시
- $("#btn_id_chk").click(function() {
+$("#btn_id_chk").click(function() {
     var a_id = $("#a_id").val();
     var a_email2 = $("#a_email2").val();
     
@@ -144,26 +144,38 @@ function isPhoneNumberDuplicated() {
     
     // AJAX를 사용하여 MX 레코드 확인을 요청합니다.
     $.ajax({
-        url: "/shopping/account.email.check",
-        type: "POST",
-        data: { email: a_id + "@" + a_email2 },
-        success: function(response) {
-            if (response.message === "exist") {
-                alert("이미 사용 중인 아이디입니다.");
-                $("#id_chk").val("");
-            } else if (response.message === "invalid_domain") {
-                alert("유효한 도메인이지만 실제 계정이 없습니다.");
-                $("#id_chk").val("");
-            } else if (response.message === "not_exist") {
-                alert("사용 가능한 아이디입니다.");
-                $("#id_chk").val("1");
+        url: "/shopping/account.checkMX",
+        type: "GET",
+        data: { domain: domain },
+        success: function(result) {
+            if (result) {
+                // MX 레코드가 존재하는 경우
+                $.ajax({
+                    url: "/shopping/account.get",
+                    type: "GET",
+                    data: { a_id: a_id + "@" + a_email2 },
+                    success: function(result) {
+                        if (result === 1) {
+                            alert("이미 사용 중인 아이디입니다.");
+                            $("#id_chk").val("");
+                        } else {
+                            alert("사용 가능한 아이디입니다.");
+                            $("#id_chk").val("1");
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        alert("아이디 중복 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+                    }
+                });
+            } else {
+                alert("유효하지 않은 도메인입니다.");
             }
         },
         error: function(xhr, status, error) {
-            alert("이메일 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+            alert("MX 레코드 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
         }
     });
-});
+}); 
 
     // 닉네임 중복 확인 버튼 클릭 시
     $("#btn_nickname_chk").click(function() {
