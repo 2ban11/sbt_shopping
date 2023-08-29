@@ -39,7 +39,7 @@ function logoutKakao() {
     window.location.href = kakaoLogoutURL;
 };
 
-// 서버로 사용자 정보 전송하는 함수;
+
 async function saveKakaoUserData(userEmail, nickName) {
     await $.ajax({
         url: 'kakao_login_callback',

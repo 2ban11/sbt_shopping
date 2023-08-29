@@ -42,9 +42,7 @@ $(document).ready(function() {
                 alert("인증 이메일이 성공적으로 전송되었습니다!");
                 isVerificationCodeSent = true;
                 enteredEmail = email;
-                console.log(response);
                 verificationCode = response.verificationCode;
-                console.log(verificationCode);
                 $("#verificationCodeContainer").show();
             }
         },

@@ -19,12 +19,12 @@
     <link rel="stylesheet" href="resources/css/myeonggyu/find_pw.css">
 </head>
 <body>
-<div class="pwf-content pwf-container pwf-margin-top">
+<div class="pwf_container">
     <div class="w3-container w3-card-4 w3-auto" >
-        <div class="findPw">
+        <div id="findPw">
             <h3> 비밀번호 변경</h3>
         </div>
-        <div>
+        <div class="changePW" >
             <p>
                 <label>새 비밀번호</label>
                 <input type="password" id="a_password" name="a_password" placeholder="새로운 비밀번호를 입력하세요">

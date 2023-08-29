@@ -78,11 +78,7 @@ public class AccountController {
 	        req.setAttribute("contentPage", "myeonggyu/login.jsp");
 	        return "index";
 	    }
-	@RequestMapping(value = "/social.logout", method = RequestMethod.GET)
-	public String socialLogOut(HttpServletRequest req) {
-		aDAO.socialLogOut(req);
-		return "redirect:/";
-	}
+	
 
     @RequestMapping(value = "/account.info", method = RequestMethod.GET)
     public String infoMember(AccountDTO a, HttpServletRequest req) {

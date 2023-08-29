@@ -3,6 +3,7 @@ div{
 	color:white;
 }
 .findPw{
+	text-indent:30px;
 	width: 100%;
 	height: 30px;
 	margin-top: 20px;
@@ -27,4 +28,17 @@ div{
 }
 #findBtn{
 	margin-bottom: 12px;
+}
+#verificationCode{
+	margin-left: 8%;
+}
+#verificationCodeContainer{
+	margin-top:20px;
+	margin-left: 175px;
+	
+}
+#verifyCodeBtn{
+	margin-left: 45%;
+	margin-top:20px;
+	margin-bottom: 20px;
 }

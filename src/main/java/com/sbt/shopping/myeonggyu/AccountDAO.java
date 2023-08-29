@@ -310,12 +310,6 @@ public class AccountDAO {
 		// 카카오 로그인 세션 정보 초기화
 	}
 
-	public void socialLogOut(HttpServletRequest req) {
-		req.getSession().removeAttribute("LoginMemberNaver");
-		    
-	
-	}
-
 	public boolean checkEmailExists(String email, HttpServletRequest req){ 
 		AccountDTO a = ss.getMapper(AccountMapper.class).checkEmail(email);
 		if (a!=null) {

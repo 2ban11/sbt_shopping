@@ -3,9 +3,47 @@ div{
 }
 .w3-container {
     border: 1px solid rgba(255,255,255,0.1);
-    width: 100%;
+    width: 70%;
     height: 80%;
+    text-indent: 15%;
     margin-top: 30px;
-    margin-left: 13px;
-    display: block;
+    margin-left: 15%;
+}
+#findPw{
+	text-indent: 12%;
+	width:100%;
+	margin-top: 15px;
+	margin-bottom:15px;
+	border-top: 1px solid #67c1f5;
+	border-bottom: 1px solid rgba(255,255,255,0.1);
+	
+}
+.changePW{
+	margin-top: 20px;
+	margin-left: 60px;
+}
+
+#a_password{
+	margin-left: 70px;
+	width: 50%;
+}
+@media (max-width: 1140px) {
+    #a_password {
+        margin-left: 35px;
+    }
+}
+#a_password_re{
+	margin-left: 35px;
+	width: 50%;
+}
+
+
+
+#verifyAndResetBtn{ 
+	margin-left:30%;
+	border-radius: 5px;
+	 border-color: #4fb7f3;
+    color: #ffffff;
+      background: linear-gradient(#67c1f5,#4fb7f3);
+       box-shadow: 0 0 1px rgba(255,255,255,0.2) inset;
 }

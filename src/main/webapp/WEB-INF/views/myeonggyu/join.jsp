@@ -17,7 +17,7 @@
 	class="joinForm" >
 		<div class="registration" style="width:100%">
 			<fieldset>
-				<legend><span>회원가입</span></legend>
+				<legend><span id="joinTopTxt">회원가입</span></legend>
 				<div class="form-inline form-group">
 					<label for="a_id" class="col-sm-2 control-label">아이디</label>
 					<div class="col-sm-10">

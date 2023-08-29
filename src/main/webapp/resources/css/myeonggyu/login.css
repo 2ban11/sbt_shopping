@@ -58,6 +58,14 @@ h4 {
   vertical-align: 12px;
 }
 
+@media (max-width: 1390px) {
+
+    .k_login span {
+        margin-left: 35px;
+    }
+}
+
+
 .n_login{
 	width: 10%;
 	height: 40px;
@@ -84,6 +92,12 @@ h4 {
   font-weight: bold;
   height: auto;
   text-align: center;
+}
+@media (max-width: 1390px) {
+	
+    .n_login span {
+        margin-left: 35px;
+    }
 }
 
 .n_Login_box {
