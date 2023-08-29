@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sbt.shopping.cart.Cart;
@@ -28,6 +29,15 @@ public class HC_KM {
 		mpDAO.getMainPageProducts(request);
 		request.setAttribute("contentPage", "kimoon/kimoonMainPage.jsp");
 
+		return "index";
+	}
+	@RequestMapping(value = "search.do", method = RequestMethod.GET)
+	
+	public String searchDo(HttpServletRequest request, @RequestParam String search) {
+		System.out.println(search);
+		mpDAO.getSearchProducts(request, search);
+		request.setAttribute("contentPage", "kimoon/headerSearch.jsp");
+		
 		return "index";
 	}
 	

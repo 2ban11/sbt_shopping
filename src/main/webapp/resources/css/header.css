@@ -160,6 +160,7 @@
   background-color: #efa53c;
   border: none;
   width: 35px;
+  cursor: pointer;
 }
 
 .fa-cart-shopping {

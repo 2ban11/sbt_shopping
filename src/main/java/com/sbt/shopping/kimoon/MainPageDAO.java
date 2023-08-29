@@ -34,5 +34,11 @@ public class MainPageDAO {
 			return ss.getMapper(MainPageProductMapper.class).updateMainCart(cart);
 		}
 	}
+
+	public void getSearchProducts(HttpServletRequest request, String search) {
+		
+		request.setAttribute("searchProducts", ss.getMapper(MainPageProductMapper.class).searchProducts(search));
+		
+	}
 	
 }

@@ -42,8 +42,8 @@
 							alt="RIFF몰" src="resources/img/logoWhite.png" />
 						</a>
 					</div>
-					<form class="header__form" onsubmit="return false;">
-						<input class="header__input--text" autocomplete="off" />
+					<form action="search.do" class="header__form">
+						<input name="search" class="header__input--text" autocomplete="off" />
 						<button class="header__input--button">
 							<i class="fa-solid fa-magnifying-glass"></i>
 						</button>
@@ -134,9 +134,11 @@
 							</form>
 						</div>
 						<div>
+						<a href="mypage.cart">
 							<button class="header__cart">
 								<i class="fa-solid fa-cart-shopping"></i>
 							</button>
+						</a>
 						</div>
 					</div>
 				</div>

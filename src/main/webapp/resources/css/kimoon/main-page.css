@@ -210,6 +210,7 @@
 	border-radius: 2px;
 	border-color: #eea236;
 	word-break: keep-all;
+	cursor: pointer;
 }
 
 .addtocart__company--btn:hover {

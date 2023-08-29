@@ -173,11 +173,14 @@
 		</button>
 		</form>
 	</div>
-
+	
+	<c:if test="${not empty sessionScope.loginMember.a_id}">
 	<div>
 		<form action="go.board.write" class="board-write">
+			<c:if test="${sessionScope.loginMember.a_id eq 'master'}">
 			<c:if test="${type eq 1}">
 				<button class="board-write--btn" name="type" value="1">글쓰기</button>
+			</c:if>
 			</c:if>
 			<c:if test="${type eq 2}">
 				<button class="board-write--btn" name="type" value="2">글쓰기</button>
@@ -190,6 +193,6 @@
 			</c:if>
 		</form>
 	</div>
-
+	</c:if>
 </body>
 </html>
