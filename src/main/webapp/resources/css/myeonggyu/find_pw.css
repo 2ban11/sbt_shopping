@@ -14,13 +14,19 @@ div{
 	width:100%;
 	margin-top: 15px;
 	margin-bottom:15px;
-	border-top: 1px solid #67c1f5;
 	border-bottom: 1px solid rgba(255,255,255,0.1);
 	
 }
 .changePW{
 	margin-top: 20px;
-	margin-left: 60px;
+	margin-left: 145px;
+}
+#writePW{
+	text-indent: -24px;
+}
+
+#writePW_re{
+	text-indent: -24px;
 }
 
 #a_password{
@@ -40,7 +46,7 @@ div{
 
 
 #verifyAndResetBtn{ 
-	margin-left:30%;
+	margin-left:20%;
 	border-radius: 5px;
 	 border-color: #4fb7f3;
     color: #ffffff;

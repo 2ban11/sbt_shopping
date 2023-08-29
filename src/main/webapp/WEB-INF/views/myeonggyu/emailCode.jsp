@@ -27,7 +27,7 @@
             </p>
         </div>
         <div id="verificationCodeContainer" style="display: none;">
-            <p>
+            <p id="verificationCodewrite">
                 <label>인증 번호</label>
                 <input type="text" id="verificationCode" placeholder="인증 번호를 입력하세요">
             </p>
