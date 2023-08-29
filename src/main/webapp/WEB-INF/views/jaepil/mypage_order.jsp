@@ -16,6 +16,7 @@
 	<div class="mypage-main">
 		<h1>주문내역</h1>
 	</div>
+	 <c:set var="today" value="<%= new java.util.Date()%>" />
 	<div class="mypage">
 		<div class="mypage-nav">
 			<div>
@@ -34,30 +35,29 @@
 				<a href="mypage.signout">회원탈퇴</a>
 			</div>
 		</div>
-		<div class="mypage-info-date">
-			<div class="mypage-info-date-item">조회기간</div>
-			<div class="mypage-info-date-item">
-				<button class="btn-select-date" id="1week">1주일</button>
-				<button class="btn-select-date" id="1month">1개월</button>
-				<button class="btn-select-date" id="3month">3개월</button>
-				<button class="btn-select-date" id="6month">6개월</button>
-				<button class="btn-select-date" id="1year">1년</button>
-			</div>
+		<form action="mypage.orderdate">
+			<div class="mypage-info-date">
+				<div class="mypage-info-date-item">조회기간</div>
 				<div class="mypage-info-date-item">
-			<form action="mypage.orderdate">
+					<button type="button" class="btn-select-date" id="1week">1주일</button>
+					<button type="button" class="btn-select-date" id="1month">1개월</button>
+					<button type="button" class="btn-select-date" id="3month">3개월</button>
+					<button type="button" class="btn-select-date" id="6month">6개월</button>
+					<button type="button" class="btn-select-date" id="1year">1년</button>
+				</div>
+				<div class="mypage-info-date-item">
 					<input type="text" class="datepick" id="sartdate" name="startdate">
 					~ <input type="text" class="datepick" id="enddate" name="enddate">
 				</div>
 				<div>
 					<button class="btn-search-date">조회</button>
-				</form>
+				</div>
 			</div>
-		</div>
+		</form>
 		<div class="mypage-info-des">
 			※ 운영시간: 월~목 10:00~17:00 (점심시간: 12:30~14:00) / 금 10:00~12:00 / 토, 일,
 			공휴일 휴무 <br> <br> ※ 운영시간 외에 문의하신 사항은 홈페이지, 전화, 메일의 대응이 모두
-			불가하며, 영업일 기준 다음 운영시간에 순차적으로 처리됩니다.<br> <br> ※ 문의 사항의 내용과
-			고객센터 사정에 따라 응답이 다소 지연될 수 있습니다.
+			불가하며, 영업일 기준 다음 운영시간에 순차적으로 처리됩니다.<br> <br> ※주문 후 한달이 지난 상품은 환불 신청이 불가합니다.
 		</div>
 		<div class="mypage-info-datas">
 			<div class="mypage-info-data-nav">
@@ -75,18 +75,22 @@
 						<div class="mypage-info-data-order-no">${o.od_no }</div>
 						<div class="mypage-info-data-order-name">${o.p_name }</div>
 						<div class="mypage-info-data-order-pay">${o.od_cnt }</div>
-						<div class="mypage-info-data-order-sale">${o.od_price }</div>						
-						<div class="mypage-info-data-order-date"><fmt:formatDate value="${o.od_date }" dateStyle="long"/></div>
+						<div class="mypage-info-data-order-sale">${o.od_price }</div>
+						<div class="mypage-info-data-order-date">
+							<fmt:formatDate value="${o.od_date }" dateStyle="long" />
+						</div>
 						<div class="mypage-info-data-order-state">${o.od_state }</div>
 						<div class="mypage-info-data-order-other">
-						<c:choose>
-						<c:when test="${o.od_state eq '주문완료' }">						
-							<button onclick="refund(${o.od_no})">환불</button>
-						</c:when>
-						<c:when test="${o.od_state eq '환불요청' }">						
-							<button onclick="refundCancel(${o.od_no})">환불취소</button>
-						</c:when>
-						</c:choose>
+							<c:choose>
+								<c:when
+									test="${o.od_state eq '주문완료' and (today.time - o.od_date.time) <= 2592000000}">
+									<button onclick="refund(${o.od_no})">환불</button>
+								</c:when>
+								<c:when
+									test="${o.od_state eq '환불요청' and (today.time - o.od_date.time) <= 2592000000}">
+									<button onclick="refundCancel(${o.od_no})">환불취소</button>
+								</c:when>
+							</c:choose>
 						</div>
 					</div>
 				</c:forEach>

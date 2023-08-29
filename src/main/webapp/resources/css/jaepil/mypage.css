@@ -51,15 +51,24 @@ details[open] summary::marker {
 }
 
 .mypage-info-date div {
-	padding: 12px;
+	margin: auto;
 }
 
 .mypage-info-date-item:nth-child(1) {
 	color: white;
+	width: 10%
+}
+
+.mypage-info-date-item:nth-child(2) {
+	color: white;
+	width: 20%
+}
+.mypage-info-date-item:nth-child(2) button{
 }
 
 .mypage-info-date-item:nth-child(3) {
 	color: white;
+	width: 40%
 }
 
 .mypage-info-date-item input {
@@ -152,6 +161,15 @@ details[open] summary::marker {
 
 .mypage-info-data-order-other {
 	width: 10%;
+}
+.mypage-info-data-order-other button {
+	background-color: #67c1f5;
+	padding: 5px 10px;
+	border-radius: 2px;
+	font-weight: 700;
+	border: none;
+	color: white;
+	width: 90%
 }
 
 .mypage-info-data-qna-no {
