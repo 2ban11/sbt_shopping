@@ -20,8 +20,10 @@ public class MypageDAO {
 
 	public void getOrder(HttpServletRequest req, AccountDTO aDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
-		aDTO.setA_id(account.getA_id());
-		req.setAttribute("orders", ss.getMapper(OrderMapper.class).getOrder(aDTO));
+		if (account != null) {
+			aDTO.setA_id(account.getA_id());
+			req.setAttribute("orders", ss.getMapper(OrderMapper.class).getOrder(aDTO));
+		}
 	}
 
 	public void getOrderByDate(HttpServletRequest req, AccountDTO aDTO) {
@@ -40,8 +42,10 @@ public class MypageDAO {
 
 	public void getCart(HttpServletRequest req, CartDTO cDTO, AccountDTO aDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
-		aDTO.setA_id(account.getA_id());
-		req.setAttribute("carts", ss.getMapper(CartMapper.class).getCart(aDTO));
+		if (account != null) {
+			aDTO.setA_id(account.getA_id());
+			req.setAttribute("carts", ss.getMapper(CartMapper.class).getCart(aDTO));
+		}
 	}
 
 	public void deleteCart(CartDTO cDTO, HttpServletRequest req) {
@@ -66,14 +70,18 @@ public class MypageDAO {
 
 	public void getQna(HttpServletRequest req, AccountDTO aDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
-		aDTO.setA_id(account.getA_id());
-		req.setAttribute("qnas", ss.getMapper(QnaMapper.class).getQna(aDTO));
+		if (account != null) {
+			aDTO.setA_id(account.getA_id());
+			req.setAttribute("qnas", ss.getMapper(QnaMapper.class).getQna(aDTO));
+		}
 	}
 
 	public void getAccount(HttpServletRequest req, AccountDTO aDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
-		aDTO.setA_id(account.getA_id());
-		req.setAttribute("account", ss.getMapper(AccountMapper.class).getAccountByID(aDTO));
+		if (account != null) {
+			aDTO.setA_id(account.getA_id());
+			req.setAttribute("account", ss.getMapper(AccountMapper.class).getAccountByID(aDTO));
+		}
 	}
 
 	public void editAccount(HttpServletRequest req, AccountDTO aDTO) {
@@ -102,5 +110,4 @@ public class MypageDAO {
 		}
 	}
 
-	
 }

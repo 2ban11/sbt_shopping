@@ -1,3 +1,11 @@
+
+$(document).ready(function() {
+    if (!isLoggedIn) {
+        alert("로그인이 필요합니다.");
+        location.href = "/shopping/login.go?"; // 로그인 페이지로 이동
+    }
+});
+
 function checkAll() {
 			$("#cbx_chkAll").click(function() {
 				if($("#cbx_chkAll").is(":checked")) $("input[name=chk]").prop("checked", true);

@@ -10,6 +10,9 @@
 <link rel="stylesheet" href="resources/css/jaepil/mypage.css">
 <script type="text/javascript"
 	src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script>
+    var isLoggedIn = <%= session.getAttribute("loginMember") != null %>;
+</script>
 <script type="text/javascript" src="resources/js/jaepil/mypage.js"></script>
 </head>
 <body>

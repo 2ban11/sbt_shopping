@@ -7,6 +7,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+    var isLoggedIn = <%= session.getAttribute("loginMember") != null %>;
+</script>
+<script>
+    var isLoggedIn = <%= session.getAttribute("loginMember") != null %>;
+</script>
+<script type="text/javascript" src="resources/js/jaepil/mypage.js"></script>
 <link rel="stylesheet" href="resources/css/jaepil/mypage.css">
 </head>
 <body>

@@ -9,6 +9,9 @@
 <title>Insert title here</title>
 </head>
 <link rel="stylesheet" href="resources/css/jaepil/mypage.css">
+<script>
+    var isLoggedIn = <%= session.getAttribute("loginMember") != null %>;
+</script>
 <script type="text/javascript" src="resources/js/jaepil/mypage.js"></script>
 <body>
 	<div class="mypage-main">
