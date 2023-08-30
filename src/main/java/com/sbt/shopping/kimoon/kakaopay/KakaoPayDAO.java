@@ -41,7 +41,6 @@ public class KakaoPayDAO {
 	public String kakaoPayReady(HttpServletRequest request, CartDTO cartList, AccountDTO aDTO) {
 		String totalAmount = request.getParameter("total");
 		String cNo[] = request.getParameterValues("c_no");
-		//String cProduct[] = request.getParameterValues("c_product");
 		String cProductArray[] = request.getParameterValues("c_product");
 		String pSaleArray[] = request.getParameterValues("p_sale");
 		String cCntArray[] = request.getParameterValues("c_cnt");
@@ -70,11 +69,6 @@ public class KakaoPayDAO {
 		}
 		request.getSession().setAttribute("cartList", cartArrayList);
 		AccountDTO account = (AccountDTO) request.getSession().getAttribute("loginMember");
-//		String cCnt[] = request.getParameterValues("c_cnt");
-//		String cProduct[] = request.getParameterValues("c_product");
-//		String cSale[] = request.getParameterValues("p_sale");
-//		request.getSession().setAttribute("cartCntList", cCnt);
-//		request.getSession().setAttribute("cartProductList", cProduct);
 		int str = cartArrayList.size() - 1;
 		RestTemplate restTemplate = new RestTemplate();
 		// 서버로 요청할 Header
@@ -182,6 +176,7 @@ public class KakaoPayDAO {
 			} else {
 				System.out.println("주문내역 추가 실패...");
 			}
+			ss.getMapper(KakaoPayMapper.class).downProductCnt(orderDTO);
 		}
 		
 		

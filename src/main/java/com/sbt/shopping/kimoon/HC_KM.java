@@ -23,16 +23,17 @@ public class HC_KM {
 	@Autowired
 	private BoardDAO bDAO;
 
+	// 메인페이지
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-
 	public String mainPage(HttpServletRequest request) {
 		mpDAO.getMainPageProducts(request);
 		request.setAttribute("contentPage", "kimoon/kimoonMainPage.jsp");
 
 		return "index";
 	}
-	@RequestMapping(value = "search.do", method = RequestMethod.GET)
 	
+	// 헤더에서 상품 검색
+	@RequestMapping(value = "search.do", method = RequestMethod.GET)
 	public String searchDo(HttpServletRequest request, @RequestParam String search) {
 		System.out.println(search);
 		mpDAO.getSearchProducts(request, search);
@@ -41,6 +42,7 @@ public class HC_KM {
 		return "index";
 	}
 	
+	// 장바구니 넣기
 	@ResponseBody
 	@RequestMapping(value = "/do.insert.cart", method = RequestMethod.GET)
 	public int insertMainPageCart(HttpServletRequest request, Cart cart) {

@@ -2,14 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sbt.shopping.kimoon.kakaopay.KakaoPayMapper">
 
+<!-- 구매한 상품 주문내역에 넣기 -->
 <insert id="addOrder">
 	insert into order_detail values
 	(order_detail_seq.nextval, #{od_id}, #{od_product}, #{od_price}, #{od_cnt}, sysdate, '주문완료')
 </insert>
 
+<!-- 구매한 상품 장바구니 비워주기 -->
 <delete id="deleteCart">
 	delete cart where c_no = #{cartNoList}
 </delete>
+
+<!-- 재고 -1 -->
+<update id="downProductCnt">
+	update product set p_cnt = p_cnt - 1 where p_no = #{od_product} 
+</update>
 
 
 

@@ -9,4 +9,6 @@ public interface KakaoPayMapper {
 
 	int deleteCart(CartDTO cDTO);
 
+	int downProductCnt(OrderDTO orderDTO);
+
 }
