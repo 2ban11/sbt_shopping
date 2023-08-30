@@ -131,16 +131,19 @@
 														<span>&nbsp;</span>
 													</c:if>
 												</p>
-												<p class="card-text font-weight-bold text-warning">
-													판매가:
-													<fmt:formatNumber value="${product.p_sale}" type="currency" />
-												</p>
+												<h3>
+													<p class="card-text font-weight-bold text-warning">
+														판매가:
+														<fmt:formatNumber value="${product.p_sale}"
+															type="currency" />
+													</p>
+												</h3>
 
 											</div>
 											<p class="card-text">
 												출시일:
 												<fmt:formatDate value="${product.p_date}"
-													pattern="yyyy년 MM월 dd일" />
+													pattern="yyyy-MM-dd" />
 											</p>
 											<p class="card-text">
 												퍼블리셔: <a href="game_thumb.html?search_publisher=93"
@@ -229,7 +232,7 @@
 													<th>${r.a_nickname}</th>
 													<th>${r.r_title}</th>
 													<th><fmt:formatDate value="${r.r_date}" type="date"
-															dateStyle="short" pattern="yyyy/MM/dd"/></th>
+															dateStyle="short" pattern="yyyy/MM/dd" /></th>
 													<c:if test="${r.r_id == loginMember.a_id}">
 														<th><button type="button" class="btn btn-danger"
 																onclick="ReviewDelete('${r.r_no}', '${product.p_no}')">리뷰
@@ -260,39 +263,39 @@
 
 
 							<!-- 구매후기 페이징 -->
-							<div class="row justify-content-center">
-								<div class="col-auto">
-									<nav aria-label="...">
-										<ul class="pagination pagination-sm">
-											<c:choose>
+							<ul class="pagination pagination-sm justify-content-center">
+								<c:choose>
+									<c:when test="${reviewCurPage != 1}">
+										<li class="page-item"><a class="page-link"
+											href="detail.product?reviewPage=${reviewCurPage - 1}&qnaPage=${qnaCurPage}&p_no=${product.p_no}"
+											id="snsL">&lt;</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item disabled"><a class="page-link"
+											href="#" tabindex="-1" aria-disabled="true">&lt;</a></li>
+									</c:otherwise>
+								</c:choose>
 
-												<c:when test="${reviewCurPage != 1}">
-													<li class="page-item"><a class="page-link"
-														href="detail.product?reviewPage=${reviewCurPage - 1}&qnaPage=${qnaCurPage}&p_no=${product.p_no}"
-														id="snsL">&lt;</a></li>
-												</c:when>
-												<c:otherwise>
-													<li class="page-item disabled"><a class="page-link"
-														href="#" tabindex="-1" aria-disabled="true">&lt;</a></li>
-												</c:otherwise>
-											</c:choose>
+								<c:forEach var="i" begin="1" end="${reviewPageCount}">
+									<li
+										class="page-item <c:if test="${i == reviewCurPage}">active</c:if>"><a
+										class="page-link"
+										href="detail.product?reviewPage=${i}&qnaPage=${qnaCurPage}&p_no=${product.p_no}">${i}</a></li>
+								</c:forEach>
 
+								<c:choose>
+									<c:when test="${reviewCurPage != reviewPageCount}">
+										<li class="page-item"><a class="page-link"
+											href="detail.product?reviewPage=${reviewCurPage + 1}&qnaPage=${qnaCurPage}&p_no=${product.p_no}"
+											id="snsR">&gt;</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item disabled"><a class="page-link"
+											href="#" tabindex="-1" aria-disabled="true">&gt;</a></li>
+									</c:otherwise>
+								</c:choose>
+							</ul>
 
-											<c:choose>
-												<c:when test="${reviewCurPage != reviewPageCount}">
-													<li class="page-item"><a class="page-link"
-														href="detail.product?reviewPage=${reviewCurPage + 1}&qnaPage=${qnaCurPage}&p_no=${product.p_no}"
-														id="snsR">&gt;</a></li>
-												</c:when>
-												<c:otherwise>
-													<li class="page-item disabled"><a class="page-link"
-														href="#" tabindex="-1" aria-disabled="true">&gt;</a></li>
-												</c:otherwise>
-											</c:choose>
-										</ul>
-									</nav>
-								</div>
-							</div>
 
 
 
@@ -382,39 +385,39 @@
 
 
 							<!-- QnA 페이징 -->
-							<div class="row justify-content-center">
-								<div class="col-auto">
-									<nav aria-label="...">
-										<ul class="pagination pagination-sm">
+							<ul class="pagination pagination-sm justify-content-center">
+								<c:choose>
+									<c:when test="${qnaCurPage != 1}">
+										<li class="page-item"><a class="page-link"
+											href="detail.product?reviewPage=${reviewCurPage}&qnaPage=${qnaCurPage - 1}&p_no=${product.p_no}"
+											id="snsL">&lt;</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item disabled"><a class="page-link"
+											href="#" tabindex="-1" aria-disabled="true">&lt;</a></li>
+									</c:otherwise>
+								</c:choose>
 
-											<c:choose>
-												<c:when test="${qnaCurPage != 1}">
-													<li class="page-item"><a class="page-link"
-														href="detail.product?reviewPage=${reviewCurPage}&qnaPage=${qnaCurPage - 1}&p_no=${product.p_no}"
-														id="snsL">&lt;</a></li>
-												</c:when>
-												<c:otherwise>
-													<li class="page-item disabled"><a class="page-link"
-														href="#" tabindex="-1" aria-disabled="true">&lt;</a></li>
-												</c:otherwise>
-											</c:choose>
+								<c:forEach var="i" begin="1" end="${qnaPageCount}">
+									<li
+										class="page-item <c:if test="${i == qnaCurPage}">active</c:if>"><a
+										class="page-link"
+										href="detail.product?reviewPage=${reviewCurPage}&qnaPage=${i}&p_no=${product.p_no}">${i}</a></li>
+								</c:forEach>
 
+								<c:choose>
+									<c:when test="${qnaCurPage != qnaPageCount}">
+										<li class="page-item"><a class="page-link"
+											href="detail.product?reviewPage=${reviewCurPage}&qnaPage=${qnaCurPage + 1}&p_no=${product.p_no}"
+											id="snsR">&gt;</a></li>
+									</c:when>
+									<c:otherwise>
+										<li class="page-item disabled"><a class="page-link"
+											href="#" tabindex="-1" aria-disabled="true">&gt;</a></li>
+									</c:otherwise>
+								</c:choose>
+							</ul>
 
-											<c:choose>
-												<c:when test="${qnaCurPage != qnaPageCount}">
-													<li class="page-item"><a class="page-link"
-														href="detail.product?reviewPage=${reviewCurPage}&qnaPage=${qnaCurPage + 1}&p_no=${product.p_no}"
-														id="snsR">&gt;</a></li>
-												</c:when>
-												<c:otherwise>
-													<li class="page-item disabled"><a class="page-link"
-														href="#" tabindex="-1" aria-disabled="true">&gt;</a></li>
-												</c:otherwise>
-											</c:choose>
-										</ul>
-									</nav>
-								</div>
-							</div>
 
 
 

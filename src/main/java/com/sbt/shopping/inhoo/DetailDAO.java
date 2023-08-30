@@ -108,13 +108,18 @@ public class DetailDAO {
 
 		int pageCount = (int) Math.ceil(reviewCount / (double) count);
 //        System.out.println(pageCount);
+		
+		System.out.println("reviewCount: " + reviewCount);
+		System.out.println("reviewPageCount: " + pageCount);
+		System.out.println("reviewCurPage: " + pageNo);
+
 		model.addAttribute("reviewPageCount", pageCount);
 		model.addAttribute("reviews", reviews);
 		model.addAttribute("reviewCurPage", pageNo);
 		model.addAttribute("product", product);
 	}
 
-	// 도전중
+	
 	public void getQnAPage(int pageNo, Model model, ProductDTO pDTO) {
 		int qnaCount = ss.getMapper(DetailMapper.class).getQnACount(pDTO);
 		int count = 5; // 한 페이지에 표시할 게시글 수
