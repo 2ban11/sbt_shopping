@@ -13,7 +13,7 @@ div{
 	margin-top:20px;
 	margin-left: 5%;
 	margin-bottom: 20px;
-	width: 275px;
+	width: 40%;
 	height: 30px;
 }
 .writeEmail{
@@ -37,7 +37,7 @@ div{
     height: 30px
 }
 #verificationCodewrite{
-	margin-left: -25px;
+	margin-left: 30px;
 }
 #verificationCodeContainer{
 	margin-top:20px;
@@ -48,4 +48,57 @@ div{
 	margin-left: 48%;
 	margin-top:20px;
 	margin-bottom: 20px;
+}
+
+@media(max-width:1440px){
+#verificationCodeContainer {
+    margin-top: 20px;
+    margin-left: 55px;
+}
+#verifyCodeBtn {
+    margin-left: 55%;
+    }
+}
+@media(max-width:1024px){
+	#verificationCode {
+    margin-left: 6%;
+    width: 55%;
+    height: 30px;
+}
+#verificationCodewrite {
+    margin-left: -32px;
+}
+#verifyCodeBtn {
+    margin-left: 50%;
+}
+@media(max-width:768px){
+	#verifyCodeBtn {
+    margin-left: 45%;
+    }
+    #findBtn {
+    margin-left: 30%;
+    }
+}
+@media(max-width:425px){
+	#verificationCode {
+    margin-left: 4%;
+    }
+}
+@media(max-width:375px){
+	#verifyCodeBtn {
+    margin-left: 38%;
+    }
+	}
+@media(max-width:320px){
+	#verificationCodeContainer {
+    margin-top: 20px;
+    margin-left: 38px;
+}
+.emailForPw {
+	width: 46%;
+}
+	#verifyCodeBtn {
+    margin-left: 33%;
+    }
+	
 }

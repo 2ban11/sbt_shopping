@@ -22,7 +22,6 @@
     </div>
     <div class="login">
         <form action="account.login" id="loginFrm" method="post" class="form-horizontal">
-            <!-- 입력 폼을 부트스트랩 컨테이너로 감싸기 -->
             <div class="container">
                <div class="form-group">
     <label for="a_id" class="required">아이디(이메일)<span class="star">*</span></label>

@@ -14,6 +14,7 @@ div{
 	width:100%;
 	margin-top: 15px;
 	margin-bottom:15px;
+	padding-bottom:8px;
 	border-bottom: 1px solid rgba(255,255,255,0.1);
 	
 }
@@ -23,6 +24,7 @@ div{
 }
 #writePW{
 	text-indent: -24px;
+	margin-bottom: 12px;
 }
 
 #writePW_re{
@@ -33,23 +35,92 @@ div{
 	margin-left: 70px;
 	width: 50%;
 }
-@media (max-width: 1140px) {
-    #a_password {
-        margin-left: 35px;
-    }
-}
+
 #a_password_re{
 	margin-left: 35px;
 	width: 50%;
 }
-
-
-
 #verifyAndResetBtn{ 
 	margin-left:20%;
+	margin-top: 12px;
+	margin-bottom:12px;
 	border-radius: 5px;
 	 border-color: #4fb7f3;
     color: #ffffff;
       background: linear-gradient(#67c1f5,#4fb7f3);
        box-shadow: 0 0 1px rgba(255,255,255,0.2) inset;
+}
+@media (max-width: 1024px) {
+	.changePW {
+    margin-top: 20px;
+    margin-left: 50px;
+}
+    #a_password {
+        margin-left: 53px;
+        width: 55%;
+    }
+    #writePW_re {
+    text-indent: -24px;
+    width: 110%;
+}
+#writePW{
+	text-indent: -5px;
+	margin-bottom: 12px;
+}
+}
+@media (max-width: 768px) {
+	.changePW {
+    margin-top: 20px;
+    margin-left: 81px;
+}
+	.w3-container {
+	width: 80%;
+	}
+	#writePW {
+    text-indent: -45px;
+    margin-bottom: 12px;
+}
+#writePW_re {
+	margin-left: 4px;
+    text-indent: -70px;
+    width: 110%;
+}
+	#a_password {
+    margin-left: 10px;
+    width: 70%;
+}
+		#a_password_re {
+    margin-left: 5px;
+    width: 65%;
+}
+}
+@media (max-width: 425px){
+.w3-container {
+    margin-left: 10%;
+    width: 80%;
+}
+#verifyAndResetBtn {
+    margin-left: 5%;
+    }
+}
+
+@media (max-width: 375px){
+#writePW {
+    text-indent: -60px;
+    margin-bottom: 12px;
+}
+#writePW_re {
+    text-indent: -80px;
+    width: 110%;
+}
+}
+@media(max-width:320px){
+	#writePW {
+    text-indent: -60px;
+    margin-bottom: 12px;
+}
+#writePW_re {
+    text-indent: -73px;
+    width: 110%;
+    }
 }

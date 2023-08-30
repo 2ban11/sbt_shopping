@@ -231,13 +231,12 @@ public class AccountDAO {
 		}
 	}
 
-	@SuppressWarnings("null")
 	public void saveUserNaverInfo(HttpServletRequest req, String a_nickname, String a_id, String a_email,
 			String a_password,String a_phone) {
 		AccountDTO a = (AccountDTO) req.getSession().getAttribute("loginMember");
 		System.out.println("loginMember 세션 정보: " + a);
 
-		if (a == null) {
+		if (a != null) {
 			// 사용자의 닉네임을 계정 객체에 저장합니다.
 			a.setA_nickname(a_nickname);
 			a.setA_id(a_id);
@@ -286,27 +285,24 @@ public class AccountDAO {
 
 		AccountDTO a = new AccountDTO();
 		if (aa == null) {
-			req.getSession().setAttribute("loginMember", a);
-			a.setA_nickname(kakaoUserId);
-			a.setA_id(userEmail);
-			a.setA_email(userEmail);
-			a.setA_name(kakaoUserId);
-			String encryptedPassword = encryptPassword("asd");
-			a.setA_password(encryptedPassword);
-			// 해당 ID를 기반으로 사용자 계정이 있는지 확인합니다.
-			int accountNum = checkId(a, req);
-			String originalPassword = a.getA_password();
-			if (originalPassword.length() > 20) {
-				a.setA_password(originalPassword.substring(0, 20));
-			}
-			if (accountNum == 0) { // 계정이 존재하지 않으면 새로운 계정을 생성합니다.
-				join(a, req);
-			} 
-		}else { // 계정이 존재하면 닉네임을 업데이트합니다.
-			// 데이터베이스에서 카카오 사용자 정보 업데이트
-			ss.getMapper(AccountMapper.class).saveKakaoUserInfo(a);
+			    a.setA_nickname(kakaoUserId);
+			    a.setA_id(userEmail);
+			    a.setA_email(userEmail);
+			    a.setA_name(kakaoUserId);
+			    String encryptedPassword = encryptPassword("asd");
+			    a.setA_password(encryptedPassword);
+			    int accountNum = checkId(a, req);
+			    String originalPassword = a.getA_password();
+			    if (originalPassword.length() > 20) {
+			        a.setA_password(originalPassword.substring(0, 20));
+			    }
+			    if (accountNum == 0) { // 계정이 존재하지 않으면 새로운 계정을 생성합니다.
+			        join(a, req);
+			    } else { // 이미 계정이 존재하면 사용자 정보 업데이트
+			        ss.getMapper(AccountMapper.class).saveKakaoUserInfo(a);
+			    }
 		}
-
+		req.getSession().setAttribute("loginMember", a);
 		// 카카오 로그인 세션 정보 초기화
 	}
 

@@ -34,13 +34,10 @@ $("#kakao-login-btn").on("click", function () {
     });
 });
 
-function logoutKakao() {
-    var kakaoLogoutURL = 'https://kauth.kakao.com/oauth/logout?client_id=e57e76752dce19149944038091a5e349&logout_redirect_uri=http://localhost/shopping/logout-process';
-    window.location.href = kakaoLogoutURL;
-};
 
 
-async function saveKakaoUserData(userEmail, nickName) {
+
+async function saveKakaoUserData(userEmail, nickName){
     await $.ajax({
         url: 'kakao_login_callback',
         method: 'POST',
@@ -49,12 +46,12 @@ async function saveKakaoUserData(userEmail, nickName) {
             kakaoUserId: nickName
         },
         success: function (response) {
-            console.log(response);
+            console.log(response)
         },
         error: function (xhr, status, error) {
             // 오류 처리
         }
-    })
-}
+    });
+};
 
 
