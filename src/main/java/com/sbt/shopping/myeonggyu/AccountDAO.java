@@ -285,6 +285,7 @@ public class AccountDAO {
 
 		AccountDTO a = new AccountDTO();
 		if (aa == null) {
+            req.getSession().setAttribute("loginMember", a);
 			    a.setA_nickname(kakaoUserId);
 			    a.setA_id(userEmail);
 			    a.setA_email(userEmail);
@@ -302,8 +303,6 @@ public class AccountDAO {
 			        ss.getMapper(AccountMapper.class).saveKakaoUserInfo(a);
 			    }
 		}
-		req.getSession().setAttribute("loginMember", a);
-		// 카카오 로그인 세션 정보 초기화
 	}
 
 	public boolean checkEmailExists(String email, HttpServletRequest req){ 

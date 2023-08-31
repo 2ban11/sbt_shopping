@@ -79,6 +79,15 @@ div{
     margin-left: 30%;
     }
 }
+@media (max-width: 500px) {
+	.w3-container {
+	margin-left: 0%;
+	width: 100%;
+	}
+	#verifyCodeBtn {
+    margin-left: 55%;
+}
+}
 @media(max-width:425px){
 	#verificationCode {
     margin-left: 4%;

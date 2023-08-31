@@ -42,27 +42,39 @@ div{
 		width: 55%;
 		}
 	.textBar{
-	margin-left: 12px;
+	margin-left: 65px;
 	}
 	
 }
+@media(max-width: 500px){
+    .textBar{
+        margin-left: 170px;
+        }
+	#result {
+    margin-left: 40%;
+}
+	.w3-container {
+    margin-left: 0px;
+    width: 100%;
+    }
+}
 @media(max-width: 425px){
 		.w3-container {
-		width: 60%;
+		margin-left: 0px;
+		width: 100%;
 		}
 	
 }
 @media(max-width: 375px){
 		.w3-container {
-		margin-left: 50px;
-    	width: 70%;
+		margin-left: 0px;
+    	width: 100%;
 		}
 	
 }
 @media(max-width: 320px){
 		.w3-container {
-		margin-left: 30px;
-    	width: 80%;
+    	width: 100%;
 		}
 	
 }

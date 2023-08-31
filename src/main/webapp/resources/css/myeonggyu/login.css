@@ -95,92 +95,13 @@ h4 {
   height: auto;
   text-align: center;
 }
-@media (max-width: 500px) {
-  .k_login {
-  margin-left: 4%;
-    width: 2.5%;
-    justify-content: center;
-  }
-  .k_login span {
-    display: none;
-  }
+.docs-section {
+  width: 50%;
+  margin-top: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
 }
-
-@media (max-width: 1440px) {
-	.s_login{
-	margin-left: 5;
-	}
-  .n_login span {
-    margin-left: 50px;
-  }
-  .k_login span {
-    margin-left: 50px;
-  }
-}
-
-@media (max-width: 1024px) {
-	.s_login{
-	margin-left: 0;
-	}
-  .k_login span {
-    margin-left: 15px;
-  }
-  .n_login span {
-    margin-left: 15px;
-  }
-}
-
-@media (max-width: 768px) {
-	 .s_login {
-
-    padding: 10px;
-    margin-left: 0px;
-    margin-bottom: 5px;
-    justify-content: space-between;
-    width: 900%;
-  }
-  .n_login span {
-    margin-left: 20px;
-  }
-  .login-wrap {
-    margin-left: 25%;
-    width: 100%;
-    padding: 20px;
-  }
- 
-  .k_login span {
-    margin-left: 20px;
-  }
-}
-
-@media (max-width: 320px) {
-  .login-wrap {
-    width: 120%; /* 너비를 120%로 설정 */
-  }
-  .n_login {
-    width: 8%;
-    justify-content: center;
-    background: none;
-  }
-  .n_login span {
-    display: none;
-  }
-  
-}
-
-
-@media (max-width: 425px) {
-  .n_login {
-      margin-left: 20px;
-    width: 8%;
-    justify-content: center;
-    background: none;
-  }
-  .n_login span {
-    display: none;
-  }
-}
-
 .n_Login_box {
   display: flex;
   align-items: center; /* 수직 가운데 정렬 */
@@ -204,13 +125,7 @@ h4 {
   color: white;
 }
 
-.docs-section {
-  width: 50%;
-  margin-top: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  display: flex;
-  justify-content: space-between;
-}
+
 
 #btn_login {
   color: #fff;
@@ -281,3 +196,123 @@ ul {
 .list-inline-item {
   display: inline-block;
 }
+
+@media (max-width: 1440px) {
+	.s_login{
+	margin-left: 5;
+	}
+  .n_login span {
+    margin-left: 40px;
+  }
+  .k_login span {
+    margin-left: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+	.s_login{
+	margin-left: 0;
+	}
+  .k_login span {
+    margin-left: 15px;
+  }
+  .n_login span {
+    margin-left: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+	.snsLoginWrap {
+    width: 100%;
+    }
+	 .s_login {
+
+    padding: 10px;
+    margin-left: 0px;
+    margin-bottom: 5px;
+    justify-content: space-between;
+    width: 900%;
+  }
+  .n_login span {
+    margin-left: 20px;
+  }
+  .login-wrap {
+  
+    margin-left: 0%;
+    width: 100%;
+    padding: 20px;
+  }
+  .basic-login {
+  width: 100%;
+}
+ 
+  .k_login span {
+    margin-left: 20px;
+  }
+}
+@media (max-width: 500px) {
+
+  .k_login {
+  margin-left: 3.5%;
+    width: 2.8%;
+    justify-content: center;
+  }
+  .k_login span {
+    display: none;
+  }
+  .n_login {
+  	margin-left:-4px;
+    justify-content: center;
+    background: none;
+  }
+    .n_login span {
+    display: none;
+  }
+  #n_login-img {
+  width: 115px;
+  height: 40px;
+}
+.docs-section {
+	width: 100%;
+}
+#result {
+    margin-left: 40%;
+}
+}
+@media(max-width:375px){
+	.k_login{margin-left: 46px;
+    width: 3.5%;}
+}
+@media (max-width: 320px) {
+  .login-wrap {
+  margin-left: 17%;
+    width: 120%; 
+  }
+  .n_login {
+  margin-left: 14px;
+    width: 8%;
+    justify-content: center;
+    background: none;
+  }
+  .n_login span {
+    display: none;
+  }
+  .k_login {
+    margin-left: 46px;
+    width: 3.7%;
+    }
+}
+
+
+@media (max-width: 425px) {
+  .n_login {
+      margin-left: 20px;
+    width: 8%;
+    justify-content: center;
+    background: none;
+  }
+  .n_login span {
+    display: none;
+  }
+}
+

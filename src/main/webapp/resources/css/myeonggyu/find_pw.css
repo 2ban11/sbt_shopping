@@ -94,11 +94,20 @@ div{
     width: 65%;
 }
 }
-@media (max-width: 425px){
-.w3-container {
-    margin-left: 10%;
-    width: 80%;
+@media (max-width: 500px) {
+	.w3-container {
+	margin-left: 0%;
+	width: 100%;
+	}
+	#writePW {
+    text-indent: -35px;}
+    #a_password {
+    margin-left: 11px;
+    width: 71.5%;
 }
+}
+@media (max-width: 425px){
+
 #verifyAndResetBtn {
     margin-left: 5%;
     }
@@ -106,7 +115,7 @@ div{
 
 @media (max-width: 375px){
 #writePW {
-    text-indent: -60px;
+    text-indent: -42px;
     margin-bottom: 12px;
 }
 #writePW_re {
@@ -119,8 +128,13 @@ div{
     text-indent: -60px;
     margin-bottom: 12px;
 }
+#a_password {
+    margin-left: 26px;
+    width: 71.5%;
+    }
 #writePW_re {
-    text-indent: -73px;
+	
+    text-indent: -80px;
     width: 110%;
     }
 }

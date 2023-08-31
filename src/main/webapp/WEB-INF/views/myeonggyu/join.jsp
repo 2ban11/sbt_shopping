@@ -19,8 +19,8 @@
 			<fieldset>
 				<legend><span id="joinTopTxt">회원가입</span></legend>
 				<div class="form-inline form-group">
-					<label for="a_id" class="col-sm-2 control-label">아이디</label>
-					<div class="col-sm-10">
+					 <label for="a_id" class="col-sm-2 control-label" id="idTxt" >아이디</label>
+   						 <div class="col-sm-10"style="margin-top: 12px;">
 						<input type="text" class="form-control" id="a_id" name="a_id" placeholder="아이디를 입력하세요" style="width:170px;">
 						<span style="color:#A4A4A4">@</span>
 						<input type="text" class="form-control" id="a_email2" name="a_email2" style="width:150px;">
@@ -38,18 +38,10 @@
 						<input type="hidden" id="id_chk" name="id_chk" value="">
 					</div>
 				</div>
-				   <div id="verificationCodeContainer" style="display: none;">
-                <p>
-                    <label>인증 번호</label>
-                    <input type="text" id="verificationCode" placeholder="인증 번호를 입력하세요">
-                </p>
-                <p>
-                    <button type="button" id="verifyCodeBtn">인증 번호 확인</button>
-                </p>
-            </div>
+				  
 				<div class="form-group">
 					<label for="a_password" class="col-sm-2 control-label">비밀번호</label>
-					<div class="col-sm-4">
+					<div class="col-sm-4"style="margin-bottom: 12px;">
 						<input type="password" class="form-control" id="a_password" name="a_password" placeholder="비밀번호를 입력하세요" aria-describedby="passwordHelpBlock">
 					</div>
 					<span id="passwordHelpBlock" class="text-muted-text-left">영문소문자, 숫자, 특수문자를 포함하여 8자이상 16이하로 사용이 가능합니다.<br/>(@는 포함하실수 없습니다.)</span>
@@ -71,18 +63,18 @@
 					<label for="phone_no." class="col-sm-2 control-label">전화번호</label>
 					<div class="col-sm-4">
 						<input type="text" class="form-control" id="a_phone" name="a_phone" placeholder="전화번호를 입력하세요" aria-describedby="phoneNumberReHelpBlock" maxlength="15"  style="width:200px;">
-						<button type="button" class="btn phone-default" id="btn_phone_chk">중복확인</button>
+						<button type="button" class="btn btn-default" id="btn_phone_chk">중복확인</button>
 						<input type="hidden" id="phone_chk" name="phone_chk" value="">
 					</div>
 				</div>
 				<div class="form-inline-form-group">
 					<label for="nickname" class="col-sm-2 control-label">닉네임</label>
-					<div class="col-sm-4">
+					<div class="col-sm-4"style="margin-bottom: 12px;">
 						<input type="text" class="form-control" id="a_nickname" name="a_nickname" placeholder="닉네임을 입력하세요" aria-describedby="nicknameReHelpBlock" maxlength="10" style="width:200px;">
 						<button type="button" class="btn btn-default" id="btn_nickname_chk">중복확인</button>
 					</div>
 					<span id="passwordReHelpBlock" class="text-muted-text-left">닉네임은 최대 10자까지 가능합니다.</span>
-					<input type="hidden" id="nickname_chk" name="nickname_chk" value="">
+					<input type="hidden"  id="nickname_chk" name="nickname_chk" value="">
 				</div>
 			</fieldset>
 			<div class="form-group form-actions">
@@ -94,7 +86,7 @@
 		</div>
 	</form>
 	</div>
-	<div class="docs-section" style="margin-top:16px;margin-bottom:16px;padding-bottom:6px;padding-top:16px">
+	<div class="docs-section" style="margin-top:16px;margin-bottom:16px;padding-bottom:6px;">
 		<p class="text_msg"><strong class="text-danger">※ 아이디(이메일), 닉네임은 주문 및 결제 시 필요한 고유 정보로, 가입 후에는 변경이 불가합니다.</strong></p>
 	</div>
 </body>
