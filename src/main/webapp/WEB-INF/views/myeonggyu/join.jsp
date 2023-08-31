@@ -67,7 +67,7 @@
 						<input type="hidden" id="phone_chk" name="phone_chk" value="">
 					</div>
 				</div>
-				<div class="form-inline-form-group">
+				<div class="form-inline form-group">
 					<label for="nickname" class="col-sm-2 control-label">닉네임</label>
 					<div class="col-sm-4"style="margin-bottom: 12px;">
 						<input type="text" class="form-control" id="a_nickname" name="a_nickname" placeholder="닉네임을 입력하세요" aria-describedby="nicknameReHelpBlock" maxlength="10" style="width:200px;">
