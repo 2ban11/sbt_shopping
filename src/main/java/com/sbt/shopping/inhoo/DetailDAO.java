@@ -109,9 +109,6 @@ public class DetailDAO {
 		int pageCount = (int) Math.ceil(reviewCount / (double) count);
 //        System.out.println(pageCount);
 		
-		System.out.println("reviewCount: " + reviewCount);
-		System.out.println("reviewPageCount: " + pageCount);
-		System.out.println("reviewCurPage: " + pageNo);
 
 		model.addAttribute("reviewPageCount", pageCount);
 		model.addAttribute("reviews", reviews);

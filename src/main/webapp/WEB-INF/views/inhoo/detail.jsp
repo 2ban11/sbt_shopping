@@ -75,6 +75,7 @@
 	}
 </script>
 
+
 </head>
 <body>
 	<div class="t3-wrapper">
@@ -479,7 +480,8 @@
 										</td>
 									</tr>
 									<tr>
-										<td><input type="file" name="file"> <br></td>
+										<td><input type="file" name="file" id="fileInput">
+											<br> <span id="fileName"></span></td>
 									</tr>
 									<%--   <tr>
                   <td><input type="hidden" class="form-control-file"
