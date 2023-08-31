@@ -66,13 +66,14 @@
 	#{p_maker},
 	#{p_name},
 	#{p_img1},
-	'',
+	#{p_img2},
 	#{p_content},
 	#{p_color},
 	#{p_price},
 	#{p_sale},
 	#{p_cnt},
 	sysdate,
+	#{p_cost}
 	)
 </insert>
 
@@ -87,7 +88,7 @@
 </select>
 <select id="getRefundOrder"
         resultType="com.sbt.shopping.jaehwan.OrderDetailDTO">
-        select * from order_detail , product where p_no = od_product and od_state like '%환불%' order by od_date
+        select * from order_detail , product where p_no = od_product and od_state = '환불요청' order by od_date
         desc
     </select>
 
@@ -100,10 +101,10 @@
     </update>
 <select id="getMargin" resultType="com.sbt.shopping.jaehwan.OrderDetailDTO">
 SELECT 
-    SUM(P.P_SALE) AS totalSales,
+    SUM(O.od_price) AS totalSales,
     SUM(P.P_COST) AS totalCost,
-    (SUM(P.P_SALE) - SUM(P.P_COST)) AS totalMargin,
-    (SUM(P.P_SALE) - SUM(P.P_COST)) / SUM(P.P_SALE) * 100 AS totalMarginByPercent
+    (SUM(O.od_price) - SUM(P.P_COST)) AS totalMargin,
+    (SUM(O.od_price) - SUM(P.P_COST)) / SUM(O.od_price) * 100 AS totalMarginByPercent
 FROM 
     product P
 JOIN 
@@ -123,12 +124,14 @@ set
     p_maker = #{p_maker},                 
     p_name = #{p_name},                  
     p_img1 = #{p_img1},                  
-    p_img2 = #{p_img2},                 
+    p_img2 = '',                 
     p_content = #{p_content},              
     p_color = #{p_color},              
     p_price = #{p_price},                
     p_sale = #{p_sale},               
-    p_cnt = #{p_cnt}                    
+    p_cnt = #{p_cnt},
+    p_date = sysdate,
+    p_cost = #{p_cost}                    
 where
     p_no = #{p_no}                 
 </update>

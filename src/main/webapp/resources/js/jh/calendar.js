@@ -60,13 +60,13 @@ function attachDateItemListeners() {
             $("#inputDate").val(formattedDate);
         });
     });
-}
+};
 function formatCurrency(amount, currencyCode = "KRW") {
     return new Intl.NumberFormat("en-US", {
         style: "currency",
         currency: currencyCode
     }).format(amount);
-}
+};
 
 // 받은 데이터를 화면에 표시하는 함수
 function displayInfo(data) {
@@ -102,7 +102,7 @@ function loadInfo(date) {
                 + "error:" + error);
         }
     });
-}
+};
 
 prenexIcons.forEach(icon => {
     icon.addEventListener("click", () => {

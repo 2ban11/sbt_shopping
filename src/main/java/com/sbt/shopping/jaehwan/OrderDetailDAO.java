@@ -66,8 +66,8 @@ public class OrderDetailDAO {
 		ss.getMapper(Jh_productMapper.class).updateMargin(mDTO);
 	}
 
-	public List<MarginDTO> getMarginByDate(String date) {
-		return ss.getMapper(Jh_productMapper.class).getMarginByDate(date);
+	public List<MarginDTO> getMarginByDate(String dateString) {
+		return ss.getMapper(Jh_productMapper.class).getMarginByDate(dateString);
 	}
 
 

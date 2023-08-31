@@ -14,6 +14,16 @@
 <script type="text/javascript" src="resources/js/jh/isNotElec.js"></script>
 </head>
 <body>
+<script>
+window.addEventListener('load', function() {
+    ['.reg-popup--btn','.sortOrder'].forEach(function(className) {
+        document.querySelectorAll(className).forEach(function(element) {
+            element.style.display = 'none';
+        });
+    });
+});
+</script>
+
 	<div class="mypage-info-datas">
 		<div class="mypage-info-data-nav">
 			<div class="mypage-info-data-order-no">주문번호</div>
@@ -24,6 +34,7 @@
 			<div class="mypage-info-data-order-state">주문상태</div>
 		</div>
 		</div>
+		
 		<div id="data-container"></div> 
 		
 	<div id="pagination"></div>
@@ -50,7 +61,7 @@
 			dataSource: jsonData,
 			pageSize: 10,
 			callback: function (data, pagination) {
-				var dataHtml = '<ul style="color:white;">';
+				var dataHtml = '<ul style="color:white; margin:0; padding:0;">';
 				$.each(data, function (index, item) {
 					dataHtml += '<div class="mypage-info-data">';
 					dataHtml += '<div class="mypage-info-data-order-no">' + item.od_no + '</div>';

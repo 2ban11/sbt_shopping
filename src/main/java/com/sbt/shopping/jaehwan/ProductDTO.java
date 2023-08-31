@@ -21,20 +21,23 @@ public class ProductDTO {
 	private int p_sale;
 	private int p_cnt;
 	private Date p_date;
+	private int p_cost;
 	
 	private MultipartFile img; 
+	private MultipartFile img2; 
 	private String[] colors;
 	private String sortOrder;
+@Override
+	public String toString() {
+		return "ProductDTO [p_no=" + p_no + ", p_big_category=" + p_big_category + ", p_middle_category="
+				+ p_middle_category + ", p_small_category=" + p_small_category + ", p_maker=" + p_maker + ", p_name="
+				+ p_name + ", p_img1=" + p_img1 + ", p_img2=" + p_img2 + ", p_content=" + p_content + ", p_color="
+				+ p_color + ", p_price=" + p_price + ", p_sale=" + p_sale + ", p_cnt=" + p_cnt + ", p_date=" + p_date
+				+ ", p_cost=" + p_cost + ", img=" + img + ", img2=" + img2 + ", colors=" + Arrays.toString(colors)
+				+ ", sortOrder=" + sortOrder + "]";
+	}
 public ProductDTO() {
 	// TODO Auto-generated constructor stub
-}
-@Override
-public String toString() {
-	return "ProductDTO [p_no=" + p_no + ", p_big_category=" + p_big_category + ", p_middle_category="
-			+ p_middle_category + ", p_small_category=" + p_small_category + ", p_maker=" + p_maker + ", p_name="
-			+ p_name + ", p_img1=" + p_img1 + ", p_img2=" + p_img2 + ", p_content=" + p_content + ", p_color=" + p_color
-			+ ", p_price=" + p_price + ", p_sale=" + p_sale + ", p_cnt=" + p_cnt + ", p_date=" + p_date + ", img=" + img
-			+ ", colors=" + Arrays.toString(colors) + ", sortOrder=" + sortOrder + "]";
 }
 public int getP_no() {
 	return p_no;
@@ -120,11 +123,23 @@ public Date getP_date() {
 public void setP_date(Date p_date) {
 	this.p_date = p_date;
 }
+public int getP_cost() {
+	return p_cost;
+}
+public void setP_cost(int p_cost) {
+	this.p_cost = p_cost;
+}
 public MultipartFile getImg() {
 	return img;
 }
 public void setImg(MultipartFile img) {
 	this.img = img;
+}
+public MultipartFile getImg2() {
+	return img2;
+}
+public void setImg2(MultipartFile img2) {
+	this.img2 = img2;
 }
 public String[] getColors() {
 	return colors;
@@ -140,7 +155,7 @@ public void setSortOrder(String sortOrder) {
 }
 public ProductDTO(int p_no, String p_big_category, String p_middle_category, String p_small_category, String p_maker,
 		String p_name, String p_img1, String p_img2, String p_content, String p_color, int p_price, int p_sale,
-		int p_cnt, Date p_date, MultipartFile img, String[] colors, String sortOrder) {
+		int p_cnt, Date p_date, int p_cost, MultipartFile img, MultipartFile img2, String[] colors, String sortOrder) {
 	super();
 	this.p_no = p_no;
 	this.p_big_category = p_big_category;
@@ -156,8 +171,9 @@ public ProductDTO(int p_no, String p_big_category, String p_middle_category, Str
 	this.p_sale = p_sale;
 	this.p_cnt = p_cnt;
 	this.p_date = p_date;
-	
+	this.p_cost = p_cost;
 	this.img = img;
+	this.img2 = img2;
 	this.colors = colors;
 	this.sortOrder = sortOrder;
 }

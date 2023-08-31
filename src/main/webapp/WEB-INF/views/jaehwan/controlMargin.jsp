@@ -15,6 +15,15 @@
 <link rel="stylesheet" href="resources/css/jh/adminDetail.css" />
 </head>
 <body>
+<script>
+window.addEventListener('load', function() {
+    ['.reg-popup--btn', '.paginationjs-pages', '.p_small_category', '.sortOrder'].forEach(function(className) {
+        document.querySelectorAll(className).forEach(function(element) {
+            element.style.display = 'none';
+        });
+    });
+});
+</script>
 <div class="marginContainer">
 
 <div class="marginContent">

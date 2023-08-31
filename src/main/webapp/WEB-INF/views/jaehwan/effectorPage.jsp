@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="resources/css/jh/listPage.css" />
 <link rel="stylesheet" href="resources/css/jh/chkColors.css" />
 <link rel="stylesheet" href="resources/css/jh/regProduct.css" />
+<link rel="stylesheet" href="resources/css/kimoon/main-page.css" />
 <script type="text/javascript" src="resources/js/jh/isNotElec.js"></script>
 </head>
 
@@ -21,9 +22,9 @@
       <form id="searchDetail" action="searchDetail" method="post" style="justify-content:end;">
         <select class="companyBy" id="companySelect" name="p_maker"  style="margin:20px;">
           <option value="">회사 선택</option>
-          <option value="Orange">Orange</option>
-          <option value="Marshall">Marshall</option>
-          <option value="Yamaha">Yamaha</option>
+          <option value="Boss">Boss</option>
+          <option value="Electro-Harmonix">Electro-Harmonix</option>
+          <option value="JHS">JHS</option>
         </select>
         
         <select class="p_small_category" id="categorySelect" name="p_small_category">
@@ -74,7 +75,28 @@
       </section>
     </div>
   </div>
-  
+  <!-- 모달창 -->
+	<div id="jhModal" class="main-cart__modal">
+		<div class="main-cart__modal-wrapper">
+			<div class="main-cart__modal-header">
+				<div style="font-weight: bold"></div>
+				<div>
+					<button class="main-cart__modal--close">&times;</button>
+				</div>
+			</div>
+			<div
+				style="padding: 2.5em 1em; border-bottom: 1px solid rgba(255, 255, 255, 0.2);">장바구니에
+				추가되었습니다.</div>
+			<div class="main-how-to-cart">
+				<div>
+					<button id="main-continue-shopping">계속 쇼핑하기</button>
+				</div>
+				<div>
+					<button id="main-go-to-cart">장바구니로 이동하기</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
  <script>
   
@@ -111,6 +133,7 @@
     	                if (item.p_maker !== '') {
     	                    dataHtml += '<div class="ul-div product-logo"><img src="resources/img/MakerLogo/' + item.p_maker + '_Logo_White.png" class="LogoImg"></div>';
     	                }
+    	                dataHtml += '<div class="ul-div p_no" style="display:none;">' + item.p_no + '</div>';
     	                dataHtml += '<div class="ul-div p_big_category" style="display:none;">' + item.p_big_category + '</div>';
     	                dataHtml += '<div class="ul-div p_middle_category" style="display:none;">' + item.p_middle_category + '</div>';
     	                dataHtml += '<div class="ul-div companyBy" style="display:none;">' + item.p_maker + '</div>';
@@ -153,8 +176,17 @@
       				} else {
       					}
       	                dataHtml += '</div>';
-      	            dataHtml += '<button class="fa-solid fa-cart-shopping intoTheCart--btn"></button>';
-      	                dataHtml += '</div>'; // 그 디브 끝
+      	                
+      	              if(item.p_cnt != 0){
+           				dataHtml += '<span>';
+          	            dataHtml += '<button class="fa-solid fa-cart-shopping intoTheCart--btn"';
+          	            dataHtml += 'name="c_product" value="' + item.p_no + '">&nbsp;</button>';
+          	            			}
+          	            dataHtml += '<input type="hidden" name="c_id" value="${sessionScope.loginMember.a_id}">';
+    					dataHtml += '</span>';
+      	                
+      	            
+      	            dataHtml += '</div>'; // 그 디브 끝
       	                dataHtml += '</div>'; // 그 디브 끝
       	            });
     	            dataHtml += '</ul>';
@@ -204,6 +236,14 @@ function updateResults() {
         }
     });
 }
+$(document).on("click",".intoTheCart--btn",function(e){
+	// id, pno, cnt
+	addToCartModal(e.currentTarget);
+	let checkLogin = $('input[name=c_id]').val().length;
+	if(checkLogin != 0){
+		showModal();
+	}
+});
 </script>
 </body>
 </html>

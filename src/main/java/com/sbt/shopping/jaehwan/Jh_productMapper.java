@@ -25,5 +25,5 @@ public interface Jh_productMapper {
 	int refundCancel2(OrderDetailDTO oDTO);
 	List<Integer> getChartData();
 	int updateMargin(MarginDTO mDTO);
-	List<MarginDTO> getMarginByDate(String date);
+	List<MarginDTO> getMarginByDate(String dateString);
 }

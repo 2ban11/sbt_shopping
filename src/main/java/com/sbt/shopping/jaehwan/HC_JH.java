@@ -162,10 +162,10 @@ public class HC_JH {
 		    
 		    List<MarginDTO> existingData = odDAO.getMarginByDate(dateString);
 		    
-		    if (existingData != null) {
-		        odDAO.updateMargin(req, mDTO);
+		    if (existingData == null || existingData.isEmpty()) {
+		    	odDAO.insertMargin(req, mDTO);
 		    } else {
-		        odDAO.insertMargin(req, mDTO);
+		    	odDAO.updateMargin(req, mDTO);
 		    }
 		    
 		    return "redirect:controlMargin"; 

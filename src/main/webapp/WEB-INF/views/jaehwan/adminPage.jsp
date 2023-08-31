@@ -17,8 +17,6 @@
 <link rel="stylesheet" href="resources/css/jh/pagination.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.3/chart.min.js" integrity="sha512-fMPPLjF/Xr7Ga0679WgtqoSyfUoQgdt8IIxJymStR5zV3Fyb6B3u/8DcaZ6R6sXexk5Z64bCgo2TYyn760EdcQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
-<script type="text/javascript" src="resources/js/jh/isNotElec.js"></script>
-
 </head>
 
 <body>
@@ -26,7 +24,7 @@
     <div class="detail_Search_Window" style="background-color: transparent;">
       <div id="searchDetail" style="display:block; background-color: transparent;">
         <div class="adminPage__select">
-        <select class="p_small_category" id="categorySelect">
+        <select class="p_small_category" id="categorySelect" style="display:block;">
           <option  value="">상품 종류</option>
           <option  value="기타">기타</option>
           <option  value="앰프">앰프</option>
@@ -40,7 +38,7 @@
         </select>
         </div>
     <div class="adminPage__tab" style="user-select: auto;">
-		<div class="" style="user-select: auto;"><a href="controlProduct">상품관리</a></div>
+		<div class="" style="user-select: auto;"><a href="adminPage">상품관리</a></div>
 		<div class="" style="user-select: auto;"><a href="controlOrder">주문관리</a></div>
 		<div class="" style="user-select: auto;"><a href="controlRefund">환불관리</a></div>
 		<div class="" style="user-select: auto;"><a href="controlMargin">매상/매출</a></div>
@@ -67,11 +65,10 @@
 			<div class="reg-window">
 				<h1>상품등록</h1>
 				<br>
-				<br>
 				<form action="regProduct" method="post" enctype="multipart/form-data">
 					<div class="int-area">
 						<div style="display:flex;">
-						<a>상품종류</a>&nbsp;<select class="p_small_category" id="categorySelect" name="p_big_category">
+						<a>상품종류</a>&nbsp;<select class="p_big_category" id="categorySelect" name="p_big_category">
          						 <option  value="">상품 종류</option>
         					     <option  value="기타">기타</option>
         					     <option  value="앰프">앰프</option>
@@ -93,7 +90,6 @@
       						     <option  value="카포">카포</option>
       					  </select>
 						</div>
-						<br>
 						<div style="display:flex;">
 						<a>기타종류</a> <select class="p_small_category" id="categorySelect" name="p_small_category" >
         				 	    <option  value="">종류 선택</option>
@@ -112,45 +108,51 @@
        							      <option value="Yamaha">Yamaha</option>
      						 		  </select>
 						</div>
-						<br>
 						<a>색상</a><div class="chkboxAll">
          <div class="chkboxAll" >
-          <div class="chkbox1" style="background-color: transparent; justify-content: space-around;">
-            <input type="checkbox" id="cbtest1" name="p_color" value="red">
+          <div class="chkbox1" style="background-color: transparent; justify-content: space-around; padding-top: 0px;">
+            <input type="radio" id="cbtest1" name="p_color" value="red">
             <label for="cbtest1" class="cb1" id="cb1"></label>
-            <input type="checkbox" id="cbtest2" name="p_color" value="orange">
+            <input type="radio" id="cbtest2" name="p_color" value="orange">
             <label for="cbtest2" class="cb1" id="cb2"></label>
-            <input type="checkbox" id="cbtest3" name="p_color" value="yellow">
+            <input type="radio" id="cbtest3" name="p_color" value="yellow">
             <label for="cbtest3" class="cb1" id="cb3"></label>
-            <input type="checkbox" id="cbtest4" name="p_color" value="green">
+            <input type="radio" id="cbtest4" name="p_color" value="green">
             <label for="cbtest4" class="cb1" id="cb4"></label>
-            <input type="checkbox" id="cbtest5" name="p_color" value="pink">
+            <input type="radio" id="cbtest5" name="p_color" value="pink">
             <label for="cbtest5" class="cb1" id="cb5"></label>
           </div>
           <div class="chkbox2" style="background-color: transparent; justify-content: space-around;">
-            <input type="checkbox" id="cbtest6" name="p_color" value="blue">
+            <input type="radio" id="cbtest6" name="p_color" value="blue">
             <label for="cbtest6" class="cb1" id="cb6"></label>
-            <input type="checkbox" id="cbtest7" name="p_color" value="purple">
+            <input type="radio" id="cbtest7" name="p_color" value="purple">
             <label for="cbtest7" class="cb1" id="cb7"></label>
-            <input type="checkbox" id="cbtest8" name="p_color" value="wood">
+            <input type="radio" id="cbtest8" name="p_color" value="wood">
             <label for="cbtest8" class="cb1" id="cb8"></label>
-            <input type="checkbox" id="cbtest9" name="p_color" value="white">
+            <input type="radio" id="cbtest9" name="p_color" value="white">
             <label for="cbtest9" class="cb1" id="cb9"></label>
-            <input type="checkbox" id="cbtest10" name="p_color" value="black">
+            <input type="radio" id="cbtest10" name="p_color" value="black">
             <label for="cbtest10" class="cb1" id="cb10"></label>
           </div>
         </div>
-        <br>
         			<div class="int-area2">
-      					<a>상품명</a><input type="text" name="p_name" value="1111"
+      					<a>상품명</a><input type="text" name="p_name"
 							 autocomplete="off" maxlength="100" required>
-						<a>정가</a><input type="text" name="p_price"
+						 <div style="display:flex;">
+						<a>원가</a><input type="text" name="p_cost"
+							 autocomplete="off" maxlength="10" style="width:33%;" required>
+						<a>정가</a><input type="text"  name="p_price"
+						class="p_price"	 autocomplete="off" style="width:33%;">
+						 </div>
+						 <div style="display:flex;">
+						<a>할인</a><input type="text" name="p_sale" style="width:33%;"
 							 autocomplete="off" maxlength="10" required>
-						<a>판매가</a><input type="text" name="p_sale"
+						<a>재고</a><input type="text" name="p_cnt" style="width:33%;"
 							 autocomplete="off" maxlength="10" required>
-						<a>재고수량</a><input type="text" name="p_cnt"
-							 autocomplete="off" maxlength="10" required>
+						 </div>
 						<a>사진등록</a><input type="file" name="img" accept="image/*"
+							 autocomplete="off" required>
+						<a>상세사진</a><input type="file" name="img2" accept="image/*"
 							 autocomplete="off" required>
 						<a>상품설명</a>
 						<textarea rows="" cols="" name="p_content" maxlength="300" required></textarea>
@@ -175,11 +177,10 @@
 			<div class="reg-window">
 				<h1>상품수정</h1>
 				<br>
-				<br>
 				<form action="updateProduct" method="post" enctype="multipart/form-data">
 					<div class="int-area">
 						<div style="display:flex;">
-						<a>상품종류</a>&nbsp;<select class="p_small_category" id="categorySelect" name="p_big_category">
+						<a>상품종류</a>&nbsp;<select class="p_big_category" id="categorySelect" name="p_big_category">
          						 <option  value="">상품 종류</option>
         					     <option  value="기타">기타</option>
         					     <option  value="앰프">앰프</option>
@@ -200,7 +201,6 @@
       						     <option  value="카포">카포</option>
       					  </select>
 						</div>
-						<br>
 						<div style="display:flex;">
 						<a>기타종류</a> <select class="p_small_category" id="categorySelect" name="p_small_category" >
         				 	    <option  value="">종류 선택</option>
@@ -219,49 +219,55 @@
        							      <option value="Yamaha">Yamaha</option>
      						 		  </select>
 						</div>
-						<br>
 						<a>색상</a><div class="chkboxAll">
          <div class="chkboxAll" >
-          <div class="chkbox1" style="background-color: transparent; justify-content: space-around;">
-            <input type="checkbox" id="cbtest11" name="p_color" value="red">
+          <div class="chkbox1" style="background-color: transparent; justify-content: space-around; padding-top: 0px;">
+            <input type="radio" id="cbtest11" name="p_color" value="red">
             <label for="cbtest11" class="cb1" id="cb1"></label>
-            <input type="checkbox" id="cbtest12" name="p_color" value="orange">
+            <input type="radio" id="cbtest12" name="p_color" value="orange">
             <label for="cbtest12" class="cb1" id="cb2"></label>
-            <input type="checkbox" id="cbtest13" name="p_color" value="yellow">
+            <input type="radio" id="cbtest13" name="p_color" value="yellow">
             <label for="cbtest13" class="cb1" id="cb3"></label>
-            <input type="checkbox" id="cbtest14" name="p_color" value="green">
+            <input type="radio" id="cbtest14" name="p_color" value="green">
             <label for="cbtest14" class="cb1" id="cb4"></label>
-            <input type="checkbox" id="cbtest15" name="p_color" value="pink">
+            <input type="radio" id="cbtest15" name="p_color" value="pink">
             <label for="cbtest15" class="cb1" id="cb5"></label>
           </div>
           <div class="chkbox2" style="background-color: transparent; justify-content: space-around;">
-            <input type="checkbox" id="cbtest16" name="p_color" value="blue">
+            <input type="radio" id="cbtest16" name="p_color" value="blue">
             <label for="cbtest16" class="cb1" id="cb6"></label>
-            <input type="checkbox" id="cbtest17" name="p_color" value="purple">
+            <input type="radio" id="cbtest17" name="p_color" value="purple">
             <label for="cbtest17" class="cb1" id="cb7"></label>
-            <input type="checkbox" id="cbtest18" name="p_color" value="wood">
+            <input type="radio" id="cbtest18" name="p_color" value="wood">
             <label for="cbtest18" class="cb1" id="cb8"></label>
-            <input type="checkbox" id="cbtest19" name="p_color" value="white">
+            <input type="radio" id="cbtest19" name="p_color" value="white">
             <label for="cbtest19" class="cb1" id="cb9"></label>
-            <input type="checkbox" id="cbtest20" name="p_color" value="black">
+            <input type="radio" id="cbtest20" name="p_color" value="black">
             <label for="cbtest20" class="cb1" id="cb10"></label>
           </div>
         </div>
-        <br>
         			<div class="int-area2">
         						
       					<a>상품명</a><input type="text" name="p_name"
 						 class="p_name"	 autocomplete="off">
+      					<input type="hidden" name="p_no"
+						 class="p_no" autocomplete="off">
+						 <div style="display:flex;">
+						<a>원가</a><input type="text" name="p_cost"
+							 class="p_cost" autocomplete="off" maxlength="10" style="width:33%;" required>
 						<a>정가</a><input type="text"  name="p_price"
-						class="p_price"	 autocomplete="off">
-						<a>판매가</a><input type="text"  name="p_sale"
-						class="p_sale"	 autocomplete="off">
-						<a>재고수량</a><input type="text"  name="p_cnt"
-						class="p_cnt"	 autocomplete="off">
+						class="p_price"	 autocomplete="off" style="width:33%;">
+						 </div>
+						 <div style="display:flex;">
+						<a>할인</a><input type="text"  name="p_sale"
+						class="p_sale"	 autocomplete="off" style="width:32%;">
+						<a>재고</a><input type="text"  name="p_cnt"
+						class="p_cnt"	 autocomplete="off" style="width:32%;">
+						 </div>
 						<a>사진등록</a><input type="file" name="img" accept="image/*"
-						class="p_img"	 autocomplete="off">
+						class="p_img" autocomplete="off">
 						<a>상품설명</a>
-						<textarea rows="" cols="" name="p_content"></textarea>
+						<textarea rows="" cols="" class="p_content" name="p_content"></textarea>
         			</div>
 						</div>
 					</div>
@@ -287,8 +293,10 @@
         p_price: '${p.p_price}',
         p_sale : '${p.p_sale}',
         p_img1: '${p.p_img1}',
+        p_img2: '${p.p_img2}',
         p_content: '${p.p_content}',
         p_cnt: '${p.p_cnt}',
+        p_cost: '${p.p_cost}',
       };
       jsonData.push(item);
     </c:forEach>
@@ -308,6 +316,7 @@
     	                if (item.p_maker !== '') {
     	                    dataHtml += '<div class="ul-div product-logo"><img src="resources/img/MakerLogo/' + item.p_maker + '_Logo_White.png" class="LogoImg"></div>';
     	                }
+    	                dataHtml += '<div class="ul-div p_no" style="display:none;">' + item.p_no + '</div>';
     	                dataHtml += '<div class="ul-div p_big_category" style="display:none;">' + item.p_big_category + '</div>';
     	                dataHtml += '<div class="ul-div p_middle_category" style="display:none;">' + item.p_middle_category + '</div>';
     	                dataHtml += '<div class="ul-div companyBy" style="display:none;">' + item.p_maker + '</div>';
@@ -316,6 +325,7 @@
     	                dataHtml += '<div class="ul-div productColor">' + item.p_color + '</div>';
     	                dataHtml += '<div class="ul-div productSmallCategory">' + item.p_small_category + '</div>';
     	                dataHtml += '<div class="ul-div productTitle">' + item.p_name + '</div>';
+    	                dataHtml += '<div class="ul-div p_cost" style="display:none;">' + item.p_cost + '</div>';
     	                dataHtml += '<div class="aaa">'
     	              	  dataHtml += '<div class="productPrice"';
     	              if (item.p_price !== item.p_sale) {
@@ -426,6 +436,5 @@ function updateResults() {
 </script>
 <script type="text/javascript" src="resources/js/jh/calendar.js"></script>
 <script type="text/javascript" src="resources/js/jh/updatePopup.js"></script>
-<script type="text/javascript" src="resources/js/jh/popup.js"></script>
 </body>
 </html>
