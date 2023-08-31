@@ -11,7 +11,8 @@
 	src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script>
 	var isLoggedIn =
-<%=session.getAttribute("loginMember") != null%>;
+<%=session.getAttribute("loginMember") != null%>
+	;
 </script>
 <script type="text/javascript" src="resources/js/jaepil/mypage.js"></script>
 </head>
@@ -71,7 +72,8 @@
 								</c:when>
 							</c:choose>
 						</div>
-						<div class="mypage-info-data-cart-name" onclick="location.href='detail.product?p_no=${c.p_no}'">${c.p_name }</div>
+						<div class="mypage-info-data-cart-name"
+							onclick="location.href='detail.product?p_no=${c.p_no}'">${c.p_name }</div>
 						<div class="mypage-info-data-cart-cnt">
 							<form action="updatecart" onsubmit="updatecart()">
 								<input type="number" name="c_cnt" value="${c.c_cnt }" min="1"

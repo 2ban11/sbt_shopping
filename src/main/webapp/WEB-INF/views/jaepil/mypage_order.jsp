@@ -19,7 +19,7 @@
 	<div class="mypage-main">
 		<h1>주문내역</h1>
 	</div>
-	 <c:set var="today" value="<%= new java.util.Date()%>" />
+	<c:set var="today" value="<%= new java.util.Date()%>" />
 	<div class="mypage">
 		<div class="mypage-nav">
 			<div>
@@ -60,7 +60,8 @@
 		<div class="mypage-info-des">
 			※ 운영시간: 월~목 10:00~17:00 (점심시간: 12:30~14:00) / 금 10:00~12:00 / 토, 일,
 			공휴일 휴무 <br> <br> ※ 운영시간 외에 문의하신 사항은 홈페이지, 전화, 메일의 대응이 모두
-			불가하며, 영업일 기준 다음 운영시간에 순차적으로 처리됩니다.<br> <br> ※주문 후 한달이 지난 상품은 환불 신청이 불가합니다.
+			불가하며, 영업일 기준 다음 운영시간에 순차적으로 처리됩니다.<br> <br> ※주문 후 한달이 지난
+			상품은 환불 신청이 불가합니다.
 		</div>
 		<div class="mypage-info-datas">
 			<div class="mypage-info-data-nav">

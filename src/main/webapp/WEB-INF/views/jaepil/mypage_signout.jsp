@@ -10,7 +10,9 @@
 </head>
 <link rel="stylesheet" href="resources/css/jaepil/mypage.css">
 <script>
-    var isLoggedIn = <%= session.getAttribute("loginMember") != null %>;
+	var isLoggedIn =
+<%=session.getAttribute("loginMember") != null%>
+	;
 </script>
 <script type="text/javascript" src="resources/js/jaepil/mypage.js"></script>
 <body>
@@ -44,8 +46,8 @@
 				<div class="mypage-info-account">
 					<c:set var="text" value="${account.a_id}" />
 					<c:if test="${!fn:contains(text,'@null')}">
-					<div class="mypage-info-account-des">아이디</div>
-					<input type="hidden" value="${account.a_id }" id="a_id" name="id">
+						<div class="mypage-info-account-des">아이디</div>
+						<input type="hidden" value="${account.a_id }" id="a_id" name="id">
 						<div class="mypage-info-account-value">${account.a_id }</div>
 					</c:if>
 				</div>
