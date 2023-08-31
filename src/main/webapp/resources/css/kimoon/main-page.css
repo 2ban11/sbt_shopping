@@ -337,6 +337,11 @@
 	.main-cart__modal-wrapper {
 		width: 80%;
 	}
+	
+	#main-add-to-cart-form {
+		display: flex;
+		justify-content: center;
+	}
 }
 
 @media screen and (max-width: 400px) {

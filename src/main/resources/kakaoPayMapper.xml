@@ -15,7 +15,7 @@
 
 <!-- 재고 -1 -->
 <update id="downProductCnt">
-	update product set p_cnt = p_cnt - 1 where p_no = #{od_product} 
+	update product set p_cnt = p_cnt - #{od_cnt} where p_no = #{od_product} 
 </update>
 
 
