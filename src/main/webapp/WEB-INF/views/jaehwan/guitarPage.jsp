@@ -135,7 +135,8 @@
     	            var dataHtml = '<ul>';
     	            $.each(data, function (index, item) {
     	                dataHtml += '<div class="listPage_item1">';
-    	                dataHtml += '<div class="ul-div product-img"><img src="resources/img/Guitar/' + item.p_img1 + '" class="productImg"></div>';
+    	                dataHtml += '<div class="ul-div product-img"><img src="resources/img/Guitar/' + item.p_img1 + '" class="productImg"';
+    	                dataHtml += ' onclick="location.href=\'detail.product?p_no=' + item.p_no + '\'" /></div>';
     	                if (item.p_maker !== '') {
     	                    dataHtml += '<div class="ul-div product-logo"><img src="resources/img/MakerLogo/' + item.p_maker + '_Logo_White.png" class="LogoImg"></div>';
     	                }
@@ -147,7 +148,7 @@
     	                dataHtml += '<div class="ul-div productCnt" style="display:none;">' + item.p_cnt + '</div>';
     	                dataHtml += '<div class="ul-div productColor">' + item.p_color + '</div>';
     	                dataHtml += '<div class="ul-div productSmallCategory">' + item.p_small_category + '</div>';
-    	                dataHtml += '<div class="ul-div productTitle">' + item.p_name + '</div>';
+    	                dataHtml += '<div class="ul-div productTitle" onclick="location.href=\'detail.product?p_no=' + item.p_no + '\'">' + item.p_name + '</div>';
     	                dataHtml += '<div class="aaa">'
     	              	  dataHtml += '<div class="productPrice"';
       	              if (item.p_price !== item.p_sale) {
