@@ -133,7 +133,7 @@
     	                if (item.p_maker !== '') {
     	                    dataHtml += '<div class="ul-div product-logo"><img src="resources/img/MakerLogo/' + item.p_maker + '_Logo_White.png" class="LogoImg"></div>';
     	                }
-    	                dataHtml += '<div class="ul-div p_no" style="display:none;">' + item.p_no + '</div>';
+    	                
     	                dataHtml += '<div class="ul-div p_big_category" style="display:none;">' + item.p_big_category + '</div>';
     	                dataHtml += '<div class="ul-div p_middle_category" style="display:none;">' + item.p_middle_category + '</div>';
     	                dataHtml += '<div class="ul-div companyBy" style="display:none;">' + item.p_maker + '</div>';

@@ -39,7 +39,7 @@ $(function () {
 		console.log(p_no); 
 		
 		openPopup2();
-
+		
         $("#updateProductPopup .p_big_category").val(p_big_category);
         $("#updateProductPopup .p_no").val(p_no);
         $("#updateProductPopup .p_middle_category").val(p_middle_category);
@@ -63,6 +63,7 @@ $(function () {
 	openPopup();
 	var body = document.body;
 	body.style.overflow = "hidden";
+	dim.style.display = "none";
 	    });
 });
 
@@ -70,14 +71,18 @@ function openPopup() {
   let popup = document.getElementById("regProductPopup");
   let dim = document.getElementById("dim-for-popup");
   popup.style.zIndex = "100";
+  popup.style.display = "block";
   dim.style.zIndex = "99";
+	dim.style.display = "block";
  
 }
 function openPopup2() {
   let popup2 = document.getElementById("updateProductPopup");
   let dim2 = document.getElementById("dim-for-popup2");
   popup2.style.zIndex = "100";
+  popup2.style.display = "block";
   dim2.style.zIndex = "99";
+  dim2.style.display = "block";
  
 }
 
@@ -90,7 +95,6 @@ function closePopup() {
 	var body = document.body;
 	body.style.overflow = "auto";
 	
-	loadPopup()
 }
 
 function closePopup2(){
@@ -101,19 +105,18 @@ function closePopup2(){
 	var body = document.body;
 	body.style.overflow = "auto";
 	
-	loadPopup()
 }
 
 function loadPopup() {
   let popup = document.getElementById("regProductPopup");
-  let popup2 = document.getElementById("updateProductPopup");
   let dim = document.getElementById("dim-for-popup");
-  let dim2 = document.getElementById("dim-for-popup2");
-  popup.addEventListener("click", openPopup);
-  popup2.addEventListener("click", openPopup2);
-  dim.addEventListener("click", closePopup);
-  dim2.addEventListener("click", closePopup2);
+	let popup2 = document.getElementById("updateProductPopup");
+	let dim2 = document.getElementById("dim-for-popup2");
+ 	popup.addEventListener("click", openPopup);
+  	dim.addEventListener("click", closePopup);
+	popup2.addEventListener("click", openPopup2);
+	dim2.addEventListener("click", closePopup2);
   }
-
+	
     window.addEventListener("load", loadPopup);
 

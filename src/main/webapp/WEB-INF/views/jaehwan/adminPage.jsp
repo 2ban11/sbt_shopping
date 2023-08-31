@@ -260,9 +260,9 @@
 						 </div>
 						 <div style="display:flex;">
 						<a>할인</a><input type="text"  name="p_sale"
-						class="p_sale"	 autocomplete="off" style="width:32%;">
+						class="p_sale"	 autocomplete="off" style="width:33%;">
 						<a>재고</a><input type="text"  name="p_cnt"
-						class="p_cnt"	 autocomplete="off" style="width:32%;">
+						class="p_cnt"	 autocomplete="off" style="width:33%;">
 						 </div>
 						<a>사진등록</a><input type="file" name="img" accept="image/*"
 						class="p_img" autocomplete="off">
@@ -325,9 +325,9 @@
     	                dataHtml += '<div class="ul-div productColor">' + item.p_color + '</div>';
     	                dataHtml += '<div class="ul-div productSmallCategory">' + item.p_small_category + '</div>';
     	                dataHtml += '<div class="ul-div productTitle">' + item.p_name + '</div>';
-    	                dataHtml += '<div class="ul-div p_cost" style="display:none;">' + item.p_cost + '</div>';
+    	                dataHtml += '<div class="ul-div p_cost" style="display:none;">' + new Intl.NumberFormat('ko-KR', {style: 'currency',currency: 'KRW'}).format(item.p_cost) + '</div>';
     	                dataHtml += '<div class="aaa">'
-    	              	  dataHtml += '<div class="productPrice"';
+    	              	 dataHtml += '<div class="productPrice"';
     	              if (item.p_price !== item.p_sale) {
     	                  dataHtml += ' style="text-decoration: line-through; color: gray;"';
     	              }

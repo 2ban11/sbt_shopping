@@ -116,51 +116,65 @@ public class ProductDAO {
 	    }
 	}
 	public void updateProduct(HttpServletRequest req, Model model, ProductDTO pDTO) {
-		try {
+	    try {
+	        String imgOrgName = pDTO.getImg().getOriginalFilename();
+	        String img2OrgName = pDTO.getImg2().getOriginalFilename(); // 새로운 파일 필드 추가
+	        long imgSize = pDTO.getImg().getSize();
+	        long img2Size = pDTO.getImg2().getSize(); // 새로운 파일 필드 추가
 
-			String imgOrgName = pDTO.getImg().getOriginalFilename();
-			long imgSize = pDTO.getImg().getSize();
-			
-			System.out.println("sfsdsdf" + imgOrgName);
-			System.out.println("sfsdsdf" + imgSize);
+	        System.out.println("sfsdsdf" + imgOrgName);
+	        System.out.println("sfsdsdf" + imgSize);
 
-			String uploadURL = "resources/img/";
-			String bigCate = pDTO.getP_big_category();
+	        String uploadURL = "resources/img/";
+	        String bigCate = pDTO.getP_big_category();
 
-			if (bigCate.equals("기타")) {
-				uploadURL += "Guitar";
-			} else if (bigCate.equals("앰프")) {
-				uploadURL += "Amp";
-			} else if (bigCate.equals("이펙터")) {
-				uploadURL += "Effector";
-			} else if (bigCate.equals("주변용품")) {
-				uploadURL += "Accessory";
-			}if (pDTO.getP_color()==null) {
-				pDTO.setP_color("");
-			}
+	        if (bigCate.equals("기타")) {
+	            uploadURL += "Guitar";
+	        } else if (bigCate.equals("앰프")) {
+	            uploadURL += "Amp";
+	        } else if (bigCate.equals("이펙터")) {
+	            uploadURL += "Effector";
+	        } else if (bigCate.equals("주변용품")) {
+	            uploadURL += "Accessory";
+	        }
+	        
+	        if (pDTO.getP_color() == null) {
+	            pDTO.setP_color("");
+	        }
 
-				String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
-				String uploadFolder = sc.getRealPath(uploadURL);
-				
-				System.out.println(uploadFolder);
-				UUID uuid = UUID.randomUUID();
-				String[] uuids = uuid.toString().split("-");
-				String uniqueName = uuids[0];
-				
-				File saveImg = new File(uploadFolder + "//" + uniqueName + extension); // 파일 저장 경로 생성
-				System.out.println(saveImg);
-				pDTO.getImg().transferTo(saveImg); // 이미지 저장
-				pDTO.setP_img1(uniqueName + extension); // 저장된 이미지 파일명을 pDTO에 설정
-				System.out.println(pDTO);
-				if(ss.getMapper(Jh_productMapper.class).updateProduct(pDTO) == 1) {
-					System.out.println("수정 완료^^");
-				};
-		
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	        // 첫 번째 파일 업로드
+	        String extension = imgOrgName.substring(imgOrgName.lastIndexOf("."), imgOrgName.length());
+	        String uploadFolder = sc.getRealPath(uploadURL);
 
+	        UUID uuid = UUID.randomUUID();
+	        String[] uuids = uuid.toString().split("-");
+	        String uniqueName = uuids[0];
 
+	        File saveImg = new File(uploadFolder + "//" + uniqueName + extension);
+	        pDTO.getImg().transferTo(saveImg);
+	        pDTO.setP_img1(uniqueName + extension);
+
+	        // 두 번째 파일 업로드
+	        if (img2Size > 0) {
+	            String extension2 = img2OrgName.substring(img2OrgName.lastIndexOf("."), img2OrgName.length());
+	            UUID uuid2 = UUID.randomUUID();
+	            String[] uuids2 = uuid2.toString().split("-");
+	            String uniqueName2 = uuids2[0];
+
+	            File saveImg2 = new File(uploadFolder + "//" + uniqueName2 + extension2);
+	            pDTO.getImg2().transferTo(saveImg2);
+	            pDTO.setP_img2(uniqueName2 + extension2);
+	        } else {
+	            System.out.println("두 번째 이미지가 없습니다");
+	        }
+
+	        System.out.println(pDTO);
+	        if (ss.getMapper(Jh_productMapper.class).updateProduct(pDTO) == 1) {
+	            System.out.println("수정 완료^^");
+	        }
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
 	}
 
 	public List<ProductDTO> searchDetailForAdmin(ProductDTO pDTO) {
