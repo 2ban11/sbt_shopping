@@ -191,10 +191,10 @@
 					<div class="nav-item-sub jh">
 						<ul>
 							<li><a href="guitarPage?BC=기타&MC=일렉기타">일렉기타</a></li>
-							<li><a href="guitarPage?BC=Guitar&MC=Acoustic">어쿠스틱</a></li>
-							<li><a href="guitarPage?BC=Guitar&MC=Classic">클래식</a></li>
-							<li><a href="guitarPage?BC=Guitar&MC=Bass">베이스</a></li>
-							<li><a href="guitarPage?BC=Guitar&MC=Ukulele">우쿠렐레</a></li>
+							<li><a href="guitarPage?BC=기타&MC=어쿠스틱기타">어쿠스틱</a></li>
+							<li><a href="guitarPage?BC=기타&MC=클래식기타">클래식</a></li>
+							<li><a href="guitarPage?BC=기타&MC=베이스기타">베이스</a></li>
+							<li><a href="guitarPage?BC=기타&MC=우쿠렐레기타">우쿠렐레</a></li>
 						</ul>
 					</div>
 				</div>
@@ -202,9 +202,9 @@
 					앰프<em class="caret"></em>
 					<div class="nav-item-sub jh">
 						<ul>
-							<li><a href="ampPage?BC=Amp&MC=Elec">일렉기타</a></li>
-							<li><a href="ampPage?BC=Amp&MC=Acoustic">어쿠스틱</a></li>
-							<li><a href="ampPage?BC=Amp&MC=Bass">베이스</a></li>
+							<li><a href="ampPage?BC=앰프&MC=기타앰프">기타앰프</a></li>
+							<li><a href="ampPage?BC=앰프&MC=어쿠스틱기타">어쿠스틱</a></li>
+							<li><a href="ampPage?BC=앰프&MC=베이스기타">베이스</a></li>
 						</ul>
 					</div>
 				</div>
@@ -212,12 +212,11 @@
 					이펙터<em class="caret"></em>
 					<div class="nav-item-sub jh">
 						<ul>
-							<li><a href="effectorPage?BC=Effector&MC=Elec">일렉기타</a></li>
-							<li><a href="effectorPage?BC=Effector&MC=Acoustic">어쿠스틱</a>
-							</li>
-							<li><a href="effectorPage?BC=Effector&MC=Classic">클래식</a></li>
-							<li><a href="effectorPage?BC=Effector&MC=Bass">베이스</a></li>
-							<li><a href="effectorPage?BC=Effector&MC=Multi">멀티</a></li>
+							<li><a href="effectorPage?BC=이펙터&MC=일렉기타">일렉기타</a></li>
+							<li><a href="effectorPage?BC=이펙터&MC=어쿠스틱기타">어쿠스틱</a></li>
+							<li><a href="effectorPage?BC=이펙터&MC=클래식기타">클래식</a></li>
+							<li><a href="effectorPage?BC=이펙터&MC=베이스기타">베이스</a></li>
+							<li><a href="effectorPage?BC=이펙터&MC=멀티이펙터">멀티</a></li>
 						</ul>
 					</div>
 				</div>
@@ -225,12 +224,10 @@
 					주변용품<em class="caret"></em>
 					<div class="nav-item-sub jh">
 						<ul>
-							<li><a href="accessoryPage?BC=Accessory&MC=String">기타줄</a></li>
-							<li><a href="accessoryPage?BC=Accessory&MC=Pick">피크</a></li>
-							<li><a href="accessoryPage?BC=Accessory&MC=Cable">케이블</a></li>
-							<li><a href="accessoryPage?BC=Accessory&MC=Capo">카포</a></li>
-							<li><a href="accessoryPage?BC=Accessory&MC=Ukulele">우쿠렐레</a>
-							</li>
+							<li><a href="accessoryPage?BC=주변용품&MC=기타줄">기타줄</a></li>
+							<li><a href="accessoryPage?BC=주변용품&MC=피크">피크</a></li>
+							<li><a href="accessoryPage?BC=주변용품&MC=케이블">케이블</a></li>
+							<li><a href="accessoryPage?BC=주변용품&MC=카포">카포</a></li>
 						</ul>
 					</div>
 				</div>

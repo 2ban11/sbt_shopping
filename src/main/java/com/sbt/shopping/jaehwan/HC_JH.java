@@ -1,5 +1,7 @@
 package com.sbt.shopping.jaehwan;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -114,8 +117,8 @@ public class HC_JH {
 	}
     
     @RequestMapping(value = "/controlMargin", method = RequestMethod.GET)
-    public String controlMargin(HttpServletRequest req, Model model) {
-    	odDAO.getChartData(req);
+    public String controlMargin(HttpServletRequest req, MarginDTO maDTO) {
+    	odDAO.getChartData(req,maDTO);
     	req.setAttribute("contentPage", "jaehwan/adminPage.jsp");
     	req.setAttribute("controlPage", "controlMargin.jsp");
     	return "index";
@@ -145,6 +148,28 @@ public class HC_JH {
     	System.out.println(odDTO);
     	return pDAO.getMargin(req,odDTO);
     }
+	
+	 @RequestMapping(value = "/insertMargin", method = RequestMethod.POST)
+	 public String insertMargin(HttpServletRequest req, MarginDTO mDTO) {
+		    String dateString = mDTO.getDate();
+		    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		    try {
+		        Date date = dateFormat.parse(dateString);
+		        mDTO.setMa_date(date);
+		    } catch (ParseException e) {
+		        e.printStackTrace();
+		    }
+		    
+		    List<MarginDTO> existingData = odDAO.getMarginByDate(dateString);
+		    
+		    if (existingData == null || existingData.isEmpty()) {
+		    	odDAO.insertMargin(req, mDTO);
+		    } else {
+		    	odDAO.updateMargin(req, mDTO);
+		    }
+		    
+		    return "redirect:controlMargin"; 
+		}
     
     }
     

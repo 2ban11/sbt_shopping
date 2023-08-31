@@ -48,7 +48,6 @@
 				<beans:value>classpath:accountMapper.xml</beans:value>
 				<beans:value>classpath:mainPageProductMapper.xml</beans:value>
 				<beans:value>classpath:boardMapper.xml</beans:value>
-				<beans:value>classpath:accountMapper.xml</beans:value>
 				<beans:value>classpath:Jh_ProductMapper.xml</beans:value>
 				<beans:value>classpath:detailmapper.xml</beans:value>
 			</beans:list>

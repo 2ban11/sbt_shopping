@@ -12,10 +12,20 @@
 <title>Insert title here</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+<link rel="stylesheet" href="resources/css/jh/adminDetail.css" />
 </head>
 <body>
+<script>
+window.addEventListener('load', function() {
+    ['.reg-popup--btn', '.paginationjs-pages', '.p_small_category', '.sortOrder'].forEach(function(className) {
+        document.querySelectorAll(className).forEach(function(element) {
+            element.style.display = 'none';
+        });
+    });
+});
+</script>
 <div class="marginContainer">
-<h2 class="marginTitle">날짜 선택</h2>
+
 <div class="marginContent">
     <div class="calendar-container">
         <header class="calendar-header">
@@ -33,7 +43,7 @@
         </header>
  
         <div class="calendar-body">
-            <ul class="calendar-weekdays">
+            <ul class="calendar-weekdays" style="padding:0; margin:0;">
                 <li>Sun</li>
                 <li>Mon</li>
                 <li>Tue</li>
@@ -42,7 +52,7 @@
                 <li>Fri</li>
                 <li>Sat</li>
             </ul>
-            <ul class="calendar-dates"></ul>
+            <ul class="calendar-dates" style="padding-left:0; margin:0;"></ul>
         </div>
     </div>
  <div id="calendar">
@@ -50,55 +60,81 @@
     <div id="calendar_weekdays"></div>
     <div id="calendar_content"></div>
   </div>
-  
   <div id="info-container" style="color:white;">
     <!-- 정보를 표시할 영역 -->
-    <h2 id="info-header">일일 매상/매출</h2>
-    <p><strong>날짜 &nbsp;</strong><br><span id="selected-date"></span></p>
+    <h3 id="info-header">일일 매상/매출</h3>
+    <p><strong>날짜 &nbsp;</strong><br><span  name="selected-date" id="selected-date"></span></p>
+    <p><strong>총 판매금 &nbsp;</strong><br><span for="totalSales" id="totalSales"></span></p>
     <p><strong>총 원가  &nbsp;</strong><br><span id="totalCost"></span></p>
-    <p><strong>총 판매금 &nbsp;</strong><br><span id="totalSales"></span></p>
     <p><strong>총 수익 &nbsp;</strong><br><span id="totalMargin"></span></p>
-    <p><strong>총 수익률 &nbsp;</strong><br><span id="totalMarginByPercent"></span></p>
+    <p><strong>마진률 &nbsp;</strong><br><span id="totalMarginByPercent"></span></p>
+  <form action="insertMargin" method="post">
+	<input hidden name="date" id="inputDate">
+	<input hidden name="ma_totalSales" id="inputTotalSales">
+	<input hidden name="ma_totalCost" id="inputTotalCost">
+	<input hidden name="ma_totalMargin" id="inputTotalMargin">
+    <button class="reg-info-btn">등록</button>
+</form>
 </div>
 </div>
-
+ 
   
   <div id="lineChart">
 <canvas id="marginChart"> </canvas>
 </div>
 
-</div>
+<c:forEach items="${margins}" var="margin">
+    <input hidden class="chart-data" value="${margin}" />
+</c:forEach>
 
+<c:forEach items="${formatLabels}" var="date">
+    <input hidden class="chart-date" value="${date}" />
+</c:forEach>
 
-</body>
-   
-<%
-int[] bc = (int[]) request.getAttribute("arr");
-%>
 <script>
-let ChartData = <%= Arrays.toString(bc) %>;
+	
+    let chartData = [];
+    let chartDate = [];
+
+    
+    let marginInputs = document.querySelectorAll('.chart-data');
+    let dateInputs = document.querySelectorAll('.chart-date');
+
+    marginInputs.forEach(function (input) {
+        chartData.push(parseInt(input.value));
+    });
+
+    dateInputs.forEach(function (input) {
+        chartDate.push(input.value);
+    });
+
+    let reverseChartDate = chartDate.reverse();
+    let reverseChartData = chartData.reverse();
+    
 let marginChart = document.getElementById('marginChart').getContext('2d');
-let data ={
-    labels : ['SUN','MON','TUE','WED','THU','FRI','SAT'],
-    datasets : [{
-        label : '매출액',
-        data : ChartData,
+let data = {
+    labels: reverseChartDate,
+    datasets: [{
+        label: '매출액',
+        data: reverseChartData,
         borderColor: 'skyblue',
         borderWidth: 1,
-        fill : false
+        fill: false
     }]
 };
 let options = {
     scales: {
-        y: {beginAtZero: true}
+        y: { beginAtZero: true }
     }
 };
 
 let lineChart = new Chart(marginChart, {
-    type : 'line',    
-    data : data,
-    options : options
+    type: 'line',
+    data: data,
+    options: options
 });
 </script>
 <script type="text/javascript" src="resources/js/jh/calendar.js"></script>
+</div>
+</body>
 </html>

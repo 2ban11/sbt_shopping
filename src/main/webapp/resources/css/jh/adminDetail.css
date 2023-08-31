@@ -1,11 +1,10 @@
 .marginContainer{
-	margin-left: 15%;
+	margin-left: 17%;
+	
 }
 .marginContent{
+	margin-top : 5%;
 	display: flex;
-}
-.marginTitle{
-	color: white;
 }
 .marginInfo{
 	border: 1px solid white;
@@ -19,17 +18,13 @@
 #info-container{
 	margin-left: 2%;
 	width: 320px;
-	height : 470px;
+	height : 437px;
 	padding: 30px;
 	background: rgba(125,125,125,0.25);
 	border-radius: 30px;
-	font-size: 20px;
-	font-weight: 400;
+	font-size: 15px;
 }
-p{
-	border-bottom: 1px solid grey;
-}
-#info-header{
+#info-container p{
 	border-bottom: 1px solid grey;
 }
 #lineChart{
@@ -37,6 +32,15 @@ p{
 	border-radius : 10px;
 	background: #131c27;
 	padding: 30px;
-	width: 950px;
-	height : 500px;
+	width: 740px;
+	height : 380px;
+}
+.reg-info-btn{
+	margin-left: 23%;
+	width: 50%;
+	height: 10%;
+	border-radius: 10px;
+	color: white;
+	background: #0069d2;
+	border: none;
 }

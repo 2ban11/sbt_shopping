@@ -57,31 +57,32 @@ function attachDateItemListeners() {
 
             // 선택한 날짜를 형식에 맞게 표시
             $("#selected-date").text(formattedDate);
+            $("#inputDate").val(formattedDate);
         });
     });
-}
-function formatCurrency(amount) {
-    // amount가 NaN인 경우 0으로 처리
-    if (isNaN(amount)) {
-        return "₩0"; // 또는 다른 기본값 설정
-    }
-    
-    // 화폐 단위 추가 및 숫자 포맷팅 (예: 1000 -> ₩1,000)
-    return "₩" + new Intl.NumberFormat("en-US", {
+};
+function formatCurrency(amount, currencyCode = "KRW") {
+    return new Intl.NumberFormat("en-US", {
         style: "currency",
-        currency: "KRW"
+        currency: currencyCode
     }).format(amount);
-}
+};
+
 // 받은 데이터를 화면에 표시하는 함수
 function displayInfo(data) {
-	console.log(data[0].totalMarginByPercent);
-    const marginPercent = `${Number(data[0].totalMarginByPercent).toFixed(2)}%`;
-	
-    console.log(data.totalSales);
-	$("#totalCost").html(formatCurrency(data[0].totalCost));
-    $("#totalSales").html(formatCurrency(data[0].totalSales));
-    $("#totalMargin").html(formatCurrency(data[0].totalMargin));
-    $("#totalMarginByPercent").html(marginPercent);
+    const totalCostValue = data[0] && data[0].totalCost ? formatCurrency(data[0].totalCost) : formatCurrency(0);
+    const totalSalesValue = data[0] && data[0].totalSales ? formatCurrency(data[0].totalSales) : formatCurrency(0);
+    const totalMarginValue = data[0] && data[0].totalMargin ? formatCurrency(data[0].totalMargin) : formatCurrency(0);
+    const marginPercentValue = data[0]?.totalMarginByPercent ? `${Number(data[0].totalMarginByPercent).toFixed(2)}%` : '0%';
+
+    $("#totalCost").text(totalCostValue);
+    $("#totalSales").text(totalSalesValue);
+    $("#totalMargin").text(totalMarginValue);
+    $("#totalMarginByPercent").text(marginPercentValue);
+
+    $("#inputTotalSales").val(data[0]?.totalSales || 0);
+    $("#inputTotalCost").val(data[0]?.totalCost || 0);
+    $("#inputTotalMargin").val(data[0]?.totalMargin || 0);
 }
 
 
@@ -101,7 +102,7 @@ function loadInfo(date) {
                 + "error:" + error);
         }
     });
-}
+};
 
 prenexIcons.forEach(icon => {
     icon.addEventListener("click", () => {

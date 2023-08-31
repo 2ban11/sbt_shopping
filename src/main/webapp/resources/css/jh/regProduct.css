@@ -1,10 +1,11 @@
 @charset "UTF-8";
 .popup{
+	color:white;
 	top : 5%;
 	position : fixed;
 	left : 39%;
-	width: 600px;
-	height: 85%;
+	width: 25%;
+	height: 92%;
 	border-radius: 20px;
 	padding: 20px;
 	box-sizing: border-box;
@@ -40,19 +41,18 @@
 .reg-window{
 	font-family: 'Noto Sans KR', sans-serif;
 	position: absolute;
-	left: 15%;
-	padding-top: 5%;
+	left: 10%;
 }
 .popup h1{
 	font-size: 38px;
 	text-align: center;
-	padding-left : 20px;
 	
 	color : white;
 }
 .int-area{
 	width: 400px;
 	display : grid;
+	font-size: 13px;
 }
 .int-area select{
 	width : 100px;
@@ -63,16 +63,15 @@
 }
 .int-area a{
 	color: white;
-	font-size: 20px;
+	font-size: 15px;
 	margin: 10px;
 }
 .int-area input {
 	font-family: 'Noto Sans KR', sans-serif;
-	width: 100%;
+	width: 90%;
 	background-color: transparent;
 	border: none;
 	border-bottom: 1px solid #999;
-	font-size: 18px;
 	outline: none;
 	color: white;
 	font-weight: bold;
@@ -83,7 +82,7 @@
 .int-area textarea{
 	width: 400px;
 	height: 100px;
-	margin: 15px;
+	margin-bottom: 10px;
 }
 .int-area2{
 	display: flex;
@@ -110,9 +109,10 @@
 	text-align: center;
 	width: 100%;
 	margin-top : 10px;
-	margin-bottom: -42px;
+	margin-bottom: -16px;
 	border-top: 1px solid rgba(255, 255, 255, 0.1);
 	border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+	font-size: 14px;
 }
 .adminPage__tab div:hover{
 		border-top:1px solid white;
@@ -143,6 +143,6 @@
 	justify-content: end;
 }
 .adminPage__select select{
-	width: 9%;
-	font-size: 14px;
+	width: 12%;
+	font-size: 11px;
 }

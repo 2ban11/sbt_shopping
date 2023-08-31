@@ -15,6 +15,15 @@
 <script type="text/javascript" src="resources/js/jaepil/mypage.js"></script>
 </head>
 <body>
+<script>
+window.addEventListener('load', function() {
+    ['.reg-popup--btn', '.paginationjs-pages', '.p_small_category', '.sortOrder'].forEach(function(className) {
+        document.querySelectorAll(className).forEach(function(element) {
+            element.style.display = 'none';
+        });
+    });
+});
+</script>
 	<div class="mypage-info-datas">
 		<div class="mypage-info-data-nav">
 			<div class="refund-info-data-order-no">주문번호</div>
@@ -37,10 +46,8 @@
 					</div>
 					<div class="refund-info-data-order-state">${o.od_state }</div>
 					<div class="refund-info-data-order-other">
-						<c:if test="${o.od_state eq '환불요청' }">
 							<button onclick="refundAccept(${o.od_no})" class="refund-btn">환불완료</button>
 							<button onclick="refundCancel2(${o.od_no})" class="refund-cancel-btn">환불취소</button>
-						</c:if>
 					</div>
 				</div>
 			</c:forEach>
