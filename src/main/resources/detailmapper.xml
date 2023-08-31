@@ -5,21 +5,14 @@
 <mapper namespace="com.sbt.shopping.inhoo.DetailMapper">
 
 <insert id="regReview">
-		 insert into review values(review_seq.nextval, 1, #{r_id}, #{r_title}, #{r_content}, #{r_rate}, #{r_img, jdbcType=VARCHAR}, sysdate)
+		 insert into review values(review_seq.nextval, #{p_no}, #{r_id}, #{r_title}, #{r_content}, #{r_rate}, #{r_img, jdbcType=VARCHAR}, sysdate)
 </insert>
     
-<!-- <insert id="regReview">
-		insert into review values(review_seq.nextval, 1, #{r_id}, #{r_title}, #{r_content}, #{r_rate}, #{r_img}, sysdate)
-</insert> -->
-
-
-
-
 
 
 
 <insert id="regQna">
-		insert into qna values(qna_seq.nextval, 'mk', 1, #{q_title }, #{q_content }, sysdate)
+		insert into qna values(qna_seq.nextval, #{q_id}, #{p_no }, #{q_title }, #{q_content }, sysdate)
 </insert>
     
     
@@ -28,47 +21,31 @@
 	select * from review
 </select>
 
-<!-- <select id="searchReview" resultType="com.sbt.shopping.inhoo.DetailDTO">
-	select * from review where r_product between #{start} and #{end}
-</select> -->
 
 
 
 <select id="getProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
-    SELECT * FROM product WHERE p_no = 1 <!-- #{p_no} -->
+    SELECT * FROM product WHERE p_no = #{p_no} 
 </select>
 
 
 
 
-
-
-<!-- 페이징 -->
-<!-- <select id="getReviewsInRange" resultType="com.sbt.shopping.inhoo.DetailDTO">
-    SELECT *
-    FROM (
-        SELECT ROWNUM AS rnum, review.*
-        FROM (
-            SELECT *
-            FROM review
-            ORDER BY r_no DESC
-        ) review
-    )
-    WHERE rnum BETWEEN #{startIndex} AND #{endIndex}
-</select> -->
-
 <select id="getReviews" resultType="com.sbt.shopping.inhoo.DetailDTO">
 	  select *
         from (
-        	select rownum as rn, r_product, r_id,r_title,r_content,r_rate,r_img,r_date
+        	select rownum as rn, r_no, r_product, r_id,r_title,r_content,r_rate,r_img,r_date, a_nickname
         	from (
-        		select * from review
-        		where r_product = #{no}
+        		select * from review, account
+        		where r_product = #{no} and a_id = r_id
         		order by r_date desc
         	)
         )
         where rn &gt;= #{start} and rn &lt;= #{end}
 </select>
+
+
+
 
 <select id="getReviewCount" resultType="int">
 	select count(*) from review where r_product = #{p_no}
@@ -81,11 +58,11 @@
 <select id="getQnAs" resultType="com.sbt.shopping.inhoo.QnaDTO">
     SELECT *
     FROM (
-        SELECT ROWNUM AS rn, q_no, q_product, q_id, q_title, q_content, q_date
+        SELECT ROWNUM AS rn, q_no, q_product, q_id, q_title, q_content, q_date, a_nickname
         FROM (
             SELECT *
-            FROM qna
-            WHERE q_product = #{no}
+            FROM qna, account
+            WHERE q_product = #{no} and a_id = q_id
             ORDER BY q_date DESC
         )
     )
@@ -101,7 +78,13 @@
 
 
 
+<delete id="deleteQna">
+	 delete qna where q_no = #{q_no}
+</delete>
 
+<delete id="deleteReview">
+	 delete review where r_no = #{r_no}
+</delete>
 
 
 
