@@ -5,6 +5,7 @@ public class CartDTO {
 	private String c_id;
 	private int c_product;
 	private int c_cnt;
+	private int p_no;
 	private String p_big_category;
 	private String p_name;
 	private String p_img1;
@@ -14,13 +15,14 @@ public class CartDTO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CartDTO(int c_no, String c_id, int c_product, int c_cnt, String p_big_category, String p_name, String p_img1,
-			String p_sale) {
+	public CartDTO(int c_no, String c_id, int c_product, int c_cnt, int p_no, String p_big_category, String p_name,
+			String p_img1, String p_sale) {
 		super();
 		this.c_no = c_no;
 		this.c_id = c_id;
 		this.c_product = c_product;
 		this.c_cnt = c_cnt;
+		this.p_no = p_no;
 		this.p_big_category = p_big_category;
 		this.p_name = p_name;
 		this.p_img1 = p_img1;
@@ -59,6 +61,14 @@ public class CartDTO {
 		this.c_cnt = c_cnt;
 	}
 
+	public int getP_no() {
+		return p_no;
+	}
+
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
+	}
+
 	public String getP_big_category() {
 		return p_big_category;
 	}
@@ -91,4 +101,5 @@ public class CartDTO {
 		this.p_sale = p_sale;
 	}
 
+	
 }
