@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import com.sbt.shopping.cart.Cart;
+import com.sbt.shopping.jaehwan.ProductDTO;
 import com.sbt.shopping.product.Product;
 
 public interface MainPageProductMapper {
@@ -16,4 +17,6 @@ public interface MainPageProductMapper {
 	int checkDupliCart(Cart cart);
 
 	int updateMainCart(Cart cart);
+
+	List<ProductDTO> searchProducts(String search);
 }

@@ -37,14 +37,12 @@ $(document).ready(function() {
         success: function(response) {
 	 sessionStorage.setItem("enteredEmail", email);
             if (response.message === "email_not_exist") {
-                alert("이메일이 존재하지 않습니다.");
+                alert("가입되지 않은 이메일입니다.");
             } else {
                 alert("인증 이메일이 성공적으로 전송되었습니다!");
                 isVerificationCodeSent = true;
                 enteredEmail = email;
-                console.log(response);
                 verificationCode = response.verificationCode;
-                console.log(verificationCode);
                 $("#verificationCodeContainer").show();
             }
         },

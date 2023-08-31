@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 public class ProductDTO {
 
 	private int p_no;
+	private int r_no;
 	private String p_big_category;
 	private String p_middle_category;
 	private String p_small_category;

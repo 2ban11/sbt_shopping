@@ -4,26 +4,47 @@ import java.util.Date;
 
 public class QnaDTO {
 	private int q_no;
+	private int p_no;
 	private String q_id;
 	private int q_product;
 	private String q_title;
 	private String q_content;
 	private Date q_date;
 	private int rn;
+	private String a_nickname;
 	
 	public QnaDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public QnaDTO(int q_no, String q_id, int q_product, String q_title, String q_content, Date q_date, int rn) {
+	public QnaDTO(int q_no, int p_no, String q_id, int q_product, String q_title, String q_content, Date q_date, int rn,
+			String a_nickname) {
 		super();
 		this.q_no = q_no;
+		this.p_no = p_no;
 		this.q_id = q_id;
 		this.q_product = q_product;
 		this.q_title = q_title;
 		this.q_content = q_content;
 		this.q_date = q_date;
 		this.rn = rn;
+		this.a_nickname = a_nickname;
+	}
+
+	public int getQ_no() {
+		return q_no;
+	}
+
+	public void setQ_no(int q_no) {
+		this.q_no = q_no;
+	}
+
+	public int getP_no() {
+		return p_no;
+	}
+
+	public void setP_no(int p_no) {
+		this.p_no = p_no;
 	}
 
 	public String getQ_id() {
@@ -74,19 +95,26 @@ public class QnaDTO {
 		this.rn = rn;
 	}
 
-	public int getQ_no() {
-		return q_no;
+	public String getA_nickname() {
+		return a_nickname;
 	}
 
-	public void setQ_no(int q_no) {
-		this.q_no = q_no;
+	public void setA_nickname(String a_nickname) {
+		this.a_nickname = a_nickname;
 	}
 
 	@Override
 	public String toString() {
-		return "QnaDTO [q_no=" + q_no + ", q_id=" + q_id + ", q_product=" + q_product + ", q_title=" + q_title
-				+ ", q_content=" + q_content + ", q_date=" + q_date + ", rn=" + rn + "]";
+		return "QnaDTO [q_no=" + q_no + ", p_no=" + p_no + ", q_id=" + q_id + ", q_product=" + q_product + ", q_title="
+				+ q_title + ", q_content=" + q_content + ", q_date=" + q_date + ", rn=" + rn + ", a_nickname="
+				+ a_nickname + "]";
 	}
+
+	
+
+	
+
+	
 
 
 }

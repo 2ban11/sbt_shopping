@@ -42,8 +42,9 @@
 							alt="RIFF몰" src="resources/img/logoWhite.png" />
 						</a>
 					</div>
-					<form class="header__form" onsubmit="return false;">
-						<input class="header__input--text" autocomplete="off" />
+					<form action="search.do" class="header__form">
+						<input name="search" class="header__input--text"
+							autocomplete="off" />
 						<button class="header__input--button">
 							<i class="fa-solid fa-magnifying-glass"></i>
 						</button>
@@ -53,12 +54,12 @@
 					</button>
 					<!-- 모바일 팝업 검색창 -->
 					<div class="header-search-popup">
-						<form>
+						<form action="search.do">
 							<input class="header-popup__delete--input" type="search"
-								placeholder="검색어를 입력해주세요" />
+								name="search" placeholder="검색어를 입력해주세요" />
 							<button class="header-popup__delete--btn"></button>
 							<button class="header-popup__search--btn">검색</button>
-							<button class="header-popup__close--btn">닫기</button>
+							<button class="header-popup__close--btn" type="button">닫기</button>
 						</form>
 					</div>
 					<div class="header__button">
@@ -76,21 +77,33 @@
 										<button>마이페이지</button>
 									</a>
 								</div>
-								<button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
+								<a href="/shopping/mypage.order" onclick="checkLoginAndRedirect()">
+								<button id="small_myPageBtn">
 									<i class="fa-regular fa-user"></i>
 								</button>
+								</a>
+								<div>
+									<button class="header__cart"
+										onclick="location.href='mypage.cart'">
+										<i class="fa-solid fa-cart-shopping"></i>
+									</button>
+								
+
+								</div>
 							</c:when>
 							<c:otherwise>
-								<form action=/shopping/login.go>
+								<form action="/shopping/login.go">
 									<div class="login_btn_container">
 										<button class="header__login" onclick="/shopping/login.go">
 											<span class="haader__login--text">로그인</span>
 										</button>
 									</div>
 								</form>
-								<button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
-									<i class="fa-regular fa-user"></i>
-								</button>
+								<a href="mypage.order">
+									<button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
+										<i class="fa-regular fa-user"></i>
+									</button>
+								</a>
 								<form action="/shopping/account.join.go">
 									<div>
 										<button class="header__signup">회원가입</button>
@@ -104,11 +117,6 @@
 									<button class="header__signup" type="submit">관리자</button>
 								</form>
 							</c:if>
-						</div>
-						<div>
-							<button class="header__cart">
-								<i class="fa-solid fa-cart-shopping"></i>
-							</button>
 						</div>
 					</div>
 				</div>
@@ -173,12 +181,6 @@
 							<li><a href="go.board?type=3">개인레슨</a></li>
 							<li><a href="go.board?type=4">구인</a></li>
 						</ul></li>
-					<ul>
-						<li><a class="sidebar__item" href="#">문의하기</a></li>
-					</ul>
-					<ul>
-						<li><a class="sidebar__item" href="#">회사소개</a></li>
-					</ul>
 				</ul>
 			</div>
 			<!-- //SIDEBAR -->
@@ -227,7 +229,6 @@
 							<li><a href="accessoryPage?BC=주변용품&MC=피크">피크</a></li>
 							<li><a href="accessoryPage?BC=주변용품&MC=케이블">케이블</a></li>
 							<li><a href="accessoryPage?BC=주변용품&MC=카포">카포</a></li>
-							<li><a href="accessoryPage?BC=주변용품&MC=우쿠렐레기타">우쿠렐레</a></li>
 						</ul>
 					</div>
 				</div>
@@ -242,8 +243,6 @@
 						</ul>
 					</div>
 				</div>
-				<div class="nav-item">문의하기</div>
-				<div class="nav-item">회사소개</div>
 			</nav>
 			<!-- //MAIN NAVIGATION -->
 

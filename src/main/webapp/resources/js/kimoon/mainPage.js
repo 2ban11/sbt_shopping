@@ -82,7 +82,8 @@ function addToCartModal() {
             }
         });
 }else{
-	alert('로그인 해주세요!')
+	alert('로그인 해주세요!');
+	location.href='login.go';
 }
 		
     });
@@ -111,10 +112,5 @@ function addToCartModal() {
 	});
     }
 
-	/*var openCartBtn = document.getElementById("main-add-to-cart-form");
-    openCartBtn.addEventListener("submit", function(event) {
-        event.preventDefault(); // 기본 동작 중단
-        addToCartModal(); // 모달창 열기 함수 호출
-    });*/
 
 }

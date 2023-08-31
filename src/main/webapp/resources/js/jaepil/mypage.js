@@ -1,3 +1,11 @@
+
+$(document).ready(function() {
+    if (!isLoggedIn) {
+        alert("로그인이 필요합니다.");
+        location.href = "/shopping/login.go?"; // 로그인 페이지로 이동
+    }
+});
+
 function checkAll() {
 			$("#cbx_chkAll").click(function() {
 				if($("#cbx_chkAll").is(":checked")) $("input[name=chk]").prop("checked", true);
@@ -35,135 +43,125 @@ function cartDeleteSelected(){
 }
 
 function date(){
-	
-		$(document).ready(
-			function() {
-				// 오늘 날짜 구하기
-				var today = new Date();
-				var year = today.getFullYear();
-				var month = (today.getMonth() + 1).toString().padStart(2, '0');
-				var day = today.getDate().toString().padStart(2, '0');
-				var currentDate = year + "-" + month + "-" + day;
+    $(document).ready(function() {
+        // 오늘 날짜 구하기
+        var today = new Date();
+        var year = today.getFullYear();
+        var month = (today.getMonth() + 1).toString().padStart(2, '0');
+        var day = today.getDate().toString().padStart(2, '0');
+        var currentDate = year + "-" + month + "-" + day;
 
-				// 1주일 전 날짜 구하기
-				var oneWeekAgo = new Date();
-				oneWeekAgo.setDate(today.getDate() - 7);
-				if (oneWeekAgo.getMonth() > today.getMonth()) {
-					// 달이 바뀌는 경우
-					if (today.getMonth() === 0) {
-						// 현재 달이 1월인 경우
-						oneWeekAgo.setFullYear(today.getFullYear() - 1);
-						oneWeekAgo.setMonth(11); // 12월로 설정
-					} else {
-						oneWeekAgo.setMonth(today.getMonth() - 1);
-					}
-				}
-				var weekAgoYear = oneWeekAgo.getFullYear();
-				var weekAgoMonth = (oneWeekAgo.getMonth() + 1).toString()
-						.padStart(2, '0');
-				var weekAgoDay = oneWeekAgo.getDate().toString().padStart(2,
-						'0');
-				var oneWeekAgoDate = weekAgoYear + "-" + weekAgoMonth + "-"
-						+ weekAgoDay;
+        // 1주일 전 날짜 구하기
+        var oneWeekAgo = new Date();
+        oneWeekAgo.setDate(today.getDate() - 7);
+        if (oneWeekAgo.getMonth() > today.getMonth()) {
+            // 달이 바뀌는 경우
+            if (today.getMonth() === 0) {
+                // 현재 달이 1월인 경우
+                oneWeekAgo.setFullYear(today.getFullYear() - 1);
+                oneWeekAgo.setMonth(11); // 12월로 설정
+            } else {
+                oneWeekAgo.setMonth(today.getMonth() - 1);
+            }
+        }
+        var weekAgoYear = oneWeekAgo.getFullYear();
+        var weekAgoMonth = (oneWeekAgo.getMonth() + 1).toString().padStart(2, '0');
+        var weekAgoDay = oneWeekAgo.getDate().toString().padStart(2, '0');
+        var oneWeekAgoDate = weekAgoYear + "-" + weekAgoMonth + "-" + weekAgoDay;
 
-				// 1달 전 날짜 구하기
-				var oneMonthAgo = new Date(today);
-				oneMonthAgo.setMonth(today.getMonth() - 1);
+        // 1달 전 날짜 구하기
+        var oneMonthAgo = new Date(today);
+        oneMonthAgo.setMonth(today.getMonth() - 1);
 
-				// Handle cases where the day is beyond the last day of the month
-				var lastDayOfMonth = new Date(oneMonthAgo.getFullYear(),
-						oneMonthAgo.getMonth() + 1, 0).getDate();
-				if (today.getDate() > lastDayOfMonth) {
-					oneMonthAgo.setDate(lastDayOfMonth);
-				}
+        // 해당 월의 마지막 날 구하기
+        var lastDayOfMonth = new Date(oneMonthAgo.getFullYear(), oneMonthAgo.getMonth() + 1, 0).getDate();
+        if (today.getDate() > lastDayOfMonth) {
+            oneMonthAgo.setDate(lastDayOfMonth);
+        }
 
-				// Handle cases where the month goes back to the previous year
-				if (today.getMonth() === 0) {
-					oneMonthAgo.setFullYear(today.getFullYear() - 1);
-					oneMonthAgo.setMonth(11); // December
-				}
+        // 이전 년도로 넘어가는 경우
+        if (today.getMonth() === 0) {
+            oneMonthAgo.setFullYear(today.getFullYear() - 1);
+            oneMonthAgo.setMonth(11); // 12월로 설정
+        }
 
-				// 3달 전 날짜 구하기
-				var threeMonthsAgo = new Date(today);
-				threeMonthsAgo.setMonth(today.getMonth() - 3);
+        // 3달 전 날짜 구하기
+        var threeMonthsAgo = new Date(today);
+        threeMonthsAgo.setMonth(today.getMonth() - 3);
 
-				// Handle cases where the day is beyond the last day of the month
-				var lastDayOfThreeMonthsAgo = new Date(threeMonthsAgo
-						.getFullYear(), threeMonthsAgo.getMonth() + 1, 0)
-						.getDate();
-				if (today.getDate() > lastDayOfThreeMonthsAgo) {
-					threeMonthsAgo.setDate(lastDayOfThreeMonthsAgo);
-				}
+        // 해당 월의 마지막 날 구하기
+        var lastDayOfThreeMonthsAgo = new Date(threeMonthsAgo.getFullYear(), threeMonthsAgo.getMonth() + 1, 0).getDate();
+        if (today.getDate() > lastDayOfThreeMonthsAgo) {
+            threeMonthsAgo.setDate(lastDayOfThreeMonthsAgo);
+        }
 
-				// Handle cases where the month goes back to the previous year
-				if (today.getMonth() <= 2) {
-					threeMonthsAgo.setFullYear(today.getFullYear() - 1);
-					threeMonthsAgo.setMonth(today.getMonth() + 9); // Three months ago
-				}
+        // 이전 년도로 넘어가는 경우
+        if (today.getMonth() <= 2) {
+            threeMonthsAgo.setFullYear(today.getFullYear() - 1);
+            threeMonthsAgo.setMonth(today.getMonth() + 9); // 3달 전으로 설정
+        }
 
-				// 6달 전 날짜 구하기
-				var sixMonthsAgo = new Date(today);
-				sixMonthsAgo.setMonth(today.getMonth() - 6);
+        // 6달 전 날짜 구하기
+        var sixMonthsAgo = new Date(today);
+        sixMonthsAgo.setMonth(today.getMonth() - 6);
 
-				// Handle cases where the day is beyond the last day of the month
-				var lastDayOfSixMonthsAgo = new Date(
-						sixMonthsAgo.getFullYear(),
-						sixMonthsAgo.getMonth() + 1, 0).getDate();
-				if (today.getDate() > lastDayOfSixMonthsAgo) {
-					sixMonthsAgo.setDate(lastDayOfSixMonthsAgo);
-				}
+        // 해당 월의 마지막 날 구하기
+        var lastDayOfSixMonthsAgo = new Date(sixMonthsAgo.getFullYear(), sixMonthsAgo.getMonth() + 1, 0).getDate();
+        if (today.getDate() > lastDayOfSixMonthsAgo) {
+            sixMonthsAgo.setDate(lastDayOfSixMonthsAgo);
+        }
 
-				// Handle cases where the month goes back to the previous year
-				if (today.getMonth() <= 5) {
-					sixMonthsAgo.setFullYear(today.getFullYear() - 1);
-					sixMonthsAgo.setMonth(today.getMonth() + 7); // Six months ago
-				}
+        // 이전 년도로 넘어가는 경우
+        if (today.getMonth() <= 5) {
+            sixMonthsAgo.setFullYear(today.getFullYear() - 1);
+            sixMonthsAgo.setMonth(today.getMonth() + 7); // 6달 전으로 설정
+        }
 
-				// 1년 전 날짜 구하기
-				var oneYearAgo = new Date(today);
-				oneYearAgo.setFullYear(today.getFullYear() - 1);
+        // 1년 전 날짜 구하기
+        var oneYearAgo = new Date(today);
+        oneYearAgo.setFullYear(today.getFullYear() - 1);
 
-				var oneMonthAgoDate = formatDate(oneMonthAgo);
-				var threeMonthsAgoDate = formatDate(threeMonthsAgo);
-				var sixMonthsAgoDate = formatDate(sixMonthsAgo);
-				var oneYearAgoDate = formatDate(oneYearAgo);
+        var oneMonthAgoDate = formatDate(oneMonthAgo);
+        var threeMonthsAgoDate = formatDate(threeMonthsAgo);
+        var sixMonthsAgoDate = formatDate(sixMonthsAgo);
+        var oneYearAgoDate = formatDate(oneYearAgo);
 
-				// 1주일 버튼 클릭 시 날짜 설정
-				$("#1week").click(function() {
-					$("#sartdate").val(oneWeekAgoDate);
-					$("#enddate").val(currentDate);
-				});
+        // 1주일 버튼 클릭 시 날짜 설정
+        $("#1week").click(function() {
+            $("#sartdate").val(oneWeekAgoDate);
+            $("#enddate").val(currentDate);
+        });
 
-				// 1개월 버튼 클릭 시 날짜 설정
-				$("#1month").click(function() {
-					$("#sartdate").val(oneMonthAgoDate);
-					$("#enddate").val(currentDate);
-				});
+        // 1개월 버튼 클릭 시 날짜 설정
+        $("#1month").click(function() {
+            $("#sartdate").val(oneMonthAgoDate);
+            $("#enddate").val(currentDate);
+        });
 
-				// 3개월 버튼 클릭 시 날짜 설정
-				$("#3month").click(function() {
-					$("#sartdate").val(threeMonthsAgoDate);
-					$("#enddate").val(currentDate);
-				});
+        // 3개월 버튼 클릭 시 날짜 설정
+        $("#3month").click(function() {
+            $("#sartdate").val(threeMonthsAgoDate);
+            $("#enddate").val(currentDate);
+        });
 
-				// 6개월 버튼 클릭 시 날짜 설정
-				$("#6month").click(function() {
-					$("#sartdate").val(sixMonthsAgoDate);
-					$("#enddate").val(currentDate);
-				});
+        // 6개월 버튼 클릭 시 날짜 설정
+        $("#6month").click(function() {
+            $("#sartdate").val(sixMonthsAgoDate);
+            $("#enddate").val(currentDate);
+        });
 
-				// 1년 버튼 클릭 시 날짜 설정
-				$("#1year").click(function() {
-					$("#sartdate").val(oneYearAgoDate);
-					$("#enddate").val(currentDate);
-				});
+        // 1년 버튼 클릭 시 날짜 설정
+        $("#1year").click(function() {
+            $("#sartdate").val(oneYearAgoDate);
+            $("#enddate").val(currentDate);
+        });
 
-				// 날짜 선택 버튼 클릭 시, 날짜 입력란의 값을 설정
-				$(".btn-search-date").click(function() {
-					var startDate = $("#sartdate").val();
-					var endDate = $("#enddate").val();
-				});
-			});
+        // 날짜 선택 버튼 클릭 시, 날짜 입력란의 값을 설정
+        $(".btn-search-date").click(function() {
+            var startDate = $("#sartdate").val();
+            var endDate = $("#enddate").val();
+        });
+    });
 
 	function formatDate(date) {
 		var year = date.getFullYear();
@@ -172,14 +170,6 @@ function date(){
 		return year + "-" + month + "-" + day;
 	}
 } 
-
-/*function makeChecked(){
-	$('.mypage-info-data-cart-select').click(function(){
-		let input = $(this).children();
-		
-		console.log($(input).prop('checked',!input.prop('checked')));
-	});
-}*/
 
 
 function validatePassword(){

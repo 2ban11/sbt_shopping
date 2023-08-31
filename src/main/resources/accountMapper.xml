@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sbt.shopping.myeonggyu.AccountMapper">
+	
 	<select id="getAccountByID" resultType="com.sbt.shopping.myeonggyu.AccountDTO">
         select * from account where a_id = #{a_id}
     </select>
-    
+	
 	<select id="getAccountListByPhoneNum" resultType="com.sbt.shopping.myeonggyu.AccountDTO">  
 		select a_id from account where a_phone = #{a_phone}
 	</select>
@@ -66,7 +67,7 @@
 <update id="updatePw" parameterType="com.sbt.shopping.myeonggyu.AccountDTO">
     update account
     set a_password = #{a_password}
-    where a_id = #{a_id}
+    where a_email = #{a_email}
 </update>
  <select id="checkEmail" resultType="com.sbt.shopping.myeonggyu.AccountDTO" >
  select * from account where a_email = #{a_email}

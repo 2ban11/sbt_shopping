@@ -1,5 +1,6 @@
 package com.sbt.shopping.jaepil;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class OrderDTO {
@@ -11,6 +12,7 @@ public class OrderDTO {
 	private Date od_date;
 	private String od_state;
 	private String p_name;
+	private int[] od_arr;
 	
 	
 
@@ -21,7 +23,7 @@ public class OrderDTO {
 
 
 	public OrderDTO(int od_no, String od_id, int od_product, int od_price, int od_cnt, Date od_date, String od_state,
-			String p_name) {
+			String p_name, int[] od_arr) {
 		super();
 		this.od_no = od_no;
 		this.od_id = od_id;
@@ -31,6 +33,7 @@ public class OrderDTO {
 		this.od_date = od_date;
 		this.od_state = od_state;
 		this.p_name = p_name;
+		this.od_arr = od_arr;
 	}
 
 
@@ -129,5 +132,27 @@ public class OrderDTO {
 		this.p_name = p_name;
 	}
 
+
+
+	public int[] getOd_arr() {
+		return od_arr;
+	}
+
+
+
+	public void setOd_arr(int[] od_arr) {
+		this.od_arr = od_arr;
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "OrderDTO [od_no=" + od_no + ", od_id=" + od_id + ", od_product=" + od_product + ", od_price=" + od_price
+				+ ", od_cnt=" + od_cnt + ", od_date=" + od_date + ", od_state=" + od_state + ", p_name=" + p_name
+				+ ", od_arr=" + Arrays.toString(od_arr) + "]";
+	}
+	
+	
 
 }

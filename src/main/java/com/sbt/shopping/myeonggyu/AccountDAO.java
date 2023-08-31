@@ -62,6 +62,7 @@ public class AccountDAO {
 
 	public void logout(HttpServletRequest req) {
 		req.getSession().setAttribute("loginMember", null);
+		req.getSession().setAttribute("totalAmount", null);
 		req.getSession().setAttribute("LoginMemberNaver", null);
 		req.getSession().setAttribute("kakaoInfo", null);
 	}
@@ -84,13 +85,15 @@ public class AccountDAO {
 
 	public void join(AccountDTO a, HttpServletRequest req) {
 		String id = a.getA_id();
-		String email = req.getParameter("a_email3");
-		 if (email == null) {
-		        a.setA_id(id);
-		        a.setA_email(id);
+		 String email2 = req.getParameter("a_email2"); // 직접 입력한 이메일 도메인 값 가져오기
+		    String email3 = req.getParameter("a_email3");
+
+		    if (email3 == null || email3.equals("direct")) {
+		        a.setA_id(id+ "@" + email2);
+		        a.setA_email(id + "@" + email2);
 		    } else {
-		        a.setA_id(id + "@" + email);
-		        a.setA_email(id + "@" + email);
+		        a.setA_id(id + "@" + email3);
+		        a.setA_email(id + "@" + email3);
 		    }
 		System.out.println(a.getA_id());
 		System.out.println(a.getA_email());
@@ -283,34 +286,24 @@ public class AccountDAO {
 
 		AccountDTO a = new AccountDTO();
 		if (aa == null) {
-			a.setA_nickname(kakaoUserId);
-			a.setA_id(userEmail);
-			a.setA_email(userEmail);
-			a.setA_name(kakaoUserId);
-			String encryptedPassword = encryptPassword("asd");
-			a.setA_password(encryptedPassword);
-			// 해당 ID를 기반으로 사용자 계정이 있는지 확인합니다.
-			req.getSession().setAttribute("loginMember", a);
-			int accountNum = checkId(a, req);
-			String originalPassword = a.getA_password();
-			if (originalPassword.length() > 20) {
-				a.setA_password(originalPassword.substring(0, 20));
-			}
-			if (accountNum == 0) { // 계정이 존재하지 않으면 새로운 계정을 생성합니다.
-				join(a, req);
-			} 
-		}else { // 계정이 존재하면 닉네임을 업데이트합니다.
-			// 데이터베이스에서 카카오 사용자 정보 업데이트
-			ss.getMapper(AccountMapper.class).saveKakaoUserInfo(a);
+            req.getSession().setAttribute("loginMember", a);
+			    a.setA_nickname(kakaoUserId);
+			    a.setA_id(userEmail);
+			    a.setA_email(userEmail);
+			    a.setA_name(kakaoUserId);
+			    String encryptedPassword = encryptPassword("asd");
+			    a.setA_password(encryptedPassword);
+			    int accountNum = checkId(a, req);
+			    String originalPassword = a.getA_password();
+			    if (originalPassword.length() > 20) {
+			        a.setA_password(originalPassword.substring(0, 20));
+			    }
+			    if (accountNum == 0) { // 계정이 존재하지 않으면 새로운 계정을 생성합니다.
+			        join(a, req);
+			    } else { // 이미 계정이 존재하면 사용자 정보 업데이트
+			        ss.getMapper(AccountMapper.class).saveKakaoUserInfo(a);
+			    }
 		}
-
-		// 카카오 로그인 세션 정보 초기화
-	}
-
-	public void socialLogOut(HttpServletRequest req) {
-		req.getSession().removeAttribute("LoginMemberNaver");
-		    
-	
 	}
 
 	public boolean checkEmailExists(String email, HttpServletRequest req){ 

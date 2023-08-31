@@ -6,6 +6,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.naming.NamingException;
+import javax.naming.directory.Attribute;
+import javax.naming.directory.Attributes;
+import javax.naming.directory.InitialDirContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -74,11 +78,7 @@ public class AccountController {
 	        req.setAttribute("contentPage", "myeonggyu/login.jsp");
 	        return "index";
 	    }
-	@RequestMapping(value = "/social.logout", method = RequestMethod.GET)
-	public String socialLogOut(HttpServletRequest req) {
-		aDAO.socialLogOut(req);
-		return "redirect:/";
-	}
+	
 
     @RequestMapping(value = "/account.info", method = RequestMethod.GET)
     public String infoMember(AccountDTO a, HttpServletRequest req) {
@@ -151,7 +151,7 @@ public class AccountController {
                                  ) {
     	System.out.println("로그인 콜백");
         aDAO.saveKakaoUserInfo(req, userEmail, kakaoUserId);
-        return "redirect:/loginSuccess.go?type=kakao";
+        return "redirect:/";
     }
     
     @RequestMapping(value="/logout-process", method = RequestMethod.GET)
@@ -163,10 +163,7 @@ public class AccountController {
     }
     
 	
-	@RequestMapping(value = "/loginSuccess.go", method = RequestMethod.GET)
-	public String goLoginSuccess(HttpServletRequest req ) {
-		return "myeonggyu/loginSuccess";
-	}
+	
 	
 	 @ResponseBody
 	    @RequestMapping(value = "/account.get", method = RequestMethod.GET)
@@ -215,18 +212,42 @@ public class AccountController {
 	    }
 	 
 	 @RequestMapping(value = "/account.email.check", method = RequestMethod.POST)
-	 public @ResponseBody Map<String, String> emailCheck(@RequestParam("email") String a_email, HttpServletRequest req) {
-	     Map<String, String> response = new HashMap<String, String>();
-	     
-	     boolean emailExists = aDAO.checkEmailExists(a_email,req); // 이메일 존재 여부 확인
-	     if (emailExists) {
-	         response.put("message", "exist"); // 이메일이 존재하는 경우
-	     } else {
-	         response.put("message", "not_exist"); // 이메일이 존재하지 않는 경우
-	     }
-	     
-	     return response;
-	 }
+	    public @ResponseBody Map<String, String> emailCheck(@RequestParam("email") String a_email, HttpServletRequest req) {
+	        Map<String, String> response = new HashMap<String, String>();
+
+	        boolean emailExists = aDAO.checkEmailExists(a_email, req); // 이메일 존재 여부 확인
+	        if (emailExists) {
+	            // 여기서부터 MX 레코드를 이용한 이메일 실제 존재 여부 확인 코드 추가
+	            boolean isEmailValid = validateEmailUsingMX(a_email);
+	            if (isEmailValid) {
+	                response.put("message", "exist"); // 이메일이 실제로 존재하는 경우
+	            } else {
+	                response.put("message", "invalid"); // 이메일 주소는 존재하지만 유효하지 않은 경우
+	            }
+	        } else {
+	            response.put("message", "not_exist"); // 이메일이 존재하지 않는 경우
+	        }
+
+	        return response;
+	    }
+	 
+	 @ResponseBody
+	    @RequestMapping(value = "/account.checkMX", method = RequestMethod.GET)
+	    public boolean checkMXRecord(@RequestParam("domain") String domain) {
+	        return validateEmailUsingMX(domain);
+	    }
+
+	    private boolean validateEmailUsingMX(String email) {
+	        String domain = email.substring(email.indexOf('@') + 1);
+	        try {
+	            InitialDirContext context = new InitialDirContext();
+	            Attributes attributes = context.getAttributes("dns:/" + domain, new String[]{"MX"});
+	            Attribute mxRecord = attributes.get("MX");
+	            return mxRecord != null && mxRecord.size() > 0;
+	        } catch (NamingException e) {
+	            return false; // MX 레코드 조회 실패
+	        }
+	    } 
 	 
 	 @RequestMapping(value = "/account.changePassword", method = RequestMethod.POST)
 	 @ResponseBody

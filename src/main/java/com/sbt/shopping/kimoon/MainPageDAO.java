@@ -26,11 +26,19 @@ public class MainPageDAO {
 	public int insertMainPageCart(Cart cart) {
 		if(ss.getMapper(MainPageProductMapper.class).checkDupliCart(cart) == 0) {
 			// 없을 때 장바구니 insert
+			System.out.println("장바구니 insert");
 			return ss.getMapper(MainPageProductMapper.class).insertMainPageCart(cart);
 		} else {
 			// 있을 때 장바구니 카운트 update +1
+			System.out.println("장바구니 update");
 			return ss.getMapper(MainPageProductMapper.class).updateMainCart(cart);
 		}
+	}
+
+	public void getSearchProducts(HttpServletRequest request, String search) {
+		
+		request.setAttribute("searchProducts", ss.getMapper(MainPageProductMapper.class).searchProducts(search));
+		
 	}
 	
 }

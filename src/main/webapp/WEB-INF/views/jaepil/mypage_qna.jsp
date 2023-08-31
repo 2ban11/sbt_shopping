@@ -7,6 +7,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	var isLoggedIn =
+<%=session.getAttribute("loginMember") != null%>
+	;
+</script>
+<script>
+	var isLoggedIn =
+<%=session.getAttribute("loginMember") != null%>
+	;
+</script>
+<script type="text/javascript" src="resources/js/jaepil/mypage.js"></script>
 <link rel="stylesheet" href="resources/css/jaepil/mypage.css">
 </head>
 <body>
@@ -33,10 +44,9 @@
 		</div>
 		<div class="mypage-info-des">
 			※ 고객센터 운영시간: 월~목 10:00~17:00 (점심시간: 12:30~14:00) / 금 10:00~12:00 / 토,
-			일, 공휴일 휴무 <br>
-			<br> ※ 운영시간 외에 문의하신 사항은 홈페이지, 전화, 메일의 대응이 모두 불가하며, 영업일 기준 다음
-			운영시간에 순차적으로 처리됩니다. <br>
-			<br> ※ 문의 사항의 내용과 고객센터 사정에 따라 응답이 다소 지연될 수 있습니다.
+			일, 공휴일 휴무 <br> <br> ※ 운영시간 외에 문의하신 사항은 홈페이지, 전화, 메일의 대응이 모두
+			불가하며, 영업일 기준 다음 운영시간에 순차적으로 처리됩니다. <br> <br> ※ 문의 사항의 내용과
+			고객센터 사정에 따라 응답이 다소 지연될 수 있습니다.
 		</div>
 		<div>
 			<div class="mypage-info-datas">

@@ -6,7 +6,8 @@
 		select * from order_detail od, product p
 		where
 		od.od_product = p.p_no
-		and od.od_id = #{a_id}
+		and od.od_id = #{a_id} order by od_date
+		desc
 	</select>
 
 	<select id="getOrderByDate" resultType="com.sbt.shopping.jaepil.OrderDTO" parameterType="map">
@@ -14,7 +15,7 @@
 		od, product p
 		where od.od_product = p.p_no
 		and od.od_date between to_date(#{startdate}) and
-		to_date(#{enddate}) + 0.99999 and od.od_id = #{a_id}
+		to_date(#{enddate}) + 0.99999 and od.od_id = #{a_id} order by od_date desc
 	</select>
 	
 	<update id="refund">
