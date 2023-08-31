@@ -266,6 +266,8 @@
 						 </div>
 						<a>사진등록</a><input type="file" name="img" accept="image/*"
 						class="p_img" autocomplete="off">
+						<a>상세사진</a><input type="file" name="img2" accept="image/*"
+							 autocomplete="off" required>
 						<a>상품설명</a>
 						<textarea rows="" cols="" class="p_content" name="p_content"></textarea>
         			</div>
