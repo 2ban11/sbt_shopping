@@ -8,6 +8,13 @@
 		where p_no = c_product and c_id =
 		#{a_id}
 	</select>
+	
+	<select id="getOrderCart"
+		resultType="com.sbt.shopping.jaepil.CartDTO">
+		select *
+		from product, cart
+		where p_no = c_product and c_no = #{c_no}
+	</select>
 
 	<delete id="deleteCart">
 		delete cart
@@ -19,4 +26,5 @@
 		set c_cnt = #{c_cnt} 
 		where c_no = #{c_no}
 	</update>
+	
 </mapper>

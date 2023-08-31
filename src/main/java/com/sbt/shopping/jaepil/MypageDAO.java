@@ -20,10 +20,12 @@ public class MypageDAO {
 
 	public void getOrder(HttpServletRequest req, AccountDTO aDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
+
 		if (account != null) {
 			aDTO.setA_id(account.getA_id());
 			req.setAttribute("orders", ss.getMapper(OrderMapper.class).getOrder(aDTO));
 		}
+
 	}
 
 	public void getOrderByDate(HttpServletRequest req, AccountDTO aDTO) {
