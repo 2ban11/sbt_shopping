@@ -12,6 +12,9 @@ legend{
 	width:100%;
 	border-bottom: 1px solid rgba(255,255,255,0.1);
 	line-height: inherit;
+	text-indent: 30px;
+	font-weight: bold;
+	padding-bottom: 12px;
 	
 }
 
@@ -23,7 +26,6 @@ fieldset{
 body {
     color: white;
 }
-
 .form-inline{
 	display: flex;
 }
@@ -32,15 +34,15 @@ body {
 	width:100%;
 	margin-top:12px;
 	margin-bottom:12px;
-	display:block;
+	display:inline-block;
 	justify-content: space-between;
-    position: relative;
+     position: relative;
    
 }
-@media (min-width: 768px)
-.col-sm-10 {
-    width: 83.33333333%;
+.col-sm-4{
+	margin-top: 12px;
 }
+
 .form-group input {
     width: 200px;
     padding: 5px;
@@ -76,17 +78,16 @@ body {
     line-height: 1.42857143;
     user-select: none;
 }
-@media screen and (min-width: 768px)
-.registration .form-actions .btn, .profile-edit .form-actions .btn {
-    margin-right: 10px;
-}
+
 .btn-default{
+	margin-top: 12px;
 	text-decoration: none;
 	    border: 1px solid #cccccc;
     box-shadow: 0 0 1px rgba(255,255,255,0.2) inset;
 	    background: linear-gradient(#f4f4f4,#f2f2f2);
 }
 .btn-primary {
+	margin-top: 12px;
     background-color: #67c1f5;
     border-color: #4fb7f3;
     color: #ffffff;
@@ -110,9 +111,13 @@ body {
 	display:flex;
 	justify-content: center;
 }
+#passwordReHelpBlock {
+    margin-top: 12px;
+}
 select.form-control option {
     color: black; 
 }
+
 .docs-section{
 	margin-left:5%;
 	width:90%;
@@ -123,4 +128,24 @@ select.form-control option {
 }
 .text-muted-text-left{
 color: rgba(255,255,255,0.2);
+}
+@media screen and (min-width: 768px)
+.registration .form-actions .btn, .profile-edit .form-actions .btn {
+    margin-right: 10px;
+}
+@media (min-width: 768px){
+	.join{margin-left: 0%;
+    margin-right: 0%;}
+.col-sm-10 {
+    width: 83.33333333%;
+}
+}
+@media(max-width: 500px){
+	.join{margin-left: 0%;
+    margin-right: 0%;}
+    .docs-section {
+    padding:0px 10px;
+    width: 100%;
+    margin-left:0; 
+    }
 }

@@ -2,16 +2,79 @@ div{
 	color:white;
 	}
 	.w3-container {
-    border: 3px solid rgba(255,255,255,0.1);
-    width: 100%;
+    border: 1px solid rgba(255,255,255,0.1);
+    width: 40%;
     height: 80%;
     margin-top: 30px;
-    margin-left: 13px;
-    display: flex;
-    justify-content: center;
+    margin-left: 25%;
+    display: block;
 }
+.title_txt{
+	text-indent:12px;
+	width: 100%;
+	height: 30px;
+	margin-top: 20px;
+	border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.textBar{
+	vertical-align:middle;
+	margin-top:20px;
+	margin-left: 25%;
+	margin-bottom: 20px;
+	width: 275px;
+	height: 30px;
+}
+
 #result{
+	display:flex;
+	margin-left: 30%;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+@media(max-width: 1024px){
+	.textBar{
+	margin-left: 5%;
+	}
 	
-	margin-left: 15%;
+}
+@media(max-width: 768px){
+		.w3-container {
+		width: 55%;
+		}
+	.textBar{
+	margin-left: 65px;
+	}
+	
+}
+@media(max-width: 500px){
+    .textBar{
+        margin-left: 170px;
+        }
+	#result {
+    margin-left: 40%;
+}
+	.w3-container {
+    margin-left: 0px;
+    width: 100%;
+    }
+}
+@media(max-width: 425px){
+		.w3-container {
+		margin-left: 0px;
+		width: 100%;
+		}
+	
+}
+@media(max-width: 375px){
+		.w3-container {
+		margin-left: 0px;
+    	width: 100%;
+		}
+	
+}
+@media(max-width: 320px){
+		.w3-container {
+    	width: 100%;
+		}
 	
 }

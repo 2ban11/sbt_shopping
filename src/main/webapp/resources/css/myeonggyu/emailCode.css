@@ -3,22 +3,111 @@ div{
 	color:white;
 }
 .findPw{
+	text-indent:30px;
 	width: 100%;
 	height: 30px;
 	margin-top: 20px;
-	margin-bottom: 60px;
 	border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 .emailForPw{
-	width: 275px;
-	
+	margin-top:20px;
+	margin-left: 5%;
+	margin-bottom: 20px;
+	width: 40%;
+	height: 30px;
 }
-
+.writeEmail{
+	text-align: center;
+}
 .w3-container{
 	border: 1px solid rgba(255,255,255,0.1);
-	width:100%;
+	width:70%;
 	height: 80%;
 	margin-top:30px;
-	margin-left: 10px;
+	margin-left: 15%;
 	display: block;
+}
+#findBtn{
+	margin-left: 37%;
+	margin-bottom: 12px;
+}
+#verificationCode{
+	margin-left: 6%;
+	width: 275px;
+    height: 30px
+}
+#verificationCodewrite{
+	margin-left: 30px;
+}
+#verificationCodeContainer{
+	margin-top:20px;
+	margin-left: 175px;
+	
+}
+#verifyCodeBtn{
+	margin-left: 48%;
+	margin-top:20px;
+	margin-bottom: 20px;
+}
+
+@media(max-width:1440px){
+#verificationCodeContainer {
+    margin-top: 20px;
+    margin-left: 55px;
+}
+#verifyCodeBtn {
+    margin-left: 55%;
+    }
+}
+@media(max-width:1024px){
+	#verificationCode {
+    margin-left: 6%;
+    width: 55%;
+    height: 30px;
+}
+#verificationCodewrite {
+    margin-left: -32px;
+}
+#verifyCodeBtn {
+    margin-left: 50%;
+}
+@media(max-width:768px){
+	#verifyCodeBtn {
+    margin-left: 45%;
+    }
+    #findBtn {
+    margin-left: 30%;
+    }
+}
+@media (max-width: 500px) {
+	.w3-container {
+	margin-left: 0%;
+	width: 100%;
+	}
+	#verifyCodeBtn {
+    margin-left: 55%;
+}
+}
+@media(max-width:425px){
+	#verificationCode {
+    margin-left: 4%;
+    }
+}
+@media(max-width:375px){
+	#verifyCodeBtn {
+    margin-left: 38%;
+    }
+	}
+@media(max-width:320px){
+	#verificationCodeContainer {
+    margin-top: 20px;
+    margin-left: 38px;
+}
+.emailForPw {
+	width: 46%;
+}
+	#verifyCodeBtn {
+    margin-left: 33%;
+    }
+	
 }

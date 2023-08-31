@@ -66,7 +66,7 @@
 <update id="updatePw" parameterType="com.sbt.shopping.myeonggyu.AccountDTO">
     update account
     set a_password = #{a_password}
-    where a_id = #{a_id}
+    where a_email = #{a_email}
 </update>
  <select id="checkEmail" resultType="com.sbt.shopping.myeonggyu.AccountDTO" >
  select * from account where a_email = #{a_email}

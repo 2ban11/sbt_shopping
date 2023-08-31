@@ -16,7 +16,7 @@
         <div class="findPw">
             <h3>비밀번호 찾기</h3>
         </div>
-        <div>
+        <div class="writeEmail">
             <p>
                 <label>이메일</label>
                 <input class="emailForPw" type="text" id="a_email" name="a_email" placeholder="회원가입한 이메일주소를 입력하세요">
@@ -27,7 +27,7 @@
             </p>
         </div>
         <div id="verificationCodeContainer" style="display: none;">
-            <p>
+            <p id="verificationCodewrite">
                 <label>인증 번호</label>
                 <input type="text" id="verificationCode" placeholder="인증 번호를 입력하세요">
             </p>

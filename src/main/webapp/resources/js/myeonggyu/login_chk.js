@@ -10,6 +10,7 @@ function checkLoginAndRedirect() {
             }
         },
         error: function() {
+			alert("로그인이 필요한 서비스 입니다. 로그인 상태를 확인하세요.")
             console.log("AJAX 요청 실패");
         }
     });

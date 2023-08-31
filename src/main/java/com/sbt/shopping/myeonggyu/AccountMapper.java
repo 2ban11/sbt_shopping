@@ -20,13 +20,13 @@ public interface AccountMapper {
 
 	AccountDTO saveNaverNickname(String a_id, String a_nickname);
 
-	AccountDTO saveNaverNickname(AccountDTO a);
+	void saveNaverNickname(AccountDTO a);
 
 	AccountDTO updateKNickname(AccountDTO a);
 
 	AccountDTO updateKNickname(String a_id, String a_nickname);
 
-	AccountDTO saveKakaoUserInfo(AccountDTO a);
+	void saveKakaoUserInfo(AccountDTO a);
 
 	AccountDTO checkEmail(String email );
 
