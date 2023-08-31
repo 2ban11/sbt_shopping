@@ -111,11 +111,6 @@
 								</form>
 							</c:if>
 						</div>
-						<div>
-							<button class="header__cart">
-								<i class="fa-solid fa-cart-shopping"></i>
-							</button>
-						</div>
 					</div>
 				</div>
 			</header>
