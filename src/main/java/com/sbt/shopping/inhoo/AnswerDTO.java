@@ -32,7 +32,7 @@ public class AnswerDTO {
 		return a_ans;
 	}
 	public void setA_ans(String a_ans) {
-		a_ans.replace("\r\n", "<br>");
+		a_ans = a_ans.replace("\r\n", "<br>");
 		this.a_ans = a_ans;
 	}
 	public Date getA_date() {

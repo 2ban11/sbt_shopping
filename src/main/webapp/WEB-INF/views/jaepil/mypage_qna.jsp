@@ -69,7 +69,9 @@
 							</summary>
 							<div class="mypage-info-data detail">
 								<div class="mypage-info-data-qna-content">${q.q_content }</div>
+								<c:if test="${q.checkAns == 1 }">
 								<div class="mypage-info-data-qna-content" style="padding-left: 20px;"><img src="resources/img/Left2.png" style="width: 30px;">&nbsp;&nbsp; ${q.q_ans.a_ans }</div>
+								</c:if>
 							</div>
 						</details>
 					</c:forEach>
