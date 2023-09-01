@@ -92,9 +92,9 @@
 								</div>
 							</c:when>
 							<c:otherwise>
-								<form action="#">
+								<form action="/shopping/login.go">
 									<div class="login_btn_container">
-										<button class="header__login" onclick="/shopping/login.go">
+										<button class="header__login" >
 											<span class="haader__login--text">로그인</span>
 										</button>
 									</div>
