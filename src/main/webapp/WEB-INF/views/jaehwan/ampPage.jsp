@@ -93,7 +93,7 @@
 					<button id="main-continue-shopping">계속 쇼핑하기</button>
 				</div>
 				<div>
-					<button id="main-go-to-cart">장바구니로 이동하기</button>
+		<a href="mypage.cart"><button id="main-go-to-cart">장바구니로 이동하기</button></a>
 				</div>
 			</div>
 		</div>
@@ -129,7 +129,8 @@
     	            var dataHtml = '<ul>';
     	            $.each(data, function (index, item) {
     	                dataHtml += '<div class="listPage_item1">';
-    	                dataHtml += '<div class="ul-div product-img"><img src="resources/img/Amp/' + item.p_img1 + '" class="productImg"></div>';
+    	                dataHtml += '<div class="ul-div product-img"><img src="resources/img/Amp/' + item.p_img1 + '" class="productImg"';
+    	                dataHtml += ' onclick="location.href=\'detail.product?p_no=' + item.p_no + '\'" /></div>';
     	                if (item.p_maker !== '') {
     	                    dataHtml += '<div class="ul-div product-logo"><img src="resources/img/MakerLogo/' + item.p_maker + '_Logo_White.png" class="LogoImg"></div>';
     	                }
@@ -141,7 +142,7 @@
     	                dataHtml += '<div class="ul-div productCnt" style="display:none;">' + item.p_cnt + '</div>';
     	                dataHtml += '<div class="ul-div productColor">' + item.p_color + '</div>';
     	                dataHtml += '<div class="ul-div productSmallCategory">' + item.p_small_category + '</div>';
-    	                dataHtml += '<div class="ul-div productTitle">' + item.p_name + '</div>';
+    	                dataHtml += '<div class="ul-div productTitle" onclick="location.href=\'detail.product?p_no=' + item.p_no + '\'">' + item.p_name + '</div>';
     	                dataHtml += '<div class="aaa">'
     	              	  dataHtml += '<div class="productPrice"';
       	              if (item.p_price !== item.p_sale) {
@@ -177,17 +178,17 @@
       					}
       	                dataHtml += '</div>';
       	                
+      	                
       	              if(item.p_cnt != 0){
-             				dataHtml += '<span>';
-            	            dataHtml += '<button class="fa-solid fa-cart-shopping intoTheCart--btn"';
-            	            dataHtml += 'name="c_product" value="' + item.p_no + '">&nbsp;</button>';
-            	            			}
+       				dataHtml += '<span>';
+      	            dataHtml += '<button class="fa-solid fa-cart-shopping intoTheCart--btn"';
+      	            dataHtml += 'name="c_product" value="' + item.p_no + '">&nbsp;</button>';
+      	            			}
 
-            	            dataHtml += '<input type="hidden" name="c_id" value="${sessionScope.loginMember.a_id}">';
-      					dataHtml += '</span>';
-        					
-      	            
-      	            dataHtml += '</div>'; // 그 디브 끝
+      	            dataHtml += '<input type="hidden" name="c_id" value="${sessionScope.loginMember.a_id}">';
+					dataHtml += '</span>';
+  					
+      	                dataHtml += '</div>'; // 그 디브 끝
       	                dataHtml += '</div>'; // 그 디브 끝
       	            });
     	            dataHtml += '</ul>';
@@ -195,7 +196,6 @@
     	        }
     	    });
 	}
-
 $(function () {
     $("#searchDetail").change(updateResults);
     paging();
@@ -237,6 +237,7 @@ function updateResults() {
         }
     });
 }
+
 $(document).on("click",".intoTheCart--btn",function(e){
 	// id, pno, cnt
 	addToCartModal(e.currentTarget);
@@ -245,7 +246,9 @@ $(document).on("click",".intoTheCart--btn",function(e){
 		showModal();
 	}
 	
+	
 });
+
 </script>
 </body>
 </html>

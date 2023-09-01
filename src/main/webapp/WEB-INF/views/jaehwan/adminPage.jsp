@@ -190,11 +190,11 @@
 						<a>상품타입</a><select class="p_middle_category" id="categorySelect" name="p_middle_category">
          						 <option  value="">상품 종류</option>
         					     <option  value="일렉기타">일렉기타</option>
-        					     <option  value="어쿠스틱">어쿠스틱</option>
-      						     <option  value="클랙식">클래식</option>
-      						     <option  value="베이스">베이스</option>
-      						     <option  value="우쿠렐레">우쿠렐레</option>
-      						     <option  value="멀티">멀티</option>
+        					     <option  value="어쿠스틱기타">어쿠스틱</option>
+      						     <option  value="클랙식기타">클래식</option>
+      						     <option  value="베이스기타">베이스</option>
+      						     <option  value="우쿠렐레기타">우쿠렐레</option>
+      						     <option  value="멀티이펙터">멀티이펙터</option>
       						     <option  value="기타줄">기타줄</option>
       						     <option  value="피크">피크</option>
       						     <option  value="케이블">케이블</option>

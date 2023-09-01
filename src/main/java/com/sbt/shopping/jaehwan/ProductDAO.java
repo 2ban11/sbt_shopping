@@ -122,9 +122,8 @@ public class ProductDAO {
 	        long imgSize = pDTO.getImg().getSize();
 	        long img2Size = pDTO.getImg2().getSize(); // 새로운 파일 필드 추가
 
-	        System.out.println("sfsdsdf" + imgOrgName);
-	        System.out.println("sfsdsdf" + imgSize);
-
+	        System.out.println(imgOrgName);
+	        System.out.println(imgSize);
 	        String uploadURL = "resources/img/";
 	        String bigCate = pDTO.getP_big_category();
 
@@ -150,9 +149,11 @@ public class ProductDAO {
 	        String[] uuids = uuid.toString().split("-");
 	        String uniqueName = uuids[0];
 
-	        File saveImg = new File(uploadFolder + "//" + uniqueName + extension);
+//	        File saveImg = new File(uploadFolder + "//" + uniqueName + extension);
+	        File saveImg = new File(uploadFolder + "//" + imgOrgName);
 	        pDTO.getImg().transferTo(saveImg);
-	        pDTO.setP_img1(uniqueName + extension);
+	        pDTO.setP_img1(imgOrgName);
+	        System.out.println(pDTO.getP_img1());
 
 	        // 두 번째 파일 업로드
 	        if (img2Size > 0) {
@@ -161,9 +162,11 @@ public class ProductDAO {
 	            String[] uuids2 = uuid2.toString().split("-");
 	            String uniqueName2 = uuids2[0];
 
-	            File saveImg2 = new File(uploadFolder + "//" + uniqueName2 + extension2);
+//	            File saveImg2 = new File(uploadFolder + "//" + uniqueName2 + extension2);
+	            File saveImg2 = new File(uploadFolder + "//" +img2OrgName);
 	            pDTO.getImg2().transferTo(saveImg2);
-	            pDTO.setP_img2(uniqueName2 + extension2);
+	            pDTO.setP_img2(img2OrgName);
+	            System.out.println(pDTO.getP_img2());
 	        } else {
 	            System.out.println("두 번째 이미지가 없습니다");
 	        }
