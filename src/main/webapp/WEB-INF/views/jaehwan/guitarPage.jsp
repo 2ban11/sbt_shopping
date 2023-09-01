@@ -106,7 +106,6 @@
 					
   <script>
   
-  
   let jsonData = [];
   <c:forEach var="p" items="${products}">
     var item = {

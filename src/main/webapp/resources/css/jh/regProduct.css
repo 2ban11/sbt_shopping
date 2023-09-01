@@ -1,11 +1,11 @@
 @charset "UTF-8";
 .popup{
 	color:white;
-	top : 5%;
+	top : 3%;
 	position : fixed;
 	left : 39%;
 	width: 25%;
-	height: 92%;
+	height: 89%;
 	border-radius: 20px;
 	padding: 20px;
 	box-sizing: border-box;
