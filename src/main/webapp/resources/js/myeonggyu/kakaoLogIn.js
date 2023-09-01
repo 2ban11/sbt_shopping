@@ -37,8 +37,8 @@ $("#kakao-login-btn").on("click", function () {
 
 
 
- async function saveKakaoUserData(userEmail, nickName){
-    await $.ajax({
+ function saveKakaoUserData(userEmail, nickName){
+ $.ajax({
         url: 'kakao_login_callback',
         method: 'POST',
         data: {

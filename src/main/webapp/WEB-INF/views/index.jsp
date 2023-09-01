@@ -77,7 +77,7 @@
 										<button>마이페이지</button>
 									</a>
 								</div>
-								<a href="/shopping/mypage.order" onclick="checkLoginAndRedirect()">
+								<a href="#" onclick="checkLoginAndRedirect()">
 								<button id="small_myPageBtn">
 									<i class="fa-regular fa-user"></i>
 								</button>

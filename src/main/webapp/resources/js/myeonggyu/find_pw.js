@@ -8,7 +8,6 @@ $(document).ready(function() {
         $("#emailWarning").text("이메일을 입력하시오").css("color", "red");
         return;
     }
-
     // 이메일 유효성 검사 정규식 패턴 수정
     var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (!emailRegex.test(email)) {
