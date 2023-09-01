@@ -169,13 +169,19 @@ details[open] summary::marker {
 	width: 10%;
 }
 .mypage-info-data-order-other button {
-	background-color: #67c1f5;
 	padding: 5px 10px;
 	border-radius: 2px;
 	font-weight: 700;
 	border: none;
 	color: white;
 	width: 90%
+}
+
+.refund-btn{
+	background-color: #67c1f5;
+}
+.refundcancel-btn{
+	background-color: red;
 }
 
 .mypage-info-data-qna-no {

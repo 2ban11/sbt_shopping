@@ -88,11 +88,11 @@
 							<c:choose>
 								<c:when
 									test="${o.od_state eq '주문완료' and (today.time - o.od_date.time) <= 2592000000}">
-									<button onclick="refund(${o.od_no})">환불</button>
+									<button class="refund-btn" onclick="refund(${o.od_no})">환불</button>
 								</c:when>
 								<c:when
 									test="${o.od_state eq '환불요청' and (today.time - o.od_date.time) <= 2592000000}">
-									<button onclick="refundCancel(${o.od_no})">환불취소</button>
+									<button class="refundcancel-btn" onclick="refundCancel(${o.od_no})">환불취소</button>
 								</c:when>
 							</c:choose>
 						</div>
