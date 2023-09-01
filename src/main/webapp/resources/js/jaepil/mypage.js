@@ -196,8 +196,8 @@ function signOut(){
 	if(ok){
 		param = 'a_id='+ id;
 			console.log(param);
-	}	
 	location.href='signout?' + param;
+	}	
 	});
 }
 

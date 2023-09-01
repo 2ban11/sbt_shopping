@@ -37,5 +37,7 @@ public interface AccountMapper {
 	List<String> getAccountListByPhoneNum(String a_phone);
 
 	int getPhoneCheck(AccountDTO a);
+
+	int editAccount(AccountDTO aDTO);
 	
 }
