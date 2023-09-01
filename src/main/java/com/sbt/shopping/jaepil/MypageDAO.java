@@ -89,7 +89,7 @@ public class MypageDAO {
 	public void editAccount(HttpServletRequest req, AccountDTO aDTO) {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
 		aDTO.setA_id(account.getA_id());
-		if (ss.getMapper(AccountMapper.class).updatePw(aDTO) == 1) {
+		if (ss.getMapper(AccountMapper.class).editAccount(aDTO) == 1) {
 			System.out.println("수정성공!");
 		}
 
