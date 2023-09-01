@@ -92,14 +92,14 @@
 								</div>
 							</c:when>
 							<c:otherwise>
-								<form action="/shopping/login.go">
+								<form action="#">
 									<div class="login_btn_container">
 										<button class="header__login" onclick="/shopping/login.go">
 											<span class="haader__login--text">로그인</span>
 										</button>
 									</div>
 								</form>
-								<a href="mypage.order">
+								<a href="#">
 									<button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
 										<i class="fa-regular fa-user"></i>
 									</button>
