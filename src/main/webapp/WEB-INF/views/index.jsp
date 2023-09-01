@@ -77,8 +77,8 @@
 										<button>마이페이지</button>
 									</a>
 								</div>
-								<a href="#" onclick="checkLoginAndRedirect()">
-								<button id="small_myPageBtn">
+								<a href="#" >
+								<button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
 									<i class="fa-regular fa-user"></i>
 								</button>
 								</a>
@@ -99,7 +99,7 @@
 										</button>
 									</div>
 								</form>
-								<a href="mypage.order">
+								<a href="#">
 									<button id="small_myPageBtn" onclick="checkLoginAndRedirect()">
 										<i class="fa-regular fa-user"></i>
 									</button>
