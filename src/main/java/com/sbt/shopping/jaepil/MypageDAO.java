@@ -1,6 +1,7 @@
 package com.sbt.shopping.jaepil;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +10,9 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sbt.shopping.inhoo.AnswerDTO;
+import com.sbt.shopping.inhoo.DetailMapper;
+import com.sbt.shopping.inhoo.QnaDTO;
 import com.sbt.shopping.myeonggyu.AccountDTO;
 import com.sbt.shopping.myeonggyu.AccountMapper;
 
@@ -74,7 +78,17 @@ public class MypageDAO {
 		AccountDTO account = (AccountDTO) req.getSession().getAttribute("loginMember");
 		if (account != null) {
 			aDTO.setA_id(account.getA_id());
-			req.setAttribute("qnas", ss.getMapper(QnaMapper.class).getQna(aDTO));
+			List<QnaDTO> qnas = ss.getMapper(QnaMapper.class).getQna(aDTO);
+			AnswerDTO answer = new AnswerDTO();
+			for (QnaDTO qnaDTO : qnas) {
+				answer = ss.getMapper(DetailMapper.class).getAnswer(qnaDTO.getQ_no());
+				System.out.println(qnaDTO.getQ_no());
+				if(answer != null) {
+					qnaDTO.setQ_ans(answer);
+					qnaDTO.setCheckAns(1);
+				}
+			}
+			req.setAttribute("qnas", qnas);
 		}
 	}
 

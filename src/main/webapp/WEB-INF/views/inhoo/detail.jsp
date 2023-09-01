@@ -361,22 +361,56 @@
 													<td>${q.q_title}</td>
 													<td><fmt:formatDate value="${q.q_date}" type="date"
 															dateStyle="short" pattern="yyyy/MM/dd/HH:mm" /></td>
+														<td>
 													<c:if test="${q.q_id == loginMember.a_id}">
-														<td><button type="button" class="btn btn-danger"
+														<button type="button" class="btn btn-danger"
 																onclick="QnaDelete('${q.q_no}', '${product.p_no}')">QnA
-																삭제</button></td>
+																삭제</button>
 													</c:if>
+																</td>
+														<td>
+													<c:choose>
+													<c:when test="${q.checkAns == 1 }">
+														<span style="color:yellow;">답변 완료
+																</span>
+													</c:when>
+													<c:when test="${sessionScope.loginMember == 'master'}">
+														<button type="button" class="btn btn-danger" value="${q.checkAns }"
+																onclick="makeForm(this, '${q.q_no}')">
+																답변하기</button><br>
+													</c:when>
+													</c:choose>
+																</td>
+													
 												</tr>
+												
 												<tr id="row${q.q_no}-content" class="collapse">
-													<td colspan="4" style="text-align: center;">${q.q_content}</td>
+													<td colspan="4" style="text-align: center;">${q.q_content}
+														<c:if test="${q.checkAns == 1 }">
+														<table
+															style="padding-left: 10px; text-align: left; width: 100%; margin-top: 15px;">
+															<tr>
+																<td width="15%"><img src="resources/img/Left2.png" style="width: 30px;">&nbsp;&nbsp;</td>
+																<td style="color: red">${q.q_ans.a_ans }</td>
+															</tr>
+														</table>
+														</c:if>
+
+
+
+													</td>
 												</tr>
+
+
+
 											</c:forEach>
 										</tbody>
 									</table>
+
+
 								</div>
+
 							</div>
-
-
 
 
 

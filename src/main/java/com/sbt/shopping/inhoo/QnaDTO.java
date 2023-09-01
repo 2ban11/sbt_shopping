@@ -13,10 +13,33 @@ public class QnaDTO {
 	private int rn;
 	private String a_nickname;
 	
+	private AnswerDTO q_ans;
+	private int checkAns;
+	
+	
+	
+	
+
+	public int getCheckAns() {
+		return checkAns;
+	}
+
+	public void setCheckAns(int checkAns) {
+		this.checkAns = checkAns;
+	}
+
+	public AnswerDTO getQ_ans() {
+		return q_ans;
+	}
+
+	public void setQ_ans(AnswerDTO q_ans) {
+		this.q_ans = q_ans;
+	}
+
 	public QnaDTO() {
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public QnaDTO(int q_no, int p_no, String q_id, int q_product, String q_title, String q_content, Date q_date, int rn,
 			String a_nickname) {
 		super();
@@ -107,10 +130,10 @@ public class QnaDTO {
 	public String toString() {
 		return "QnaDTO [q_no=" + q_no + ", p_no=" + p_no + ", q_id=" + q_id + ", q_product=" + q_product + ", q_title="
 				+ q_title + ", q_content=" + q_content + ", q_date=" + q_date + ", rn=" + rn + ", a_nickname="
-				+ a_nickname + "]";
+				+ a_nickname + ", q_ans=" + q_ans + "]";
 	}
 
-	
+
 
 	
 

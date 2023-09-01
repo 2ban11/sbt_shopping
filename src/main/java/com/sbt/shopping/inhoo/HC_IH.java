@@ -70,6 +70,14 @@ public class HC_IH {
 	}
 
 
+	@RequestMapping(value = "/reg.ans.do", method = RequestMethod.GET)
+	public String regAnsDo(AnswerDTO ansDTO,HttpServletRequest req) {
+		dDAO.regAnsDo(ansDTO,req);
+		
+		
+		
+		return "redirect:detail.product?p_no=" + req.getParameter("p_no");
+	}
 	
 	
 	

@@ -4,87 +4,105 @@
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sbt.shopping.inhoo.DetailMapper">
 
-<insert id="regReview">
-		 insert into review values(review_seq.nextval, #{p_no}, #{r_id}, #{r_title}, #{r_content}, #{r_rate}, #{r_img, jdbcType=VARCHAR}, sysdate)
-</insert>
-    
+	<insert id="regAns">
+	insert into answer values(answer_seq.nextval, #{a_q_no}, 'master', #{a_ans}, sysdate)
+	</insert>
 
 
-
-<insert id="regQna">
-		insert into qna values(qna_seq.nextval, #{q_id}, #{p_no }, #{q_title }, #{q_content }, sysdate)
-</insert>
-    
-    
-    
-<select id="getAllReview" resultType="com.sbt.shopping.inhoo.DetailDTO">
-	select * from review
-</select>
+	<select id="getAnswer"
+		resultType="com.sbt.shopping.inhoo.AnswerDTO">
+		select * from answer where a_q_no=#{q_no}
+	</select>
 
 
-
-
-<select id="getProduct" resultType="com.sbt.shopping.jaehwan.ProductDTO">
-    SELECT * FROM product WHERE p_no = #{p_no} 
-</select>
+	<insert id="regReview">
+		insert into review values(review_seq.nextval, #{p_no}, #{r_id}, #{r_title},
+		#{r_content}, #{r_rate}, #{r_img, jdbcType=VARCHAR}, sysdate)
+	</insert>
 
 
 
 
-<select id="getReviews" resultType="com.sbt.shopping.inhoo.DetailDTO">
-	  select *
-        from (
-        	select rownum as rn, r_no, r_product, r_id,r_title,r_content,r_rate,r_img,r_date, a_nickname
-        	from (
-        		select * from review, account
-        		where r_product = #{no} and a_id = r_id
-        		order by r_date desc
-        	)
-        )
-        where rn &gt;= #{start} and rn &lt;= #{end}
-</select>
+	<insert id="regQna">
+		insert into qna values(qna_seq.nextval, #{q_id},
+		#{p_no }, #{q_title }, #{q_content }, sysdate)
+	</insert>
+
+
+
+	<select id="getAllReview"
+		resultType="com.sbt.shopping.inhoo.DetailDTO">
+		select * from review
+	</select>
 
 
 
 
-<select id="getReviewCount" resultType="int">
-	select count(*) from review where r_product = #{p_no}
-</select>
+	<select id="getProduct"
+		resultType="com.sbt.shopping.jaehwan.ProductDTO">
+		SELECT * FROM product WHERE p_no = #{p_no}
+	</select>
 
 
 
 
-<!-- QnA 페이징 -->
-<select id="getQnAs" resultType="com.sbt.shopping.inhoo.QnaDTO">
-    SELECT *
-    FROM (
-        SELECT ROWNUM AS rn, q_no, q_product, q_id, q_title, q_content, q_date, a_nickname
-        FROM (
-            SELECT *
-            FROM qna, account
-            WHERE q_product = #{no} and a_id = q_id
-            ORDER BY q_date DESC
-        )
-    )
-    WHERE rn &gt;= #{start} AND rn &lt;= #{end}
-</select>
-
-
-
-<select id="getQnACount" resultType="int">
-    SELECT COUNT(*) FROM qna WHERE q_product = #{p_no}
-</select>
+	<select id="getReviews"
+		resultType="com.sbt.shopping.inhoo.DetailDTO">
+		select *
+		from (
+		select rownum as rn, r_no, r_product,
+		r_id,r_title,r_content,r_rate,r_img,r_date, a_nickname
+		from (
+		select * from review, account
+		where r_product = #{no} and a_id = r_id
+		order by r_date desc
+		)
+		)
+		where rn &gt;= #{start} and rn &lt;= #{end}
+	</select>
 
 
 
 
-<delete id="deleteQna">
-	 delete qna where q_no = #{q_no}
-</delete>
+	<select id="getReviewCount" resultType="int">
+		select count(*) from review where r_product = #{p_no}
+	</select>
 
-<delete id="deleteReview">
-	 delete review where r_no = #{r_no}
-</delete>
+
+
+
+	<!-- QnA 페이징 -->
+	<select id="getQnAs" resultType="com.sbt.shopping.inhoo.QnaDTO">
+		SELECT *
+		FROM (
+		SELECT ROWNUM AS rn, q_no, q_product, q_id, q_title, q_content, q_date,
+		a_nickname
+		FROM (
+		SELECT *
+		FROM qna, account
+		WHERE q_product = #{no} and a_id = q_id
+		ORDER BY q_date DESC
+		)
+		)
+		WHERE rn &gt;= #{start} AND rn &lt;= #{end}
+	</select>
+
+
+
+	<select id="getQnACount" resultType="int">
+		SELECT COUNT(*) FROM qna WHERE q_product = #{p_no}
+	</select>
+
+
+
+
+	<delete id="deleteQna">
+		delete qna where q_no = #{q_no}
+	</delete>
+
+	<delete id="deleteReview">
+		delete review where r_no = #{r_no}
+	</delete>
 
 
 

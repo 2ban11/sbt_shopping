@@ -23,6 +23,10 @@ public interface DetailMapper {
 	int deleteQna(QnaDTO qDTO);
 
 	int deleteReview(DetailDTO dDTO);
+
+	AnswerDTO getAnswer(int q_no);
+
+	int regAns(AnswerDTO ansDTO);
 	
 	
 

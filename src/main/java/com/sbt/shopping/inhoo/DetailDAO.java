@@ -128,10 +128,22 @@ public class DetailDAO {
 
 		// QnA 게시글 조회를 위한 셀렉터 객체 생성
 		QnASelector qnaSelector = new QnASelector(pDTO.getP_no(), new BigDecimal(start), new BigDecimal(end));
-
+		AnswerDTO answer = new AnswerDTO();
 		// QnA 게시글 목록 가져오기
 		List<QnaDTO> qnas = ss.getMapper(DetailMapper.class).getQnAs(qnaSelector);
-
+		
+		for (QnaDTO qnaDTO : qnas) {
+			answer = ss.getMapper(DetailMapper.class).getAnswer(qnaDTO.getQ_no());
+			System.out.println(qnaDTO.getQ_no());
+			if(answer != null) {
+				qnaDTO.setQ_ans(answer);
+				qnaDTO.setCheckAns(1);
+			}
+//			System.out.println(qnaDTO.getQ_ans());
+		}
+		
+		
+		
 		// 전체 페이지 수 계산
 		int pageCount = (int) Math.ceil(qnaCount / (double) count);
 
@@ -183,6 +195,16 @@ public class DetailDAO {
 	public void reviewDelete(DetailDTO dDTO, Model model, ProductDTO pDTO, HttpServletRequest req) {
 		if(ss.getMapper(DetailMapper.class).deleteReview(dDTO)==1) {
 			System.out.println("삭제 성공!");
+		}
+		
+	}
+
+
+
+
+	public void regAnsDo(AnswerDTO ansDTO,HttpServletRequest req) {
+		if(ss.getMapper(DetailMapper.class).regAns(ansDTO)==1) {
+			System.out.println("답변등록 성공");
 		}
 		
 	}

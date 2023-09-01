@@ -234,7 +234,7 @@
 		
 		
 		
-	<!-- 게시글 수정 -->	
+	<!-- 게시글 수정(date를 하필 sysdate로 받아서 수정하면 최신글로 게시글 상단으로 올라가버림ㅠ) -->	
 	<update id="updateNotice">
 		update notice set n_title=#{n_title}, n_id=#{n_id}, n_date=sysdate, n_txt=#{n_txt} where n_no=#{n_no}
 	</update>
