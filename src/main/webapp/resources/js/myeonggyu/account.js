@@ -204,6 +204,40 @@ $("#btn_id_chk").click(function() {
         }
     });
 });
+$("#btn_nickname_chk").click(function() {
+    var a_nickname = $("#a_nickname").val();
+
+    // 닉네임 유효성 검사
+    var nicknameRegex = /^[a-zA-Z0-9가-힣]{1,10}$/;
+    if (!nicknameRegex.test(a_nickname)) {
+        alert("닉네임은 1자 이상 10자 이하의 영문, 숫자, 한글로 입력해주세요.");
+        return;
+    }
+
+    if (a_nickname === "") {
+        alert("닉네임을 입력해주세요.");
+        return;
+    }
+
+    // AJAX를 사용하여 닉네임 중복 확인을 요청합니다.
+    $.ajax({
+        url: "/shopping/accountNickname.get",
+        type: "GET",
+        data: { a_nickname: a_nickname },
+        success: function(result) {
+            if (result === 1) {
+                alert("이미 사용 중인 닉네임입니다.");
+                $("#nickname_chk").val("");
+            } else {
+                alert("사용 가능한 닉네임입니다.");
+                $("#nickname_chk").val("1");
+            }
+        },
+        error: function(xhr, status, error) {
+            alert("닉네임 중복 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+        }
+    });
+});
 $("#btn_phone_chk").click(function() {
     var a_phone = $("#a_phone").val();
 

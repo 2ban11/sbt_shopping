@@ -41,17 +41,17 @@ h4 {
   margin-left: 12px;
   margin-bottom: 5px;
   justify-content: space-between;
-  width: 900%;
 }
 
 
 
 .k_login {
   display: flex;
-  width: 10%;
+  width: 100%;
   align-items: center;
   justify-content: flex-start;
   margin-top: 15px;
+  margin-left:0px;
   background-color: #ffe500;
   border-radius: 5px;
 }
@@ -68,7 +68,7 @@ h4 {
   vertical-align: 12px;
 }
 .n_login {
-  width: 10%;
+  width: 100%;
   height: 40px;
   background-color: #1ec800;
   border-radius: 5px;
@@ -202,10 +202,10 @@ ul {
 	margin-left: 5;
 	}
   .n_login span {
-    margin-left: 40px;
+    margin-left: 37px;
   }
   .k_login span {
-    margin-left: 40px;
+    margin-left: 37px;
   }
 }
 
@@ -231,7 +231,6 @@ ul {
     margin-left: 0px;
     margin-bottom: 5px;
     justify-content: space-between;
-    width: 900%;
   }
   .n_login span {
     margin-left: 20px;
@@ -253,15 +252,16 @@ ul {
 @media (max-width: 500px) {
 
   .k_login {
-  margin-left: 3.5%;
-    width: 2.8%;
+	margin-left: 201px;
+	    width: 13%;
     justify-content: center;
   }
   .k_login span {
     display: none;
   }
   .n_login {
-  	margin-left:-4px;
+  width:10%;
+  	margin-left:207px;
     justify-content: center;
     background: none;
   }
@@ -269,8 +269,8 @@ ul {
     display: none;
   }
   #n_login-img {
-  width: 115px;
-  height: 40px;
+ 	width: 55px;
+    height: 44px
 }
 .docs-section {
 	width: 100%;
@@ -279,31 +279,6 @@ ul {
     margin-left: 40%;
 }
 }
-@media(max-width:375px){
-	.k_login{margin-left: 46px;
-    width: 3.5%;}
-}
-@media (max-width: 320px) {
-  .login-wrap {
-  margin-left: 17%;
-    width: 120%; 
-  }
-  .n_login {
-  margin-left: 14px;
-    width: 8%;
-    justify-content: center;
-    background: none;
-  }
-  .n_login span {
-    display: none;
-  }
-  .k_login {
-    margin-left: 46px;
-    width: 3.7%;
-    }
-}
-
-
 @media (max-width: 425px) {
   .n_login {
       margin-left: 20px;
@@ -315,4 +290,28 @@ ul {
     display: none;
   }
 }
+@media(max-width:375px){
+	.k_login{margin-left: 46px;
+    width: 3.5%;}
+}
+@media (max-width: 320px) {
+  .login-wrap {
+    width: 100%; 
+  }
+  .n_login {
+  	margin-left: 118px;
+    width: 8%;
+    justify-content: center;
+    background: none;
+  }
+  .n_login span {
+    display: none;
+  }
+  .k_login {
+    margin-left: 70px;
+    width: 46%;
+    }
+}
+
+
 
