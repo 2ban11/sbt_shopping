@@ -307,7 +307,7 @@
     	 let container = $('#pagination');
     	    container.pagination({
     	        dataSource: jsonData,
-    	        pageSize: 10,
+    	        pageSize: 7,
     	        callback: function (data, pagination) {
     	            var dataHtml = '<ul style="padding-left:0;">';
     	            $.each(data, function (index, item) {
