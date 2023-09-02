@@ -100,8 +100,11 @@
 								<!-- left -->
 								<div class="left col-12 col-md-5 col-sm-12">
 									<div class="row">
+									
 										<img id="mainImg" src="resources/img/${product.p_img2 }"
 											class="img-fluid">
+									
+									
 									</div>
 								</div>
 								<!-- right -->
@@ -111,6 +114,11 @@
 										<img src="resources/img/Guitar/${product.p_img1}"
 											class="card-img-top img-thumbnail rounded mx-auto d-block"
 											alt="...">
+										
+										
+										
+										
+										
 										<div class="card-body">
 											<h5 class="card-title">${product.p_big_category}>
 												${product.p_middle_category} > ${product.p_small_category} >
