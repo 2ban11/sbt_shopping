@@ -125,23 +125,27 @@ details[open] summary::marker {
 }
 
 .mypage-info-data-order-no {
-	width: 10%;
+	width: 8%;
 }
 
 .mypage-info-data-order-name {
-	width: 53%;
+	width: 57%;
+	
 }
 
 .mypage-info-data-order-pay {
-	width: 10%;
+	width: 5%;
 }
 
 .mypage-info-data-order-sale {
 	width: 10%;
 }
+.mypage-info-data-order-sale {
+	width: 10%;
+}
 
 .mypage-info-data-order-date {
-	width: 10%;
+	width: 13%;
 }
 
 .mypage-info-data-order-state {
@@ -158,18 +162,23 @@ details[open] summary::marker {
 
 .refund-info-data-order-name {
 	width: 40%;
+	text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .refund-info-data-order-pay {
-	width: 10%;
+	width: 6%;
 }
 
 .refund-info-data-order-sale {
 	width: 10%;
 }
-
+.refund-info-data-order-price{
+	width:10%;
+}
 .refund-info-data-order-date {
-	width: 10%;
+	width: 14%;
 }
 
 .refund-info-data-order-state {
@@ -177,7 +186,7 @@ details[open] summary::marker {
 }
 
 .refund-info-data-order-other {
-	width: 10%;
+	width: 13%;
 }
 
 .mypage-info-data-qna-no {
@@ -303,23 +312,26 @@ details[open] summary::marker {
 
 .refund-btn {
 	background-color: #67c1f5;
-	padding: 5px 10px;
+	padding: 5px 5px;
 	border-radius: 2px;
 	font-weight: 700;
 	border: none;
 	color: white;
 	word-break: keep-all; 
+	font-size: 12px;
+	width: 45px;
+	
 }
 
 .refund-cancel-btn {
 	background-color: #d43f3a;
-	padding: 5px 10px;
+	padding: 5px 5px;
 	border-radius: 2px;
 	font-weight: 700;
 	border: none;
 	color: white;
-	background-color: #d43f3a;
-	overflow: hidden;
-	text-overflow: ellipsis;
 	word-break: keep-all; 
+	font-size: 12px;
+	width: 45px;
+	
 }
