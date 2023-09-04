@@ -47,7 +47,7 @@ window.addEventListener('load', function() {
 			od_no: '${o.od_no}',
 			p_name: '${o.p_name}',
 			od_cnt: '${o.od_cnt}',
-			od_price: '${o.od_price}',
+			od_price: '<fmt:formatNumber value="${o.od_price}" type="currency" currencyCode="KRW" maxFractionDigits="0" />',
 			od_date: '<fmt:formatDate value="${o.od_date}" dateStyle="long" />',
 			od_state: '${o.od_state}'
 		};

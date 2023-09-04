@@ -123,7 +123,7 @@
     	 let container = $('#pagination');
     	    container.pagination({
     	        dataSource: jsonData,
-    	        pageSize: 10,
+    	        pageSize: 7,
     	        callback: function (data, pagination) {
     	            var dataHtml = '<ul>';
     	            $.each(data, function (index, item) {

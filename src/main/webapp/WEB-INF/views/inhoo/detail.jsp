@@ -91,12 +91,12 @@
 									<h2>
 										<span>${product.p_name }</span>
 									</h2>
-									<br /> <span style="text-transform: none">${product.p_maker }</span>
+									<br /> <span style="text-transform: none" ><h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${product.p_maker }</h2></span>
 								</h1>
 							</div>
 
 
-							<div class="row align-items-start">
+							<div class="row align-items-start" style="max-height:800px;">
 								<!-- left -->
 								<div class="left col-12 col-md-5 col-sm-12">
 									<div class="row">

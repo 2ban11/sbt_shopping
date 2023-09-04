@@ -40,14 +40,17 @@ window.addEventListener('load', function() {
 					<div class="refund-info-data-order-no">${o.od_no }</div>
 					<div class="refund-info-data-order-name">${o.p_name }</div>
 					<div class="refund-info-data-order-pay">${o.od_cnt }</div>
-					<div class="refund-info-data-order-sale">${o.od_price }</div>
+					<c:set var="odPrice" value="${o.od_price}" />
+					<div class="refund-info-data-order-price">
+<fmt:formatNumber value="${odPrice}" type="currency" currencyCode="KRW" maxFractionDigits="0" />
+					</div>
 					<div class="refund-info-data-order-date">
 						<fmt:formatDate value="${o.od_date }" dateStyle="long" />
 					</div>
 					<div class="refund-info-data-order-state">${o.od_state }</div>
 					<div class="refund-info-data-order-other">
-							<button onclick="refundAccept(${o.od_no})" class="refund-btn">환불완료</button>
-							<button onclick="refundCancel2(${o.od_no})" class="refund-cancel-btn">환불취소</button>
+							<button onclick="refundAccept(${o.od_no})" class="refund-btn">승인</button>
+							<button onclick="refundCancel2(${o.od_no})" class="refund-cancel-btn">취소</button>
 					</div>
 				</div>
 			</c:forEach>
