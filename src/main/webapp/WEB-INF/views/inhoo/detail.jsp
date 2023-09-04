@@ -100,25 +100,48 @@
 								<!-- left -->
 								<div class="left col-12 col-md-5 col-sm-12">
 									<div class="row">
-									
-										<img id="mainImg" src="resources/img/${product.p_img2 }"
+									<c:choose>
+										<c:when test="${product.p_big_category eq '기타'}">
+										<img id="mainImg" src="resources//img/Guitar/${product.p_img2 }"
 											class="img-fluid">
-									
-									
+										</c:when>
+										<c:when test="${product.p_big_category eq '앰프'}">
+										<img id="mainImg" src="resources//img/Amp/${product.p_img2 }"
+											class="img-fluid">
+										</c:when>
+										<c:when test="${product.p_big_category eq '이펙터'}">
+										<img id="mainImg" src="resources//img/Effector/${product.p_img2 }"
+											class="img-fluid">
+										</c:when>
+										<c:when test="${product.p_big_category eq '주변용품'}">
+										<img id="mainImg" src="resources//img/Accessory/${product.p_img2 }"
+											class="img-fluid">
+										</c:when>
+									</c:choose>
 									</div>
 								</div>
 								<!-- right -->
 								<div class="col-12 col-md-5 col-sm-12">
 									<div class="card"
 										style="background-color: #1b2838; color: white;">
-										<img src="resources/img/Guitar/${product.p_img1}"
-											class="card-img-top img-thumbnail rounded mx-auto d-block"
-											alt="...">
-										
-										
-										
-										
-										
+										<c:choose>
+										<c:when test="${product.p_big_category eq '기타'}">
+										<img id="mainImg" src="resources//img/Guitar/${product.p_img1 }"
+											class="card-img-top img-thumbnail rounded mx-auto d-block">
+										</c:when>
+										<c:when test="${product.p_big_category eq '앰프'}">
+										<img id="mainImg" src="resources//img/Amp/${product.p_img1 }"
+											class="card-img-top img-thumbnail rounded mx-auto d-block">
+										</c:when>
+										<c:when test="${product.p_big_category eq '이펙터'}">
+										<img id="mainImg" src="resources//img/Effector/${product.p_img1 }"
+											class="card-img-top img-thumbnail rounded mx-auto d-block">
+										</c:when>
+										<c:when test="${product.p_big_category eq '주변용품'}">
+										<img id="mainImg" src="resources//img/Accessory/${product.p_img1 }"
+											class="card-img-top img-thumbnail rounded mx-auto d-block">
+										</c:when>
+									</c:choose>
 										<div class="card-body">
 											<h5 class="card-title">${product.p_big_category}>
 												${product.p_middle_category} > ${product.p_small_category} >
